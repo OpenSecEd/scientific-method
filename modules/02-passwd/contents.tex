@@ -24,23 +24,19 @@
 
 \clearpage
 
-\section{Introduction}
+\section<article>{Introduction}
 
-\begin{frame}
 We've had passwords for about as long as we've had computers.
 Unfortunately, we still\footnote{As of \today.} haven't managed to do it right 
 in practice.
-\end{frame}
 So here we'll deal with the following question.
 
-\begin{frame}
-  \begin{question}\label{RQ}
-    How can we know how secure our password-based authentication system will be?
-  \end{question}
-\end{frame}
+\begin{question}\label{RQ}
+  How can we know how secure our password-based authentication system will be?
+\end{question}
 
 
-\section{How do we know it's secure?}
+\section[How do we know?]{How do we know it's secure?}
 
 \begin{frame}
 We have a system where users log in.
@@ -48,16 +44,17 @@ We want to authenticate the users securely.
 We've decided to use a password-based authentication system\footnote{%
   Yes, I know it's a bit of an oxymoron, but humor me.
 }.
-\end{frame}
 
-\begin{frame}
   \begin{exercise}
-    What do we need to know to try to answer \cref{RQ}?
+    What do we need to know to try to answer
+    \only<article>{\cref{RQ}}%
+    \only<presentation>{how secure this will be}%
+    ?
   \end{exercise}
 \end{frame}
 
 
-\section{What do we mean by secure?}
+\section[Define secure?]{What do we mean by secure?}
 
 Well, first of all, we need to define what we mean by \enquote{being secure}.
 \Cref{RQ} asks us to estimate how secure a password-based authentication system 
@@ -123,23 +120,24 @@ However, we don't need to document systematically how we do it.
 
 \begin{frame}
   \begin{exercise}
-    We want to investigate the most common definitions of security for 
-    authentication systems and for which types of authentication systems 
+    We want to investigate \alert<2>{the most common} definitions of security 
+    for authentication systems and for which types of authentication systems 
     they're used.
     Which type of literature review should we do; systematic or non-systematic?
     Why?
   \end{exercise}
-\end{frame}
 
+  \begin{onlyenv}<article>
 In this case, the goal is to get an overview of the literature.
 Since purpose is to research what definitions there are and how they're used, 
 we must document our method of research.
 This means that we should do a systematic literature review.
+  \end{onlyenv}
 
-\begin{frame}
   \begin{exercise}
-    We want to explore different definitions of security for authentication 
-    systems to find a definition to use for our study.
+    We want to \alert<2>{explore \only<2>{\textins{some} }different} 
+    definitions of security for authentication systems to find a definition to 
+    use for our study.
     Which type of literature review should we do; systematic or non-systematic?
     Why?
   \end{exercise}
@@ -279,14 +277,10 @@ them more easily and we will not be able to fulfil \cref{FormalSecurity}.
 \end{frame}
 
 A uniform distribution means that
-\begin{frame}
-  all passwords are equally likely (\(\frac{1}{N^n}\))
-\end{frame}
+all passwords are equally likely (\(\frac{1}{N^n}\))
 and that
-\begin{frame}
-  the Shannon entropy is maximized and equal to \(-\log \frac{1}{N^n} = n \log 
-  {N}\),
-\end{frame}
+the Shannon entropy is maximized and equal to \(-\log \frac{1}{N^n} = n \log 
+{N}\),
 where \(N\) is the number of possible characters and \(n\) is the length of the 
 password.
 
@@ -306,6 +300,14 @@ password.
     Is it really secure, why or why not?
     How can we answer this question?
   \end{exercise}
+
+  \begin{solution}
+    We can try forcing some user-generated passwords.
+
+    We've assumed that the passwords are uniformly distributed.
+    But are they?
+    How can we find out?
+  \end{solution}
 \end{frame}
 
 \subsection{Empirical evaluation}
@@ -328,10 +330,10 @@ passwords, and consequently affects the password distribution.
 So we should change the question into the following.
 
 \begin{frame}
-\begin{question}
+\begin{question}[Password distribution]
   How does different password policies affect the password distribution?
 \end{question}
-\begin{question}\label{Guessability}
+\begin{question}[Password distribution, guessability]\label{Guessability}
   How easily can we guess the passwords under different password policies?
 \end{question}
 \begin{exercise}
@@ -348,6 +350,16 @@ But we also have the papers by
 \textcite{CanLongPasswordsBeSecureAndUsable}.
 We will explore these papers to see how they tried to answer these questions, 
 so we'll return to them.
+
+\begin{frame}<presentation>
+  \begin{example}[Password distribution, guessability]
+    \fullcite{OfPasswordsAndPeople}
+  \end{example}
+
+  \begin{example}[Guessability, usability]
+    \fullcite{CanLongPasswordsBeSecureAndUsable}
+  \end{example}
+\end{frame}
 
 However, we can do other estimates deductively too.
 For instance, we have the very famous \enquote{correct horse battery staple} 
@@ -366,7 +378,13 @@ within the bounds of the password policy.
   \end{figure}
 \end{frame}
 
-\section{But is it even a good model to begin with?}
+\begin{frame}<presentation>
+  \begin{exercise}
+    Did any of the papers answer the question of how the passwords are chosen?
+  \end{exercise}
+\end{frame}
+
+\section[Is it a good model?]{But is it even a good model to begin with?}
 
 \begin{frame}
   \begin{exercise}
@@ -385,7 +403,21 @@ This leads us to the following question.
 \begin{frame}
   \begin{question}
     Can the verifier be an adversary or is the verifier always benign?
+    What are the consequences of this?
   \end{question}
+\end{frame}
+
+\begin{frame}<presentation>
+  \begin{example}
+    \fullcite{WhyPhishingWorks}
+  \end{example}
+
+  \pause
+
+  \begin{example}[Consequences]
+    We need the zero-knowledge property in our security definition.
+    (We actually need \emph{malicious}, not honest, verifier zero-knowledge.
+  \end{example}
 \end{frame}
 
 Now this depends on the users.
@@ -415,6 +447,15 @@ benign verifier assumption, namely password reuse (\cref{xkcd792}).
 We will study the paper by \textcite{WhyPhishingWorks} to explore how they 
 answered this question.
 So we'll return to this paper later.
+
+
+\section{Conclusion}
+
+\begin{frame}
+  We might need a qualitative (\eg usability) study
+  \only<presentation>{\newline}%
+  to inform our deductive (\eg cryptographic) choices.
+\end{frame}
 
 %\begin{frame}
 %  \begin{question}
