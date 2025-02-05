@@ -8,6 +8,8 @@ all: vetcyb-grading.pdf vetcyb-grading.sh
 vetcyb-grading.pdf: vetcyb-grading.tex
 vetcyb-grading.sh: vetcyb-grading.sh.nw
 
+vetcyb-grading.pdf: prompts.toml
+
 GRADE_RESULTS=test-grade_reflections-err.txt
 
 vetcyb-grading.pdf: ${GRADE_RESULTS}
