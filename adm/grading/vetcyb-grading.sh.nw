@@ -490,23 +490,7 @@ feedback_participation() {
     <<print assignments in [[student_results]] without a passing grade>>
   fi
 }
-@
-
-This way we can use it to give feedback to the students who didn't pass.
-The students who are listed in the file [[passed]] are the ones who passed.
-The other students in [[students]] are the ones who didn't pass.
-<<give feedback to students not in [[passed]], who didn't pass>>=
-for student in $(echo "${students}" | grep -vFxf "${passed}")
-do
-  local feedback=$(feedback_participation "${course}" "${student}")
-  if [ -n "${feedback}" ]
-  then
-    canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
-      -u "${student}" \
-      -m "${feedback}"
-  fi
-done
-@
+@ This way we can use it to give feedback to the students who didn't pass.
 
 Now we should just find the assignments without a passing grade and print those 
 titles.
@@ -557,6 +541,83 @@ echo "${student_results}" \
 | filter_reflection "${course}" \
 | grep -Ev '\scomplete' \
 | cut -f 1,3
+@
+
+\subsection{Giving feedback to students who didn't pass}
+
+The students who are listed in the file [[passed]] are the ones who passed.
+The other students in [[students]] are the ones who didn't pass.
+<<students who didn't pass>>=
+echo "${students}" | grep -vFxf "${passed}"
+@
+
+However, these results only make sense after the last seminar of the course.
+Before that last seminar, none of the students could have passed.
+Unfortunately, just checking if \emph{anyone} passed, will not be enough.
+In the rounds following, maybe all missed a small thing, but then they won't 
+get feedback about it.
+So we need to compare to the dates of the seminars.
+We can't rely on the dates being equal, then the script might run before the 
+seminar that day.
+So [[today]] must be strictly after the last seminar.
+<<give feedback to students not in [[passed]], who didn't pass>>=
+<<let [[last_date]] be the date of the last seminar>>
+<<let [[today]] be today's date>>
+if [ "${today}" -gt "${last_date}" ]
+then
+  for student in $(<<students who didn't pass>>)
+  do
+    local feedback=$(feedback_participation "${course}" "${student}")
+    if [ -n "${feedback}" ]
+    then
+      canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
+        -u "${student}" \
+        -m "${feedback}"
+    fi
+  done
+fi
+@
+
+
+\subsection{Getting the last seminar date}
+
+Now, the dates of the seminars are in the title of the assignments.
+It's written as `Live seminar 13/11 at 15:15`.
+So we want to change it into the date format `24-11-13`, that way it will be 
+comparable to today's date.
+The relevant year is in the course name, so we can get it from 
+[[course]]---which will have the format [[vetcyb24p2]].
+<<helper functions>>=
+last_seminar_date() {
+  local course="${1}"
+  local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
+  assignments "${course}" \
+  | filter_live_seminar \
+  | cut -f 2 \
+  | cut -d ' ' -f 3 \
+  | <<rewrite the date to the format [[yy-mm-dd]]>> \
+  | sort \
+  | tail -n 1
+}
+<<let [[last_date]] be the date of the last seminar>>=
+local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
+local last_date=$(last_seminar_date "${course}")
+@
+
+We also need today's date in the same format.
+<<let [[today]] be today's date>>=
+local today=$(date +%y-%m-%d)
+@
+
+Let's rewrite the date to the format `yy-mm-dd`.
+We must change the month and day to two-digit numbers.
+We can do this by rewriting all [[/d]] and [[d/]] to [[/0d]] and [[0d/]].
+Then we can swap the month and day by rewriting [[dd/mm]] to [[mm-dd]] and 
+inserting the year ([[${year}]]) at the beginning.
+<<rewrite the date to the format [[yy-mm-dd]]>>=
+sed -E "s|^([0-9]{1})/|0\1/|" \
+| sed -E "s|/([0-9]{1})$|/0\1|" \
+| sed -E "s|([0-9]{2})/([0-9]{2})|${year}-\2-\1|"
 @
 
 
