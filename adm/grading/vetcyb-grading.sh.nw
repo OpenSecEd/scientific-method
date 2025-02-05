@@ -29,17 +29,19 @@
 We want to automate the reporting of the results in the vetcyb courses.
 There are two ways to pass the course:
 \begin{enumerate}
-\item\label{ParticipationOption} By participating in the seminars and doing the 
-prep assignments.
+  \item\label{ParticipationOption} By participating in the seminars and doing 
+  the prep assignments.
   Also known as, participating in all teaching.
-\item\label{FinalProjectOption} By doing the final project.
+  \item\label{FinalProjectOption} By doing the final project.
 \end{enumerate}
 
 We want a script that can be run by the [[grader]] script\footnote{%
   See \texttt{https://github.com/dbosk/grader/}.
 }.
-This will have the standard design, except that we'll do the participation as 
-an intermediate step.
+This will have the standard design (see [[report_INL1]]), except that we'll do 
+the participation grading before.
+This way we can set the grades of the INL1 assignments based on the 
+participation and prep.
 <<vetcyb-grading.sh>>=
 #!/bin/bash
 
@@ -49,14 +51,20 @@ components="^INL1"
 
 <<helper functions>>
 
-main() {
-  <<report participation by setting grades for INL1 assignments>>
-
-  # report INL1 to LADOK
+report_INL1() {
   canvaslms results -c "${courses}" -A "${components}" \
     -S canvaslms.grades.conjunctavgsurvey \
   | sed -E "s/ ?[HV]T[0-9]{2}( \(.*\))?//" \
   | ladok report -fv
+}
+
+grade_participation() {
+  <<report participation by setting grades for INL1 assignments>>
+}
+
+main() {
+  grade_participation
+  report_INL1
 }
 
 # run main if not sourced from another script
@@ -211,10 +219,10 @@ skip the project.
 <<report participation by setting grades for INL1 assignments>>=
 for course in $(canvaslms courses "${courses}")
 do
-  grade_participation "${course}"
+  grade_course_participation "${course}"
 done
 <<helper functions>>=
-grade_participation() {
+grade_course_participation() {
   local course="${1}"
   <<let [[students]] be the students to grade in [[course]]>>
   <<grade reflection assignments for every [[student]] in [[students]]>>
