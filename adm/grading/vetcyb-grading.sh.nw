@@ -212,15 +212,35 @@ filter_INL1() {
 
 As mentioned above, we'll need to do this on a per course basis, since the 
 assignments might vary from round to round.
+<<report participation by setting grades for INL1 assignments>>=
+oldIFS="${IFS}"
+IFS=$'\n'
+for course in $(<<list courses matching [[courses]] regex>>)
+do
+  IFS="${oldIFS}"
+  grade_course_participation "${course}"
+done
+IFS="${oldIFS}"
+@
+
+For the courses, we need something that can be used as an identifier.
+That would be the first or second column.
+The first is shorter, so we'll use that.
+But it also contains parentheses, so we'll need to deal with them to not be 
+interpreted as regex.
+If they're interpreted as regex, we won't get any matches.
+So we'll need to either escape them or replace them by periods ([[.]]).
+<<list courses matching [[courses]] regex>>=
+canvaslms courses "${courses}" \
+| cut -f 1 \
+| sed -E 's/([()])/\\\1/g'
+@
+
+Now to the grading.
 We want to pass the INL1 assignments if the appropriate participation and prep 
 are checked.
 However, we don't want to pass only one of the assignments, both must pass to 
 skip the project.
-<<report participation by setting grades for INL1 assignments>>=
-for course in $(canvaslms courses "${courses}")
-do
-  grade_course_participation "${course}"
-done
 <<helper functions>>=
 grade_course_participation() {
   local course="${1}"
@@ -231,10 +251,13 @@ grade_course_participation() {
   do
     <<echo [[student]] if they passed both prep and live seminar>>
   done > "${passed}"
-  canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
-    -g P \
-    -u "$(make_regex ${passed})" \
-    -m "${participation_msg}"
+  if [ -s "${passed}" ]
+  then
+    canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
+      -g P \
+      -u "$(make_regex ${passed})" \
+      -m "${participation_msg}"
+  fi
   <<give feedback to students not in [[passed]], who didn't pass>>
 }
 <<constants>>=
@@ -377,12 +400,16 @@ students_to_grade() {
   local students=$(echo "${results}" | cut -f 2 | sort -u)
   for student in ${students}
   do
-    if ! echo "${results}" | grep "${student}" | passed_all "${passing_grades}"
-    then
-      echo "${student}"
-    fi
+    <<if [[student]] passed all assignments, continue>>
+    <<if [[student]] is already graded, continue>>
+    echo "${student}"
   done
 }
+<<if [[student]] passed all assignments, continue>>=
+if echo "${results}" | grep "${student}" | passed_all "${passing_grades}"
+then
+  continue
+fi
 @
 
 We can define a regex for [[passing_grades]] that captures all passing grades 
@@ -563,7 +590,7 @@ So [[today]] must be strictly after the last seminar.
 <<give feedback to students not in [[passed]], who didn't pass>>=
 <<let [[last_date]] be the date of the last seminar>>
 <<let [[today]] be today's date>>
-if [ "${today}" -gt "${last_date}" ]
+if [[ "${last_date}" < "${today}" ]]
 then
   for student in $(<<students who didn't pass>>)
   do
