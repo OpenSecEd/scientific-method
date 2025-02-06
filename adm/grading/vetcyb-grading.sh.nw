@@ -382,7 +382,7 @@ the assignments.
 Fortunately, all the assignments in the INL1 group are pass/fail.
 So we can just look for the students that have not passed the assignments.
 <<let [[students]] be the students to grade in [[course]]>>=
-students=$(results "${course}" | filter_INL1 | students_to_grade)
+students=$(results "${course}" | students_to_grade)
 @
 
 The idea is this.
@@ -395,12 +395,12 @@ or not.
 If they did not, we echo their username.
 <<helper functions>>=
 students_to_grade() {
-  local results=$(cat)
+  local results="$(cat)"
   <<let [[passing_grades]] be the regex for passing grades>>
   local students=$(echo "${results}" | cut -f 2 | sort -u)
   for student in ${students}
   do
-    <<if [[student]] passed all assignments, continue>>
+    <<if [[student]] passed any INL1 assignment, continue>>
     <<if [[student]] is already graded, continue>>
     echo "${student}"
   done
@@ -418,12 +418,20 @@ in all grading scales:
 local passing_grades="${1:-^(P|complete|9[0-9]|100)}"
 @
 
-The check if a student has passed all assignments is now quite straightforward.
-<<if [[student]] passed all assignments, continue>>=
-if echo "${results}" | grep "${student}" | passed_all "${passing_grades}"
+If the student has passed any INL1 assignment, we don't need to grade them.
+Then we know that they have either passed the course or started working on the 
+project.
+<<if [[student]] passed any INL1 assignment, continue>>=
+if echo "${results}" | grep "${student}" \
+   | filter_INL1 | passed_any "^P"
 then
   continue
 fi
+<<helper functions>>=
+passed_any() {
+  local grades="${1}"
+  cut -f 3 | grep -qP "${grades}"
+}
 @
 
 We don't need to grade anyone who is already graded, we don't want to spam them 
@@ -456,6 +464,12 @@ fi
 For instance, if we only get results filtered by [[filter_INL1]], then we we 
 can't compare the dates of the `Final version of the report` (which is present) 
 to the other assignments (which are not present).
+
+Also, when we give feedback to a student in the INL1 assignments, they are not 
+labelled as graded (with a grading date).
+Perhaps we can get them to be labelled as graded if we set the grade [[-]]?
+Nope, doesn't work.
+We must set a non-passing grade on them.
 
 \subsection{Checking if a student has passed all assignments}
 
