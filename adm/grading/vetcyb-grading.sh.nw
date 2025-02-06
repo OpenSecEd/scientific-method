@@ -405,11 +405,6 @@ students_to_grade() {
     echo "${student}"
   done
 }
-<<if [[student]] passed all assignments, continue>>=
-if echo "${results}" | grep "${student}" | passed_all "${passing_grades}"
-then
-  continue
-fi
 @
 
 We can define a regex for [[passing_grades]] that captures all passing grades 
@@ -423,6 +418,44 @@ in all grading scales:
 local passing_grades="${1:-^(P|complete|9[0-9]|100)}"
 @
 
+The check if a student has passed all assignments is now quite straightforward.
+<<if [[student]] passed all assignments, continue>>=
+if echo "${results}" | grep "${student}" | passed_all "${passing_grades}"
+then
+  continue
+fi
+@
+
+We don't need to grade anyone who is already graded, we don't want to spam them 
+with feedback.
+So how do we detect this?
+We can check if they have a grade on the `Final version of the report` 
+assignment, or rather, a date.
+If that date is later than all the other dates, then they are graded.
+Otherwise they're not.
+<<if [[student]] is already graded, continue>>=
+local final_report_date=$(echo "${results}" \
+                          | grep "${student}" \
+                          | grep 'Final version of the report' \
+                          | cut -f 4)
+local latest_date=$(echo "${results}" \
+                    | grep "${student}" \
+                    | filter_participation \
+                    | cut -f 4 \
+                    | sort \
+                    | tail -n 1)
+if [ -n "${final_report_date}" -a -n "${latest_date}" ]
+then
+  if [[ "${final_report_date}" > "${latest_date}" ]]
+  then
+    continue
+  fi
+fi
+@ We note that this only works when all assignments are in the results piped to
+[[students_to_grade]].
+For instance, if we only get results filtered by [[filter_INL1]], then we we 
+can't compare the dates of the `Final version of the report` (which is present) 
+to the other assignments (which are not present).
 
 \subsection{Checking if a student has passed all assignments}
 
