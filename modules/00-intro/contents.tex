@@ -96,15 +96,15 @@ We want to answer the following question:
 
 \begin{frame}
   \begin{question}
-    What are the methods we (in the security community) use and why?
+    What are the \emph{research} methods we (in the security community) use and 
+    why?
   \end{question}
 \end{frame}
 
 \begin{frame}<presentation>
   \begin{block}{The goal}
     \begin{itemize}
-      \item Give a holistic view of Science of Security.
-      \item What are the methods we use and why?
+      \item Give a holistic view of \emph{Science} of Security.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -147,12 +147,18 @@ This leads us to the second question, we want the students to able to answer:
 \begin{frame}<presentation>
   \begin{block}{Aim of Science of Security course}
     \begin{itemize}
-      \item Complement the general methods course.
+      \item Complement the general methods course (TAMOS).
       \item Better prepare students for thesis (and hopefully worklife \dots).
-      \item They should be able to contribute to scientifically based 
+      \item They should be able to contribute to \emph{scientifically} based 
         development in cybersecurity.
     \end{itemize}
   \end{block}
+
+  \begin{remark}
+    \begin{itemize}
+      \item This course is now fully synced with TAMOS\@.
+    \end{itemize}
+  \end{remark}
 \end{frame}
 
 \only<article>{\subsection{Goals and requirements}}
@@ -334,6 +340,14 @@ aspect as part of the assessment of the course later.
       \item Evaluate the suitability of proposed methods.
     \end{itemize}
   \end{block}
+
+  \begin{remark}
+    \begin{itemize}
+      \item The focus is on \emph{research methods}.
+      \item It's \emph{not} on {constructing a secure solution}.
+      \item We want to know \emph{how do you know if it is secure?}
+    \end{itemize}
+  \end{remark}
 \end{frame}
 
 
@@ -476,32 +490,26 @@ The final seminar summarizes the course and results in a grade.
   \begin{block}{Teaching}<+>
     \begin{itemize}
       \item Reading material and watching videos.
+      \item Write reflection to prepare for seminar.
       \item Discuss and work with material at synchronous seminars.
     \end{itemize}
   \end{block}
 
   \begin{block}{Assessment}<+>
-    \begin{itemize}
-      \item A synchronous seminar to summarize all work and tie the sack.
-    \end{itemize}
+    Either
+    \begin{enumerate}
+      \item You do all prep and participate in all seminars.
+      \item You do the project, write a report, peer review and participate in 
+        the final seminar.
+    \end{enumerate}
   \end{block}
-
-  \uncover<+>{%
-    \begin{remark}
-      \begin{itemize}
-        \item I'm evaluating whether I can use teaching part for assessment.
-        \item That way you don't need to do the project.
-      \end{itemize}
-    \end{remark}
-  }
 \end{frame}
 
 \begin{frame}
   \begin{block}{Giving the course}
     \begin{itemize}
-      \item Given twice pre year, for now.
+      \item Given twice pre year, for now: period 2 and 4.
       \item If you don't finish, you can try again next round.
-      \item Next will be either period 3 or 4, depending on turnout.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -584,12 +592,6 @@ We'll depart in the paper
 
 
 \section{Contents}
-
-\begin{frame}
-  \begin{remark}
-    This year we're syncing more with TAMOS.
-  \end{remark}
-\end{frame}
 
 %\begin{frame}
 %  \begin{block}{Contents, part II}
@@ -727,15 +729,55 @@ There will be a seminar given by the KTH Library.
   \end{remark}
 \end{frame}
 
-\paragraph{Other topics}
+\paragraph{Models: Cryptography, formal methods, simulations}
 
-In the rest of the course we'll cover a variety of topics:
-\begin{itemize}
-  \item formal methods
-  \item cryptography,
-  \item anonymous communication,
-  \item possibly other topics too.
-\end{itemize}
+\begin{frame}<presentation>
+  \begin{block}{Models---deductive methods}
+    \begin{itemize}
+      \item Cryptography: proving crypto protocols (RSA and ElGamal).
+      \item How models are inaccurate (side channels).
+      \item Formal methods: proving complex protocols, software, hardware.
+      \item Simulations: can't trial-and-error in real world (Tor).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Statistics}
+
+\begin{frame}<presentation>
+  \begin{block}{Statistics}
+    \begin{itemize}
+      \item How is statistics used in security?
+      \item It's used in models and simulations (the science).
+      \item Used in security solutions (or attacks).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Qualitative methods}
+
+\begin{frame}<presentation>
+  \begin{block}{Qualitative methods}
+    \begin{itemize}
+      \item How are qualitative methods used in security?
+      \item Qualitative methods are used to understand the human aspects of 
+        security.
+      \item It's a method to explore things, to explain.
+      \item It can generate hypotheses that can be tested quantitatively.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Ethics}
+
+\begin{frame}<presentation>
+  \begin{block}{Ethics}
+    \begin{itemize}
+      \item What should be do and not do?
+      \item What research questions should we answer and how can we do it?
+    \end{itemize}
+  \end{block}
+\end{frame}
 
 \subsection{Final assessment}
 
