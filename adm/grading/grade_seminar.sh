@@ -1,11 +1,11 @@
 oldIFS=$IFS
 IFS=$'\n'
 
-course="vetcyb24p2"
-seminar_date=${1}
-file=${2}
+course="${1}"
+seminar_date="${2}"
+file="${3}"
 
-teachers="(dbosk|masvanbe|elzen)@kth.se"
+teachers="(dbosk|masvanbe|elzen|gylje)@kth.se"
 
 get_grade_data() {
   tail -n +2 ${file} \
