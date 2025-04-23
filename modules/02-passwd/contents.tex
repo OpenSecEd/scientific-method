@@ -168,12 +168,31 @@ example case here).
 
 The second\autocite{OfPasswordsAndPeople} is a normal research paper with a 
 non-systematic literature review section.
-The goal is to how it compares to the systematic literature review.
+The goal is to see how it compares to the systematic literature review.
 
 The third, and last, is a paper on how to do a systematic literature review in 
 the area of information systems\autocite{SLRinIS}.
 It covers the details of what to think about, but also discusses how to use 
 tools to aid the process.
+
+Considering the paper by \citeauthor{SLRinIS} is from 2015, the tools are 
+\enquote{traditional} tools---as opposed to \enquote{modern} tools that also 
+use AI and large language models\footnote{%
+  During a seminar, the library will tell us more about both traditional and 
+  modern tools.
+}.
+Despite that the AI-based tools are cool and give good results, we still need 
+the traditional tools.
+Basically none of the AI-based tools are reproducible:
+they might be biased towards the users interests,
+the models might be updated (improved) and thus give different results,
+and we don't know how the model arrives at the results.
+The traditional tools on the other hand are reproducible:
+they are fully deterministic---they don't do synonyms or similarity, only 
+exactly what you specify---and will give the same results every time.
+(Of course, they'll give new results when new papers are published, but that 
+can be controlled by filtering---limiting the inclusion of publications between 
+given dates, which is why it's important to document such data.)
 
 \subsection{A definition of security}
 
