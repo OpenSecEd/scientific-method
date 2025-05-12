@@ -1,0 +1,55 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{booktabs}
+
+\usepackage[%
+  natbib,
+  citestyle=verbose,singletitle=false,
+  style=verbose,
+  maxbibnames=99,%
+  isbn=false,doi=false,url=true
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+\usepackage[all]{foreign}
+\renewcommand{\foreignfullfont}{}
+\renewcommand{\foreignabbrfont}{}
+
+\usepackage{import}
+
+\usepackage[strict]{csquotes}
+\SetCiteCommand{\autocite}
+\usepackage[single]{acro}
+\acsetup{cite/cmd={\autocite}}
+
+\usepackage[noend]{algpseudocode}
+\usepackage{xparse}
+
+\let\email\texttt
+
+\usepackage[outputdir=ltxobj]{minted}
+\setminted{autogobble}
+
+\usepackage{pythontex}
+\setpythontexoutputdir{.}
+\setpythontexworkingdir{..}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{thmtools}
+%\usepackage[unq]{unique}
+\DeclareMathOperator{\powerset}{\mathcal{P}}
+
+\usepackage[binary-units]{siunitx}
+
+\usepackage{adjustbox}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{changepage}
+
+\usepackage[capitalize]{cleveref}
+
+\input{objectives.tex}
