@@ -1,5 +1,6 @@
 _minted-vetcyb-grading/
-test-*
+test-grade_reflections.txt
+test-grade_reflections-err.txt
 vetcyb-grading.out
 vetcyb-grading.pdf
 vetcyb-grading.sh
