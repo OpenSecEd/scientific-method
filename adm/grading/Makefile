@@ -24,7 +24,10 @@ test-grade-reflections.sh: vetcyb-grading.sh.nw vetcyb-grading.sh
 .PHONY: clean
 clean:
 	${RM} vetcyb-grading.pdf vetcyb-grading.sh
-	rm *.aux *.fdb_* *.fls *.log *.pdf *.tex
+	${RM} *.aux *.fdb_* *.fls *.log *.pdf *.tex
+	${RM} test-grade-reflections.sh
+	${RM} test-grade_reflections.txt
+	${RM} test-grade_reflections-err.txt
 
 
 INCLUDE_MAKEFILES=../../makefiles

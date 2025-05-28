@@ -15,6 +15,8 @@
 %\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
 %  \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
 
+\usepackage{cleveref}
+
 \author{Daniel Bosk}
 \title{Reporting grades for vetcyb courses}
 
@@ -253,10 +255,11 @@ grade_course_participation() {
   done > "${passed}"
   if [ -s "${passed}" ]
   then
-    canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
-      -g P \
-      -u "$(make_regex ${passed})" \
-      -m "${participation_msg}"
+    canvaslms grade -c "${course}" \
+                    -a "${project_assignments_regex}" \
+                    -g P \
+                    -u "$(make_regex ${passed})" \
+                    -m "${participation_msg}"
   fi
   <<give feedback to students not in [[passed]], who didn't pass>>
 }
@@ -715,7 +718,7 @@ grade_reflections "${course}" ${students} \
 grade_reflections() {
   local course="${1}"
   shift
-  local students="$*"
+  local students="$@"
   <<let [[students_regex]] be a regex matching all [[students]] to grade>>
   <<download reflection assignments submissions for [[students_regex]]>>
   <<download reflection assignments instructions>>
@@ -757,8 +760,11 @@ local reflections_dir="/tmp/${course}.reflections.d"
 if [ ! -d "${reflections_dir}" ]
 then
   mkdir "${reflections_dir}"
-  canvaslms submission -c "${course}" -a "${reflection_assign_regex}" \
-    -U -u "${students_regex}" -o "${reflections_dir}"
+  canvaslms submission -c "${course}" \
+                       -a "${reflection_assign_regex}" \
+                       -u "${students_regex}" \
+                       -o "${reflections_dir}" \
+                       -U
 fi
 @
 
@@ -896,9 +902,23 @@ Their attempt is in the [[metadata.md]] file.
 The instruction is in the root of the directory~[[reflections_dir]].
 <<grade reflection assignment in [[assignment_dir]] for [[student]]>>=
 local assignment=$(basename "${assignment_dir}")
-local submission="${assignment_dir}/metadata.md"
-local instruction="${reflections_dir}/${assignment}.md"
-local assessment=$(cat "${submission}" \
+local submission="$(cat ${assignment_dir}/metadata.md)"
+if [ $? -ne 0 ]
+then
+  echo "Couldn't find metadata.md for ${course} ${student} ${assignment}" >&2
+  continue
+elif [ -z "${submission}" ]
+then
+  echo "No submission for ${course} ${student} ${assignment}" >&2
+  continue
+fi
+local instruction="$(cat ${reflections_dir}/${assignment}.md)"
+if [ -z "${instruction}" ]
+then
+  echo "No instruction for ${course} ${assignment}" >&2
+  continue
+fi
+local assessment=$(echo "${submission}" \
                    | llm_cmd "${instruction}")
 <<constants>>=
 reflection_assessment_prompt="
