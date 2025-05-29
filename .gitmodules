@@ -4,3 +4,6 @@
 [submodule "bibsp"]
 	path = bibsp
 	url = https://github.com/dbosk/bibsp.git
+[submodule "didactic"]
+	path = didactic
+	url = https://github.com/dbosk/didactic.git

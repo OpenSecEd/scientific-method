@@ -1,0 +1,319 @@
+\title{%
+  Science in Security,
+  wrapping up
+}
+\author{Daniel Bosk\thanks{%
+    This material is available under the Creative Commons 
+    Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA) 4.0 international 
+    license.
+    The material was written with some aid from GitHub Copilot.
+}}
+\institute{%
+  KTH EECS
+}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\mode*
+
+\begin{abstract}
+  \input{abstract.tex}
+\end{abstract}
+
+\clearpage
+
+\section{Security as a scientific pursuit}
+
+\Textcite{SoKScienceOfSecurity} discusses security as a scientific pursuit.
+
+\begin{frame}
+  \begin{exercise}[Time to vent]
+    Air your thoughts about the paper 
+    \citetitle{SoKScienceOfSecurity}~\autocite{SoKScienceOfSecurity}.
+  \end{exercise}
+
+  \begin{center}
+    \(<10\) minutes
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    How did they\autocite{SoKScienceOfSecurity} know that this is so?
+    What can we actually say from these results?
+  \end{question}
+
+  \begin{question}
+    The paper\autocite{SoKScienceOfSecurity} is from 
+    \citeyear{SoKScienceOfSecurity}.
+    How well can we repeat this study to see what the state is today?
+  \end{question}
+
+  \begin{center}
+    \(<10\) minutes
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    What can empirical experiments contribute to security?
+  \end{question}
+
+  \begin{question}
+    What can deductive reasoning contribute to security?
+  \end{question}
+
+  \begin{question}
+    What can quantitative observations contribute to security?
+  \end{question}
+
+  \begin{question}
+    What can qualitative observations contribute to security?
+  \end{question}
+
+  \begin{center}
+    5 minutes
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{remark}[Final take-away]
+    Always look for \enquote{the full version of the paper}!
+  \end{remark}
+\end{frame}
+
+
+\section{Some cases}
+
+\begin{frame}[fragile]
+  \begin{block}{The cases}
+    \begin{itemize}
+      \item Passwords
+      \item Programming in not-C
+      \item Adding features
+      \item Mandatory Access Control (MAC)
+      \item Multi-Factor Authentication (MFA)
+      \item Firewalls
+      \item Social Engineering Awareness Training
+      \item Encrypt Data-at-Rest
+      \item Regular Security Updates
+      \item Penetration Testing (Pentesting)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{exercise}[Work out cases]
+    \begin{itemize}
+      \item Join the breakout room of your favourite case.
+      \item Work out the \emph{methodology} for \emph{how to know}.
+        \hfill 15 minutes% erase the space, otherwise these will be uneven
+        \begin{itemize}
+          \item Analyse and evaluate your different approaches.
+          \item Try to settle on one.
+        \end{itemize}
+      \item Take a break.
+        \hfill 10 minutes%
+      \item Then you'll summarize in whole class.
+        \hfill 50 minutes%
+    \end{itemize}
+  \end{exercise}
+
+  \begin{question}[To answer in class]
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if a solution 
+        is correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Passwords}
+    To do password-based authentication, we're taught that we should salt
+    and hash the passwords. The user submits the password to the server,
+    the server adds a 128-bit salt (random number) and hashes the password
+    using SHA256, then hashes the hash, and hashes that hash, and so on for 1000 
+    times. That final hash is used to check if it's the same as the one stored. If 
+    so, the user is accepted. Is this password-based authentication scheme secure?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Programming in not-C}
+    When we write programs, we should avoid languages like C or C++. (This is even 
+    suggested by some US government agencies.) It's better to use a language like 
+    Rust, which has built-in memory safety. Writing programs in Rust will result in 
+    fewer security vulnerabilities in the programs and will thus be more secure. Is 
+    this really true?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Adding features}
+    The Bank has used the same back-end software for 50 years (written in COBOL). 
+    This software works and manages the Bank's accounts. Previously the Bank's 
+    staff interacted with the software, e.g. to tranfer money between accounts.
+
+    The Bank hired FutureSoftware to add a web-based front-end so that the 
+    customers can interact with the software directly. That way customers can 
+    transfer money between accounts without the need for Bank staff to do it for 
+    them. (They wrote the software in Python.)
+
+    The Bank then asked VETCYB consultants to evaluate if this is secure. How would 
+    go do it?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Mandatory Access Control (MAC)}
+    The implementation of Mandatory Access Control (MAC) mechanisms, such
+    as the Bell-LaPadula Model, is considered crucial in environments that
+    demand high levels of security and confidentiality. Organizations that
+    handle sensitive or classified information must ensure that data access
+    is strictly regulated. MAC models achieve this by enforcing control
+    policies that limit access based on user clearance levels. Does this work?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Multi-Factor Authentication (MFA)}
+    Multi-Factor Authentication (MFA) is promoted as an effective way to enhance 
+    security. By requiring users to provide two or more verification factors before 
+    granting access, MFA adds an additional layer of protection beyond just the 
+    password. The methods of implementing MFA varies; such as SMS, email, or 
+    authenticator apps. Is this secure?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Firewalls}
+    Firewalls are a fundamental component of network security that are
+    taught in introductory courses. They act as barriers between trusted and
+    untrusted networks by controlling incoming and outgoing network traffic
+    based on predetermined security rules. Firewalls can prevent
+    unauthorized access and attacks. Is this true?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Social Engineering Awareness Training}
+    Security courses often emphasize the importance of educating employees
+    about social engineering attacks. The training aims to help employees
+    recognize and avoid common tactics used in attacks, such as phishing.
+    Is this secure? How effective, if at all, is such training in practice at 
+    preventing social engineering breaches over time?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Encrypt Data-at-Rest}
+    One common security practice is encrypting data-at-rest to protect
+    sensitive information stored on devices or servers. By encrypting the
+    data, unauthorized users are prevented from accessing it without the
+    appropriate decryption key. Is this secure?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Regular Security Updates}
+    It is standard advice to regularly update software to stay protected
+    against newly discovered vulnerabilities. Updates often include patches
+    for security flaws that could be exploited by attackers. Does this contribute 
+    to increased security?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Penetration Testing (Pentesting)}
+    Penetration testing, commonly referred to as pentesting, is a proactive
+    approach to evaluating the security of a computer system, network,
+    or application by simulating an attack from malicious outsiders and
+    insiders. Pentesting can help identify vulnerabilities before attackers
+    exploit them. A comprehensive pentest involves several stages, including
+    planning, reconnaissance, scanning, exploitation, and reporting. After a 
+    successful pentest the system will be secure. Is this true?
+  \end{block}
+
+  \begin{question}
+    \begin{itemize}
+      \item What did you conclude: how do you \emph{evaluate} if this is 
+        correct?
+      \item What were the disagreements?
+    \end{itemize}
+  \end{question}
+\end{frame}

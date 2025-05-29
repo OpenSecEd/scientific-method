@@ -1,4 +1,3 @@
-SUBDIR=		course-design
 SUBDIR+=	modules
 
 INCLUDE_MAKEFILES?=	./makefiles

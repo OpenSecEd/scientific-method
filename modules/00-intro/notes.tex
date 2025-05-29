@@ -2,17 +2,20 @@
 \let\subsubsection\subsection
 \let\subsection\section
 \let\section\chapter
+\marginparmargin{outer}
+\usepackage{subcaption}
+%\newsubfloat{figure}% Allow subfloats in figure environment
 
 \input{preamble.tex}
 
 \usepackage[noamsthm,notheorems]{beamerarticle}
 \setjobnamebeamerversion{slides}
 
-%\usepackage{authblk}
-%\let\institute\affil
+\usepackage[inline]{enumitem}
+
+\usepackage{authblk}
+\let\institute\affil
 
 \begin{document}
 \input{contents.tex}
-
-\printbibliography
 \end{document}

@@ -8,7 +8,7 @@
   citestyle=verbose,singletitle=false,
   style=verbose,
   maxbibnames=99,%
-  isbn=false,doi=false,url=false
+  isbn=false,doi=false,url=true
 ]{biblatex}
 \addbibresource{bibliography.bib}
 
@@ -40,7 +40,7 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{thmtools}
-\usepackage[unq]{unique}
+%\usepackage[unq]{unique}
 \DeclareMathOperator{\powerset}{\mathcal{P}}
 
 \usepackage[binary-units]{siunitx}
@@ -50,5 +50,7 @@
 \usepackage{multicol}
 \usepackage{changepage}
 
+\usepackage{didactic}
 \usepackage[capitalize]{cleveref}
+
 \input{objectives.tex}

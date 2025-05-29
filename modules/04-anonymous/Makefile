@@ -1,5 +1,5 @@
 .PHONY: all
-all: notes.pdf slides.pdf seminar-slides.pdf
+all: notes.pdf slides.pdf
 
 LATEXFLAGS+=	-shell-escape
 
@@ -7,8 +7,6 @@ SRC+=		preamble.tex
 SRC+=		abstract.tex contents.tex
 
 DEPENDS+=	objectives.tex
-FIGS+=		fig/password_strength.png
-FIGS+=		fig/password_reuse.png
 
 notes.pdf: notes.tex
 notes.pdf: ${SRC} ${DEPENDS} ${FIGS}
@@ -16,15 +14,10 @@ notes.pdf: ${SRC} ${DEPENDS} ${FIGS}
 slides.pdf: slides.tex
 slides.pdf: ${SRC} ${DEPENDS} ${FIGS}
 
-seminar-slides.pdf: seminar-slides.tex seminar.tex
-
 objectives.tex: ../00-intro/objectives.tex
 
 ${DEPENDS}:
 	${LN} $< $@
-
-${FIGS}:
-	${MAKE} -C $(dir $@) $(notdir $@)
 
 
 .PHONY: clean

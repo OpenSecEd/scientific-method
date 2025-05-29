@@ -1,0 +1,1169 @@
+\documentclass[a4paper]{article}
+\usepackage[colorlinks]{hyperref}
+\usepackage{noweb}
+\noweboptions{shift,longchunks,longxref,breakcode}
+
+\usepackage[outputdir=ltxobj]{minted}
+
+%\usepackage[utf8]{inputenc}
+%\DeclareUnicodeCharacter{25CF}{$\bullet$}
+%\DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
+%  \vrule height2.2exdepth1exwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+%\DeclareUnicodeCharacter{2500}{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
+%\DeclareUnicodeCharacter{2502}{\mbox{\kern.23em
+%  \vrule height2.2exdepth-1.8ptwidth.4pt\kern.23em}}
+%\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
+%  \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+
+\usepackage{cleveref}
+
+\author{Daniel Bosk}
+\title{Reporting grades for vetcyb courses}
+
+\begin{document}
+@
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Overview}
+
+We want to automate the reporting of the results in the vetcyb courses.
+There are two ways to pass the course:
+\begin{enumerate}
+  \item\label{ParticipationOption} By participating in the seminars and doing 
+  the prep assignments.
+  Also known as, participating in all teaching.
+  \item\label{FinalProjectOption} By doing the final project.
+\end{enumerate}
+
+We want a script that can be run by the [[grader]] script\footnote{%
+  See \texttt{https://github.com/dbosk/grader/}.
+}.
+This will have the standard design (see [[report_INL1]]), except that we'll do 
+the participation grading before.
+This way we can set the grades of the INL1 assignments based on the 
+participation and prep.
+<<vetcyb-grading.sh>>=
+#!/bin/bash
+
+courses="vetcyb(24-?p2|2[5-9]|[3-9][0-9])"
+components="^INL1"
+<<constants>>
+
+<<helper functions>>
+
+report_INL1() {
+  canvaslms results -c "${courses}" -A "${components}" \
+    -S canvaslms.grades.conjunctavgsurvey \
+  | sed -E "s/ ?[HV]T[0-9]{2}( \(.*\))?//" \
+  | ladok report -fv
+}
+
+grade_participation() {
+  <<report participation by setting grades for INL1 assignments>>
+}
+
+main() {
+  grade_participation
+  report_INL1
+}
+
+# run main if not sourced from another script
+if [ "$0" = "${BASH_SOURCE[0]}" ]
+then
+  main
+fi
+@
+
+
+\section{Participation}
+
+That solved reporting the final project to LADOK (option 
+\ref{FinalProjectOption} above).
+Now we need to translate the participation (option \ref{ParticipationOption}) 
+to grades for the INL1 assignments.
+We want to grade the participation in the seminars and prep so that students 
+don't have to do the final project.
+
+The INL1 assignment group contains the following assignments:
+\begin{verbatim}
+INL1	Peer review: Designing a methodology to answer a question
+INL1	Final version of the report for final seminar
+INL1	The final seminar on 8-9/1 at 8:15
+INL1	Course evaluation survey
+\end{verbatim}
+We want to set grades on the first three assignments based on the participation 
+and prep.
+We use a mandatory course evaluation to simply get a date.
+If the student finishes by participation, they will finish a few week earlier.
+CSN doesn't like this.
+So to get a date in the last week of the course, we'll let the students who 
+finish by participation to do the mandatory course evaluation survey then.
+That way we get a date in the last week of the course.
+Also, we get all the students to fill in the survey, instead of the usual two 
+students.
+
+The participation contains the following assignments:
+\begin{verbatim}
+Participation INL1	Overview of Science in Security
+Participation INL1	How to Design Computer Security Experiments
+Participation INL1	How do you know it's secure? Passwords
+Participation INL1	Reflection on Science in Security
+Participation INL1	Comprehension, literature review: Of passwords and people
+Participation INL1	Comprehension: Graphical Passwords: Learning from the First Twelve Years
+Participation INL1	Achieving Rigor in Literature Reviews  Insights from Qualitative Data Analysis and Tool-Support
+Participation INL1	Live seminar 13/11 at 15:15
+Participation INL1	Comprehension: Of Passwords and People, Measuring the Effect of Password-Composition Policies
+Participation INL1	Comprehension: Can long passwords be secure and usable?
+Participation INL1	Comprehension: Why phishing works
+Participation INL1	Live seminar 15/11 at 8:15
+Participation INL1	The RSA and ElGamal cryptosystems
+Participation INL1	On the Security of EIGamal Based Encryption
+Participation INL1	Stealing Keys from PCs using a Radio: Cheap Electromagnetic Attacks on Windowed Exponentiation
+Participation INL1	Timing Analysis of Keystrokes and Timing Attacks on SSH
+Participation INL1	Reflection on the use of models, part I
+Participation INL1	Theorem proving: 1. Introduction
+Participation INL1	Theorem proving: 2. Formal methods and Interactive Theorem Proving
+Participation INL1	Theorem proving: 3. Example: Proving list-reverse correct (optional)
+Participation INL1	Theorem proving: 4. Examples for what can be verified with Interactive Theorem Provers
+Participation INL1	Theorem proving: 5. Limitations of Interactive Theorem Proving and Conclusion
+Participation INL1	Model checking: algorithmic verification and debugging
+Participation INL1	Reflection on the use of models, part II
+Participation INL1	Live seminar 9/12 at 10:15
+Participation INL1	Dos and Don'ts of Machine Learning in Computer Security
+Participation INL1	Reflection on the use of statistics
+Participation INL1	Comprehension: Why Johnny can't encrypt
+Participation INL1	Comprehension: Comparing the Usability of Cryptographic APIs
+Participation INL1	Reflection on qualitative methods
+Participation INL1	SoK: Science, Security and the Elusive Goal of Security as a Scientific Pursuit
+Participation INL1	Live seminar 12/12 at 15:15
+\end{verbatim}
+
+This list will be useful.
+However, it will be course specific.
+We will generate it as follows.
+We'll cache the results and only request it from Canvas if we don't have any 
+from before.
+We'll refresh as often as the system's tempdir is cleaned.
+<<helper functions>>=
+assignments() {
+  local course="${1}"
+  <<let [[assignments_cache]] be the cache file for [[course]]>>
+  if [ ! -f "${assignments_cache}" ]
+  then
+    assignments_refresh "${course}"
+  fi
+  cat "${assignments_cache}"
+}
+
+assignments_refresh() {
+  local course="${1}"
+  <<let [[assignments_cache]] be the cache file for [[course]]>>
+  canvaslms assignments -c "${course}" -A "${all_components}" \
+  | cut -f 2-3 \
+  > "${assignments_cache}"
+}
+<<constants>>=
+all_components="INL1"
+<<let [[assignments_cache]] be the cache file for [[course]]>>=
+local assignments_cache="/tmp/${course}.assignments"
+@
+
+The idea is that we use the `Live seminar` assignments to tick off the `The 
+final seminar` assignment.
+Then we let the written prep assignments tick off the `Peer review` assignment.
+Let's write two functions that return the assignments for each of these.
+
+These functions will get the names of the assignments and filter on those 
+exactly.
+However, if some are substrings of others, we might get false positives.
+But this will not be any issue for us.
+<<helper functions>>=
+filter_participation() {
+  local course="${1}"
+  grep -f <(assignments "${course}" \
+            | grep -E "^Participation INL1" \
+            | cut -f 2)
+}
+
+filter_live_seminar() {
+  local course="${1}"
+  filter_participation "${course}" \
+  | grep -E 'Live seminar [0-9]{1,2}/[0-9]{1,2}'
+}
+
+filter_peer_review() {
+  local course="${1}"
+  filter_participation "${course}" \
+  | grep -vE 'Live seminar [0-9]{1,2}/[0-9]{1,2}'
+}
+@
+
+We'll do the same to get the INL1 assignments.
+<<helper functions>>=
+filter_INL1() {
+  local course="${1}"
+  grep -f <(assignments "${course}" \
+            | grep -E "^INL1" \
+            | cut -f 2)
+}
+@
+
+\subsection{Grading participation}
+
+As mentioned above, we'll need to do this on a per course basis, since the 
+assignments might vary from round to round.
+<<report participation by setting grades for INL1 assignments>>=
+oldIFS="${IFS}"
+IFS=$'\n'
+for course in $(<<list courses matching [[courses]] regex>>)
+do
+  IFS="${oldIFS}"
+  grade_course_participation "${course}"
+done
+IFS="${oldIFS}"
+@
+
+For the courses, we need something that can be used as an identifier.
+That would be the first or second column.
+The first is shorter, so we'll use that.
+But it also contains parentheses, so we'll need to deal with them to not be 
+interpreted as regex.
+If they're interpreted as regex, we won't get any matches.
+So we'll need to either escape them or replace them by periods ([[.]]).
+<<list courses matching [[courses]] regex>>=
+canvaslms courses "${courses}" \
+| cut -f 1 \
+| sed -E 's/([()])/\\\1/g'
+@
+
+Now to the grading.
+We want to pass the INL1 assignments if the appropriate participation and prep 
+are checked.
+However, we don't want to pass only one of the assignments, both must pass to 
+skip the project.
+<<helper functions>>=
+grade_course_participation() {
+  local course="${1}"
+  <<let [[students]] be the students to grade in [[course]]>>
+  <<grade reflection assignments for every [[student]] in [[students]]>>
+  local passed=$(mktemp)
+  for student in ${students}
+  do
+    <<echo [[student]] if they passed both prep and live seminar>>
+  done > "${passed}"
+  if [ -s "${passed}" ]
+  then
+    canvaslms grade -c "${course}" \
+                    -a "${project_assignments_regex}" \
+                    -g P \
+                    -u "$(make_regex ${passed})" \
+                    -m "${participation_msg}"
+  fi
+  <<give feedback to students not in [[passed]], who didn't pass>>
+}
+<<constants>>=
+participation_msg="
+You did all prep and actively participated in all seminars. You don't have to 
+do the project.
+"
+@
+
+We must remember to set the grades for only the project assignments, not all 
+INL1 assignments.
+The INL1 assignments group also includes a survey.
+<<constants>>=
+project_assignments_regex="^(Peer review:|The final seminar|Final version of the report)"
+@
+
+The function [[make_regex]] simply takes the list of usernames [[user1]], 
+[[user2]] and [[user3]] (contained in the file supplied as the argument, one 
+per line) and turns them into the regex [[(user1|user2|user3)]].
+<<helper functions>>=
+make_regex() {
+  echo -n "("
+  paste -sd '|' "$@" \
+  | sed -zE 's/\n//g' # remove newline introduced by paste
+  echo ")"
+}
+@
+
+\subsection{Get [[results]] from Canvas}
+
+We need to get the results from Canvas.
+We only do this if we don't already have them.
+<<helper functions>>=
+results() {
+  local course="${1}"
+  local results_cache="/tmp/${course}.results"
+  if [ ! -f "${results_cache}" ]
+  then
+    results_refresh "${course}"
+  fi
+  cat "${results_cache}"
+}
+@
+
+When we get the results from Canvas, we want to filter out the columns we need.
+We want the assignment name, the student's name, the grade and grading date.
+The data will look like this:
+\begin{verbatim}
+Peer review: Designing a methodology to answer a question	user@kth.se		
+The final seminar on 8-9/1 at 8:15	user@kth.se		
+Overview of Science in Security	user@kth.se	100	2024-12-10T08:39:52Z
+How to Design Computer Security Experiments	user@kth.se	100	2024-12-10T08:40:39Z
+How do you know it's secure? Passwords	user@kth.se	100	2024-12-10T08:41:27Z
+Reflection on Science in Security	user@kth.se		
+Comprehension, literature review: Of passwords and people	user@kth.se	100	2024-12-10T08:45:54Z
+Comprehension: Graphical Passwords: Learning from the First Twelve Years	user@kth.se	100	2024-12-10T08:47:16Z
+Achieving Rigor in Literature Reviews  Insights from Qualitative Data Analysis and Tool-Support	user@kth.se	100	2024-12-10T08:47:41Z
+Live seminar 13/11 at 15:15	user@kth.se	complete	2024-11-18T13:22:02Z
+Comprehension: Of Passwords and People, Measuring the Effect of Password-Composition Policies	user@kth.se	100	2024-12-11T13:11:30Z
+Comprehension: Can long passwords be secure and usable?	user@kth.se	100	2024-12-11T13:12:19Z
+Comprehension: Why phishing works	user@kth.se	100	2024-12-11T13:13:05Z
+Live seminar 15/11 at 8:15	user@kth.se	complete	2024-11-18T12:57:48Z
+The RSA and ElGamal cryptosystems	user@kth.se	100	2024-12-11T13:14:08Z
+On the Security of EIGamal Based Encryption	user@kth.se	100	2024-12-11T13:14:52Z
+Stealing Keys from PCs using a Radio: Cheap Electromagnetic Attacks on Windowed Exponentiation	user@kth.se	100	2024-12-11T13:15:27Z
+Timing Analysis of Keystrokes and Timing Attacks on SSH	user@kth.se	100	2024-12-11T13:16:17Z
+Reflection on the use of models, part I	user@kth.se		
+Theorem proving: 1. Introduction	user@kth.se	100	2024-12-11T13:20:07Z
+Theorem proving: 2. Formal methods and Interactive Theorem Proving	user@kth.se	90	2024-12-11T13:20:40Z
+Theorem proving: 3. Example: Proving list-reverse correct (optional)	user@kth.se	90	2024-12-11T13:21:04Z
+Theorem proving: 4. Examples for what can be verified with Interactive Theorem Provers	user@kth.se	100	2024-12-11T13:21:29Z
+Theorem proving: 5. Limitations of Interactive Theorem Proving and Conclusion	user@kth.se	90	2024-12-11T13:21:54Z
+Model checking: algorithmic verification and debugging	user@kth.se	90	2024-12-11T13:22:23Z
+Reflection on the use of models, part II	user@kth.se		
+Live seminar 9/12 at 10:15	user@kth.se	complete	2024-12-11T13:25:20Z
+Dos and Don'ts of Machine Learning in Computer Security	user@kth.se		
+Reflection on the use of statistics	user@kth.se		
+Comprehension: Why Johnny can't encrypt	user@kth.se	100	2024-12-12T11:57:34Z
+Comprehension: Comparing the Usability of Cryptographic APIs	user@kth.se	100	2024-12-12T11:58:03Z
+Reflection on qualitative methods	user@kth.se		
+SoK: Science, Security and the Elusive Goal of Security as a Scientific Pursuit	user@kth.se	100	2024-12-12T12:11:18Z
+Live seminar 12/12 at 15:15	user@kth.se	complete	2024-12-16T09:47:28Z
+\end{verbatim}
+When we fetch the results from Canvas, we want to use the [[-l]] option to get 
+their username instead of their name.
+<<helper functions>>=
+results_refresh() {
+  local course="${1}"
+  local results_cache="/tmp/${course}.results"
+  canvaslms submissions -c "${course}" -A "${all_components}" -l \
+  | cut -f 2-4,6 \
+  > "${results_cache}"
+}
+@
+
+Here we must be able to distinguish assignments with different grades.
+We already have [[filter_live_seminar]] to get some assignments with the grade 
+`complete`.
+But we'll also need the reflection assignments and the non-reflection 
+assignments.
+The reflections are graded `complete`, the non-reflections are graded at least 
+90 points.
+<<helper functions>>=
+filter_reflection() {
+  local course="${1}"
+  filter_participation "${course}" \
+  | grep 'Reflection'
+}
+
+filter_non_reflection() {
+  local course="${1}"
+  filter_participation "${course}" \
+  | grep -v 'Reflection'
+}
+@
+
+
+\subsection{Finding which students to grade}
+
+The students that we need to grade are the ones that have not already passed 
+the assignments.
+Fortunately, all the assignments in the INL1 group are pass/fail.
+So we can just look for the students that have not passed the assignments.
+<<let [[students]] be the students to grade in [[course]]>>=
+students=$(results "${course}" | students_to_grade)
+@
+
+The idea is this.
+We get the results from stdin.
+That way we can use functions like [[filter_INL1]] (as above) to get the 
+assignments we are interested in.
+We filter out the students in these results,
+then we go through student-by-student to check if they passed all assignments 
+or not.
+If they did not, we echo their username.
+<<helper functions>>=
+students_to_grade() {
+  local results="$(cat)"
+  <<let [[passing_grades]] be the regex for passing grades>>
+  local students=$(echo "${results}" | cut -f 2 | sort -u)
+  for student in ${students}
+  do
+    <<if [[student]] passed any INL1 assignment, continue>>
+    <<if [[student]] is already graded, continue>>
+    echo "${student}"
+  done
+}
+@
+
+We can define a regex for [[passing_grades]] that captures all passing grades 
+in all grading scales:
+\begin{itemize}
+\item P,
+\item complete, but not incomplete,
+\item 90--100.
+\end{itemize}
+<<let [[passing_grades]] be the regex for passing grades>>=
+local passing_grades="${1:-^(P|complete|9[0-9]|100)}"
+@
+
+If the student has passed any INL1 assignment, we don't need to grade them.
+Then we know that they have either passed the course or started working on the 
+project.
+<<if [[student]] passed any INL1 assignment, continue>>=
+if echo "${results}" | grep "${student}" \
+   | filter_INL1 | passed_any "^P"
+then
+  continue
+fi
+<<helper functions>>=
+passed_any() {
+  local grades="${1}"
+  cut -f 3 | grep -qP "${grades}"
+}
+@
+
+We don't need to grade anyone who is already graded, we don't want to spam them 
+with feedback.
+So how do we detect this?
+We can check if they have a grade on the `Final version of the report` 
+assignment, or rather, a date.
+If that date is later than all the other dates, then they are graded.
+Otherwise they're not.
+<<if [[student]] is already graded, continue>>=
+local final_report_date=$(echo "${results}" \
+                          | grep "${student}" \
+                          | grep 'Final version of the report' \
+                          | cut -f 4)
+local latest_date=$(echo "${results}" \
+                    | grep "${student}" \
+                    | filter_participation \
+                    | cut -f 4 \
+                    | sort \
+                    | tail -n 1)
+if [ -n "${final_report_date}" -a -n "${latest_date}" ]
+then
+  if [[ "${final_report_date}" > "${latest_date}" ]]
+  then
+    continue
+  fi
+fi
+@ We note that this only works when all assignments are in the results piped to
+[[students_to_grade]].
+For instance, if we only get results filtered by [[filter_INL1]], then we we 
+can't compare the dates of the `Final version of the report` (which is present) 
+to the other assignments (which are not present).
+
+Also, when we give feedback to a student in the INL1 assignments, they are not 
+labelled as graded (with a grading date).
+Perhaps we can get them to be labelled as graded if we set the grade [[-]]?
+Nope, doesn't work.
+We must set a non-passing grade on them.
+
+\subsection{Checking if a student has passed all assignments}
+
+The [[passed_all]] assignment will check if all the assignments that it gets 
+have a passing grade.
+If so, it will return true; otherwise, false.
+
+It will take input from the standard input.
+This will be on the same format as the [[results]] file.
+That way we can get the grade column.
+We'll count if there are as many P's as there are rows.
+
+We'll let an optional argument be the passing grade.
+That will be a regex.
+In some cases, we need negative lookbehind (requires [[-P]]) to avoid matching 
+`incomplete` when we're looking for `complete`.
+On the other hand, since we compare the grade in the first column, we can make 
+use of [[^complete]] to avoid matching `incomplete`.
+<<helper functions>>=
+passed_all() {
+  <<let [[passing_grades]] be the regex for passing grades>>
+  local lines=$(cat)
+  echo "${lines}" | cut -f 3 | grep -Pc "${passing_grades}" \
+  | grep -qF "$(echo "${lines}" | wc -l)"
+}
+@
+
+
+\subsection{Check if a student has passed the participation}
+
+We'll simply check if they have the desired grades on all assignments.
+<<echo [[student]] if they passed both prep and live seminar>>=
+passed_participation "${course}" "${student}"
+<<helper functions>>=
+passed_participation() {
+  local course="${1}"
+  shift
+  for student in $*
+  do
+    local student_results=$(results "${course}" | grep "${student}")
+    <<if [[student_results]] didn't pass all live seminars>>
+    then
+      continue
+    fi
+    <<if [[student_results]] didn't pass all non-reflection assignments>>
+    then
+      continue
+    fi
+    <<if [[student_results]] didn't pass all reflection assignments>>
+    then
+      continue
+    fi
+    echo "${student}"
+  done
+}
+@
+
+We'll check if they have the grade `complete` on all live seminars.
+If not, we continue to the next student.
+<<if [[student_results]] didn't pass all live seminars>>=
+if ! echo "${student_results}" \
+     | filter_live_seminar "${course}" \
+     | passed_all '^complete'
+@
+
+Otherwise we check if they also have at least 90 points on the FeedbackFruits 
+prep and `complete` on the reflections.
+<<if [[student_results]] didn't pass all non-reflection assignments>>=
+if ! echo "${student_results}" \
+     | filter_peer_review "${course}" \
+     | filter_non_reflection "${course}" \
+     | passed_all '^9[0-9]|100'
+<<if [[student_results]] didn't pass all reflection assignments>>=
+if ! echo "${student_results}" \
+     | filter_peer_review "${course}" \
+     | filter_reflection "${course}" \
+     | passed_all '^complete'
+@
+
+Now we want to construct a similar function, but this one should output 
+feedback on why the student didn't pass.
+This function will take one student as argument and output the feedback on 
+stdout.
+<<helper functions>>=
+feedback_participation() {
+  local course="${1}"
+  local student="${2}"
+  local student_results=$(results "${course}" | grep "${student}" \
+                          | filter_participation)
+  if ! echo "${student_results}" | passed_all
+  then
+    <<print assignments in [[student_results]] without a passing grade>>
+  fi
+}
+@ This way we can use it to give feedback to the students who didn't pass.
+
+Now we should just find the assignments without a passing grade and print those 
+titles.
+<<print assignments in [[student_results]] without a passing grade>>=
+<<if [[student_results]] didn't pass all live seminars>>
+then
+  echo "You didn't participate in the following live seminars:"
+  <<echo live seminars in [[student_results]] without a passing grade>>
+  echo "So you must do the project."
+<<else if [[student_results]] didn't pass all prep assignments>>
+then
+  echo "You haven't completed the following prep assignments" \
+  echo "to a sufficient degree (90 points):"
+  <<echo prep assignments in [[student_results]] without a passing grade>>
+  echo "But you can complete them to pass the course," \
+       "without doing the project," \
+       "since you participated in all seminars and completed most" \
+       "of the prep assignments before the seminar."
+fi
+@
+
+Let's look at those if statements.
+We have
+[[<<if [[student_results]] didn't pass all live seminars>>]]
+from before.
+We filter out the relevant assignments and check if they passed.
+Then we filter out the ones without a passing grade and just cut the titles.
+
+Since the grade is in the second column, we prefix the grade by [[\s]] to avoid 
+matching undesired substrings.
+<<echo live seminars in [[student_results]] without a passing grade>>=
+echo "${student_results}" \
+| filter_live_seminar "${course}" \
+| grep -Ev '\scomplete' \
+| cut -f 1,3
+<<else if [[student_results]] didn't pass all prep assignments>>=
+elif ! echo "${student_results}" \
+       | filter_peer_review "${course}" \
+       | passed_all
+<<echo prep assignments in [[student_results]] without a passing grade>>=
+echo "${student_results}" \
+| filter_peer_review "${course}" \
+| filter_non_reflection "${course}" \
+| grep -Ev '\s9[0-9]|100' \
+| cut -f 1,3
+echo "${student_results}" \
+| filter_peer_review "${course}" \
+| filter_reflection "${course}" \
+| grep -Ev '\scomplete' \
+| cut -f 1,3
+@
+
+\subsection{Giving feedback to students who didn't pass}
+
+The students who are listed in the file [[passed]] are the ones who passed.
+The other students in [[students]] are the ones who didn't pass.
+<<students who didn't pass>>=
+echo "${students}" | grep -vFxf "${passed}"
+@
+
+However, these results only make sense after the last seminar of the course.
+Before that last seminar, none of the students could have passed.
+Unfortunately, just checking if \emph{anyone} passed, will not be enough.
+In the rounds following, maybe all missed a small thing, but then they won't 
+get feedback about it.
+So we need to compare to the dates of the seminars.
+We can't rely on the dates being equal, then the script might run before the 
+seminar that day.
+So [[today]] must be strictly after the last seminar.
+<<give feedback to students not in [[passed]], who didn't pass>>=
+<<let [[last_date]] be the date of the last seminar>>
+<<let [[today]] be today's date>>
+if [[ "${last_date}" < "${today}" ]]
+then
+  for student in $(<<students who didn't pass>>)
+  do
+    local feedback=$(feedback_participation "${course}" "${student}")
+    if [ -n "${feedback}" ]
+    then
+      canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
+        -u "${student}" \
+        -m "${feedback}"
+    fi
+  done
+fi
+@
+
+
+\subsection{Getting the last seminar date}
+
+Now, the dates of the seminars are in the title of the assignments.
+It's written as `Live seminar 13/11 at 15:15`.
+So we want to change it into the date format `24-11-13`, that way it will be 
+comparable to today's date.
+The relevant year is in the course name, so we can get it from 
+[[course]]---which will have the format [[vetcyb24p2]].
+<<helper functions>>=
+last_seminar_date() {
+  local course="${1}"
+  local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
+  assignments "${course}" \
+  | filter_live_seminar \
+  | cut -f 2 \
+  | cut -d ' ' -f 3 \
+  | <<rewrite the date to the format [[yy-mm-dd]]>> \
+  | sort \
+  | tail -n 1
+}
+<<let [[last_date]] be the date of the last seminar>>=
+local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
+local last_date=$(last_seminar_date "${course}")
+@
+
+We also need today's date in the same format.
+<<let [[today]] be today's date>>=
+local today=$(date +%y-%m-%d)
+@
+
+Let's rewrite the date to the format `yy-mm-dd`.
+We must change the month and day to two-digit numbers.
+We can do this by rewriting all [[/d]] and [[d/]] to [[/0d]] and [[0d/]].
+Then we can swap the month and day by rewriting [[dd/mm]] to [[mm-dd]] and 
+inserting the year ([[${year}]]) at the beginning.
+<<rewrite the date to the format [[yy-mm-dd]]>>=
+sed -E "s|^([0-9]{1})/|0\1/|" \
+| sed -E "s|/([0-9]{1})$|/0\1|" \
+| sed -E "s|([0-9]{2})/([0-9]{2})|${year}-\2-\1|"
+@
+
+
+\section{Grading the reflection assignments}
+
+We need to grade the reflection assignments.
+We must also refresh the results from Canvas after we've graded these.
+
+To grade these assignments, we must download them from Canvas.
+We can use [[canvaslms submission]] for this.
+We must then check if the student has made an honest attempt at the assignment.
+We can do this by asking GPT-4o to assess if it was an honest attempt, based on 
+the instruction.
+
+If we don't have any students to grade, we return 1 to indicate so.
+This way we can skip refreshing all results if we didn't do anything here.
+<<grade reflection assignments for every [[student]] in [[students]]>>=
+grade_reflections "${course}" ${students} \
+  && results_refresh "${course}"
+<<helper functions>>=
+grade_reflections() {
+  local course="${1}"
+  shift
+  local students="$@"
+  <<let [[students_regex]] be a regex matching all [[students]] to grade>>
+  <<download reflection assignments submissions for [[students_regex]]>>
+  <<download reflection assignments instructions>>
+  <<let [[students_with_results]] be the students for whom we got submissions>>
+  if [ -z "${students_with_results}" ]
+  then
+    return 1
+  fi
+  for student in ${students_with_results}
+  do
+    <<grade reflection assignments for [[student]]>>
+  done
+}
+@
+
+To create the regex, we can use the [[make_regex]] function.
+But that function requires a file containing all the students.
+So we'll write the students who need grading to a temporary file and use that.
+
+We also emphasize \emph{students who need grading}.
+Grading the reflections is, quite literally, an expensive operation.
+But we only grade reflections that are not already graded---see
+[[<<download reflection assignments submissions for [[students_regex]]>>]] just 
+below.
+<<let [[students_regex]] be a regex matching all [[students]] to grade>>=
+local students_file=$(mktemp)
+echo "${students}" | tr ' ' '\n' > "${students_file}"
+students_regex=$(make_regex "${students_file}")
+rm "${students_file}"
+@
+
+To download the submissions, we can use the [[canvaslms submission]] command.
+We'll only download ungraded submissions (by the [[-U]] option to 
+[[canvaslms]]).
+Consequently, we'll only grade submissions that haven't been graded yet.
+<<download reflection assignments submissions for [[students_regex]]>>=
+local reflections_dir="/tmp/${course}.reflections.d"
+<<let [[reflection_assign_regex]] be a regex matching all reflection assignments>>
+if [ ! -d "${reflections_dir}" ]
+then
+  mkdir "${reflections_dir}"
+  canvaslms submission -c "${course}" \
+                       -a "${reflection_assign_regex}" \
+                       -u "${students_regex}" \
+                       -o "${reflections_dir}" \
+                       -U
+fi
+@
+
+To construct the regex, we simply output all the reflection assignment titles 
+to a file and use [[make_regex]] on that file.
+<<let [[reflection_assign_regex]] be a regex matching all reflection assignments>>=
+local reflection_assignments_file=$(mktemp)
+assignments "${course}" | filter_reflection | cut -f 2 \
+  > "${reflection_assignments_file}"
+local reflection_assign_regex=$(make_regex "${reflection_assignments_file}")
+@
+
+Now we'll also download the assignment instructions.
+We want to put them in the root of the [[reflections_dir]].
+<<download reflection assignments instructions>>=
+local oldIFS="${IFS}"
+IFS=$'\n'
+for assignment in $(cat "${reflection_assignments_file}")
+do
+  if [ ! -f "${reflections_dir}/${assignment}.md" ]
+  then
+    canvaslms assignment -c "${course}" -a "${assignment}" \
+      > "${reflections_dir}/${assignment}.md"
+  fi
+done
+IFS="${oldIFS}"
+@
+
+
+\subsection{Grading the student's reflections}
+
+The above gives us the following file structure 
+([[reflections_dir=reflections]], output from [[tree reflections]]):
+\begin{verbatim}
+reflections
+├── user1@kth.se
+│   └── DA2215 HT24 (vetcyb24-p2)
+│       ├── Reflection on qualitative methods
+│       │   └── metadata.md
+│       ├── Reflection on Science in Security
+│       │   └── metadata.md
+│       ├── Reflection on the use of models, part I
+│       │   └── metadata.md
+│       ├── Reflection on the use of models, part II
+│       │   ├── metadata.md
+│       │   └── Reflection.txt
+│       └── Reflection on the use of statistics
+│           └── metadata.md
+├── user2@kth.se
+│   └── DA2215 HT24 (vetcyb24-p2)
+│       ├── Reflection on ethics
+│       │   └── metadata.md
+│       ├── Reflection on Science in Security
+│       │   └── metadata.md
+│       ├── Reflection on the use of models, part I
+│       │   └── metadata.md
+│       ├── Reflection on the use of models, part II
+│       │   ├── metadata.md
+│       │   └── reflection_2.md
+│       └── Reflection on the use of statistics
+│           └── metadata.md
+├── user3@kth.se
+│   └── DA2215 HT24 (vetcyb24-p2)
+│       ├── Reflection on qualitative methods
+│       │   └── metadata.md
+│       ├── Reflection on Science in Security
+│       │   ├── da2215+Reflection+on+Science+in+Security.pdf
+│       │   └── metadata.md
+│       ├── Reflection on the use of models, part I
+│       │   ├── metadata.md
+│       │   └── Reflection+on+the+use+of+models%2C+part+I.pdf
+│       ├── Reflection on the use of models, part II
+│       │   ├── metadata.md
+│       │   └── Reflection+on+the+use+of+models%2C+part+2.pdf
+│       └── Reflection on the use of statistics
+│           └── metadata.md
+...
+├── Reflection on ethics.md
+├── Reflection on qualitative methods.md
+├── Reflection on Science in Security.md
+├── Reflection on the use of models, part III.md
+├── Reflection on the use of models, part II.md
+├── Reflection on the use of models, part I.md
+├── Reflection on the use of statistics.md
+...
+213 directories, 227 files
+\end{verbatim}
+As we can see, some submissions (online text) are part of the [[metadata.md]] 
+file, other submissions appear as PDFs, markdown or plain text files.
+However, [[canvaslms]] converts these files and integrates them into the 
+[[metadata.md]] file too (since version 4.5 it supports PDFs too).
+So we only need the [[metadata.md]] file.
+We also see that we have the instruction of each assignment in the root of the 
+directory.
+
+There will not be a directory for a student if they haven't submitted anything.
+However, the reflection assignment instructions will also be here.
+So we must filter out anything that doesn't contain an [[@]].
+<<let [[students_with_results]] be the students for whom we got submissions>>=
+local students_with_results=$(find "${reflections_dir}" \
+                                -mindepth 1 -maxdepth 1 -type d \
+                              | xargs -I {} basename "{}" \
+                              | grep "@")
+@
+
+The idea is that we use the [[llm]] package (and command) to ask GPT-4o to 
+assess if the submission is an honest attempt based on the instruction.
+This means that for each student, we'll have to iterate through the 
+assignments.
+
+Since we used the [[-U]] flag to [[canvaslms submission]], each student's 
+directory will only contain assignment directories for the assignments they 
+have submitted that haven't been graded yet.
+So we can iterate through those directories.
+To find them, we want to look in the student's directory, just ignore the one 
+course directory (since it doesn't match the value of [[course]]), and pick the 
+assignment directories.
+We'll use [[find]] for this.
+Then we get a list of all the assignments for the student.
+<<grade reflection assignments for [[student]]>>=
+local student_assignments=$(find "${reflections_dir}/${student}" \
+                              -mindepth 2 -maxdepth 2 -type d)
+local oldIFS="${IFS}"
+IFS=$'\n'
+for assignment_dir in ${student_assignments}
+do
+  <<grade reflection assignment in [[assignment_dir]] for [[student]]>>
+done
+IFS="${oldIFS}"
+@
+
+For each assignment, we'll need to check if the student has made an honest 
+attempt.
+Their attempt is in the [[metadata.md]] file.
+The instruction is in the root of the directory~[[reflections_dir]].
+<<grade reflection assignment in [[assignment_dir]] for [[student]]>>=
+local assignment=$(basename "${assignment_dir}")
+local submission="$(cat ${assignment_dir}/metadata.md)"
+if [ $? -ne 0 ]
+then
+  echo "Couldn't find metadata.md for ${course} ${student} ${assignment}" >&2
+  continue
+elif [ -z "${submission}" ]
+then
+  echo "No submission for ${course} ${student} ${assignment}" >&2
+  continue
+fi
+local instruction="$(cat ${reflections_dir}/${assignment}.md)"
+if [ -z "${instruction}" ]
+then
+  echo "No instruction for ${course} ${assignment}" >&2
+  continue
+fi
+local assessment=$(echo "${submission}" \
+                   | llm_cmd "${instruction}")
+<<constants>>=
+reflection_assessment_prompt="
+Based on the instruction (provided as context), evaluate if
+the student has made an honest effort. That is, the student
+attempted a relevant reflection based on what was asked for
+in the instruction. If so, output 'Yes' followed by some
+feedback on how to improve. If not, ouput 'No' and a brief
+explanation.
+"
+<<helper functions>>=
+llm_cmd() {
+  llm prompt \
+    -m ${llm_model} \
+    "${llm_options[@]}" \
+    -s "${llm_sys_prompt}" \
+    -f <(echo "${1}") \
+    --no-stream \
+    "${reflection_assessment_prompt}"
+}
+<<grade reflection assignment in [[assignment_dir]] for [[student]]>>=
+if echo "${assessment}" | grep -qi "^Yes"
+then
+  echo "${course} ${student} ${assignment}: complete"
+  canvaslms grade -c "${course}" -a "${assignment}" -u "${student}" -g complete
+else
+  echo >&2
+  echo "${course} ${student} ${assignment}: NOT COMPLETE" >&2
+  echo "${assessment}" >&2
+  echo >&2
+fi
+echo >&2
+@
+
+An instruction might look like this:
+\inputminted[breaklines]{markdown}{./instruction-qualitative.md}
+
+And a corresponding submission may look like this:
+\inputminted[breaklines]{markdown}{./submission-qualitative.md}
+
+
+\subsection{Evaluating the reliability}
+
+We want to evaluate the reliability of the grading.
+We'll do this by running the [[grade_reflections]] functions on some select 
+students.
+
+In previous experiments (\cref{FirstExperiment}), some of the models give 
+unstable results.
+The [[4o]] model with lowered temperature to \(0.5\) seems to give more 
+consistent results.
+The [[o1]] (o1-preview at the time) model is much slower, but also seems to 
+give consistent results.
+But now we'll run a few more systematic tests.
+However, for some students, the [[o1]] model thinks that it didn't get a copy 
+of the instruction---which it did.
+So we'll default to the [[4o]] class of models, using the latest (as of May 
+2025) version [[4.1]].
+<<constants>>=
+llm_model="4.1"
+llm_options=(-o temperature 0.5)
+llm_sys_prompt="
+You are a skilled scientist and teacher with a keen eye
+for detail and an emphasis on readability.
+
+You have been tasked with acting as a smart version of the
+cat unix program. You take text and a prompt in and write
+text out. For that reason, it is of crucial importance to
+just write the desired output. Do not under any circumstance
+write any comment or thought as your output will be piped
+into other programs.
+"
+@
+
+To do our evaluations, we used the following script.
+It runs a few grading rounds on a few students for each model configuration.
+Optimally, we'd run 20 rounds on all students, but that would take a long time 
+and be costly (but not more than a few euros).
+<<test-grade-reflections.sh>>=
+#!/bin/bash
+
+source vetcyb-grading.sh
+
+course=vetcyb25p4
+#students=$(canvaslms users -sc ${course})
+students="
+user1@kth.se
+user2@kth.se
+user3@kth.se
+user4@kth.se
+user5@kth.se
+"
+
+rounds=3
+
+test() {
+  <<force download all reflection submissions, even graded ones>>
+
+  echo "### llm 4o temp=0.5"
+  echo "### llm 4o temp=0.5" >&2
+  llm_model="4o"
+  llm_options=(-o temperature 0.5)
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm 4.1"
+  echo "### llm 4.1" >&2
+  llm_model="4.1"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm 4.1 temp=0.5"
+  echo "### llm 4.1 temp=0.5" >&2
+  llm_model="4.1"
+  llm_options=(-o temperature 0.5)
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm o1"
+  echo "### llm o1" >&2
+  llm_model="o1"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm o3"
+  echo "### llm o3" >&2
+  llm_model="o3"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm o3-mini"
+  echo "### llm o3-mini" >&2
+  llm_model="o3-mini"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm o4-mini"
+  echo "### llm o4-mini" >&2
+  llm_model="o4-mini"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+}
+@
+
+We need to force the download, in case we have already graded the students.
+So this will be the same as above, except that we don't use the [[-U]] flag.
+<<force download all reflection submissions, even graded ones>>=
+<<let [[students_regex]] be a regex matching all [[students]] to grade>>
+local reflections_dir="/tmp/${course}.reflections.d"
+<<let [[reflection_assign_regex]] be a regex matching all reflection assignments>>
+rm -Rf "${reflections_dir}"
+canvaslms submission -c "${course}" \
+                     -a "${reflection_assign_regex}" \
+                     -u "${students_regex}" \
+                     -o "${reflections_dir}"
+@
+
+When running the tests, we want to output the headers to both stdout and 
+stderr.
+<<run [[rounds]] rounds of grading>>=
+for i in $(seq ${rounds})
+do
+  echo "##### $i"
+  echo "##### $i" >&2
+  grade_reflections ${course} ${students}
+done
+@
+
+When we run the tests, we want to filter stdout and stderr to separate files.
+We're mostly interested in stderr, since that's where the fails appear.
+And the fails are fewer than the passes.
+<<test-grade-reflections.sh>>=
+test 1> >(tee test-grade_reflections.txt >&1) \
+     2> >(tee test-grade_reflections-err.txt >&1) \
+     | tee test-grade_reflections-all.txt
+@
+
+Let's have a look at the output.
+What's interesting to look at is the comments for when the model fails a 
+student, particularly how it compares across different rounds.
+We want it to be stable, that is, to fail the same students in every round or 
+accept them in every round.
+We want to avoid situations where the student might be accepted in one round 
+and rejected in another.
+\inputminted[breaklines]{text}{test-grade_reflections-err.txt}
+
+
+
+\appendix
+
+\section{Results from the first experiment}\label{FirstExperiment}
+
+As we can see in the output, the [[4o]] model is stable.
+Particularly, the [[o1]] model seems very unstable as it sometimes thinks that 
+it didn't get any copy of the instruction.
+\inputminted[breaklines]{text}{test-grade_reflections-err-first.txt}
+
+Let's have a look at that reflection on statistics by user1.
+We see that it is rejected four out of five times by both [[default]] and 
+[[4o]] configurations.
+\inputminted[breaklines]{text}{./user1-statistics.md}
+
+Let's compare it to the instruction.
+\inputminted[breaklines]{markdown}{./instruction-statistics.md}
+
+And now compare to some accepted reflections.
+\inputminted[breaklines]{text}{./user5-statistics.md}
+\inputminted[breaklines]{text}{./user2-statistics.md}
+
+The final run gave the following fails:
+\begin{minted}{text}
+$ grade_reflections vetcyb24p2 $(canvaslms users -sc vetcyb24p2 | cut -f 2)
+vetcyb24p2 user1@kth.se Reflection on the use of statistics: No
+
+The reflection lacks depth and relevance specifically to the use of statistics. 
+It briefly mentions statistics but quickly shifts focus to machine learning and 
+cybersecurity without adequately reflecting on the use of statistics as 
+instructed.
+
+vetcyb24p2 user8@kth.se Reflection on Science in Security: No, the student 
+did not provide a reflection. The submission consists of a list of tasks and 
+activities related to security topics without any personal insights, analysis, 
+or reflection on the science in security.
+
+vetcyb24p2 user8@kth.se Reflection on qualitative methods: No. The student's 
+reflection focuses on quantitative aspects and usability testing rather than on 
+qualitative methods, which was the assignment's focus.
+
+vetcyb24p2 user9@kth.se Reflection on Science in Security: No. The submission 
+appears to be an analysis of specific security topics rather than a reflection 
+on Science in Security as requested by the assignment.
+\end{minted}
+This feedback was correct.
+It was just the last one that was a bit brief in its description of methodology 
+for the different cases.
+
+
+\section{The complete code}
+
+\inputminted[numbers=left]{bash}{vetcyb-grading.sh}
+
+
+\end{document}

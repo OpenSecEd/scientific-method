@@ -1,39 +1,4 @@
 \documentclass[a4paper,10pt,article,oneside]{memoir}
-%%% Tufte %%%
-\usepackage{marginfix}
-%\setlength{\evensidemargin}{\oddsidemargin}
-\marginparmargin{outer}
-\setlrmarginsandblock{2.5cm}{8cm}{*}
-
-\footnotesinmargin
-
-\usepackage{ragged2e}
-\renewcommand{\sidefootform}{\RaggedRight}
-\renewcommand{\foottextfont}{\footnotesize\RaggedRight}
-
-\setmpjustification{\RaggedRight}{\RaggedRight}
-
-% margin figure and caption typeset ragged against text block
-\setfloatadjustment{marginfigure}{\mpjustification}
-\setmarginfloatcaptionadjustment{figure}{\captionstyle{\mpjustification}}
-
-% From https://tex.stackexchange.com/a/324757/17418
-% Palatino for main text and math
-\usepackage[osf,sc]{mathpazo}
-
-% Helvetica for sans serif
-% (scaled to match size of Palatino)
-\usepackage[scaled=0.90]{helvet}
-
-% Bera Mono for monospaced
-% (scaled to match size of Palatino)
-\usepackage[scaled=0.85]{beramono}
-
-\setlxvchars\setxlvchars
-\checkandfixthelayout
-
-\nouppercaseheads
-%%% end tufte %%%
 \let\subsubsection\subsection
 \let\subsection\section
 \let\section\chapter
@@ -45,17 +10,6 @@
 
 %\usepackage{authblk}
 %\let\institute\affil
-
-\declaretheorem[style=theorem]{theorem}
-\declaretheorem[style=definition]{definition}
-\declaretheorem[style=definition]{assumption}
-\declaretheorem[style=definition]{protocol}
-\declaretheorem[style=example]{example}
-\declaretheorem[style=remark]{remark}
-\declaretheorem[style=remark]{idea}
-\declaretheorem[style=exercise]{exercise}
-\declaretheorem[style=exercise]{question}
-\declaretheorem[style=solution]{solution}
 
 \usepackage[inline]{enumitem}
 

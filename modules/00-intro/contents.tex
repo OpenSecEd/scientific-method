@@ -1,5 +1,5 @@
 \title{%
-  A Science of Security Course: An Overview
+  A Science of Security Course: Introduction
 }
 \author{Daniel Bosk\thanks{%
     This material was authored by Daniel Bosk and is available under the 
@@ -29,6 +29,66 @@
 
 \section{Overview}
 
+Let's have a look at provable security, widely considered the epitome of 
+security research.
+
+\begin{frame}
+  \begin{example}[\enquote{Provable security}]\label{SecurePassword}
+    A uniformly random string of length \(n\) is secure to use as a password.
+    We can prove it will take millions of years to guess it.
+  \end{example}
+
+  \pause
+
+  \begin{onlyenv}<presentation>
+    \begin{remark}
+      \begin{itemize}
+        \item Attackers still get in, weird \dots
+      \end{itemize}
+    \end{remark}
+  \end{onlyenv}
+\end{frame}
+
+\begin{frame}<presentation>
+  \begin{example}[Usability]
+    \begin{itemize}
+      \item Turns out people can't handle uniformly random passwords.
+      \item Particularly not with a unique such password for every service.
+      \item They can't generate uniformly random passwords either.
+    \end{itemize}
+  \end{example}
+
+  \pause
+
+  \begin{remark}[Several aspects]
+    \begin{itemize}
+      \item We want students to handle complex problems.
+      \item Should see there are several aspects.
+      \item Aspects must be approached differently.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+
+However, attackers still get in.
+% XXX add refs to password literature
+It turns out that humans can't handle long, uniformly random passwords.
+Particularly not when they have to remember one such password \emph{per service 
+they use}.
+And they can't generate uniformly random passwords either!
+None of these results could be found through provable security, they're from 
+the usability area of security and the methods are from the usability and 
+human--computer interaction research field.
+
+By this we don't say that provable security is wrong or doesn't work.
+The same can be said of the usability methods.
+Both are needed, they complement each other in generating understanding of 
+security problems.
+The goal of the course is that the students should be able to master the 
+variety of methods and combine them to answer questions about security 
+problems.
+That includes being able to evaluate different approaches to answering 
+questions and choosing among the most suitable ones.
+
 \only<presentation>{\subsection{The goal}}
 
 The goal of the course is to give a holistic view of the Science of Security.
@@ -36,15 +96,15 @@ We want to answer the following question:
 
 \begin{frame}
   \begin{question}
-    What are the methods we (in the security community) use and why?
+    What are the \emph{research} methods we (in the security community) use and 
+    why?
   \end{question}
 \end{frame}
 
 \begin{frame}<presentation>
   \begin{block}{The goal}
     \begin{itemize}
-      \item Give a holistic view of Science of Security.
-      \item What are the methods we use and why?
+      \item Give a holistic view of \emph{Science} of Security.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -55,20 +115,23 @@ Consider the following examples.
 
 \begin{frame}[fragile]
   \begin{example}\label{SoKProblem1}
-      \textcquote[\S IV]{SecurityAsAScience}{\textins*{C}laims of necessary 
-        conditions for real-world security are unfalsifiable.
-      Claims of necessary conditions for formally-defined security are 
-    tautological restatements of the assumptions}.
+      \textcquote[\S IV]{SecurityAsAScience}{%
+        \textins*{C}laims of necessary conditions for real-world security are 
+        unfalsifiable.
+        Claims of necessary conditions for formally-defined security are 
+        tautological restatements of the assumptions.%
+      }
   \end{example}
 
   \pause
 
   \begin{example}\label{SoKProblem2}
     \textcquote{SecurityAsAScience}{%
-      Unfalsifiable claims are common in security---and they, along with circular 
-      arguments, are used to justify many defensive measures \textelp{}
-      \textins{T}here are many ways to argue measures in, but no way to argue one 
-      out.
+      Unfalsifiable claims are common in security---and they, along with 
+      circular arguments, are used to justify many defensive measures 
+      \textelp{}
+      \textins{T}here are many ways to argue measures in, but no way to argue 
+      one out.%
     }
   \end{example}
 \end{frame}
@@ -84,12 +147,18 @@ This leads us to the second question, we want the students to able to answer:
 \begin{frame}<presentation>
   \begin{block}{Aim of Science of Security course}
     \begin{itemize}
-      \item Complement the general methods course.
+      \item Complement the general methods course (TAMOS).
       \item Better prepare students for thesis (and hopefully worklife \dots).
-      \item They should be able to contribute to scientifically based 
+      \item They should be able to contribute to \emph{scientifically} based 
         development in cybersecurity.
     \end{itemize}
   \end{block}
+
+  \begin{remark}
+    \begin{itemize}
+      \item This course is now fully synced with TAMOS\@.
+    \end{itemize}
+  \end{remark}
 \end{frame}
 
 \only<article>{\subsection{Goals and requirements}}
@@ -103,7 +172,7 @@ We find this particularly necessary after reading the quotes in
 
 The requirements for Master's level are set out in 
 \citetitle{HEO2}~\autocite{HEO2}, namely:
-\begin{frame}[fragile]
+%\begin{frame}[fragile]
   \begin{block}{Master's goals: Knowledge and understanding~\autocite{HEO2}}
     \only<article>{\begin{enumerate}[label={(K\arabic*)},ref=K\arabic*]}
     \only<presentation>{\begin{itemize}}
@@ -117,9 +186,9 @@ The requirements for Master's level are set out in
     \only<article>{\end{enumerate}}
     \only<presentation>{\end{itemize}}
   \end{block}
-\end{frame}
+%\end{frame}
 
-\begin{frame}[fragile]
+%\begin{frame}[fragile]
   \begin{block}{Master's goals: Competence and skills~\autocite{HEO2}}
     \only<article>{\begin{enumerate}[label={(C\arabic*)},ref=C\arabic*]}
     \only<presentation>{\begin{itemize}}
@@ -139,9 +208,9 @@ The requirements for Master's level are set out in
     \only<presentation>{\end{itemize}}
     \only<article>{\end{enumerate}}
   \end{block}
-\end{frame}
+%\end{frame}
 
-\begin{frame}[fragile]
+%\begin{frame}[fragile]
   \begin{block}{Master's goals: Judgement and approach~\autocite{HEO2}}
     \only<article>{\begin{enumerate}[label={(J\arabic*)},ref=J\arabic*]}
     \only<presentation>{\begin{itemize}}
@@ -154,7 +223,7 @@ The requirements for Master's level are set out in
     \only<presentation>{\end{itemize}}
     \only<article>{\end{enumerate}}
   \end{block}
-\end{frame}
+%\end{frame}
 
 \paragraph{Intended learning outcomes}\label{LearningOutcomes}
 
@@ -184,7 +253,19 @@ The requirements for Master's level are set out in
   in order to be able to contribute to scientifically based development.
 \end{frame}
 
-\subsection{Prerequisites}
+There are also two learning outcomes related more to general skill, rather than 
+scientific method:
+\begin{frame}[fragile]
+  After passing the course, the student should be able to
+  \begin{itemize}
+    \item plan and carry out assignments within given time frames and using 
+      available resources, and
+    \item write short, clear and arguing texts based on own analysis as well as 
+      given material.
+  \end{itemize}
+\end{frame}
+
+\subsection<article>{Prerequisites}
 
 The course requires some prerequisites.
 In the area of cybersecurity, the student should be able to:
@@ -240,67 +321,6 @@ Let's return to the goal of the course and then proceed to its contents.
 
 \subsection{The goal}
 
-Let's have a look at provable security, widely considered the epitome of 
-security research.
-
-\begin{frame}<presentation>
-  \begin{example}[\enquote{Provable security}]
-    \begin{itemize}
-      \item A uniformly random string of length \(n\) is the most secure 
-        password.
-
-      \item We can prove it will take millions of years to guess it.
-    \end{itemize}
-  \end{example}
-
-  \pause
-
-  \begin{remark}
-    \begin{itemize}
-      \item Attackers still get in, weird \dots
-    \end{itemize}
-  \end{remark}
-\end{frame}
-
-\begin{example}[\enquote{Provable security}]\label{SecurePassword}
-  A uniformly random string of length \(n\) is the most secure password.
-  We can prove it will take millions of years to guess it.
-\end{example}
-
-\begin{frame}<presentation>
-  \begin{example}[Usability]
-    \begin{itemize}
-      \item Turns out people can't handle uniformly random passwords.
-      \item Particularly not with a unique such password for every service.
-      \item They can't generate uniformly random passwords either.
-    \end{itemize}
-  \end{example}
-
-  \pause
-
-  \begin{remark}[Several aspects]
-    \begin{itemize}
-      \item We want students to handle complex problems.
-      \item Should see there are several aspects.
-      \item Aspects must be approached differently.
-    \end{itemize}
-  \end{remark}
-\end{frame}
-
-However, attackers still get in.
-% XXX add refs to password literature
-It turns out that humans can't handle long, uniformly random passwords.
-Particularly not when they have to remember one such password \emph{per service 
-they use}.
-And they can't generate uniformly random passwords either!
-None of these results could be found through provable security, they're from 
-the usability area of security and the methods are from the usability and 
-human--computer interaction research field.
-
-By this we don't say that provable security is wrong or doesn't work.
-The same can be said of the usability methods.
-Both are needed, they complement each other in generating understanding of 
-security problems.
 The goal of the course is that the students should be able to master the 
 variety of methods [\ref{LOrelate}] and combine them to answer questions about 
 security problems [\ref{LOapply}].
@@ -312,6 +332,559 @@ And in science, to convince others that one's results are correct.
 We can see this aspect in \ref{LOcomm} (and \ref{Ccomm}) and we will see this 
 aspect as part of the assessment of the course later.
 
+\begin{frame}
+  \begin{block}{Concrete goals}
+    \begin{itemize}
+      \item Ask good questions.
+      \item Propose suitable methods to answer them.
+      \item Evaluate the suitability of proposed methods.
+    \end{itemize}
+  \end{block}
+
+  \begin{remark}
+    \begin{itemize}
+      \item The focus is on \emph{research methods}.
+      \item It's \emph{not} on {constructing a secure solution}.
+      \item We want to know \emph{how do you know if it is secure?}
+    \end{itemize}
+  \end{remark}
+\end{frame}
+
+
+\subsection{Format}
+
+We have the following division of credits in LADOK\footnote{%
+  See the syllabus:
+  \url{https://www.kth.se/student/kurser/kurs/DA2215?l=en}.
+}\footnote{%
+  There is a similar line in DD2302.
+}:
+\begin{description}
+  \item[INL1] Seminars and assignments, 3.0 credits, grading scale: P, F
+\end{description}
+
+The assignments consists of reading and social annotation in an online tool 
+(\cref{fbfdocquiz,fbfdocannotation}).
+The seminars are live seminars on Zoom (or in-person on campus).
+The idea is that you learn from the first few seminars, so that we can grade 
+you on the last one.
+
+\begin{figure*}[t]
+  \begin{sidecaption}
+    {Two ways of having interactive documents.}
+    [fbfdoc]
+    \begin{subfigure}[b]{0.49\columnwidth}
+      \centering
+      \includegraphics[width=\columnwidth]{figs/fbf-doc-annotations.png}
+      \caption{%
+        An interactive document in FeedbackFruits where one can annotate the 
+        text with focused topics together with other students in the class.%
+        \label{fbfdocannotation}%
+      }
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\columnwidth}
+      \centering
+      \includegraphics[width=\columnwidth]{figs/fbf-doc-quiz-question.png}
+      \caption{%
+        An interactive document in FeedbackFruits where one can answer quiz 
+        questions posed in the document and ask questions about the content.%
+        \label{fbfdocquiz}%
+      }
+    \end{subfigure}
+  \end{sidecaption}
+\end{figure*}
+
+\mode<presenation>{%
+\begin{frame}[fragile]
+  \begin{block}{Examination}
+    \begin{description}
+      \item[INL1] Seminars and assignments, 3.0 credits, grading scale: P, F
+    \end{description}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Format}
+    \begin{itemize}
+      \item Online assignments
+      \item Asynchronous, social annotation
+      \item One final seminar, online or in-place
+    \end{itemize}
+  \end{block}
+\end{frame}
+}
+
+The reading assignments are part of the learning material.
+These are complemented by interactive video lectures (\cref{fbfvideo}) and the 
+early seminar sessions.
+In the video lectures the students can ask questions and answer quizzes.
+The seminar sessions (not the last one) aim at exploring the paths not taken in 
+the material.
+
+\begin{marginfigure}
+  \includegraphics[width=\columnwidth]{figs/fbf-video-quiz.png}
+  \caption{%
+    An interactive video in FeedbackFruits where one can answer quiz 
+    questions posed in the video.%
+  }\label{fbfvideo}
+\end{marginfigure}
+
+
+\mode<presentation>{%
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\columnwidth}
+      \begin{block}{Teaching material}
+        \begin{itemize}
+          \item<1> Video lectures where students can ask questions and answer 
+            quizzes.
+
+          \item<2-3> Reading assignments with social annotation.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\columnwidth}
+      \only<1>{
+        \begin{figure}
+          \centering
+          \includegraphics[width=\columnwidth]{figs/fbf-video-quiz.png}
+          \caption{%
+            An interactive video in FeedbackFruits where one can answer quiz 
+            questions posed in the video.%
+          }
+        \end{figure}
+      }
+      \only<2>{
+        \begin{figure}
+          \centering
+          \includegraphics[width=\columnwidth]{figs/fbf-doc-quiz-question.png}
+          \caption{%
+            An interactive document in FeedbackFruits where one can answer quiz 
+            questions posed in the document and ask questions about the 
+            content.%
+          }
+        \end{figure}
+      }
+      \only<3>{
+        \begin{figure}
+          \centering
+          \includegraphics[width=\columnwidth]{figs/fbf-doc-annotations.png}
+          \caption{%
+            An interactive document in FeedbackFruits where one can annotate 
+            the text with focused topics together with other students in the 
+            class.%
+          }
+        \end{figure}
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+}
+
+The seminars are used as synchronization points.
+The final seminar summarizes the course and results in a grade.
+
+\mode<presentation>{%
+\begin{frame}
+  \begin{block}{Teaching}<+>
+    \begin{itemize}
+      \item Reading material and watching videos.
+      \item Write reflection to prepare for seminar.
+      \item Discuss and work with material at synchronous seminars.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Assessment}<+>
+    Either
+    \begin{enumerate}
+      \item You do all prep and participate in all seminars.
+      \item You do the project, write a report, peer review and participate in 
+        the final seminar.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Giving the course}
+    \begin{itemize}
+      \item Given twice pre year, for now: period 2 and 4.
+      \item If you don't finish, you can try again next round.
+    \end{itemize}
+  \end{block}
+\end{frame}
+}
+
+\subsection{Contents}
+
+The course starts with an overview of the complexity.
+Then we proceed through a series of \enquote{How do you know it's secure?} case 
+studies (assignments mentioned above), that are summarized in two seminars 
+(mentioned above).
+The idea is to explore how different research methods play together to answer 
+different research questions.
+
+\mode<presentation>{%
+\begin{frame}
+  \begin{block}{Contents}
+    \begin{itemize}
+      \item Overview of the complexity
+    \end{itemize}
+    \begin{enumerate}
+      \item Purely deductive methods
+      \item[\vdots]
+      \item[n] Purely inductive methods
+    \end{enumerate}
+    \begin{itemize}
+      \item {Philosophy of Science of Security}
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{remark}[What to focus]
+    \begin{itemize}
+      \item What does the method contribute?
+      \item How do these play together? (Holistic view)
+      %\item Emphasize the deduction/induction 
+        %divide~\cite{SecurityAsAScience}.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+}
+
+We'll try to answer questions like
+\enquote{What can deduction possibly say about reality?}
+and \enquote{What can induction possibly say about security?}.
+And what are the limitations?
+
+\mode<presentation>{%
+\begin{frame}
+  \begin{example}[Deductive inquiry]
+    \begin{itemize}
+      \item \enquote{What can deduction possibly say about reality?}
+    \end{itemize}
+  \end{example}
+
+  \pause
+
+  \begin{example}[Inductive/empirical inquiry]
+    \begin{itemize}
+      \item \enquote{What can induction possibly say about security?}
+    \end{itemize}
+  \end{example}
+
+  \pause
+
+  \begin{remark}[To focus on]
+    \begin{itemize}
+      \item What are the limitations?
+    \end{itemize}
+  \end{remark}
+\end{frame}
+}
+
+We'll end the teaching part with a seminar more towards the philosophy of 
+science of security.
+We'll depart in the paper 
+\citetitle{SecurityAsAScience}\autocite{SecurityAsAScience} by
+\citeauthor{SecurityAsAScience}.
+
+
+\section{Contents}
+
+%\begin{frame}
+%  \begin{block}{Contents, part II}
+%    \begin{itemize}
+%      \item General introductions to various subfields.
+%      \item Which methods are used and why?
+%      %\item Some exemplary papers? \alert<2>{Both good and bad!}
+%      \item How does a subfield fit into the holistic picture of Security?
+%      \item How can these methods fit into other situations?
+%    \end{itemize}
+%  \end{block}
+%
+%  \begin{exercise}
+%    \begin{itemize}
+%      \item What is an area or problem that you're interested in (in security)?
+%      \item Think of an interesting case that you can reflect on during the 
+%        course.
+%    \end{itemize}
+%  \end{exercise}
+%\end{frame}
+
+%\begin{frame}
+%  \begin{remark}
+%    \begin{itemize}
+%      \item All above was top down: faculty\footnote{%
+%          From different subfields.
+%        } present their view on
+%        \begin{itemize}
+%          \item the methodologies,
+%          \item the practices,
+%          \item the adversary models,
+%          \item the assumptions,
+%          \item the relation to scientific approach in their respective 
+%            subfield.
+%        \end{itemize}
+%    \end{itemize}
+%  \end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%  \begin{block}{Bottom up}
+%    \begin{itemize}
+%      \item Course participants review the scientific merits of 
+%        papers\footnote{%
+%          Chosen by subfield designer, not participants.
+%        } from top conferences in the subfield.
+%
+%      \item They identify/reverse engineer methodology and components of 
+%        evaluation.
+%
+%      \item They value why this is scientific and how and what knowledge it 
+%        contributes.
+%    \end{itemize}
+%  \end{block}
+%\end{frame}
+
+\subsection{Learning}
+
+The first part of the course is an introduction to the scientific method in 
+general.
+We're following the TAMOS course.
+However, we complement that material with more security oriented examples.
+
+\paragraph{Scientificity, part 1}
+
+The first part is to read \citetitle{HowToDesignSecurityExperiments} by 
+\textcite{HowToDesignSecurityExperiments}.
+This paper covers the same (albeit in different level of detail) as TAMOS' 
+lectures on
+scientific inferences,
+observation and measurement,
+and experiments.
+So after you've read the paper, you can help annotate the TAMOS videos with 
+more security-related examples.
+Particularly, you should connect the pieces of 
+\citetitle{HowToDesignSecurityExperiments} and the TAMOS lectures.
+
+\begin{frame}<presentation>
+  \begin{block}{Scientificity, part 1}
+    \begin{itemize}
+      \item \fullcite{HowToDesignSecurityExperiments}
+      \item Annotate TAMOS videos with security examples.
+        \begin{itemize}
+          \item Scientific inferences,
+          \item Observation and measurement,
+          \item Experiments.
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Case study: Passwords}
+
+The next part is to look into passwords as a means of authentication.
+Passwords as a mechanism is interesting because it can be evaluated in many 
+different ways---which covers the spectrum of methods discussed in TAMOS so 
+far, but also acts as a spring board to TAMOS' next topic (models).
+
+The first part of this topics will, however, be about scientific literature.
+We'll go through some papers and look at how they deal with the literature.
+(Still the subject focus is on passwords, but we're interested in the 
+methodological aspects.)
+There will be a seminar given by the KTH Library.
+
+\begin{frame}<presentation>
+  \begin{block}{Case study: Passwords}
+    \begin{itemize}
+      \item Different types of literature review.
+      \item Searching for literature.
+      \item Seminar by KTH Library.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}<presenation>
+  \begin{block}{Case study: Passwords, continued}
+    \begin{itemize}
+      \item How do we evaluate the security of passwords?
+      \item Read and annotate a variety of papers exploring the topic.
+      \item Focus on the methodology.
+      \item Discuss during a seminar.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}<presentation>
+  \begin{remark}
+    \begin{itemize}
+      \item I picked passwords because it's an easy topic to understand.
+      \item I also picked it because practice is still unscientifically 
+        founded.
+      \item We're interested in the methodological aspects.
+      \item We want to connect what they do back to TAMOS.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+
+\paragraph{Models: Cryptography, formal methods, simulations}
+
+\begin{frame}<presentation>
+  \begin{block}{Models---deductive methods}
+    \begin{itemize}
+      \item Cryptography: proving crypto protocols (RSA and ElGamal).
+      \item How models are inaccurate (side channels).
+      \item Formal methods: proving complex protocols, software, hardware.
+      \item Simulations: can't trial-and-error in real world (Tor).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Statistics}
+
+\begin{frame}<presentation>
+  \begin{block}{Statistics}
+    \begin{itemize}
+      \item How is statistics used in security?
+      \item It's used in models and simulations (the science).
+      \item Used in security solutions (or attacks).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Qualitative methods}
+
+\begin{frame}<presentation>
+  \begin{block}{Qualitative methods}
+    \begin{itemize}
+      \item How are qualitative methods used in security?
+      \item Qualitative methods are used to understand the human aspects of 
+        security.
+      \item It's a method to explore things, to explain.
+      \item It can generate hypotheses that can be tested quantitatively.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\paragraph{Ethics}
+
+\begin{frame}<presentation>
+  \begin{block}{Ethics}
+    \begin{itemize}
+      \item What should be do and not do?
+      \item What research questions should we answer and how can we do it?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{Final assessment}
+
+The final assessment will be an assignment where the students design a research 
+method for a given set of research questions.
+This will assess all the learning outcomes: \cref{%
+  LOrelate,LOcomm,LOplan,LOapply,LOevaluate%
+}.
+
+\begin{frame}<presentation>
+  \begin{block}{Final assessment}
+    \begin{itemize}
+      \item Design a research method for a given set of research questions.
+      \item Assess the suitability of the method.
+      \item Motivate the choices of methods.
+      \item Explain why the methods answer the questions.
+    \end{itemize}
+  \end{block}
+
+  \begin{remark}
+    This will be done in groups.
+  \end{remark}
+\end{frame}
+
+You'll do this by writing a report motivating your choices of methods and 
+explaining why they answer the question.
+You'll also present this report at the final seminar.
+Someone else will review the report, and you will review someone else's report 
+too.
+
+\begin{frame}<presentation>
+  \begin{block}{Final seminar and review}
+    \begin{itemize}
+      \item Present this at the final seminar.
+      \item Review someone else's report.
+    \end{itemize}
+  \end{block}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Everyone should review one report (individually).
+      \item But it's fine to discuss in the groups.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+
+The final assessment will be done in groups of 3--5 students.
+
+\begin{frame}<presentation>
+  \begin{remark}
+    \begin{itemize}
+      \item The final assessment will be done in groups of 3--5.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+
+%\begin{frame}[allowframebreaks]
+%  \begin{block}{Assessment}
+%    \begin{itemize}
+%      \item Apply subfield methodology insights to own paper.
+%
+%      \item Reflect on how this paper fits in the big picture of Security as a 
+%        Science.
+%
+%      \item Discussion/reflection on limits of how scientific security research 
+%        can be; \eg provability versus complexity of actual systems, 
+%        engineering versus science.
+%
+%      \item Peer-review (among course participants) these individual 
+%        papers\footnote{%
+%          Or a paper in progress or already published paper.
+%        } to identify gaps in the scientific approach that could be filled.
+%    \end{itemize}
+%  \end{block}
+%\end{frame}
+
+%\begin{frame}<presentation>
+%  \begin{question}
+%    \begin{itemize}
+%      \item Comments, questions, other thoughts?
+%    \end{itemize}
+%  \end{question}
+%\end{frame}
+
+\begin{onlyenv}<presentation>
+\section{About you}
+
+\begin{frame}[fragile]
+  \begin{question}
+    \begin{itemize}
+      \item What courses have you taken (or are taking)?
+      \item What are your interests?
+    \end{itemize}
+  \end{question}
+\end{frame}
+\end{onlyenv}
+
+
+%%% REFERENCES %%%
+
+\begin{frame}[allowframebreaks]
+  \only<article>{\printbibliography[heading=bibintoc]}
+  \only<presentation>{\printbibliography}
+\end{frame}
+
+
+\mode<all>{\endinput}
 
 \subsection{Teaching design}
 
@@ -400,339 +973,4 @@ the students learn to deal with it.
 The assessment of this learning outcome consists of evaluating the plan, how it 
 turned out and what the student learned.
 
-\subsection{Format}
-
-We have the following division of credits in LADOK\footnote{%
-  See the syllabus:
-  \url{https://www.kth.se/student/kurser/kurs/DA2215?l=en}.
-}\footnote{%
-  There is a similar line in DD2302.
-}:
-\begin{description}
-  \item[INL1] Seminars and assignments, 3.0 credits, grading scale: P, F
-\end{description}
-
-The assignments consists of reading and social annotation in an online tool 
-(\cref{fbfdocquiz,fbfdocannotation}).
-The seminars are live seminars on Zoom (or in-person on campus).
-The idea is that you learn from the first few seminars, so that we can grade 
-you on the last one.
-
-\begin{figure}[t]
-  \begin{fullwidth}
-  \subbottom[%
-  An interactive document in FeedbackFruits where one can answer quiz questions 
-  posed in the document and ask questions about the content.%
-  \label{fbfdocquiz}%
-  ]{\includegraphics[height=0.3\textheight]{figs/fbf-doc-quiz-question.png}}
-  \hspace{1em}
-  \subbottom[%
-    An interactive document in FeedbackFruits where one can annotate the text 
-    with focused topics together with other students in the class.%
-    \label{fbfdocannotation}%
-  ]{\includegraphics[height=0.3\textheight]{figs/fbf-doc-annotations.png}}
-  \caption{Two ways of having interactive documents.}\label{fbfdoc}
-  \end{fullwidth}
-\end{figure}
-
-\mode<presenation>{%
-\begin{frame}[fragile]
-  \begin{block}{Examination}
-    \begin{description}
-      \item[INL1] Seminars and assignments, 3.0 credits, grading scale: P, F
-    \end{description}
-  \end{block}
-
-  \pause
-
-  \begin{block}{Format}
-    \begin{itemize}
-      \item Online assignments
-      \item Asynchronous, social annotation
-      \item One final seminar, online or in-place
-    \end{itemize}
-  \end{block}
-\end{frame}
-}
-
-The reading assignments are part of the learning material.
-These are complemented by interactive video lectures (\cref{fbfvideo}) and the 
-early seminar sessions.
-In the video lectures the students can ask questions and answer quizzes.
-The seminar sessions (not the last one) aim at exploring the paths not taken in 
-the material.
-
-\begin{marginfigure}
-  \includegraphics[width=\columnwidth]{figs/fbf-video-quiz.png}
-  \caption{%
-    An interactive video in FeedbackFruits where one can answer quiz 
-    questions posed in the video.%
-  }\label{fbfvideo}
-\end{marginfigure}
-
-
-\mode<presentation>{%
-\begin{frame}
-  \begin{columns}
-    \begin{column}{0.5\columnwidth}
-      \begin{block}{Teaching material}
-        \begin{itemize}
-          \item<1> Video lectures where students can ask questions and answer 
-            quizzes\footnote{FeedbackFruits or Canvas Studio}.
-
-            \pause
-
-          \item<2-3> Reading assignments with social annotation\footnote{%
-              FeedbackFruits or Perusall
-            }.
-        \end{itemize}
-      \end{block}
-    \end{column}
-    \begin{column}{0.5\columnwidth}
-      \only<1>{
-        \begin{figure}
-          \centering
-          \includegraphics[width=\columnwidth]{figs/fbf-video-quiz.png}
-          \caption{%
-            An interactive video in FeedbackFruits where one can answer quiz 
-            questions posed in the video.%
-          }
-        \end{figure}
-      }
-      \only<2>{
-        \begin{figure}
-          \centering
-          \includegraphics[width=\columnwidth]{figs/fbf-doc-quiz-question.png}
-          \caption{%
-            An interactive document in FeedbackFruits where one can answer quiz 
-            questions posed in the document and ask questions about the 
-            content.%
-          }
-        \end{figure}
-      }
-      \only<3>{
-        \begin{figure}
-          \centering
-          \includegraphics[width=\columnwidth]{figs/fbf-doc-annotations.png}
-          \caption{%
-            An interactive document in FeedbackFruits where one can annotate 
-            the text with focused topics together with other students in the 
-            class.%
-          }
-        \end{figure}
-      }
-    \end{column}
-  \end{columns}
-\end{frame}
-}
-
-The seminars are used as synchronization points.
-The final seminar summarizes the course and results in a grade.
-
-\mode<presentation>{%
-\begin{frame}
-  \begin{block}{Assessment}
-    \begin{itemize}
-      \item A synchronous seminar to summarize all work and tie the sack.
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \begin{block}{Giving the course}
-    \begin{enumerate}
-      \item Given every period; yes, four times per year.
-    \end{enumerate}
-  \end{block}
-\end{frame}
-}
-
-\subsection{Contents}
-
-The course starts with an overview of the complexity.
-Then we proceed through a series of \enquote{How do you know it's secure?} case 
-studies (assignments mentioned above), that are summarized in two seminars 
-(mentioned above).
-The idea is to explore how different research methods play together to answer 
-different research questions.
-
-\mode<presentation>{%
-\begin{frame}
-  \begin{block}{Contents}
-    \begin{itemize}
-      \item Overview of the complexity
-    \end{itemize}
-    \begin{enumerate}
-      \item Purely deductive methods
-      \item[\vdots]
-      \item[n] Purely inductive methods
-    \end{enumerate}
-    \begin{itemize}
-      \item {Philosophy of Science of Security}
-    \end{itemize}
-  \end{block}
-
-  \pause
-
-  \begin{remark}[What to focus]
-    \begin{itemize}
-      \item What does the method contribute?
-      \item How do these play together? (Holistic view)
-      %\item Emphasize the deduction/induction 
-        %divide~\cite{SecurityAsAScience}.
-    \end{itemize}
-  \end{remark}
-\end{frame}
-}
-
-We'll try to answer questions like
-\enquote{What can deduction possibly say about reality?}
-and \enquote{What can induction possibly say about security?}.
-And what are the limitations?
-
-\mode<presentation>{%
-\begin{frame}
-  \begin{example}[Deductive inquiry]
-    \begin{itemize}
-      \item \enquote{What can deduction possibly say about reality?}
-    \end{itemize}
-  \end{example}
-
-  \pause
-
-  \begin{example}[Inductive/empirical inquiry]
-    \begin{itemize}
-      \item \enquote{What can induction possibly say about security?}
-    \end{itemize}
-  \end{example}
-
-  \pause
-
-  \begin{remark}[To focus on]
-    \begin{itemize}
-      \item What are the limitations?
-      \item Do these require a combination to form a Science of Security?
-    \end{itemize}
-  \end{remark}
-\end{frame}
-}
-
-We'll end the teaching part with a seminar more towards the philosophy of 
-science of security.
-We'll depart in the paper 
-\citetitle{SecurityAsAScience}\autocite{SecurityAsAScience} by
-\citeauthor{SecurityAsAScience}.
-
-\mode<presentation>{%
-\begin{frame}
-  \begin{example}[Philosophy of Science of Security]
-    \begin{itemize}
-      \item Discuss 
-        \citetitle{SecurityAsAScience}\footfullcite{SecurityAsAScience}.
-      \item What is Science of Security?
-      \item Does that even exist at the moment?
-      \item Shall we work according to the hypothetico-deductive model?
-      \item What are the problems?
-    \end{itemize}
-  \end{example}
-\end{frame}
-}
-
-%\begin{frame}
-%  \begin{block}{Contents, part II}
-%    \begin{itemize}
-%      \item General introductions to various subfields.
-%      \item Which methods are used and why?
-%      \item Some exemplary papers? \alert<2>{Both good and bad!}
-%      \item How does a subfield fit into the holistic picture of Security?
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-%
-%\begin{frame}
-%  \begin{remark}
-%    \begin{itemize}
-%      \item All above was top down: faculty\footnote{%
-%          From different subfields.
-%        } present their view on
-%        \begin{itemize}
-%          \item the methodologies,
-%          \item the practices,
-%          \item the adversary models,
-%          \item the assumptions,
-%          \item the relation to scientific approach in their respective 
-%            subfield.
-%        \end{itemize}
-%    \end{itemize}
-%  \end{remark}
-%\end{frame}
-%
-%\begin{frame}
-%  \begin{block}{Bottom up}
-%    \begin{itemize}
-%      \item Course participants review the scientific merits of 
-%        papers\footnote{%
-%          Chosen by subfield designer, not participants.
-%        } from top conferences in the subfield.
-%
-%      \item They identify/reverse engineer methodology and components of 
-%        evaluation.
-%
-%      \item They value why this is scientific and how and what knowledge it 
-%        contributes.
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-
-\subsection{Final assessment}
-
-The final assessment will be an assignment where the students design a research 
-method for a given set of research questions.
-This will assess all the learning outcomes: \cref{%
-  LOrelate,LOcomm,LOplan,LOapply,LOevaluate%
-}.
-
-You'll do this by writing a report motivating your choices of methods and 
-explaining why they answer the question.
-You'll also present this report at the final seminar.
-Someone else will review the report, and you will review someone else's report 
-too.
-
-The final assessment will be done in pairs.
-
-%\begin{frame}[allowframebreaks]
-%  \begin{block}{Assessment}
-%    \begin{itemize}
-%      \item Apply subfield methodology insights to own paper.
-%
-%      \item Reflect on how this paper fits in the big picture of Security as a 
-%        Science.
-%
-%      \item Discussion/reflection on limits of how scientific security research 
-%        can be; \eg provability versus complexity of actual systems, 
-%        engineering versus science.
-%
-%      \item Peer-review (among course participants) these individual 
-%        papers\footnote{%
-%          Or a paper in progress or already published paper.
-%        } to identify gaps in the scientific approach that could be filled.
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-
-\begin{frame}<presentation>
-  \begin{question}
-    \begin{itemize}
-      \item Comments, questions, other thoughts?
-    \end{itemize}
-  \end{question}
-\end{frame}
-
-
-%%% REFERENCES %%%
-
-\begin{frame}[allowframebreaks]
-  \only<article>{\printbibliography[heading=bibintoc]}
-  \only<presentation>{\printbibliography}
-\end{frame}
 

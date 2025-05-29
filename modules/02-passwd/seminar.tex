@@ -1,0 +1,190 @@
+\title{%
+  How do you know it's secure?
+  Passwords
+}
+\author{Daniel Bosk\thanks{%
+    This material is available under the Creative Commons 
+    Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA) 4.0 international 
+    license.
+    The material was written with some aid from GitHub Copilot.
+}}
+\institute{%
+  KTH EECS
+}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\mode*
+
+\begin{abstract}
+  \input{abstract.tex}
+\end{abstract}
+
+\clearpage
+
+\section{Some interesting questions}
+
+\begin{frame}
+  \begin{question}
+    What part of security is not a science?
+  \end{question}
+\end{frame}
+
+\section{The papers}
+
+\begin{frame}
+  \begin{itemize}
+    \item \fullcite{OfPasswordsAndPeople}
+    \item \fullcite{CanLongPasswordsBeSecureAndUsable}
+    \item \fullcite{WhyPhishingWorks}
+  \end{itemize}
+  \begin{onlyenv}<2>
+    \begin{remark}
+      Focus on the \emph{methods}, not the results!
+    \end{remark}
+  \end{onlyenv}
+\end{frame}
+
+\section{Related to TAMOS}
+
+\begin{frame}
+  \begin{exercise}
+    \begin{itemize}
+      \item Try to relate the three papers
+      \begin{itemize}
+        \item \citetitle{OfPasswordsAndPeople}
+        \item \citetitle{CanLongPasswordsBeSecureAndUsable}
+        \item \citetitle{WhyPhishingWorks}
+      \end{itemize}
+      \item to the TAMOS lectures
+        \begin{itemize}
+          \item Scientific inferences,
+          \item Observation and measurements,
+          \item Experiments
+        \end{itemize}
+    \end{itemize}
+  \end{exercise}
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    \begin{itemize}
+      \item What type of scientific inferences were they doing?
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item What type of observation and measurement?
+        \begin{itemize}
+          \item Direct or indirect? Instruments?
+          \item Needed theory?
+        \end{itemize}
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item Operationalization?
+        \begin{itemize}
+          \item What did they measure and how?
+          \item Measurement errors?
+        \end{itemize}
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    \begin{itemize}
+      \item Did they do hypothesis testing?
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item How was their experimental setup? Or was it observational?
+        \begin{itemize}
+          \item Randomize intervention and control?
+          \item Background factors?
+          \item Blinding?
+          \item Natural experiment?
+        \end{itemize}
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item Error handling?
+        \begin{itemize}
+          \item Observer effect?
+        \end{itemize}
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\section{More general}
+
+\begin{frame}
+  \begin{question}
+    \begin{itemize}
+      \item We had \citetitle{OfPasswordsAndPeople}, why do we need 
+        \citetitle{CanLongPasswordsBeSecureAndUsable}?
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item What can we say about the validity of these results?
+    \end{itemize}
+  \end{question}
+
+  \begin{question}
+    \begin{itemize}
+      \item How well representative are the results?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    \begin{itemize}
+      \item What factors affect how users choose passwords?
+        \begin{itemize}
+          \item Is it just the password policy?
+          \item Can we know from these studies?
+          %\item We'd need more studies focusing on other factors, then a 
+            %meta-analysis to see what factors are most important and how they 
+            %interact.
+        \end{itemize}
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\section{Preoceeding to Models}
+
+\begin{frame}
+  \begin{question}
+    Did they make use of any models?
+  \end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    \begin{itemize}
+      \item Entropy as a model for password strength (guessability).
+        \begin{itemize}
+          \item However, later works show that it's not that good a model.
+        \end{itemize}
+    \end{itemize}
+  \end{example}
+
+  \begin{remark}
+    \begin{itemize}
+      \item This is the topic of the next section of the course.
+    \end{itemize}
+  \end{remark}
+\end{frame}
+

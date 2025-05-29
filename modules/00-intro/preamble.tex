@@ -2,13 +2,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[british]{babel}
 \usepackage{booktabs}
+\usepackage{subcaption}
 
 \usepackage[%
   natbib,
   citestyle=verbose,singletitle=false,
   style=verbose,
   maxbibnames=99,%
-  isbn=false,doi=false,url=true
+  isbn=false,doi=false,url=false
 ]{biblatex}
 \addbibresource{bibliography.bib}
 
@@ -40,7 +41,7 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{thmtools}
-%\usepackage[unq]{unique}
+\usepackage[unq]{unique}
 \DeclareMathOperator{\powerset}{\mathcal{P}}
 
 \usepackage[binary-units]{siunitx}
@@ -51,6 +52,6 @@
 \usepackage{changepage}
 
 \usepackage{didactic}
-\usepackage[capitalize]{cleveref}
 
+\usepackage[capitalize]{cleveref}
 \input{objectives.tex}

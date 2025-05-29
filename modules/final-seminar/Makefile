@@ -14,7 +14,7 @@ notes.pdf: ${SRC} ${EXT_SRC}
 slides.pdf: slides.tex
 slides.pdf: ${SRC} ${EXT_SRC}
 
-objectives.tex: ../../course-design/objectives.tex
+objectives.tex: ../00-intro/objectives.tex
 
 ${EXT_SRC}:
 	${LN} $< $@

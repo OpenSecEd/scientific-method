@@ -1,3 +1,4 @@
+SUBDIR+=		./00-intro
 SUBDIR+=		./01-methods-overview
 SUBDIR+=		./02-passwd
 

@@ -20,8 +20,7 @@
   \end{beamercolorbox}
 }
 \setbeamercovered{transparent}
-%\setbeamertemplate{bibliography item}[text]
-\setbeamertemplate{bibliography item}{}
+\setbeamertemplate{bibliography item}{\relax}
 
 \AtBeginSection[]{%
   \begin{frame}<beamer>
@@ -100,4 +99,8 @@
 \mode<all>
 \input{contents.tex}
 \mode*
+
+\begin{frame}[allowframebreaks]
+  \printbibliography
+\end{frame}
 \end{document}
