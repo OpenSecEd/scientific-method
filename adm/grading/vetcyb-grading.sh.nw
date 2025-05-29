@@ -970,13 +970,15 @@ In previous experiments (\cref{FirstExperiment}), some of the models give
 unstable results.
 The [[4o]] model with lowered temperature to \(0.5\) seems to give more 
 consistent results.
-The [[o1]] model is much slower, but also seems to give consistent results.
+The [[o1]] (o1-preview at the time) model is much slower, but also seems to 
+give consistent results.
 But now we'll run a few more systematic tests.
 However, for some students, the [[o1]] model thinks that it didn't get a copy 
 of the instruction---which it did.
-So we'll default to the [[4o]] model.
+So we'll default to the [[4o]] class of models, using the latest (as of May 
+2025) version [[4.1]].
 <<constants>>=
-llm_model="4o"
+llm_model="4.1"
 llm_options=(-o temperature 0.5)
 llm_sys_prompt="
 You are a skilled scientist and teacher with a keen eye
@@ -1022,10 +1024,17 @@ test() {
 
   <<run [[rounds]] rounds of grading>>
 
-  echo "### llm 4o"
-  echo "### llm 4o" >&2
-  llm_model="4o"
+  echo "### llm 4.1"
+  echo "### llm 4.1" >&2
+  llm_model="4.1"
   unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm 4.1 temp=0.5"
+  echo "### llm 4.1 temp=0.5" >&2
+  llm_model="4.1"
+  llm_options=(-o temperature 0.5)
 
   <<run [[rounds]] rounds of grading>>
 
