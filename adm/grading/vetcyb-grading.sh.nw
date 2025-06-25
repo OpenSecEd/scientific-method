@@ -150,7 +150,7 @@ We'll refresh as often as the system's tempdir is cleaned.
 assignments() {
   local course="${1}"
   <<let [[assignments_cache]] be the cache file for [[course]]>>
-  if [ ! -f "${assignments_cache}" ]
+  if [ ! -s "${assignments_cache}" ]
   then
     assignments_refresh "${course}"
   fi
@@ -297,7 +297,7 @@ We only do this if we don't already have them.
 results() {
   local course="${1}"
   local results_cache="/tmp/${course}.results"
-  if [ ! -f "${results_cache}" ]
+  if [ ! -s "${results_cache}" ]
   then
     results_refresh "${course}"
   fi
