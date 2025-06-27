@@ -450,28 +450,39 @@ assignment, or rather, a date.
 If that date is later than all the other dates, then they are graded.
 Otherwise they're not.
 <<if [[student]] is already graded, continue>>=
-local final_report_date=$(echo "${results}" \
-                          | grep "${student}" \
-                          | grep 'Final version of the report' \
-                          | cut -f 4)
-local latest_date=$(echo "${results}" \
-                    | grep "${student}" \
-                    | filter_participation \
-                    | cut -f 4 \
-                    | sort \
-                    | tail -n 1)
-if [ -n "${final_report_date}" -a -n "${latest_date}" ]
+if echo "${results}" | grep "${student}" \
+   | is_graded
 then
-  if [[ "${final_report_date}" > "${latest_date}" ]]
-  then
-    continue
-  fi
+  continue
 fi
+<<helper functions>>=
+is_graded() {
+  local results="$(cat)"
+
+  local final_report_date=$(echo "${results}" \
+                            | grep 'Final version of the report' \
+                            | cut -f 4)
+
+  local latest_date=$(echo "${results}" \
+                      | filter_participation \
+                      | cut -f 4 \
+                      | sort \
+                      | tail -n 1)
+
+  if [ -n "${final_report_date}" -a -n "${latest_date}" ]
+  then
+    if [[ "${final_report_date}" > "${latest_date}" ]]
+    then
+      return 0
+    fi
+  fi
+  return 1
+}
 @ We note that this only works when all assignments are in the results piped to
 [[students_to_grade]].
 For instance, if we only get results filtered by [[filter_INL1]], then we we 
-can't compare the dates of the `Final version of the report` (which is present) 
-to the other assignments (which are not present).
+can't compare the dates of the \enquote{Final version of the report} (which is 
+present) to the other assignments (which are not present).
 
 Also, when we give feedback to a student in the INL1 assignments, they are not 
 labelled as graded (with a grading date).
@@ -585,7 +596,7 @@ then
 <<else if [[student_results]] didn't pass all prep assignments>>
 then
   echo "You haven't completed the following prep assignments" \
-  echo "to a sufficient degree (90 points):"
+       "to a sufficient degree (90 points):"
   <<echo prep assignments in [[student_results]] without a passing grade>>
   echo "But you can complete them to pass the course," \
        "without doing the project," \
