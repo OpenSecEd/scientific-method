@@ -1,0 +1,195 @@
+\newif\ifarticle
+% Uncomment the next line to typeset an article version instead of slides
+\articletrue
+
+\ifarticle
+  \documentclass[11pt]{article}
+  \usepackage{beamerarticle}
+\else
+  \documentclass[aspectratio=169]{beamer}
+\fi
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+\title{Seminar Prep: Reflections on the Use of Models (Parts I--III)}
+\author{DA2215 HT25 (vetcyb25h)}
+\date{2025-11-28}
+
+\ifarticle
+  \hypersetup{hidelinks}
+\else
+  \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+  \usetheme{Madrid}
+  \setbeamertemplate{navigation symbols}{}
+  \AtBeginSection[]
+  {
+    \begin{frame}{Outline}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+\fi
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\mode<article>{
+This document summarizes themes, points of agreement and disagreement, and suggested prompts for discussion across three short reflection assignments:
+(1) Reflection on the use of models, part I,
+(2) part II (formal verification and model checking), and
+(3) part III (Tor modeling papers).
+For each assignment, presentation-mode provides concise bullets; article-mode elaborates with context to support facilitation.
+}
+
+\section{Reflection on the use of models, Part I}
+
+\begin{frame}{What students agree on (Part I)}
+  \mode<presentation>{
+    \begin{itemize}
+      \item \enquote{Provably secure} means secure under explicit assumptions and within a model; real systems can still fail.
+      \item Side channels (timing, EM, power, packet sizes) and implementations fall outside many crypto models.
+      \item Models are still essential: define \emph{what} security means, enable comparison, and provide a baseline.
+      \item Theory and practice are complementary: combine formal models with empirical testing and hardening.
+      \item TCB perspective: weaknesses outside the model can break system security.
+    \end{itemize}
+  }
+  \mode<article>{
+Students converge on these points:
+\begin{itemize}
+  \item \enquote{Provably secure} claims are scoped: they hold under stated assumptions (e.g., IND-CPA under DDH) and an idealized adversary model. Implementation realities (e.g., EM emanations, timing variability) are excluded.
+  \item Recurrent examples: ElGamal security reductions vs. EM leakage; SSH encryption vs. keystroke timing leaks; packet size leakage.
+  \item Value of models: sharpen definitions of security, enable baselines and comparisons, and falsify weak designs early. If a scheme fails in the ideal model, it is unlikely to succeed in practice.
+  \item Practice complements theory: side-channel analyses, protocol redesign, and implementation mitigations expand threat models and improve defenses.
+  \item TCB framing: even flawless cryptography cannot compensate for vulnerabilities elsewhere in the system.
+\end{itemize}
+  }
+\end{frame}
+
+\begin{frame}{Nuances, cautions, and open questions (Part I)}
+  \begin{itemize}
+    \item Assumption sensitivity: results hinge on adversary capabilities and environmental scope.
+    \item Model drift: new attack vectors (e.g., oracles, quantum advances) can invalidate comfort from older models.
+    \item Semantics: \enquote{secure} varies (cryptographic vs. empirical/systemic security).
+    \item Ethics and feasibility: testing on real systems vs. user safety; limits on what can be measured.
+  \end{itemize}
+  \mode<article>{
+Several students emphasize how easily conclusions shift with modest adversary enhancements (e.g., adding a measurement channel), and that we must be explicit about which \enquote{security} (cryptographic, protocol, implementation) is discussed. Others note that empirical constraints (ethics, feasibility) shape which threats can be demonstrated in practice.
+  }
+\end{frame}
+
+\begin{frame}{Prompts for seminar discussion (Part I)}
+  \begin{description}
+    \item[Scope creep] Where should we draw the model boundary in crypto proofs to remain useful yet realistic?
+    \item[Updating models] Which side channels deserve first-class inclusion today? Which remain out-of-scope and why?
+    \item[Decision-making] When is a mathematically secure design acceptable given known implementation risks?
+    \item[Evidence] What kinds of empirical results should trigger revising a widely used threat model?
+  \end{description}
+  \mode<article>{
+Use these to surface priorities: how to balance tractability with realism; how to prioritize side-channel classes; how practitioners should weigh proven-core security against likely implementation leaks.
+  }
+\end{frame}
+
+\section{Reflection on the use of models, Part II}
+
+\begin{frame}{How formal methods contribute (Part II)}
+  \mode<presentation>{
+    \begin{itemize}
+      \item Formal verification: deductive, machine-checkable proofs; clarity of assumptions; reproducibility.
+      \item Model checking: automated, exhaustive exploration of finite models; counterexamples for debugging.
+      \item Benefits to scientific method: rigor, transparency, repeatability, and precise specifications.
+    \end{itemize}
+  }
+  \mode<article>{
+Students view formal verification as bringing deductive rigor and reproducibility; it forces precise specifications and exposes hidden assumptions. Model checking contributes automated, exhaustive analysis of finite-state abstractions with concrete counterexamples, aiding diagnosis and iterative design.
+  }
+\end{frame}
+
+\begin{frame}{Relation to cryptographic security (Part II)}
+  \begin{description}
+    \item[Different layers] Crypto reductions prove security of the \emph{construction} under assumptions; formal methods check \emph{protocols and implementations} meet specs derived from those assumptions.
+    \item[Bridging gaps] Verify constant-time behavior, key handling, control flow, and state machines to reduce side-channel and logic bugs.
+    \item[Limits] State explosion; finite-state requirements; unverifiable physical leakage; cost and expertise demands.
+  \end{description}
+  \mode<article>{
+Students consistently separate proof-of-design (reductions like ElGamal under DDH) from proof-of-implementation (protocol conformance, absence of bad states). Formal methods help ensure that the \enquote{math is applied correctly} and that the code adheres to the intended model, without claiming to eliminate all physical side channels. Limitations include state explosion, modeling granularity, and significant human/compute costs.
+  }
+\end{frame}
+
+\begin{frame}{Prompts for seminar discussion (Part II)}
+  \begin{itemize}
+    \item Where do formal methods yield the highest ROI in crypto systems: primitives, protocols, APIs, or implementations?
+    \item How should we model timing/EM constraints to make formal results meaningful for side channels?
+    \item What pragmatic strategies mitigate state explosion while preserving assurance?
+    \item How do we define a minimal \enquote{trusted core} across proof assistant, specs, and code?
+  \end{itemize}
+\end{frame}
+
+\section{Reflection on the use of models, Part III}
+
+\begin{frame}{How the Tor papers use models (Part III)}
+  \begin{description}
+    \item[Users Get Routed] Internet routing + Tor path simulation (TorPS), adversary models (AS/IXP, relays), Monte Carlo over time.
+    \item[Shadow] Discrete-event simulation running unmodified Tor in a controlled, reproducible \enquote{network in a box}.
+    \item[WF with Oracles] Idealized attacker augmented with a \enquote{website oracle}; simulations grounded by prior Tor measurements.
+    \item[Online WF] Real exit-relay traffic, online learning, open-world evaluation; emphasizes realism and concept drift.
+  \end{description}
+  \mode<article>{
+Students neatly categorize: (i) structural/routing risk modeling (UGR), (ii) high-fidelity simulation with real code (Shadow), (iii) idealized capability upper bounds (WO), and (iv) empirical, live-network evaluation (Online WF).
+  }
+\end{frame}
+
+\begin{frame}{Method strengths and weaknesses (Part III)}
+  \begin{description}
+    \item[UGR]
+      Strength: realistic placement of strong passive adversaries; temporal risk metrics.
+      Weakness: routing inference and user models may overestimate visibility/compromise.
+    \item[Shadow]
+      Strength: repeatable experiments with real Tor; safe, scalable prototyping.
+      Weakness: Internet complexity abstracted; client behavior synthetic.
+    \item[WO]
+      Strength: clarifies upper bounds; shows defenses fail under auxiliary info.
+      Weakness: oracle realism varies; synthetic traffic and assumptions drive outcomes.
+    \item[Online WF]
+      Strength: genuine noise, drift, and heterogeneity; ethical and safe labeling via DNS.
+      Weakness: limited labels (domain-level), exit-only vantage, reproducibility challenges.
+  \end{description}
+\end{frame}
+
+\begin{frame}{Consequences for results (Part III)}
+  \begin{itemize}
+    \item Modeling choice shapes conclusions: more realism → attacks weaken at scale; idealization → upper bounds that may not materialize in practice.
+    \item WF appears effective for small monitored sets; degrades rapidly as the set grows in the wild.
+    \item Structural correlation risks remain concerning even without active attacks; user behavior matters.
+    \item Simulation is vital for safe iteration; real-world validation is necessary before policy or user guidance.
+  \end{itemize}
+  \mode<article>{
+A cross-paper pattern emerges: increased realism (live traffic, drift) reduces attack accuracy compared to lab studies, while idealized capabilities (oracles) expose worst-case limits and stress defenses. Shadow offers a middle path for safe, repeatable exploration, but must be complemented with empirical validation.
+  }
+\end{frame}
+
+\begin{frame}{Prompts for seminar discussion (Part III)}
+  \begin{itemize}
+    \item Which adversary capabilities should Tor’s threat model explicitly include today (e.g., partial oracles, routing observers)?
+    \item How should we balance simulation-based iteration versus ethically constrained live measurements?
+    \item What evaluation metrics best reflect user risk under drift and open-world conditions?
+    \item Which defenses plausibly help across both idealized and real-world settings?
+  \end{itemize}
+\end{frame}
+
+\section{Wrap-up}
+
+\begin{frame}{Synthesis and next steps}
+  \begin{itemize}
+    \item Models are tools: useful when assumptions are explicit and validation spans theory, simulation, and practice.
+    \item For crypto: reductions secure the core idea; formal methods secure the protocol and code; empirical work secures the deployment.
+    \item For anonymity systems: adopt layered evaluation—structural models, high-fidelity simulation, and live-network studies.
+    \item Action items: identify assumptions to relax or extend; propose measurements or formal checks to close gaps.
+  \end{itemize}
+\end{frame}
+
+\end{document}
