@@ -1,0 +1,156 @@
+Below are ready-to-paste frames you can add to seminar.tex. They synthesize the students’ reflections and add concrete discussion prompts and short activities. They use beamerarticle modes: concise bullets for slides, fuller paragraphs for the article handout. If csquotes is not already loaded, add \usepackage{csquotes} in preamble.
+
+% ---------------- Part I: Models and (In)Security ----------------
+\begin{frame}{Part I — What you said about provable security vs reality}
+  \mode<presentation>{
+    \begin{description}
+      \item[Consensus] Proofs give baseline guarantees under explicit assumptions; implementations and environments add side channels and leakage
+      \item[Tensions] What belongs inside the model vs out-of-scope? Definitions of secure differ (cryptographic vs empirical)
+      \item[Value] Models enable comparison, clarity, and rejection of designs that fail even under idealized conditions
+    \end{description}
+  }
+  \mode<article>{
+    Many students stressed that proofs certify properties under a precise threat model and assumptions, while practice adds leakage (timing, EM, caching, human factors). Models remain useful as baselines for design and comparison, but they do not close the gap to reality; testing and engineering must complement them. Several noted the Trusted Computing Base perspective: a flaw outside the model can break the whole system.
+  }
+\end{frame}
+
+\begin{frame}{Discuss — Where should the boundary of the model be?}
+  \begin{itemize}
+    \item For each leakage below, decide if it should be part of the crypto model, a protocol model, or the implementation/hardware model:
+      \begin{itemize}
+        \item Packet length and inter-keystroke timing in SSH
+        \item EM emanations from windowed exponentiation
+        \item Cache hits/misses in big-integer arithmetic
+      \end{itemize}
+    \item If you move one item into the model, what new assumption or cost appears?
+    \item Outcome: one sentence per group stating your chosen boundary and a trade-off
+  \end{itemize}
+  \mode<article>{
+    Prompt students to justify modeling choices explicitly (e.g., include timing in the protocol model implies constant-time framing or padding, with performance cost).
+  }
+\end{frame}
+
+\begin{frame}{Activity — Diagnosing a proof-to-practice gap}
+  \begin{itemize}
+    \item Pick a scheme with a reductionist proof (e.g., ElGamal under DDH)
+    \item Identify:
+      \begin{description}
+        \item[Claim] What the proof guarantees
+        \item[Assumptions] Hardness and adversary capabilities
+        \item[Caveat] One realistic behavior the proof omits
+        \item[Mitigation] A protocol or implementation defense to restore the guarantee
+      \end{description}
+  \end{itemize}
+  \mode<article>{
+    This ties student reflections (baseline guarantees, omitted channels) to actionable mitigations (padding, blinding, constant-time, shielding).
+  }
+\end{frame}
+
+% ---------------- Part II: Formal verification and model checking ----------------
+\begin{frame}{Part II — What you said about formal methods}
+  \mode<presentation>{
+    \begin{description}
+      \item[Formal verification] Deductive, math-based proofs for code/specs; high assurance, but effortful and assumption-bound
+      \item[Model checking] Exhaustive exploration of finite models; counterexamples as scientific evidence; faces state explosion
+      \item[Relation to crypto] Proofs link security to assumptions; formal methods check protocols/implementations meet those specs
+    \end{description}
+  }
+  \mode<article>{
+    Students highlighted rigor, reproducibility, and clear assumptions. Many positioned crypto proofs for primitives, model checking for protocols, and formal verification for implementations, noting remaining limits (side channels, model scope).
+  }
+\end{frame}
+
+\begin{frame}{Design exercise — What to prove, what to check}
+  \begin{itemize}
+    \item You are shipping a new crypto library:
+      \begin{description}
+        \item[Prove] One property you will verify with a theorem prover (e.g., IND-CPA of a mode under stated assumptions)
+        \item[Check] One protocol property you will model-check (e.g., no replay or downgrade)
+        \item[Enforce] One implementation property you will enforce (e.g., constant-time, nonce uniqueness)
+      \end{description}
+    \item Be explicit about the assumptions and the TCB at each layer
+  \end{itemize}
+  \mode<article>{
+    Expect answers mapping layers to methods and surfacing assumptions (PRF security, reliable RNG, constant-time discipline).
+  }
+\end{frame}
+
+\begin{frame}{Discuss — Limits of formal methods}
+  \begin{itemize}
+    \item When does adding a side-channel model to verification help, and when does it harm tractability?
+    \item How would you validate that verified code remains secure on real hardware?
+    \item What evidence will you ship with a system: proof artifacts, model-checker traces, tests?
+  \end{itemize}
+\end{frame}
+
+% ---------------- Part III: Tor, modeling choices, and consequences ----------------
+\begin{frame}{Part III — What you said about Tor papers}
+  \mode<presentation>{
+    \begin{description}
+      \item[TorPS/UGR] Realistic routing + user models; good coverage, upper-bound risks; sensitivity to routing inference and behavior models
+      \item[Shadow] Real Tor code in simulated network; repeatable, comparable; cannot capture full Internet variability
+      \item[WF+WO] Stronger adversary via auxiliary info; clarifies upper bounds; oracle realism is key
+      \item[Online WF] Genuine Tor traffic; high external validity; ethics and reproducibility constraints; accuracy drops for larger monitored sets
+    \end{description}
+  }
+  \mode<article>{
+    Students contrasted isolating vs mirror models and stressed external validity, ethics, and the base-rate problem in WF results.
+  }
+\end{frame}
+
+\begin{frame}{Small-group critique — Model virtues and validity}
+  \begin{itemize}
+    \item Assign each group one paper: TorPS, Shadow, WF+WO, Online WF
+    \item Fill in for your paper:
+      \begin{description}
+        \item[Model type] Isolating vs mirror; what is abstracted
+        \item[Virtues] Similarity, robustness, precision, transparency, tractability
+        \item[External validity] What claims generalize; what do not
+        \item[Improvement] One concrete way to strengthen the methodology ethically
+      \end{description}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Quantitative reasoning — The base-rate trap in WF}
+  \begin{itemize}
+    \item Suppose an attacker monitors 5 vs 1000 sites; discuss how precision and recall change
+    \item With a website oracle, which metric becomes critical for users’ risk?
+    \item Propose an evaluation report that avoids misleading accuracy and addresses base rates
+  \end{itemize}
+  \mode<article>{
+    Drive toward precision at low prevalence, calibrated thresholds, and reporting PPV/NPV alongside recall.
+  }
+\end{frame}
+
+\begin{frame}{Ethics and reproducibility}
+  \begin{itemize}
+    \item For studies on live Tor, list practices that balance validity and ethics:
+      \begin{itemize}
+        \item Opt-in circuits, anonymized labels, ephemeral keys, aggregate statistics
+        \item Release code, configs, and synthetic replayers seeded by public aggregates
+      \end{itemize}
+    \item What could each paper share to maximize reproducibility without risking users?
+  \end{itemize}
+\end{frame}
+
+% ---------------- Wrap-up ----------------
+\begin{frame}{Takeaways}
+  \begin{description}
+    \item[Baseline] Proofs and formal methods give precise guarantees under assumptions
+    \item[Bridging] Protocol and implementation verification reduce gaps to reality
+    \item[Modeling] Choice of model (isolating vs mirror) shapes conclusions and validity
+    \item[Practice] Report assumptions, base rates, and limitations; align methods to claims
+  \end{description}
+\end{frame}
+
+% ---------------- Optional: Minute paper ----------------
+\begin{frame}{Minute paper}
+  \begin{itemize}
+    \item One assumption you would add to a security model next time, and why
+    \item One metric you will insist on for WF studies to avoid base-rate pitfalls
+  \end{itemize}
+\end{frame}
+
+Notes
+- If you do not already load csquotes, add \usepackage{csquotes} in preamble to use \enquote{} consistently.
+- Use \mode<article>{...} to expand points into full paragraphs for beamerarticle.
