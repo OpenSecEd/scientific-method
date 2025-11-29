@@ -487,8 +487,8 @@ present) to the other assignments (which are not present).
 Also, when we give feedback to a student in the INL1 assignments, they are not 
 labelled as graded (with a grading date).
 Perhaps we can get them to be labelled as graded if we set the grade [[-]]?
-Nope, doesn't work.
-We must set a non-passing grade on them.
+Nope, doesn't work,
+we must set a non-passing grade on them.
 
 \subsection{Checking if a student has passed all assignments}
 
@@ -693,7 +693,6 @@ last_seminar_date() {
   | tail -n 1
 }
 <<let [[last_date]] be the date of the last seminar>>=
-local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
 local last_date=$(last_seminar_date "${course}")
 @
 
