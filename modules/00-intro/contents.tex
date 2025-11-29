@@ -40,13 +40,15 @@ security research.
 
   \pause
 
-  \begin{onlyenv}<presentation>
-    \begin{remark}
-      \begin{itemize}
-        \item Attackers still get in, weird \dots
-      \end{itemize}
-    \end{remark}
-  \end{onlyenv}
+  \begin{example}[Pentesting]
+    Pentesters can still guess passwords and get in.
+  \end{example}
+
+  \pause
+
+  \begin{remark}
+    Neither informs us of what to do about it.
+  \end{remark}
 \end{frame}
 
 \begin{frame}<presentation>
@@ -69,7 +71,7 @@ security research.
   \end{remark}
 \end{frame}
 
-However, attackers still get in.
+So, attackers still get in.
 % XXX add refs to password literature
 It turns out that humans can't handle long, uniformly random passwords.
 Particularly not when they have to remember one such password \emph{per service 
@@ -488,11 +490,11 @@ The final seminar summarizes the course and results in a grade.
 \mode<presentation>{%
 \begin{frame}
   \begin{block}{Teaching}<+>
-    \begin{itemize}
+    \begin{enumerate}
       \item Reading material and watching videos.
       \item Write reflection to prepare for seminar.
       \item Discuss and work with material at synchronous seminars.
-    \end{itemize}
+    \end{enumerate}
   \end{block}
 
   \begin{block}{Assessment}<+>
@@ -544,7 +546,7 @@ different research questions.
 
   \begin{remark}[What to focus]
     \begin{itemize}
-      \item What does the method contribute?
+      \item What do the various methods contribute?
       \item How do these play together? (Holistic view)
       %\item Emphasize the deduction/induction 
         %divide~\cite{SecurityAsAScience}.
@@ -762,7 +764,7 @@ There will be a seminar given by the KTH Library.
       \item How are qualitative methods used in security?
       \item Qualitative methods are used to understand the human aspects of 
         security.
-      \item It's a method to explore things, to explain.
+      \item It's a class of methods to explore things, to explain.
       \item It can generate hypotheses that can be tested quantitatively.
     \end{itemize}
   \end{block}
@@ -788,7 +790,13 @@ This will assess all the learning outcomes: \cref{%
 }.
 
 \begin{frame}<presentation>
-  \begin{block}{Final assessment}
+  \begin{uncoverenv}<+>
+  \begin{remark}
+    If you don't pass by participation \dots
+  \end{remark}
+  \end{uncoverenv}
+
+  \begin{block}{Final assessment}<+->
     \begin{itemize}
       \item Design a research method for a given set of research questions.
       \item Assess the suitability of the method.
@@ -797,9 +805,11 @@ This will assess all the learning outcomes: \cref{%
     \end{itemize}
   \end{block}
 
+  \begin{uncoverenv}<+->
   \begin{remark}
     This will be done in groups.
   \end{remark}
+  \end{uncoverenv}
 \end{frame}
 
 You'll do this by writing a report motivating your choices of methods and 
@@ -809,6 +819,12 @@ Someone else will review the report, and you will review someone else's report
 too.
 
 \begin{frame}<presentation>
+  \begin{uncoverenv}<+>
+  \begin{remark}
+    Remember, only if you don't pass by participation \dots
+  \end{remark}
+  \end{uncoverenv}
+
   \begin{block}{Final seminar and review}
     \begin{itemize}
       \item Present this at the final seminar.
@@ -865,14 +881,130 @@ The final assessment will be done in groups of 3--5 students.
 \begin{onlyenv}<presentation>
 \section{About you}
 
-\begin{frame}[fragile]
-  \begin{question}
-    \begin{itemize}
-      \item What courses have you taken (or are taking)?
-      \item What are your interests?
-    \end{itemize}
-  \end{question}
+\subsection{Some stats}
+
+\begin{frame}
+  \begin{block}{Have you taken AK2030 TaMoS?}
+  \emph{Total responses:} 25
+  \begin{itemize}
+    \item I am currently taking it.: 19 (76.0\%)
+    \item Yes, I have taken it in the past.: 6 (24.0\%)
+  \end{itemize}
+  \end{block}
 \end{frame}
+
+\begin{frame}
+  \begin{block}{Courses you have taken}
+  \emph{Total responses:} 25\qquad
+  \emph{Total selections:} 108
+  \begin{columns}[t]
+    \tiny
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item EN2720 Ethical Hacking: 24 (96.0\%)
+        \item DD2391 Cybersecurity Overview or DD2395 Computer Security: 20 (80.0\%)
+        \item DD2510 Cybersecurity in a Socio-Technical Context: 6 (24.0\%)
+        \item DD2520 Applied Cryptography: 6 (24.0\%)
+        \item EL2850 Cyber-Physical Security in Time-Critical Systems: 6 (24.0\%)
+        \item EP2780 Digital forensics and incident response: 6 (24.0\%)
+        \item AK2030 Theory and Methodology of Science (Natural and Technological Science): 6 (24.0\%)
+        \item DD2525 Language-Based Security: 6 (24.0\%)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item EP2520 Building Networked Systems Security: 5 (20.0\%)
+        \item DD2303 The Cybersecurity Engineer's Role in Society: 5 (20.0\%)
+        \item IL1333 Hardware Security: 4 (16.0\%)
+        \item DD2448 Foundations of Cryptography: 4 (16.0\%)
+        \item EP2500 Networked Systems Security: 4 (16.0\%)
+        \item ID2218 Design of Fault-tolerant Systems: 3 (12.0\%)
+        \item DD2496 Privacy Enhancing Technologies: 2 (8.0\%)
+        \item EP2790 Security Analysis of Large-Scale Computer Systems: 1 (4.0\%)
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Courses you are currently taking}
+  \emph{Total responses:} 25\qquad
+  \emph{Total selections:} 73
+  \vspace{0.5em}
+  \begin{itemize}
+    \item DD2510 Cybersecurity in a Socio-Technical Context: 28 (112.0\%)
+    \item AK2030 Theory and Methodology of Science (Natural and Technological Science): 19 (76.0\%)
+    \item DD2303 The Cybersecurity Engineer's Role in Society: 19 (76.0\%)
+    \item EP2790 Security Analysis of Large-Scale Computer Systems: 6 (24.0\%)
+    \item EP2500 Networked Systems Security: 1 (4.0\%)
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{What research questions or areas in cybersecurity interest you the 
+most?}
+
+\begin{frame}
+  \begin{block}{Qualitative summary: Interests in cybersecurity}
+    \scriptsize
+  \emph{Individual responses:} 25
+  \begin{itemize}
+    \item Ethical hacking and penetration testing: 10
+    \item Cryptography: 7
+    \item Digital forensics: 5
+    \item Systems and network security (OS internals, memory safety, vulnerabilities): 4
+    \item Hardware, embedded/IoT security: 2
+    \item Malware and phishing: 2
+    \item Threat intelligence and signals intelligence: 2
+    \item Cyber-physical systems, OT, critical infrastructure: 2
+    \item Security and AI (AI for security; security of AI): 1
+    \item Reverse engineering: 1
+    \item Security guarantees/formal methods: 1
+    \item Blockchain: 1
+    \item Internet protocol security, covert channels, governance: 1
+    \item Resilience, fault tolerance, societal standards: 2
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+\begin{enumerate}
+  \item I'm interested in digital forensics and fault-tolerant design, so what interests me the most is trying to analyse how something is being used and figure out how to make sure it can continue operating safely.
+  \item How we can create a more resilient society and democracy with cybersecurity standards
+  \item Cyber-physical systems are what I find most interesting. When software is not only software but actually reaches out into the physical world. I find purely software-limited security a little boring.  I also enjoy security-critical applications where the stakes are high. E.g. critical-infrastructure.
+  \item I most interested in pentesting and how cybersercurity is achived in a practical manner.
+  \item I think that cryptography and pen testing is really interesting
+  \item I am interested in internet security, cryptography and blockchain.
+  \item Penetration testing, system defence; malware creation, detection, and analysis
+  \item I have not really taken many courses yet but I found things about Digital Forensics interesting. Having method to prove what someone did/what happened digitally is interesting. Finding hidden stuff was also pretty cool. 
+  \item I'm interested in cyber threat intelligence and how analyzing data from many sources can help us predict and prevent attacks before they happen.
+  \item Which security guarantees can we make in the presence of an attacker?
+  \item I am mostly interested in digital forensics as out of all the courses I've taken so far, this one was most intriguing (although sadly the course wasn't that well formed, but the topic was very fun and interesting). I’ve also always been interested in police work and criminal investigations, so I find it fascinating how digital forensics connects traditional investigative work with cybersecurity and technology.
+  \item Pen testing
+  \item Practical applications of cybersecurity and more tangible concepts (cryptography, hacking, vulnerabilities in commonly deployed applications and operating systems etc).
+  \item Network security and system security sound interesting to me as area in 
+    cybersecurity. The research questions that handles offensive/defense 
+    security are all interesting as well.
+  \item Good question, I am not entirely sure but research regarding protection from malware, phishing etc. in systems I find interesting. 
+  \item Cryptography and Ethical Hacking
+  \item Personally, I'm most interested in reverse engineering, disassembling, understanding/modifying program internals. Also hardware security and digital forensics. I'm interested in both offensive and defensive sides, and especially how they influence each other, e.g. getting hands on with offensive work to better understand how to build defensive measures, and vice-versa.
+  \item Especially: Cryptography, Hacking, Software Supply Chain Security, Signals Intelligence, Threat Intelligence. In general, most areas are interesting to me at the moment.
+  \item I am mostly interested in hardware security, secure software 
+    development, IoT and embedded systems security. Particularly, in the low 
+    level components, like the hardware, kernel, the OS itself and their 
+    security.
+  \item It is a bit unclear to me at the moment, but ethical hacking and cyberdefence are very interesting and needed topics.
+  \item Generally I'm interested in the intersection of security and AI, firstly AI for security tasks like automated patching or secure code generation, and secondly security and safety of AI themselves.
+  \item I’m most interested in systems security, especially low-level topics such as operating system internals, memory safety, and binary exploitation. I’m also interested in exploring operational technology (OT) security, particularly how to secure critical infrastructure.
+  \item Ethical Hacking  Internet protocol security (DNS, BGP)  Covert channels  Internet governance
+  \item Cryptography and forensics
+  \item Cryptography
+\end{enumerate}
+\end{frame}
+
+
+
 \end{onlyenv}
 
 
