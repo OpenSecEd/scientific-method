@@ -1,0 +1,156 @@
+Here are additional frames you can paste into your .tex to bring student reflections into the slides. They add summaries and discussion questions for Parts I–III and work in both beamer and beamerarticle modes.
+
+% =========================
+% Part I – Models in security
+% =========================
+
+\begin{frame}
+  \begin{block}{From your Part I reflections: recurring themes}
+    \mode<presentation>{%
+      \begin{itemize}
+        \item Proofs hold in idealised models; practice breaks assumptions (side channels, timing, EM)
+        \item Models are still essential: give baselines, definitions, and comparability
+        \item Security is layered: crypto, implementation, hardware, human factors
+        \item TCB perspective: failures outside the model can break the system
+        \item Assumptions matter: clarify adversary capabilities and scope
+      \end{itemize}
+    }
+    \mode<article>{%
+      Many of you stressed that cryptographic proofs establish guarantees only within explicit, idealised models, while practical systems violate assumptions via side channels (EM/timing/power), protocol metadata, and human factors. Yet, models remain indispensable because they define security precisely, provide a baseline for comparison, and help bound claims. Several reflections framed this in TCB terms: if any component outside the model fails, the whole may fail. Across responses, the call was to make assumptions and attacker capabilities explicit and to combine formal models with empirical testing.
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{question}[Discussion (Part I)]
+    \begin{enumerate}
+      \item Where should we draw the threat boundary in a proof? Should side channels be inside or outside the cryptographic model?
+      \item When is a proof \emph{misleading} rather than merely \emph{limited}? What signals that a model is too narrow?
+      \item How do we use models to prioritise mitigations: algorithm redesign vs. implementation hardening vs. operational controls?
+      \item If a scheme fails in practice but not in theory, what should change first: the model, the implementation, or the deployment context?
+    \end{enumerate}
+  \end{question}
+\end{frame}
+
+
+% =========================
+% Part II – Formal methods
+% =========================
+
+\section{Formal methods in practice}
+
+\begin{frame}
+  \begin{block}{From your Part II reflections: what formal methods add}
+    \mode<presentation>{%
+      \begin{itemize}
+        \item Rigor and reproducibility: machine-checked arguments, counterexamples
+        \item Complementarity: theorem proving for specs; model checking for behaviours
+        \item Limits: state explosion, finite-state modelling, cost and expertise
+        \item Bridge to crypto: reductions define goals; formal methods check protocols/implementations
+      \end{itemize}
+    }
+    \mode<article>{%
+      You highlighted that formal verification and model checking bring deductive rigor and repeatability, offering machine-checked proofs and counterexamples that sharpen claims. Model checking excels for finite-state behaviours; theorem proving for general logical properties. Cost, expertise, and state explosion remain practical limits. Many linked this to cryptography: reductions justify a design's goal (\enquote{if DDH is hard, ElGamal is IND-CPA}), while formal methods verify protocols and implementations respect those goals (e.g., no secret-dependent control flow, correct key handling).
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{question}[Discussion (Part II)]
+    \begin{enumerate}
+      \item What should we formally verify for a cryptosystem stack: primitives, protocols, code, or all of the above?
+      \item Where is model checking appropriate in security (finite-state protocols, access control, APIs)? Where is it not?
+      \item How far can formal methods go on side channels (e.g., constant-time proofs, leakage models) before costs outweigh benefits?
+      \item What guarantees do decision-makers actually need: safety properties, non-interference, or quantified risk bounds?
+    \end{enumerate}
+  \end{question}
+\end{frame}
+
+
+% =========================
+% Part III – Tor: models and measurements
+% =========================
+
+\section{Tor: models, simulations, and measurements}
+
+\begin{frame}
+  \begin{block}{How the papers model Tor (from your Part III reflections)}
+    \begin{description}
+      \item[Users Get Routed] TorPS path simulation with AS/IXP adversaries and user behaviour models to estimate correlation risk over time
+      \item[Shadow] Discrete-event simulation that runs unmodified Tor code; controlled, reproducible experiments at scale
+      \item[WF + Website Oracles] Oracle-augmented adversary model combining WF with side information to reduce false positives
+      \item[Online WF (real Tor)] Models adversary at exit (and opt-in entry) with genuine Tor traffic and online learning in open-world settings
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Methodological strengths vs weaknesses (as you noted)}
+    \mode<presentation>{%
+      \begin{description}
+        \item[Strengths]
+          \begin{itemize}
+            \item Realism via live data (Online WF); repeatability and control (Shadow)
+            \item Broad what-if exploration (TorPS); clarifies attacker knowledge (WO)
+            \item Counterexamples and stress tests without harming users
+          \end{itemize}
+        \item[Weaknesses]
+          \begin{itemize}
+            \item Model error and idealisation (routing inference, perfect oracles)
+            \item External validity gaps (synthetic crawls vs live heterogeneity)
+            \item Ethical limits and reproducibility constraints with real users
+          \end{itemize}
+      \end{description}
+    }
+    \mode<article>{%
+      Strengths included realism from live exit-relay data (Online WF), repeatability and control by running real Tor in simulation (Shadow), and the ability to probe broad adversary conditions (TorPS) and attacker side information (WO). Weaknesses centered on idealisations (e.g., routing inference errors, perfect oracles), synthetic-data optimism, and ethical constraints that both increased realism and reduced reproducibility for live evaluations.
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Consequences for results (synthesis of your points)}
+    \mode<presentation>{%
+      \begin{itemize}
+        \item Lab/synthetic WF often overestimates attack power; live Tor shows strong drop-offs beyond small monitored sets
+        \item WO-style side information can overturn \enquote{defences} by collapsing false positives
+        \item Simulators are excellent for design comparison and safety, but not substitutes for measurement
+        \item Attacker models drive conclusions: be explicit about capabilities, scope, and data sources
+      \end{itemize}
+    }
+    \mode<article>{%
+      A consistent pattern emerged: closed-world, synthetic WF yields optimistic accuracy that erodes under live, noisy, evolving Tor traffic, especially beyond small monitored site sets. Oracle-style side information can substantially reduce false positives, challenging prior defences. Simulators (Shadow) are invaluable for safe, comparative experiments but must be paired with measurement to gauge external validity. Overall, attacker capability assumptions dominate conclusions and must be made explicit.
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{question}[Discussion (Part III)]
+    \begin{enumerate}
+      \item How realistic are proposed oracles in your threat models (DNS, CDN logs, RTB, resolvers)? What access do real adversaries have?
+      \item When is Shadow \emph{enough} to evaluate a change? What requires live measurement despite ethical/repro concerns?
+      \item Which metrics best capture external validity for Tor studies (concept drift, open-world, base rates, path churn)?
+      \item What defences target the \enquote{right} layer given these results: path selection, padding, traffic shaping, resolver policy, user guidance?
+    \end{enumerate}
+  \end{question}
+\end{frame}
+
+% =========================
+% Optional: wrap-up slide
+% =========================
+
+\begin{frame}
+  \begin{block}{Takeaways across Parts I–III}
+    \begin{itemize}
+      \item Be explicit: assumptions, attacker capabilities, and the model’s scope
+      \item Combine methods: reductions + formal verification + simulation + measurement
+      \item Judge validity: internal (control), construct (right properties), external (realism)
+      \item Align mitigations with the layer that fails (algorithm, implementation, network, operations)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+Notes:
+- Lists of labelled concepts use description for semantic markup.
+- Quotes use \enquote{...} (csquotes).
+- Presentation mode shows concise bullets; article mode adds explanatory paragraphs.
