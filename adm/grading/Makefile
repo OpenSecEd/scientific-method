@@ -12,7 +12,7 @@ vetcyb-grading.pdf: prompts.toml
 
 GRADE_RESULTS=test-grade_reflections-err.txt
 
-vetcyb-grading.pdf: ${GRADE_RESULTS}
+#vetcyb-grading.pdf: ${GRADE_RESULTS}
 vetcyb-grading.pdf: ./instruction-qualitative.md ./submission-qualitative.md
 
 ${GRADE_RESULTS}: test-grade-reflections.sh
