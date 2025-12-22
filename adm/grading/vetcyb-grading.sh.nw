@@ -788,7 +788,7 @@ then
                        -a "${reflection_assign_regex}" \
                        -u "${students_regex}" \
                        -o "${reflections_dir}" \
-                       -U
+                       -U --diff
 fi
 @
 
@@ -894,7 +894,7 @@ local students_with_results=$(find "${reflections_dir}" \
                               | grep "@")
 @
 
-The idea is that we use the [[llm]] package (and command) to ask GPT-4o to 
+The idea is that we use the [[llm]] package (and command) to ask an LLM to 
 assess if the submission is an honest attempt based on the instruction.
 This means that for each student, we'll have to iterate through the 
 assignments.
@@ -992,6 +992,7 @@ students.
 
 In previous experiments (\cref{FirstExperiment}), some of the models give 
 unstable results.
+
 The [[4o]] model with lowered temperature to \(0.5\) seems to give more 
 consistent results.
 The [[o1]] (o1-preview at the time) model is much slower, but also seems to 
@@ -999,11 +1000,12 @@ give consistent results.
 But now we'll run a few more systematic tests.
 However, for some students, the [[o1]] model thinks that it didn't get a copy 
 of the instruction---which it did.
-So we'll default to the [[4o]] class of models, using the latest (as of May 
-2025) version [[4.1]].
+
+We'll use the gpt-5.2 model.
+It's cheap and good.
 <<constants>>=
-llm_model="4.1"
-llm_options=(-o temperature 0.5)
+llm_model="gpt-5.2"
+#llm_options=(-o temperature 0.5)
 llm_sys_prompt="
 You are a skilled scientist and teacher with a keen eye
 for detail and an emphasis on readability.
@@ -1089,6 +1091,20 @@ test() {
   unset llm_options
 
   <<run [[rounds]] rounds of grading>>
+
+  echo "### llm gpt-5.1"
+  echo "### llm gpt-5.1" >&2
+  llm_model="gpt-5.1"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
+
+  echo "### llm gpt-5.2"
+  echo "### llm gpt-5.2" >&2
+  llm_model="gpt-5.2"
+  unset llm_options
+
+  <<run [[rounds]] rounds of grading>>
 }
 @
 
@@ -1102,7 +1118,8 @@ rm -Rf "${reflections_dir}"
 canvaslms submission -c "${course}" \
                      -a "${reflection_assign_regex}" \
                      -u "${students_regex}" \
-                     -o "${reflections_dir}"
+                     -o "${reflections_dir}" \
+                     --diff
 @
 
 When running the tests, we want to output the headers to both stdout and 
