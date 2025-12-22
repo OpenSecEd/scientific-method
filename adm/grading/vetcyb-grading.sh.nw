@@ -368,8 +368,8 @@ We already have [[filter_live_seminar]] to get some assignments with the grade
 `complete`.
 But we'll also need the reflection assignments and the non-reflection 
 assignments.
-The reflections are graded `complete`, the non-reflections are graded at least 
-90 points.
+The reflections are graded `complete`, the non-reflections are graded 100 
+points.
 <<helper functions>>=
 filter_reflection() {
   local course="${1}"
@@ -556,13 +556,13 @@ if ! echo "${student_results}" \
      | passed_all '^complete'
 @
 
-Otherwise we check if they also have at least 90 points on the FeedbackFruits 
+Otherwise we check if they also have at least 100 points on the FeedbackFruits 
 prep and `complete` on the reflections.
 <<if [[student_results]] didn't pass all non-reflection assignments>>=
 if ! echo "${student_results}" \
      | filter_peer_review "${course}" \
      | filter_non_reflection "${course}" \
-     | passed_all '^9[0-9]|100'
+     | passed_all '^100'
 <<if [[student_results]] didn't pass all reflection assignments>>=
 if ! echo "${student_results}" \
      | filter_peer_review "${course}" \
@@ -598,7 +598,7 @@ then
 <<else if [[student_results]] didn't pass all prep assignments>>
 then
   echo "You haven't completed the following prep assignments" \
-       "to a sufficient degree (90 points):"
+       "to a sufficient degree (100 points):"
   <<echo prep assignments in [[student_results]] without a passing grade>>
   echo "But you can complete them to pass the course," \
        "without doing the project," \
