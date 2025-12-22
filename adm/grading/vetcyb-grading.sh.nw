@@ -2,8 +2,10 @@
 \usepackage[colorlinks]{hyperref}
 \usepackage{noweb}
 \noweboptions{shift,longchunks,longxref,breakcode}
+\usepackage{csquotes}
 
-\usepackage[outputdir=ltxobj]{minted}
+%\usepackage[outputdir=ltxobj]{minted}
+\usepackage{minted}
 
 %\usepackage[utf8]{inputenc}
 %\DeclareUnicodeCharacter{25CF}{$\bullet$}
