@@ -691,7 +691,8 @@ The relevant year is in the course name, so we can get it from
 <<helper functions>>=
 last_seminar_date() {
   local course="${1}"
-  local year=$(echo "${course}" | sed -E 's/vetcyb([0-9]{2})-?p[1-4]/\1/')
+  local year=$(echo "${course}" \
+               | sed -E 's/vetcyb([0-9]{2})-?(p[1-4]|[hv])/\1/')
   assignments "${course}" \
   | filter_live_seminar \
   | cut -f 2 \
