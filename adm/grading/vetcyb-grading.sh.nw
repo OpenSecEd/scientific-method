@@ -626,16 +626,22 @@ elif ! echo "${student_results}" \
        | filter_peer_review "${course}" \
        | passed_all
 <<echo prep assignments in [[student_results]] without a passing grade>>=
+echo
 echo "${student_results}" \
 | filter_peer_review "${course}" \
 | filter_non_reflection "${course}" \
 | grep -Ev '\s9[0-9]|100' \
-| cut -f 1,3
+| cut -f 1,3 \
+| <<prepend bullet point>>
 echo "${student_results}" \
 | filter_peer_review "${course}" \
 | filter_reflection "${course}" \
 | grep -Ev '\scomplete' \
-| cut -f 1,3
+| cut -f 1,3 \
+| <<prepend bullet point>>
+echo
+<<prepend bullet point>>=
+sed -E 's|^|  - |'
 @
 
 \subsection{Giving feedback to students who didn't pass}
