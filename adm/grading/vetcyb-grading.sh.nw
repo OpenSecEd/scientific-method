@@ -1029,14 +1029,7 @@ and be costly (but not more than a few euros).
 source vetcyb-grading.sh
 
 course=vetcyb25p4
-#students=$(canvaslms users -sc ${course})
-students="
-user1@kth.se
-user2@kth.se
-user3@kth.se
-user4@kth.se
-user5@kth.se
-"
+students=$(canvaslms users -sc ${course})
 
 rounds=3
 
@@ -1149,7 +1142,8 @@ We want it to be stable, that is, to fail the same students in every round or
 accept them in every round.
 We want to avoid situations where the student might be accepted in one round 
 and rejected in another.
-\inputminted[breaklines]{text}{test-grade_reflections-err.txt}
+[output excluded]
+%\inputminted[breaklines]{text}{test-grade_reflections-err.txt}
 
 
 
