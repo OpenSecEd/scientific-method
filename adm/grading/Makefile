@@ -3,6 +3,7 @@ LATEXFLAGS=-shell-escape
 
 .PHONY: all
 all: vetcyb-grading.pdf vetcyb-grading.sh
+all: trnsfr-results.pdf trnsfr-results.sh
 
 .INTERMEDIATE: vetcyb-grading.tex
 vetcyb-grading.pdf: vetcyb-grading.tex
@@ -21,6 +22,15 @@ ${GRADE_RESULTS}: test-grade-reflections.sh
 test-grade-reflections.sh: vetcyb-grading.sh.nw vetcyb-grading.sh
 	${NOTANGLE.sh}
 
+.INTERMEDIATE: trnsfr-results.tex
+trnsfr-results.pdf: trnsfr-results.nw
+	${NOWEAVE.pdf}
+
+trnsfr-results.sh: trnsfr-results.nw
+	${NOTANGLE.sh}
+	chmod +x $@
+
+
 .PHONY: clean
 clean:
 	${RM} vetcyb-grading.pdf vetcyb-grading.sh
@@ -28,6 +38,7 @@ clean:
 	${RM} test-grade-reflections.sh
 	${RM} test-grade_reflections.txt
 	${RM} test-grade_reflections-err.txt
+	${RM} trnsfr-results.pdf trnsfr-results.sh
 
 
 INCLUDE_MAKEFILES=../../makefiles
