@@ -255,29 +255,29 @@ grade_course_participation() {
   local course="${1}"
   <<let [[students]] be the students to grade in [[course]]>>
   <<grade reflection assignments for every [[student]] in [[students]]>>
-  local passed=$(mktemp)
-  for student in ${students}
-  do
-    <<echo [[student]] if they passed both prep and live seminar>>
-  done > "${passed}"
-  if [ -s "${passed}" ]
-  then
-    canvaslms grade -c "${course}" \
-                    -a "${project_assignments_regex}" \
-                    -g P \
-                    -u "$(make_regex ${passed})" \
-                    -m "${participation_msg}"
-  fi
-  <<give feedback to students not in [[passed]], who didn't pass>>
+  <<compute passed and failed students>>
+  report_participation_grades "${course}" "${passed}" "${failed_students}"
 }
+@
+
+We compute who passed and who failed separately, then pass these to the
+reporting function.
+<<compute passed and failed students>>=
+local passed=$(mktemp)
+for student in ${students}
+do
+  <<echo [[student]] if they passed both prep and live seminar>>
+done > "${passed}"
+local failed_students=$(<<students who didn't pass>>)
+@
 <<constants>>=
 participation_msg="
-You did all prep and actively participated in all seminars. You don't have to 
+You did all prep and actively participated in all seminars. You don't have to
 do the project.
 "
 @
 
-We must remember to set the grades for only the project assignments, not all 
+We must remember to set the grades for only the project assignments, not all
 INL1 assignments.
 The INL1 assignments group also includes a survey.
 <<constants>>=
@@ -570,7 +570,35 @@ if ! echo "${student_results}" \
      | passed_all '^complete'
 @
 
-Now we want to construct a similar function, but this one should output 
+We also need the inverse function: one that outputs students who \emph{failed}
+the participation requirements.
+This is useful for separating grading from reporting.
+<<helper functions>>=
+failed_participation() {
+  local course="${1}"
+  shift
+  for student in $*
+  do
+    local student_results=$(results "${course}" | grep "${student}")
+    <<if [[student_results]] didn't pass all live seminars>>
+    then
+      echo "${student}"
+      continue
+    fi
+    <<if [[student_results]] didn't pass all non-reflection assignments>>
+    then
+      echo "${student}"
+      continue
+    fi
+    <<if [[student_results]] didn't pass all reflection assignments>>
+    then
+      echo "${student}"
+    fi
+  done
+}
+@
+
+Now we want to construct a similar function, but this one should output
 feedback on why the student didn't pass.
 This function will take one student as argument and output the feedback on 
 stdout.
@@ -652,31 +680,53 @@ The other students in [[students]] are the ones who didn't pass.
 echo "${students}" | grep -vFxf "${passed}"
 @
 
-However, these results only make sense after the last seminar of the course.
+\subsection{Reporting participation grades to Canvas}
+
+We separate the reporting from the grading logic.
+The [[report_participation_grades]] function takes the course, a file of passed
+students, and a space-separated list of failed students.
+It reports the grades to Canvas.
+
+Note that feedback for failed students is only given after the last seminar.
 Before that last seminar, none of the students could have passed.
 Unfortunately, just checking if \emph{anyone} passed, will not be enough.
-In the rounds following, maybe all missed a small thing, but then they won't 
+In the rounds following, maybe all missed a small thing, but then they won't
 get feedback about it.
 So we need to compare to the dates of the seminars.
-We can't rely on the dates being equal, then the script might run before the 
+We can't rely on the dates being equal, then the script might run before the
 seminar that day.
 So [[today]] must be strictly after the last seminar.
-<<give feedback to students not in [[passed]], who didn't pass>>=
-<<let [[last_date]] be the date of the last seminar>>
-<<let [[today]] be today's date>>
-if [[ "${last_date}" < "${today}" ]]
-then
-  for student in $(<<students who didn't pass>>)
-  do
-    local feedback=$(feedback_participation "${course}" "${student}")
-    if [ -n "${feedback}" ]
-    then
-      canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
-        -u "${student}" \
-        -m "${feedback}"
-    fi
-  done
-fi
+<<helper functions>>=
+report_participation_grades() {
+  local course="${1}"
+  local passed_file="${2}"
+  local failed_students="${3}"
+
+  if [ -s "${passed_file}" ]
+  then
+    canvaslms grade -c "${course}" \
+      -a "${project_assignments_regex}" \
+      -g P \
+      -u "$(make_regex ${passed_file})" \
+      -m "${participation_msg}"
+  fi
+
+  <<let [[last_date]] be the date of the last seminar>>
+  <<let [[today]] be today's date>>
+  if [[ "${last_date}" < "${today}" ]]
+  then
+    for student in ${failed_students}
+    do
+      local feedback=$(feedback_participation "${course}" "${student}")
+      if [ -n "${feedback}" ]
+      then
+        canvaslms grade -c "${course}" -a "${project_assignments_regex}" \
+          -u "${student}" \
+          -m "${feedback}"
+      fi
+    done
+  fi
+}
 @
 
 
@@ -735,9 +785,17 @@ the instruction.
 
 If we don't have any students to grade, we return 1 to indicate so.
 This way we can skip refreshing all results if we didn't do anything here.
+
+The [[grade_reflections]] function outputs grading results to stdout.
+We pipe this to [[report_reflection_grades]] to report passing grades to Canvas.
 <<grade reflection assignments for every [[student]] in [[students]]>>=
-grade_reflections "${course}" ${students} \
-  && results_refresh "${course}"
+local reflection_results=$(mktemp)
+grade_reflections "${course}" ${students} > "${reflection_results}"
+if [ -s "${reflection_results}" ]
+then
+  cat "${reflection_results}" | report_reflection_grades "${course}"
+  results_refresh "${course}"
+fi
 <<helper functions>>=
 grade_reflections() {
   local course="${1}"
@@ -966,15 +1024,13 @@ llm_cmd() {
 <<grade reflection assignment in [[assignment_dir]] for [[student]]>>=
 if echo "${assessment}" | grep -qi "^Yes"
 then
-  echo "${course} ${student} ${assignment}: complete"
-  canvaslms grade -c "${course}" -a "${assignment}" -u "${student}" -g complete
+  echo -e "${student}\t${assignment}\tpass"
 else
-  echo >&2
+  echo -e "${student}\t${assignment}\tfail"
   echo "${course} ${student} ${assignment}: NOT COMPLETE" >&2
   echo "${assessment}" >&2
   echo >&2
 fi
-echo >&2
 @
 
 An instruction might look like this:
@@ -982,6 +1038,32 @@ An instruction might look like this:
 
 And a corresponding submission may look like this:
 \inputminted[breaklines]{markdown}{./submission-qualitative.md}
+
+
+\subsection{Reporting reflection grades to Canvas}
+
+The [[grade_reflections]] function outputs the grading results to stdout in a
+tab-separated format: [[student\tassignment\tpass/fail]].
+This allows us to test the grading logic without reporting to Canvas.
+To actually report the grades, we pipe the output to [[report_reflection_grades]].
+<<helper functions>>=
+report_reflection_grades() {
+  local course="${1}"
+  while IFS=$'\t' read -r student assignment grade
+  do
+    if [ "${grade}" = "pass" ]
+    then
+      canvaslms grade -c "${course}" -a "${assignment}" -u "${student}" -g complete
+      echo "${course} ${student} ${assignment}: complete"
+    fi
+  done
+}
+@
+
+Failed reflections are logged to stderr by [[grade_reflections]] for human
+review.
+They are not automatically reported to Canvas since they may require manual
+assessment.
 
 
 \subsection{Evaluating the reliability}
