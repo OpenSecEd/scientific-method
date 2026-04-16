@@ -1,3 +1,25 @@
+\documentclass[a4paper]{article}
+\usepackage[colorlinks]{hyperref}
+\usepackage{noweb}
+\noweboptions{shift,longchunks,longxref,breakcode}
+\usepackage{csquotes}
+
+%\usepackage[outputdir=ltxobj]{minted}
+\usepackage{minted}
+
+%\usepackage[utf8]{inputenc}
+%\DeclareUnicodeCharacter{25CF}{$\bullet$}
+%\DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
+%  \vrule height2.2exdepth1exwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+%\DeclareUnicodeCharacter{2500}{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
+%\DeclareUnicodeCharacter{2502}{\mbox{\kern.23em
+%  \vrule height2.2exdepth-1.8ptwidth.4pt\kern.23em}}
+%\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
+%  \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+
+\usepackage{cleveref}
+
+\begin{document}
 \title{Transfer Results from Year to Year in Canvas}
 \author{Daniel Bosk}
 
@@ -384,7 +406,7 @@ apply_grades() {
 \section{The main program}
 
 The [[main]] function is part of the [[<<main program>>]] chunk in
-[[<<trnsfr-results.sh>>]].
+[[<<[[trnsfr-results.sh]]>>]].
 It calls [[transfer_results]] to copy results from [[vetcyb25h]] to the
 current course.
 
@@ -433,3 +455,5 @@ main() {
     "$FINAL_SEMINAR_REGEX" "$FINAL_SEMINAR_REGEX"
 }
 @
+
+\end{document}

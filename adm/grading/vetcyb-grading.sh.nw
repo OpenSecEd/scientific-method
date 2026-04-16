@@ -46,7 +46,7 @@ This will have the standard design (see [[report_INL1]]), except that we'll do
 the participation grading before.
 This way we can set the grades of the INL1 assignments based on the 
 participation and prep.
-<<vetcyb-grading.sh>>=
+<<[[vetcyb-grading.sh]]>>=
 #!/bin/bash
 
 courses="vetcyb(24-?p2|2[5-9]|[3-9][0-9])"
