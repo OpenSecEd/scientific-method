@@ -57,6 +57,13 @@
 \declaretheorem[style=exercise]{question}
 \declaretheorem[style=solution]{solution}
 
+\NewDocumentCommand{\ltnote}{+m}{%
+  \marginpar{%
+    \footnotesize\RaggedRight
+    \emph{Learning theory:} #1%
+  }%
+}
+
 \begin{document}
 \input{contents.tex}
 

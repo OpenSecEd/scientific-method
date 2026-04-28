@@ -29,7 +29,9 @@
 \begin{columns}[T,totalwidth=\linewidth]
   \begin{column}{0.5\linewidth}
     \begin{block}{Quantitative}
+      \only<article>{The quantitative papers for comparison are:}
       \begin{itemize}
+        \setlength{\itemsep}{0pt}
         \item Shadow: Running Tor in a box
         \item Website Fingerprinting with Website Oracles
         \item Evaluating the Real-World Applicability of WF
@@ -39,7 +41,9 @@
   \end{column}
   \begin{column}{0.5\linewidth}
     \begin{block}{Qualitative}
+      \only<article>{The qualitative papers for comparison are:}
       \begin{itemize}
+        \setlength{\itemsep}{0pt}
         \item Why phishing works
         \item Why Johnny can't encrypt
         \item Comparing the Usability of Cryptographic APIs
@@ -47,26 +51,75 @@
     \end{block}
   \end{column}
 \end{columns}
-  \begin{exercise}[Venting]
-    \begin{itemize}
-      \item What are your thoughts after reading the papers?
-    \end{itemize}
+  \begin{exercise}[Warm-up]
+    \only<article>{Open the seminar with the following prompt. }
+    Choose one paper and name one insight that should shape today's
+    discussion.
   \end{exercise}
 \end{frame}
 
+\paragraph{Warm-up facilitation}
+\ltnote{%
+  This opener is deliberately diagnostic. Asking students to name one insight
+  from one paper lowers the threshold for participation, activates retrieval,
+  and gives the room portable ideas to revisit later. The chosen paper and
+  insight vary, while the seminar's continuing task of judging security claims
+  stays invariant.
+}
+\begin{description}
+  \item[Aim] Move quickly from first reactions to portable insights that can
+    be reused throughout the seminar.
+  \item[Listen for] Concrete lessons rather than broad likes or dislikes. Good
+    examples include scoped simulation validity, the role of priors in false
+    positive claims, and the gap between secure designs and secure use.
+  \item[Push further] Ask which later paper should be read differently because
+    of the insight the student just named.
+  \item[Common trap] Letting the room split into isolated paper summaries.
+  \item[Possible takeaway] Each paper contributes a result, but also a
+    methodological caution that the whole room can carry into later
+    discussions.
+\end{description}
+
 \begin{frame}
-  \begin{question}
+  \begin{question}[Methods in relation]
+    \only<article>{Use these questions to compare what each method can and
+      cannot tell us.}
     \begin{itemize}
-      \item How do qualitative and quantitative methods complement each 
-        other?
+      \item What can formal, quantitative, and qualitative methods each tell
+        us that the others cannot?
+      \item If a system is secure on paper but insecure in use, which method
+        reveals the missing piece?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Methods in relation}
+\ltnote{%
+  This frame is designed as contrast. The object of learning is not the papers
+  themselves, but the kind of claim each method can justify. The method varies
+  while the security problem stays invariant, helping students discern
+  complementarity instead of ranking methods. The second prompt also supports
+  epistemic reasoning by making students state what each method cannot justify
+  on its own.
+}
+\begin{description}
+  \item[Aim] Establish complementarity before the paper-specific discussions
+    begin.
+  \item[Listen for] A three-part distinction: formal methods tell what should
+    hold under assumptions, quantitative methods tell what happens and how
+    often, and qualitative methods tell why it happens in context.
+  \item[Push further] Ask what claim each method cannot justify on its own.
+  \item[Common trap] Treating methods as rivals to rank instead of tools that
+    expose different parts of the same security problem.
+  \item[Possible takeaway] Strong security claims emerge when different methods
+    constrain each other.
+\end{description}
 
 \section{Quantitative methods}
 
 \begin{frame}
   \begin{block}{Papers}
+    \only<article>{The quantitative papers in this part are:}
     \begin{itemize}
       \item Shadow: Running Tor in a box
       \item Website Fingerprinting with Website Oracles
@@ -76,12 +129,37 @@
     \end{itemize}
   \end{block}
 
-  \begin{question}[Venting]
+  \begin{question}[Cross-paper setup]
+    \only<article>{Start by comparing the strength of the claims before
+      trusting any one result.}
     \begin{itemize}
-      \item What are your thoughts after reading the papers?
+      \item Which result looks strongest at first glance?
+      \item Which assumption would you check first before trusting it?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Quantitative setup}
+\ltnote{%
+  The quantitative arc is structured as contrast followed by generalization.
+  Shadow isolates scoped simulator validation; the two WF papers keep the
+  attack family relatively invariant while varying priors, realism, and
+  deployment context; \enquote{Dos and Don'ts of Machine Learning in Security}
+  then generalizes the reusable validity checks. The recurring
+  claim-assumption-limit scaffold reduces extraneous load while keeping
+  attention on the critical aspects.
+}
+\begin{description}
+  \item[Aim] Get students to compare the strength of claims against the
+    assumptions behind them, not just against each other.
+  \item[Listen for] Remarks about metrics, base rates, priors, realism, and
+    drift.
+  \item[Push further] Ask whether the apparently strongest result is also the
+    most externally valid.
+  \item[Common trap] Trusting the number before checking how it was produced.
+  \item[Possible takeaway] A quantitative result is only as strong as the data,
+    metric, and assumptions behind it.
+\end{description}
 
 %\section{Users get routed}
 %
@@ -109,75 +187,210 @@
 
 \begin{frame}
   \begin{question}[Shadow: Running Tor in a box]
+    \only<article>{Use these prompts to discuss what the simulator validation
+      actually buys us.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item If Shadow matches real Tor on selected distributions, what claim
+        has actually been validated?
+      \item What would still need separate validation before you trusted a
+        downstream result built on Shadow?
     \end{itemize}
   \end{question}
 \end{frame}
 
+\paragraph{Shadow facilitation}
+\begin{description}
+  \item[Aim] Land on scoped trust rather than blanket trust.
+  \item[Listen for] Calibration against selected metrics, repeated runs,
+    reproducibility, and the difference between validating a tool and
+    validating every use of that tool.
+  \item[Push further] Ask what kind of downstream claim would still require
+    fresh real-world data.
+  \item[Common trap] \enquote{The simulator looks realistic, so any result
+    from it is trustworthy.}
+  \item[Connection] Compare this to the realism complaints in the later WF
+    papers and to external-validity concerns from \enquote{Dos and Don'ts of
+    Machine Learning in Security}.
+  \item[Possible takeaway] Validation buys justified trust within scope, not a
+    blank cheque.
+\end{description}
+
 \begin{frame}
-  \begin{question}
+  \begin{question}[Shadow and realism]
+    \only<article>{These follow-up questions connect Shadow to broader concerns
+      about realism and scope.}
     \begin{itemize}
-      \item They evaluate the quality of a research tool.
-      \item What are the challenges in doing that?
+      \item Which lesson from \enquote{Dos and Don'ts of Machine Learning in
+        Security} should make us more cautious about simulator-based results?
+      \item When is a simulator the right method, and when does realism become
+        the research question itself?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Shadow follow-up}
+\begin{description}
+  \item[Aim] Shift from \enquote{Is the simulator good?} to \enquote{Good for
+    which purpose?}
+  \item[Listen for] Trade-offs between control and realism, omitted network
+    conditions, and the possibility that a method is excellent for mechanism
+    questions but weaker for deployment questions.
+  \item[Push further] Ask whether the simulator supports a causal explanation,
+    an engineering prediction, or both.
+  \item[Common trap] Mistaking experimental convenience for external validity.
+  \item[Possible takeaway] Better control can weaken external validity if the
+    scope is forgotten.
+\end{description}
 
 \subsection{WF with Website Oracles}
 
 \begin{frame}
   \begin{question}[WF with Website Oracles]
+    \only<article>{Use these prompts to separate a strong modeled result from
+      a broad deployment claim.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item Does this paper show a practical attack, or a strong result under
+        strong assumptions?
+      \item Which assumptions about priors, popularity, or oracle availability
+        carry the result?
     \end{itemize}
   \end{question}
 \end{frame}
 
+\paragraph{Website Oracles facilitation}
+\begin{description}
+  \item[Aim] Separate a strong modeled result from a broad deployment claim.
+  \item[Listen for] Priors, popularity distributions, Bayesian updating, and a
+    precise account of what the oracle contributes.
+  \item[Push further] Ask what has to be true in the world for the low false
+    positive claims to matter operationally.
+  \item[Common trap] Repeating \enquote{one in a million} style numbers without
+    the assumptions that make them possible.
+  \item[Connection] Use \enquote{Online Website Fingerprinting} as the obvious
+    contrast case.
+  \item[Possible takeaway] The paper sharpens the threat model rather than
+    settling real-world practicality.
+\end{description}
+
 \begin{frame}
-  \begin{question}
+  \begin{question}[What is the contribution?]
+    \only<article>{Ask these questions to pin down the paper's actual
+      contribution.}
     \begin{itemize}
-      \item What type of contribution do we get from this paper?
-        What is the Website Oracle?
-      \item How do they show WOs exist in reality?
+      \item What is the main contribution here: evidence that website oracles
+        exist, a new statistical model, or a stronger attack story?
+      \item What would \enquote{Online Website Fingerprinting} need to confirm
+        before you would call this operationally realistic?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Website Oracles follow-up}
+\begin{description}
+  \item[Aim] Make students name the contribution precisely rather than praising
+    it in general terms.
+  \item[Listen for] Evidence that oracles exist, the role of side information,
+    and the distinction between plausibility and practicality.
+  \item[Push further] Ask what additional empirical validation would move the
+    claim from plausible to operational.
+  \item[Common trap] Calling the attack practical just because the reported
+    false positive rate is small.
+  \item[Possible takeaway] Attack plausibility and attack practicality are
+    different claims.
+\end{description}
 
 \subsection{Evaluating WF in Real World}
 
 \begin{frame}
   \begin{question}[Evaluating WF in Real World]
+    \only<article>{Use these prompts to surface why real-world evaluation
+      changes the result.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item Why can the same WF idea look strong in the lab and weak online?
+      \item Which matters most here: scale, base rates, drift, or noisier
+        traffic?
     \end{itemize}
   \end{question}
 \end{frame}
 
+\paragraph{Online WF facilitation}
+\begin{description}
+  \item[Aim] Foreground external validity and drift.
+  \item[Listen for] Open-world imbalance, larger monitored sets, concept drift,
+    and noisier traffic traces.
+  \item[Push further] Ask which earlier WF assumption this paper is really
+    attacking.
+  \item[Common trap] Thinking that lower numbers necessarily make this a weaker
+    paper, rather than a more realistic one.
+  \item[Connection] Keep comparing back to the oracle paper so students see the
+    same attack family under different assumptions.
+  \item[Possible takeaway] Operational context can dominate classifier
+    performance.
+\end{description}
+
 \begin{frame}
-  \begin{question}
+  \begin{question}[Limits of realism]
+    \only<article>{These questions invite the same skepticism toward this paper
+      that it directs at earlier work.}
     \begin{itemize}
-      \item They complained about the evaluation of WF in other papers.
-        What was the problem?
-      \item Are there any problems with this paper's approach?
+      \item Which earlier WF claim does this paper narrow or correct?
+      \item If this paper is more realistic, what important limits still remain
+        in its own approach?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Online WF follow-up}
+\begin{description}
+  \item[Aim] Apply the same skepticism to this paper that it applies to other
+    WF work.
+  \item[Listen for] Its own collection limits, temporal scope, monitored-set
+    choices, and remaining simplifications.
+  \item[Push further] Ask what further realism would still be missing before a
+    deployment claim felt justified.
+  \item[Common trap] Treating \enquote{more realistic} as \enquote{fully
+    realistic}.
+  \item[Possible takeaway] Realism is comparative, not absolute.
+\end{description}
+
+\subsection{Dos and Don'ts of Machine Learning in Security}
+
+\begin{frame}
+  \begin{question}[Dos and Don'ts of Machine Learning in Security]
+    \only<article>{Use these questions to extract reusable checks for any
+      ML-for-security paper.}
+    \begin{itemize}
+      \item When do more data and higher accuracy make a result more
+        trustworthy, and when do they only make it more confidently wrong?
+      \item If a paper reports only accuracy, what is the first follow-up
+        question you would ask before trusting it?
+      \item Which pitfall from this paper threatens the other quantitative
+        papers most?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\paragraph{Dos and Don'ts facilitation}
+\begin{description}
+  \item[Aim] Extract reusable evaluation questions for any ML-for-security
+    paper.
+  \item[Listen for] Leakage, sampling bias, spurious correlations, bad metrics,
+    drift, and label noise.
+  \item[Push further] Ask whether more data would fix the flaw or only amplify
+    it.
+  \item[Connection] Invite students to name which pitfall threatens Shadow,
+    Website Oracles, and Online WF the most.
+  \item[Common trap] \enquote{Big dataset plus high accuracy means trustworthy
+    science.}
+  \item[Possible takeaway] Methodological errors survive scale.
+\end{description}
 
 
 \section{Qualitative methods}
 
 \begin{frame}
   \begin{block}{Papers}
+    \only<article>{The qualitative papers in this part are:}
     \begin{itemize}
       \item Why phishing works
       \item Why Johnny can't encrypt
@@ -185,51 +398,166 @@
     \end{itemize}
   \end{block}
 
-  \begin{question}[Venting]
+  \begin{question}[Cross-paper setup]
+    \only<article>{Open the qualitative part by asking which paper best
+      explains practical failure.}
     \begin{itemize}
-      \item What are your thoughts after reading the papers?
+      \item Which paper best explains why a technically sound system can still
+        fail?
+      \item What kind of evidence did the authors need to reveal that
+        mechanism?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Qualitative setup}
+\ltnote{%
+  The qualitative sequence uses the same mechanism-finding question across
+  three contexts. The invariant issue is why security fails in practice; what
+  varies is where the failure sits: attention and cues, end-user workflow, or
+  developer tooling. This helps students see qualitative work as a way of
+  explaining breakdown mechanisms in sociotechnical systems rather than as
+  merely subjective commentary.
+}
+\begin{description}
+  \item[Aim] Present the qualitative papers as mechanism-finding studies, not
+    as soft add-ons.
+  \item[Listen for] Mental models, attention, workflow, documentation, social
+    context, and design implications.
+  \item[Push further] Ask what an outcome metric alone would have missed in
+    these cases.
+  \item[Common trap] Calling the findings subjective and stopping there.
+  \item[Possible takeaway] Qualitative evidence explains why security failures
+    happen in practice.
+\end{description}
 
 \subsection{Why phishing works}
 
 \begin{frame}
-  \begin{question}[Evaluating WF in Real World]
+  \begin{question}[Why phishing works]
+    \only<article>{Use these prompts to move the discussion away from simple
+      user blame.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item Is phishing success mainly a knowledge problem, an attention
+        problem, or a bad decision environment?
+      \item What evidence in the paper points away from simple user blame?
+      \item Which insight here should change how we design indicators or
+        warnings?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Phishing facilitation}
+\begin{description}
+  \item[Aim] Shift the discussion from user blame to the design of the decision
+    environment.
+  \item[Listen for] Visual heuristics, attention capture, context, workload,
+    and misplaced trust in polished interfaces.
+  \item[Push further] Ask what concrete interface or workflow change follows if
+    the paper is right.
+  \item[Common trap] \enquote{Users just need more training.}
+  \item[Connection] Compare this paper with \enquote{Why Johnny can't encrypt}
+    and the API usability paper as variants of the same sociotechnical failure.
+  \item[Possible takeaway] Users act inside an environment that channels what
+    they notice and ignore.
+\end{description}
 
 \subsection{Why Johnny can't encrypt}
 
 \begin{frame}
-  \begin{question}[Evaluating WF in Real World]
+  \begin{question}[Why Johnny can't encrypt]
+    \only<article>{Use these questions to keep the focus on security in
+      use.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item If the cryptography is strong but ordinary users cannot use it
+        correctly, is the system secure in any meaningful sense?
+      \item What hidden assumption about users or workflow failed?
+      \item Which lesson here also appears in phishing or API usability?
     \end{itemize}
   \end{question}
 \end{frame}
+
+\paragraph{Johnny facilitation}
+\begin{description}
+  \item[Aim] Keep the focus on \enquote{secure in use} rather than only
+    \enquote{secure in theory}.
+  \item[Listen for] Mismatches between cryptographic soundness and actual user
+    workflow, mental-model failures, and interface burden.
+  \item[Push further] Ask whether a system that ordinary users cannot operate
+    correctly should count as secure.
+  \item[Common trap] Privileging technical strength over usable security.
+  \item[Connection] Compare the end-user problems here with the developer-side
+    problems in the API paper.
+  \item[Possible takeaway] Unusable security can nullify strong primitives.
+\end{description}
 
 \subsection{Comparing the Usability of Cryptographic APIs}
 
 \begin{frame}
-  \begin{question}[Evaluating WF in Real World]
+  \begin{question}[Comparing the Usability of Cryptographic APIs]
+    \only<article>{These prompts frame developers as users whose tools shape
+      security outcomes.}
     \begin{itemize}
-      \item What was the research question?
-      \item What methods did they use?
-      \item Why is that a good method?
-      \item Can we use another method?
+      \item If developers finish the task and feel confident, what could still
+        be seriously wrong?
+      \item What should count as evidence of usable security here: task
+        success, confidence, code quality, or something else?
+      \item How is this the developer version of the same problem as
+        \enquote{Why Johnny can't encrypt}?
     \end{itemize}
   \end{question}
 \end{frame}
 
+\paragraph{API usability facilitation}
+\begin{description}
+  \item[Aim] Make students see developers as users whose tools shape security
+    outcomes.
+  \item[Listen for] Unsafe defaults, poor documentation, confidence without
+    correctness, and the importance of secure examples.
+  \item[Push further] Ask which piece of evidence should matter most if the goal
+    is secure code rather than pleasant feelings.
+  \item[Common trap] Treating task completion or self-reported confidence as
+    sufficient evidence of secure API usability.
+  \item[Connection] Use this as the developer-facing version of the workflow
+    failures in \enquote{Why Johnny can't encrypt}.
+  \item[Possible takeaway] API design and documentation are part of the
+    security mechanism.
+\end{description}
 
+\subsection{Bringing the papers together}
 
+\begin{frame}
+  \begin{question}[Bringing the papers together]
+    \only<article>{Use these synthesis questions to force cross-method
+      transfer.}
+    \begin{itemize}
+      \item Which insight from a qualitative paper should change how we judge
+        one quantitative paper?
+      \item Which quantitative insight should change how we would design a
+        qualitative follow-up study?
+      \item If you could add one method to one paper, what would it be and why?
+    \end{itemize}
+  \end{question}
+\end{frame}
+
+\paragraph{Synthesis facilitation}
+\ltnote{%
+  The closing discussion is designed for fusion and transfer. Students must
+  hold method, claim, evidence, and remaining blind spot together, then carry
+  an insight from one paper into another. This interleaving is deliberate: the
+  seminar should end with students matching methods to claims, not with
+  parallel paper summaries.
+}
+\begin{description}
+  \item[Aim] Force cross-method transfer instead of ending with parallel paper
+    summaries.
+  \item[Listen for] Explicit pairings across papers, such as a qualitative
+    insight changing trust in a quantitative result or a quantitative limit
+    motivating a qualitative follow-up.
+  \item[Push further] Ask what extra method they would add, and exactly which
+    claim it would test.
+  \item[Common trap] Ending with \enquote{all methods matter} without saying
+    how.
+  \item[Possible takeaway] Match the method to the claim, then ask what blind
+    spot remains.
+\end{description}
