@@ -29,8 +29,10 @@
   \begin{block}{From your Part I reflections: recurring themes}
     \mode<presentation>{%
       \begin{itemize}
-        \item Proofs hold in idealised models; practice breaks assumptions 
-          (side channels, timing, EM)
+        \item \enquote{Provably secure} is a conditional claim: property, 
+          assumption, adversary, scope
+        \item Practical failures often reveal omitted variables rather than 
+          refuting the proof directly
         \item Models are still essential: give baselines, definitions, and 
           comparability
         \item Security is layered: crypto, implementation, hardware, human 
@@ -43,36 +45,39 @@
       Many of you stressed that cryptographic proofs establish guarantees only 
       within explicit, idealised models, while practical systems violate 
       assumptions via side channels (EM/timing/power), protocol metadata, and 
-      human factors. Yet, models remain indispensable because they define 
-      security precisely, provide a baseline for comparison, and help bound 
-      claims. Several reflections framed this in TCB terms: if any component 
-      outside the model fails, the whole may fail. Across responses, the call 
-      was to make assumptions and attacker capabilities explicit and to combine 
-      formal models with empirical testing.
+      human factors. A recurring improvement point is to say more precisely 
+      what the proof claims: which security notion, under which assumption, 
+      against which adversary, and with which exclusions. Several reflections 
+      framed this in TCB terms: if any component outside the model fails, the 
+      whole may fail. Across responses, the call was to make assumptions and 
+      attacker capabilities explicit and to combine formal models with 
+      empirical testing.
     }
   \end{block}
 \end{frame}
 
 \begin{frame}
-  \begin{block}{Part I — What you said about provable security vs reality}
+  \begin{block}{Part I -- What a proof does and does not say}
   \mode<presentation>{
     \begin{description}
-      \item[Consensus] Proofs give baseline guarantees under explicit 
-        assumptions; implementations and environments add side channels and 
-        leakage
-      \item[Tensions] What belongs inside the model vs out-of-scope? 
-        Definitions of secure differ (cryptographic vs empirical)
-      \item[Value] Models enable comparison, clarity, and rejection of designs 
-        that fail even under idealized conditions
+      \item[Claim] A specific property, e.g. IND-CPA, not \enquote{absolute 
+        security}
+      \item[Assumptions] A hardness assumption and an adversary model
+      \item[Reduction] Breaking the scheme would imply breaking the assumption
+      \item[Outside scope] Leakage, APIs, hardware, users, and deployment 
+        choices may still break the system
     \end{description}
   }
   \mode<article>{
     Many students stressed that proofs certify properties under a precise 
     threat model and assumptions, while practice adds leakage (timing, EM, 
-    caching, human factors). Models remain useful as baselines for design and 
-    comparison, but they do not close the gap to reality; testing and 
-    engineering must complement them. Several noted the Trusted Computing Base 
-    perspective: a flaw outside the model can break the whole system.
+    caching, human factors). The important refinement is that a proof says 
+    more than \enquote{the math works}: it makes a conditional claim about a 
+    named property, under named assumptions, against a specified adversary. A 
+    side-channel attack often falls outside that scope rather than 
+    \enquote{contradicting} the proof. Models remain useful as baselines for 
+    design and comparison, but they do not close the gap to reality; testing 
+    and engineering must complement them.
   }
   \end{block}
 \end{frame}
@@ -80,54 +85,62 @@
 \begin{frame}
   \begin{question}[Discussion (Part I)]
     \begin{enumerate}
-      \item Where should we draw the threat boundary in a proof? Should side 
-        channels be inside or outside the cryptographic model?
-      \item When is a proof \emph{misleading} rather than merely 
-        \emph{limited}? What signals that a model is too narrow?
-      \item How do we use models to prioritise mitigations: algorithm redesign 
-        vs. implementation hardening vs. operational controls?
-      \item If a scheme fails in practice but not in theory, what should change 
-        first: the model, the implementation, or the deployment context?
+      \item What exactly is being proved, and what is not being proved?
+      \item Which attacker capabilities are included in the model, and which 
+        are excluded?
+      \item If we add timing, packet lengths, or EM leakage, does the result 
+        become more pessimistic or more optimistic?
+      \item When does a practical failure show the proof is wrong, and when 
+        does it only show that the model is too narrow?
     \end{enumerate}
   \end{question}
 \end{frame}
 
 \begin{frame}
-  \begin{activity}[Discuss — Where should the boundary of the model be?]
+  \begin{activity}[Discuss -- Where should the boundary of the model be?]
   \begin{itemize}
-    \item For each leakage below, decide how to deal with it scientifically:
+    \item For each leakage below, state the omitted variable, then decide how 
+      to deal with it scientifically:
       \begin{itemize}
         \item Packet length and inter-keystroke timing in SSH
         \item EM emanations from windowed exponentiation
       \end{itemize}
-    \item If you move one item into the model, what new assumption or cost 
-      appears?
+    \item If you move one item into the model, what new assumption, defense, 
+      or performance cost appears?
+    \item Would adding it make your conclusion more pessimistic or more 
+      optimistic?
   \end{itemize}
   \mode<article>{
     Prompt students to justify modeling choices explicitly (e.g., include 
     timing in the protocol model implies constant-time framing or padding, with 
-    performance cost).
+    performance cost). Push them to name the missing variable rather than only 
+    saying that \enquote{the real world is more complex}.
   }
   \end{activity}
 \end{frame}
 
-% XXX revise below
-
 \begin{frame}
-  \begin{activity}[Activity — Diagnosing a proof-to-practice gap]
+  \begin{activity}[Activity -- State the claim precisely]
   \begin{itemize}
-    \item Pick a scheme with a reductionist proof (e.g., ElGamal under DDH)
+    \item Pick a scheme with a reductionist proof, e.g. ElGamal under DDH
+    \item Write the claim as a conditional statement, e.g. \enquote{under 
+      DDH, ElGamal is IND-CPA secure against a PPT adversary}
     \item Identify:
       \begin{description}
-        \item[Claim] What the proof guarantees
-        \item[Assumptions] Hardness and adversary capabilities
-        \item[Caveat] One realistic behavior the proof omits
-        \item[Mitigation] A protocol or implementation defense to restore the guarantee
+        \item[Reduction] What an attacker would have to do to falsify that 
+          claim
+        \item[Excluded reality] One realistic behavior the proof omits
+        \item[Interpretation] Does that omission contradict the proof, or sit 
+          outside its scope?
+        \item[Response] One protocol, implementation, or deployment mitigation
       \end{description}
   \end{itemize}
   \mode<article>{
     This ties student reflections (baseline guarantees, omitted channels) to 
-    actionable mitigations (padding, blinding, constant-time, shielding).
+    actionable mitigations (padding, blinding, constant-time, shielding). It 
+    also reinforces that proofs are themselves scientific objects: if a proof 
+    argument is flawed or relies on a controversial assumption, the scheme may 
+    still survive, but the claim must be re-examined.
   }
   \end{activity}
 \end{frame}
@@ -139,29 +152,51 @@
   \begin{block}{From your Part II reflections: what formal methods add}
     \mode<presentation>{%
       \begin{itemize}
-        \item Rigor and reproducibility: machine-checked arguments, counterexamples
-        \item Complementarity: theorem proving for specs; model checking for behaviours
-        \item Limits: state explosion, finite-state modelling, cost and expertise
-        \item Bridge to crypto: reductions define goals; formal methods check protocols/implementations
+        \item Rigor and reproducibility within a formal model
+        \item Complementarity: theorem proving, model checking, and experiments 
+          answer different questions
+        \item Limits: state explosion, abstraction choices, cost, and 
+          expertise
+        \item Bridge to crypto: reductions define goals; formal methods check 
+          protocols and implementations
       \end{itemize}
     }
     \mode<article>{%
-      You highlighted that formal verification and model checking bring deductive rigor and repeatability, offering machine-checked proofs and counterexamples that sharpen claims. Model checking excels for finite-state behaviours; theorem proving for general logical properties. Cost, expertise, and state explosion remain practical limits. Many linked this to cryptography: reductions justify a design's goal (\enquote{if DDH is hard, ElGamal is IND-CPA}), while formal methods verify protocols and implementations respect those goals (e.g., no secret-dependent control flow, correct key handling).
+      You highlighted that formal verification and model checking bring 
+      deductive rigor and repeatability, offering machine-checked proofs and 
+      counterexamples that sharpen claims. The important clarification is that 
+      these are not all just different ways of \enquote{proving security}. 
+      Model checking excels for finite-state behaviours; theorem proving for 
+      general logical properties. Cost, expertise, and state explosion remain 
+      practical limits. Many linked this to cryptography: reductions justify a 
+      design's goal (\enquote{if DDH is hard, ElGamal is IND-CPA}), while 
+      formal methods verify protocols and implementations respect those goals 
+      (e.g., no secret-dependent control flow, correct key handling).
     }
   \end{block}
 \end{frame}
 
 \begin{frame}
-  \begin{block}{Part II — What you said about formal methods}
+  \begin{block}{Part II -- Distinguish the methods}
   \mode<presentation>{
     \begin{description}
-      \item[Formal verification] Deductive, math-based proofs for code/specs; high assurance, but effortful and assumption-bound
-      \item[Model checking] Exhaustive exploration of finite models; counterexamples as scientific evidence; faces state explosion
-      \item[Relation to crypto] Proofs link security to assumptions; formal methods check protocols/implementations meet those specs
+      \item[Crypto proof] Security of a mathematical construction under a 
+        security notion, an assumption, and an adversary model
+      \item[Formal verification] A formalized system satisfies a formal 
+        property
+      \item[Model checking] Exhaustive search of a finite abstraction, often 
+        yielding counterexamples
+      \item[Experiment or simulation] Evidence about behavior under selected 
+        scenarios and assumptions
     \end{description}
   }
   \mode<article>{
-    Students highlighted rigor, reproducibility, and clear assumptions. Many positioned crypto proofs for primitives, model checking for protocols, and formal verification for implementations, noting remaining limits (side channels, model scope).
+    Students highlighted rigor, reproducibility, and clear assumptions. Many 
+    positioned crypto proofs for primitives, model checking for protocols, and 
+    formal verification for implementations. The key caution is that each 
+    method gives certainty only within its formalization. Model checking is 
+    usually appropriate for finite protocol abstractions, not as brute-force 
+    proof of computational security for systems such as ElGamal.
   }
   \end{block}
 \end{frame}
@@ -169,17 +204,20 @@
 \begin{frame}
   \begin{question}[Discussion (Part II)]
     \begin{enumerate}
-      \item What should we formally verify for a cryptosystem stack: primitives, protocols, code, or all of the above?
-      \item Where is model checking appropriate in security (finite-state protocols, access control, APIs)? Where is it not?
-      \item How far can formal methods go on side channels (e.g., constant-time proofs, leakage models) before costs outweigh benefits?
-      %\item What guarantees do decision-makers actually need: safety 
-        %properties, non-interference, or quantified risk bounds?
+      \item Which method fits which layer: primitive, protocol, code, or 
+        deployment?
+      \item Where is model checking appropriate in security, and where is it 
+        the wrong abstraction for the claim we want to make?
+      \item How much certainty do formal methods buy if the formal model omits 
+        timing, concurrency, or hardware behavior?
+      \item Which results should we report as proved, verified, checked, or 
+        evaluated?
     \end{enumerate}
   \end{question}
 \end{frame}
 
 %\begin{frame}
-%  \begin{activity}[Design exercise — What to prove, what to check]
+%  \begin{activity}[Design exercise -- What to prove, what to check]
 %  \begin{itemize}
 %    \item You are shipping a new crypto library:
 %      \begin{description}
@@ -197,12 +235,25 @@
 %\end{frame}
 
 \begin{frame}
-  \begin{activity}[Discuss — Limits of formal methods]
+  \begin{activity}[Discuss -- Which method fits which claim?]
   \begin{itemize}
-    \item When does adding a side-channel model to verification help, and when does it harm tractability?
-    \item How would you validate that verified code remains secure on real hardware?
-    \item What evidence will you ship with a system: proof artifacts, model-checker traces, tests?
+    \item For each claim below, choose the primary method and name one limit:
+      \begin{description}
+        \item[ElGamal is IND-CPA secure under DDH] Reductionist crypto proof
+        \item[This handshake has no replay-accepting state] Model checking or 
+          formal verification
+        \item[This implementation avoids secret-dependent control flow] Formal 
+          verification plus testing on real hardware
+        \item[This WF attack works on today's Tor network] Experiment or 
+          measurement
+      \end{description}
+    \item Where does model adequacy matter most in each case?
   \end{itemize}
+  \mode<article>{
+    This is a try-first contrast exercise: students must decide which method 
+    fits which kind of claim before the seminar gives the synthesis. The point 
+    is that no single method justifies every kind of security statement.
+  }
   \end{activity}
 \end{frame}
 
@@ -211,7 +262,7 @@
 \section{Part III}
 
 %\begin{frame}
-%  \begin{block}{Part III — What you said about Tor papers}
+%  \begin{block}{Part III -- What you said about Tor papers}
 %  \mode<presentation>{
 %    \begin{description}
 %      \item[TorPS/UGR] Realistic routing + user models; good coverage, upper-bound risks; sensitivity to routing inference and behavior models
@@ -227,36 +278,52 @@
 %\end{frame}
 
 \begin{frame}
-  \begin{block}{How the papers model Tor (from your Part III reflections)}
+  \begin{block}{How the papers model Tor and the attacker}
     \begin{description}
-      \item[Users Get Routed] TorPS path simulation with AS/IXP adversaries and user behaviour models to estimate correlation risk over time
-      \item[Shadow] Discrete-event simulation that runs unmodified Tor code; controlled, reproducible experiments at scale
-      \item[WF + Website Oracles] Oracle-augmented adversary model combining WF with side information to reduce false positives
-      \item[Online WF (real Tor)] Models adversary at exit (and opt-in entry) with genuine Tor traffic and online learning in open-world settings
+      \item[Users Get Routed] TorPS path simulation with inferred AS/IXP paths 
+        and stylized user behavior; exposure depends on a strong traffic-
+        correlation assumption
+      \item[Shadow] Discrete-event simulation running unmodified Tor code on 
+        scaled topologies; high fidelity, but still not the Internet
+      \item[WF + Website Oracles] Oracle-augmented adversary model; results 
+        depend on oracle availability, freshness, granularity, and noise
+      \item[Online WF (real Tor)] Live exit-side data and open-world evaluation; 
+        realism improves, but labels, ethics, vantage point, and monitored-set 
+        choices constrain the claim
     \end{description}
+    \mode<article>{
+      The central seminar improvement here is to ask which assumptions are 
+      doing the most work. The papers do not merely differ in technique; they 
+      differ in what data the attacker gets, how the network is represented, 
+      and whether the result should be read as an upper bound or as deployed 
+      risk.
+    }
   \end{block}
 \end{frame}
 
 \begin{frame}
-  \begin{block}{Methodological strengths vs weaknesses (as you noted)}
+  \begin{block}{Cross-paper trade-offs to compare}
     \mode<presentation>{%
       \begin{description}
-        \item[Strengths]
-          \begin{itemize}
-            \item Realism via live data (Online WF); repeatability and control (Shadow)
-            \item Broad what-if exploration (TorPS); clarifies attacker knowledge (WO)
-            \item Counterexamples and stress tests without harming users
-          \end{itemize}
-        \item[Weaknesses]
-          \begin{itemize}
-            \item Model error and idealisation (routing inference, perfect oracles)
-            \item External validity gaps (synthetic crawls vs live heterogeneity)
-            \item Ethical limits and reproducibility constraints with real users
-          \end{itemize}
+        \item[Realism vs control] Online WF gains realism; Shadow gains 
+          repeatability and controlled comparison
+        \item[Reproducibility vs ecological validity] Live studies are more 
+          realistic but harder to share and reproduce ethically
+        \item[Upper bounds vs deployed risk] Users Get Routed and WF+WO can be 
+          intentionally pessimistic
+        \item[Synthetic vs real data] Closed-world or synthetic settings often 
+          overestimate attack power
+        \item[Abstraction vs fidelity] Routing inference and simulation simplify 
+          exactly the factors we care about
       \end{description}
     }
     \mode<article>{%
-      Strengths included realism from live exit-relay data (Online WF), repeatability and control by running real Tor in simulation (Shadow), and the ability to probe broad adversary conditions (TorPS) and attacker side information (WO). Weaknesses centered on idealisations (e.g., routing inference errors, perfect oracles), synthetic-data optimism, and ethical constraints that both increased realism and reduced reproducibility for live evaluations.
+      Many students summarized each paper well. The next step is to compare 
+      them on shared axes. A strong seminar point is that realism, control, 
+      reproducibility, and ethical feasibility trade off against one another, 
+      and that attacker assumptions often decide whether a result should be 
+      interpreted as a pessimistic upper bound or as an estimate of deployed 
+      risk.
     }
   \end{block}
 \end{frame}
@@ -278,22 +345,32 @@
 %\end{frame}
 
 \begin{frame}
-  \begin{activity}[Small-group critique — Model virtues and validity]
+  \begin{activity}[Small-group critique -- Does the model overestimate risk?]
   \begin{itemize}
     \item Papers: TorPS, Shadow, WF+WO, Online WF
     \item Fill in for each paper:
       \begin{description}
-        \item[Model type] Isolating vs mirror; what is abstracted
-        \item[Virtues] Similarity, robustness, precision, transparency, tractability
-        \item[External validity] What claims generalize; what do not
-        \item[Improvement] One concrete way to strengthen the methodology ethically
+        \item[Assumptions] Which attacker capabilities or data sources drive 
+          the result?
+        \item[Direction of bias] Is the method more likely to overestimate or 
+          underestimate risk? Why?
+        \item[Trade-off] What is gained in realism, control, or 
+          reproducibility?
+        \item[Improvement] One concrete way to strengthen the methodology 
+          ethically
       \end{description}
   \end{itemize}
+  \mode<article>{
+    Push students away from \enquote{Tor is broken} or \enquote{the simulator 
+    is realistic} as blanket conclusions. The seminar goal is to identify how 
+    the assumptions shape the conclusion, and whether the method is likely to 
+    overestimate or underestimate user risk.
+  }
   \end{activity}
 \end{frame}
 
 %\begin{frame}
-%  \begin{activity}[Quantitative reasoning — The base-rate trap in WF]
+%  \begin{activity}[Quantitative reasoning -- The base-rate trap in WF]
 %  \begin{itemize}
 %    \item Suppose an attacker monitors 5 vs 1000 sites; discuss how precision and recall change
 %    \item With a website oracle, which metric becomes critical for users’ risk?
@@ -334,24 +411,19 @@
 \section{Wrap-up}
 
 \begin{frame}
-  \begin{block}{Takeaways across Parts I–III}
+  \begin{block}{Takeaways across Parts I--III}
     \begin{itemize}
-      \item Be explicit: assumptions, attacker capabilities, and the model’s scope
-      \item Combine methods: reductions + formal verification + simulation + measurement
-      \item Judge validity: internal (control), construct (right properties), external (realism)
-      \item Align mitigations with the layer that fails (algorithm, implementation, network, operations)
+      \item Security results are conditional: proved under assumption $X$, 
+        verified against property $Y$, evaluated under scenario $Z$
+      \item Always ask what is modeled, what is omitted, and how changing the 
+        model would change the conclusion
+      \item Different methods answer different questions: reduction, 
+        verification, model checking, simulation, and measurement
+      \item Report assumptions, attacker capabilities, base rates, and limits 
+        with qualified language
+      \item Align mitigations with the layer that fails: algorithm, 
+        implementation, network, or operations
     \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \begin{block}{Takeaways}
-  \begin{description}
-    \item[Baseline] Proofs and formal methods give precise guarantees under assumptions
-    \item[Bridging] Protocol and implementation verification reduce gaps to reality
-    \item[Modeling] Choice of model (isolating vs mirror) shapes conclusions and validity
-    \item[Practice] Report assumptions, base rates, and limitations; align methods to claims
-  \end{description}
   \end{block}
 \end{frame}
 
@@ -362,11 +434,10 @@
   \begin{question}[Models]
     \begin{enumerate}
       \item How do we use models in security?
-      \item How does that affect our results?
-        \begin{itemize}
-          \item Is ElGamal encryption secure or not?
-        \end{itemize}
-      \item What's the best we can do about the situation?
+      \item Under which model and claim is ElGamal secure, and what lies 
+        outside that claim?
+      \item What's the best we can do when every result is conditional on 
+        assumptions?
     \end{enumerate}
   \end{question}
 \end{frame}
@@ -374,8 +445,8 @@
 \begin{frame}
   \begin{question}[Engineering design]
     \begin{enumerate}
-      \item Is our use of models just natural to the field or due to security 
-        being an engineering discipline?
+      \item Is our reliance on models just natural to the field, or does it 
+        follow from security being an engineering discipline?
     \end{enumerate}
   \end{question}
 \end{frame}
@@ -385,11 +456,12 @@
 \begin{frame}
   \begin{question}
     \begin{enumerate}
-      \item How do model checking and theorem proving relate to each other and 
-        cryptography?
+      \item How do model checking and theorem proving relate to each other, 
+        to cryptography, and to experiment?
       \item How sure can we be of the results when using model checking or 
-        theorem proving?
-        Better than the ElGamal example?
+        theorem proving once we question the adequacy of the model?
+      \item When is that certainty stronger than the ElGamal example, and when 
+        is it simply a different kind of claim?
     \end{enumerate}
   \end{question}
 \end{frame}
