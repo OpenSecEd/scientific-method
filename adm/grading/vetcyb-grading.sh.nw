@@ -8,15 +8,30 @@
 \usepackage{csquotes}
 
 % The tree(1) output in the reflections section uses box-drawing characters,
-% which pdfLaTeX has no glyphs for; draw them with rules.
-\DeclareUnicodeCharacter{25CF}{$\bullet$}
-\DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
+% which neither pdfLaTeX nor the default XeLaTeX/LuaLaTeX fonts have glyphs
+% for; draw them with rules.  The makefiles build with either engine.
+\newcommand\treetee{\mbox{\kern.23em
   \vrule height2.2exdepth1exwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
-\DeclareUnicodeCharacter{2500}{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
-\DeclareUnicodeCharacter{2502}{\mbox{\kern.23em
+\newcommand\treedash{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
+\newcommand\treebar{\mbox{\kern.23em
   \vrule height2.2exdepth-1.8ptwidth.4pt\kern.23em}}
-\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
+\newcommand\treeend{\mbox{\kern.23em
   \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+\usepackage{iftex}
+\ifPDFTeX
+  \DeclareUnicodeCharacter{25CF}{$\bullet$}
+  \DeclareUnicodeCharacter{251C}{\treetee}
+  \DeclareUnicodeCharacter{2500}{\treedash}
+  \DeclareUnicodeCharacter{2502}{\treebar}
+  \DeclareUnicodeCharacter{2514}{\treeend}
+\else
+  \usepackage{newunicodechar}
+  \newunicodechar{●}{$\bullet$}
+  \newunicodechar{├}{\treetee}
+  \newunicodechar{─}{\treedash}
+  \newunicodechar{│}{\treebar}
+  \newunicodechar{└}{\treeend}
+\fi
 
 \usepackage{cleveref}
 
