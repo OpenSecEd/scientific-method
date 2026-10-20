@@ -67,7 +67,12 @@ file has no `modules:` because both such modules share one name.
 - canvaslms cannot clear a date: `due_at: null` and `''` are not sent
   (dbosk/canvaslms#527). Clear it in the web UI.
 - canvaslms cannot set an assignment group; a new quiz lands in the first
-  group (`Assignments`). Move it in the web UI.
+  group (`Assignments`). Move it in the web UI (dbosk/canvaslms#528).
+- `modules edit --unpublish` alone fails with "Nothing to change"
+  (dbosk/canvaslms#500); add the module's current `-p` as a workaround.
+- Grading: `canvaslms results -A "Participation INL1" -S
+  canvaslms.grades.participation` needs `complete` or `100` on every item,
+  so the seminar survey must stay worth 100 points.
 - `modules remove-item` leaves a gap in the positions; write the actual
   positions back into the files.
 - Course copies leave unresolved `$CANVAS_OBJECT_REFERENCE$/…g<hex>` links
