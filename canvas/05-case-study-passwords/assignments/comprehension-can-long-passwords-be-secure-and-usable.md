@@ -1,0 +1,11 @@
+---
+name: 'Comprehension: Can long passwords be secure and usable?'
+regex: ^389711$
+due_at: '2026-11-16T19:00:00Z'
+points_possible: 100.0
+published: true
+modules:
+- module: ^Case\ study:\ Passwords\ \(week\ 46\-47\)$
+  position: 4
+---
+

@@ -1,0 +1,364 @@
+{
+  "quiz_type": "classic",
+  "settings": {
+    "modules": [
+      {
+        "module": "^Course\\ overview\\ \\(week\\ 44\\)$",
+        "position": 2
+      }
+    ],
+    "title": "About you",
+    "description": "<p>I try to collect info about the participants of the course to better understand their interests and develop the course in a good direction. For instance, to have varying examples fitting the participants' interests.</p>",
+    "quiz_type": "survey",
+    "time_limit": null,
+    "allowed_attempts": -1,
+    "shuffle_questions": false,
+    "shuffle_answers": false,
+    "points_possible": null,
+    "published": true,
+    "due_at": null,
+    "unlock_at": null,
+    "lock_at": null,
+    "show_correct_answers": false,
+    "one_question_at_a_time": false,
+    "cant_go_back": false,
+    "access_code": null,
+    "regex": "^About you$"
+  },
+  "questions": [
+    {
+      "question_name": "TaMoS",
+      "question_text": "Have you taken AK2030 TaMoS?",
+      "question_type": "multiple_choice_question",
+      "points_possible": 1.0,
+      "answers": [
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_6969",
+          "id": 6969,
+          "text": "Yes, I have taken it in the past."
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_8011",
+          "id": 8011,
+          "text": "I am currently taking it."
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3964",
+          "id": 3964,
+          "text": "No, I haven't taken it in the past and I'm not taking it currently either."
+        }
+      ],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    },
+    {
+      "question_name": "What courses have you taken?",
+      "question_text": "<p>Check all the courses that you have taken. You can check a course if <strong>you have attended its lectures/teaching sessions</strong>, even if you haven't yet finished all parts of its assessment.</p>\n<p>So <strong>don't tick a course if you are currently taking it</strong> (that's the next question), that is, it's only part-way through.</p>",
+      "question_type": "multiple_answers_question",
+      "points_possible": 1.0,
+      "answers": [
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_6536",
+          "id": 6536,
+          "text": "AK2030 Theory and Methodology of Science (Natural and Technological Science)"
+        },
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_4919",
+          "id": 4919,
+          "text": "DD2391 Cybersecurity Overview or DD2395 Computer Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1037",
+          "id": 1037,
+          "text": "EN2720 Ethical Hacking"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_7846",
+          "id": 7846,
+          "text": "DD2303 The Cybersecurity Engineer's Role in Society"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_587",
+          "id": 587,
+          "text": "DD2510 Cybersecurity in a Socio-Technical Context"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3656",
+          "id": 3656,
+          "text": "DD2520 Applied Cryptography"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_528",
+          "id": 528,
+          "text": "DD2496 Privacy Enhancing Technologies"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9413",
+          "id": 9413,
+          "text": "EL2850 Cyber-Physical Security in Time-Critical Systems"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9085",
+          "id": 9085,
+          "text": "EP2500 Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1450",
+          "id": 1450,
+          "text": "EP2510 Advanced Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2512",
+          "id": 2512,
+          "text": "EP2780 Digital forensics and incident response"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_409",
+          "id": 409,
+          "text": "EP2790 Security Analysis of Large-Scale Computer Systems"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2843",
+          "id": 2843,
+          "text": "EP2520 Building Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_748",
+          "id": 748,
+          "text": "IL1333 Hardware Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2322",
+          "id": 2322,
+          "text": "DD2448 Foundations of Cryptography"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3096",
+          "id": 3096,
+          "text": "DD2525 Language-Based Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1771",
+          "id": 1771,
+          "text": "ID2218 Design of Fault-tolerant Systems"
+        }
+      ],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    },
+    {
+      "question_name": "What courses are you currently taking?",
+      "question_text": "Check all the courses that you are currently taking. You can check a course where you are attending the lectures and <strong>the course is not yet finished, that is, there are remaining lectures/teaching sessions.</strong>",
+      "question_type": "multiple_answers_question",
+      "points_possible": 1.0,
+      "answers": [
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_6536",
+          "id": 6536,
+          "text": "AK2030 Theory and Methodology of Science (Natural and Technological Science)"
+        },
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_4919",
+          "id": 4919,
+          "text": "DD2391 Cybersecurity Overview or DD2395 Computer Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1037",
+          "id": 1037,
+          "text": "EN2720 Ethical Hacking"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_7846",
+          "id": 7846,
+          "text": "DD2303 The Cybersecurity Engineer's Role in Society"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_587",
+          "id": 587,
+          "text": "DD2510 Cybersecurity in a Socio-Technical Context"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3656",
+          "id": 3656,
+          "text": "DD2520 Applied Cryptography"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_528",
+          "id": 528,
+          "text": "DD2496 Privacy Enhancing Technologies"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9413",
+          "id": 9413,
+          "text": "EL2850 Cyber-Physical Security in Time-Critical Systems"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9085",
+          "id": 9085,
+          "text": "EP2500 Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1450",
+          "id": 1450,
+          "text": "EP2510 Advanced Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2512",
+          "id": 2512,
+          "text": "EP2780 Digital forensics and incident response"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_409",
+          "id": 409,
+          "text": "EP2790 Security Analysis of Large-Scale Computer Systems"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2843",
+          "id": 2843,
+          "text": "EP2520 Building Networked Systems Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_748",
+          "id": 748,
+          "text": "IL1333 Hardware Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2322",
+          "id": 2322,
+          "text": "DD2448 Foundations of Cryptography"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3096",
+          "id": 3096,
+          "text": "DD2525 Language-Based Security"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1771",
+          "id": 1771,
+          "text": "ID2218 Design of Fault-tolerant Systems"
+        }
+      ],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    },
+    {
+      "question_name": "Previous experience",
+      "question_text": "Please briefly summarize any experience that you might have that is related to the science of security. It can be anything from doing a bachelor's thesis in security to having reflected on how we can know what we say in the security courses.",
+      "question_type": "essay_question",
+      "points_possible": 1.0,
+      "answers": [],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    },
+    {
+      "question_name": "What questions/areas interest you in cybersecurity?",
+      "question_text": "<p>What research questions or areas in cybersecurity interest you the most? Try to write a short answer to this question and submit here.</p>\n<p>This is a good exercise both for yourself to get deeper into your understanding of your interests in cybersecurity and for me to learn about your interests to improve the course.</p>\n<p>We'll try to connect back back to this throughout the course.</p>",
+      "question_type": "essay_question",
+      "points_possible": 1.0,
+      "answers": [],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    },
+    {
+      "question_name": "Research",
+      "question_text": "<p>I want to use the data in the course for pedagogical research and development. To do so, I need your consent. You can always opt out again by updating your answer here or emailing dbosk@kth.se.</p>\n<p>In any research work, I will remove all references to your identity from the data (it will be anonymized; however, don't use steganography to hide your identity in the data, I can't find and remove that ;-)).</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 1.0,
+      "answers": [
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_8984",
+          "id": 8984,
+          "text": "Yes, I agree that my data can be used in research."
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_6187",
+          "id": 6187,
+          "text": "No, I don't want my data to be included in research."
+        }
+      ],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "quiz_type": "classic",
+  "settings": {
+    "modules": [],
+    "title": "When to have the last seminar",
+    "description": "",
+    "quiz_type": "survey",
+    "time_limit": null,
+    "allowed_attempts": -1,
+    "shuffle_questions": false,
+    "shuffle_answers": false,
+    "points_possible": null,
+    "published": true,
+    "due_at": null,
+    "unlock_at": null,
+    "lock_at": null,
+    "show_correct_answers": true,
+    "one_question_at_a_time": false,
+    "cant_go_back": false,
+    "access_code": null,
+    "regex": "^When to have the last seminar$"
+  },
+  "questions": [
+    {
+      "question_name": "Question",
+      "question_text": "Select all time slots that you can attend.",
+      "question_type": "multiple_answers_question",
+      "points_possible": 1.0,
+      "answers": [
+        {
+          "weight": 100,
+          "migration_id": "RESPONSE_3355",
+          "id": 3355,
+          "text": "2025-12-12 10--12"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2407",
+          "id": 2407,
+          "text": "2025-12-12 12--14"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9660",
+          "id": 9660,
+          "text": "2025-12-12 13--15"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_1978",
+          "id": 1978,
+          "text": "2025-12-12 14--16"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9672",
+          "id": 9672,
+          "text": "2025-12-12 15--17"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2441",
+          "id": 2441,
+          "text": "2025-12-15 08--10"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_8661",
+          "id": 8661,
+          "text": "2025-12-15 09--11"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_5441",
+          "id": 5441,
+          "text": "2025-12-15 10--12"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_4105",
+          "id": 4105,
+          "text": "2025-12-15 11--13"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_6345",
+          "id": 6345,
+          "text": "2025-12-15 12--14"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_6081",
+          "id": 6081,
+          "text": "2025-12-15 13--15"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_7704",
+          "id": 7704,
+          "text": "2025-12-15 14--16"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_6255",
+          "id": 6255,
+          "text": "2025-12-15 15--17"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_9148",
+          "id": 9148,
+          "text": "2025-12-17 13--15"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_309",
+          "id": 309,
+          "text": "2025-12-17 14--16"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_331",
+          "id": 331,
+          "text": "2025-12-18 08--10"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_6875",
+          "id": 6875,
+          "text": "2025-12-18 09--11"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_8156",
+          "id": 8156,
+          "text": "2025-12-18 10--12"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_646",
+          "id": 646,
+          "text": "2025-12-18 11--13"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_5356",
+          "id": 5356,
+          "text": "2025-12-18 12--14"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_2470",
+          "id": 2470,
+          "text": "2025-12-18 13--15"
+        },
+        {
+          "weight": 0,
+          "migration_id": "RESPONSE_3985",
+          "id": 3985,
+          "text": "2025-12-18 14--16"
+        }
+      ],
+      "correct_comments": "",
+      "incorrect_comments": "",
+      "neutral_comments": null,
+      "correct_comments_html": null,
+      "incorrect_comments_html": null,
+      "neutral_comments_html": null,
+      "matching_answer_incorrect_matches": null,
+      "formulas": null,
+      "variables": null
+    }
+  ]
+}
