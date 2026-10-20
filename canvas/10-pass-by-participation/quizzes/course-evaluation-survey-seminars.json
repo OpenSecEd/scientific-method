@@ -9,7 +9,7 @@
     "shuffle_questions": false,
     "shuffle_answers": false,
     "points_possible": 100.0,
-    "published": false,
+    "published": true,
     "due_at": null,
     "unlock_at": "2027-01-04T07:00:00Z",
     "lock_at": null,
