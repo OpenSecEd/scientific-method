@@ -58,6 +58,9 @@ evaluation survey (project)`) is the project track. The surveys share
 their joint questions; only the project one has the project questions.
 The seminar survey sits in the second `Pass by participation` module; its
 file has no `modules:` because both such modules share one name.
+Both surveys have **Keep submissions anonymous** on. canvaslms neither
+exports nor sends `anonymous_submissions`, so the JSON files cannot record
+it: check it in the web UI whenever a survey is created from a file.
 
 ### Gotchas
 
