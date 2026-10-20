@@ -5,7 +5,7 @@ points_possible: 1.0
 published: true
 modules:
 - module: ^The\ final\ assignment\ \(week\ 50\-1\)$
-  position: 6
+  position: 7
 ---
 If you participated actively during the seminar you\'ll get a grade
 here.

@@ -5,7 +5,7 @@ points_possible: 7.0
 published: true
 modules:
 - module: ^The\ final\ assignment\ \(week\ 50\-1\)$
-  position: 7
+  position: 8
 ---
 This is where your grade for the report will be reported. Upload the
 latest version of your report, one that you\'ve improved after receiving

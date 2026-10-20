@@ -1,29 +1,23 @@
 {
   "quiz_type": "classic",
   "settings": {
-    "modules": [
-      {
-        "module": "^Mandatory\\ course\\ evaluation$",
-        "position": 1
-      }
-    ],
-    "title": "Course evaluation survey",
-    "description": "<p><strong>This course evaluation survey is mandatory.</strong> The reason for this is that if you complete the course by active participation, instead of doing the project, the date of the last thing you did in the course will be too early. Then CSN (the Swedish Board of Student Finance) might get unhappy and withdraw you study allowance and loan. That's why you must do take this survey at the last week of the course. <strong>Then I can use its date for the grading date</strong> and CSN will be happy and cause you no problems.</p>\n<p>And as an added bonus, I get feedback from more than the usual 5% of the students :-) <strong>I only use the date for the grading, not what you write in the survey.</strong> You can still say in the survey that you hated the course and that will not affect your grade. But in either case, <strong>you'll still be asked to fill the usual survey that's sent out after the course.</strong> (But in that one I can't ask certain types of questions, and few fill it in, sometimes so few that the system refuses to give the results to me due to \"too few participants\".)</p>",
+    "title": "Course evaluation survey (seminars)",
+    "description": "<p><strong>This survey is for you who pass by participation in the seminars.</strong> If you do the project, take the survey in the module \"The final assignment\" instead.</p>\n<p><strong>This course evaluation survey is mandatory.</strong> The reason for this is that if you complete the course by active participation, instead of doing the project, the date of the last thing you did in the course will be too early. Then CSN (the Swedish Board of Student Finance) might get unhappy and withdraw you study allowance and loan. That's why you must do take this survey at the last week of the course. <strong>Then I can use its date for the grading date</strong> and CSN will be happy and cause you no problems.</p>\n<p>And as an added bonus, I get feedback from more than the usual 5% of the students :-) <strong>I only use the date for the grading, not what you write in the survey.</strong> You can still say in the survey that you hated the course and that will not affect your grade. But in either case, <strong>you'll still be asked to fill the usual survey that's sent out after the course.</strong> (But in that one I can't ask certain types of questions, and few fill it in, sometimes so few that the system refuses to give the results to me due to \"too few participants\".)</p>",
     "quiz_type": "graded_survey",
     "time_limit": null,
     "allowed_attempts": 1,
     "shuffle_questions": false,
     "shuffle_answers": false,
     "points_possible": 100.0,
-    "published": true,
+    "published": false,
     "due_at": null,
-    "unlock_at": "2026-12-14T07:00:00Z",
+    "unlock_at": "2027-01-04T07:00:00Z",
     "lock_at": null,
     "show_correct_answers": false,
     "one_question_at_a_time": false,
     "cant_go_back": false,
     "access_code": null,
-    "regex": "^Course evaluation survey$"
+    "regex": "^Course evaluation survey \\(seminars\\)$"
   },
   "questions": [
     {
@@ -267,57 +261,6 @@
     {
       "question_name": "Seminars and prep",
       "question_text": "What was the best part of the seminars and prep? For example a favourite paper,&nbsp; an eye-opening topic, or just to discuss how this relates to TAMOS.",
-      "question_type": "essay_question",
-      "points_possible": 1.0,
-      "answers": [],
-      "correct_comments": "",
-      "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
-      "matching_answer_incorrect_matches": null,
-      "formulas": null,
-      "variables": null
-    },
-    {
-      "question_name": "The project",
-      "question_text": "<div id=\"\" class=\"quiz_sortable question_holder \" role=\"region\" aria-label=\"Question\" data-group-id=\"\">\n<div id=\"question_555898\" class=\"display_question question multiple_answers_question hover\">\n<div class=\"text\">\n<div id=\"question_555898_question_text\" class=\"question_text user_content enhanced\">\n<p><span>Below you'll find a few statements about the project.&nbsp;</span><strong>Check all that you consider true.</strong></p>\n</div>\n</div>\n</div>\n</div>",
-      "question_type": "multiple_answers_question",
-      "points_possible": 1.0,
-      "answers": [
-        {
-          "weight": 100,
-          "migration_id": "RESPONSE_341",
-          "id": 341,
-          "text": "I didn't have to do the project since I did all prep and participated in the seminars during the course."
-        },
-        {
-          "weight": 0,
-          "migration_id": "RESPONSE_9474",
-          "id": 9474,
-          "text": "I missed a seminar so I had to do the project."
-        },
-        {
-          "weight": 0,
-          "migration_id": "RESPONSE_8575",
-          "id": 8575,
-          "text": "I never planned on participating during the course, I was aimin for the project all along."
-        }
-      ],
-      "correct_comments": "",
-      "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
-      "matching_answer_incorrect_matches": null,
-      "formulas": null,
-      "variables": null
-    },
-    {
-      "question_name": "The project",
-      "question_text": "How can the project assignment be improved?",
       "question_type": "essay_question",
       "points_possible": 1.0,
       "answers": [],

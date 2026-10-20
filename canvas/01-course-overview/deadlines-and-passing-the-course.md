@@ -53,6 +53,9 @@ actively participate in these seminars (I must be able to assess you on
 the intended learning outcomes)**, you don\'t have to do the final
 assignment.
 
+**Every FeedbackFruits assignment must have 100/100.** A lower score
+means that the prep is not done.
+
 If you miss a seminar and still don\'t want to do the project, you can
 just do that seminar in the next course round. To do that, you must have
 access to that round\'s Canvas. Email

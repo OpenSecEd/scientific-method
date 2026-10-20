@@ -6,7 +6,7 @@ front_page: false
 editing_roles: teachers
 modules:
 - module: ^The\ final\ assignment\ \(week\ 50\-1\)$
-  position: 4
+  position: 5
 ---
 You can book tutoring for the final assignment, do discuss any questions
 or choices that you have to make. For questions about the instruction,

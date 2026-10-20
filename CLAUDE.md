@@ -42,16 +42,33 @@ the files here are then re-dated and pushed. Skill: `canvas-course-repo`.
 - Deadlines are 20:00 local the day before the module's seminar.
   Scientificity part 1 prepares the inferences/experiments seminar, not the
   literature one. Items in several modules keep their seminar pairing.
-- Also re-date: the instruction's `unlock_at` (two weeks in), the course
-  evaluation's `unlock_at` (after the last participation seminar), the
-  intro page title, the final seminar title. FeedbackFruits peer-review dates
-  are set by the author in FeedbackFruits.
+- Also re-date: the instruction's `unlock_at` (two weeks in), both course
+  evaluation surveys' `unlock_at` (the course's last week, so that the
+  submission gives a late enough completion date for CSN), the intro page
+  title, the final seminar title. FeedbackFruits peer-review dates are set
+  by the author in FeedbackFruits.
+
+### The two tracks
+
+The assignment groups are independent: everything in `Participation INL1`
+(FeedbackFruits prep at 100/100, reflections, seminars and `Course
+evaluation survey (seminars)`) passes the course on its own, whatever
+`INL1` holds; `INL1` (peer review, final seminar, report and `Course
+evaluation survey (project)`) is the project track. The surveys share
+their joint questions; only the project one has the project questions.
+The seminar survey sits in the second `Pass by participation` module; its
+file has no `modules:` because both such modules share one name.
 
 ### Gotchas
 
-- Two modules are both named `Pass by participation`; the checklist page's
-  `modules:` lists the regex twice. Avoid pushing it unless needed.
-- canvaslms cannot clear a date: `due_at: null` and `''` are not sent.
-  Clear it in the web UI (or the API with an empty string).
+- Two modules are both named `Pass by participation` (ids 229768, 229776),
+  so files in them carry no `modules:`; place items with `canvaslms
+  modules add-item -c C '^229776$' ...` instead.
+- canvaslms cannot clear a date: `due_at: null` and `''` are not sent
+  (dbosk/canvaslms#527). Clear it in the web UI.
+- canvaslms cannot set an assignment group; a new quiz lands in the first
+  group (`Assignments`). Move it in the web UI.
+- `modules remove-item` leaves a gap in the positions; write the actual
+  positions back into the files.
 - Course copies leave unresolved `$CANVAS_OBJECT_REFERENCE$/…g<hex>` links
   in Canvas; replace them with symbolic links by name.

@@ -6,7 +6,7 @@ front_page: false
 editing_roles: teachers
 modules:
 - module: ^The\ final\ assignment\ \(week\ 50\-1\)$
-  position: 3
+  position: 4
 ---
 Find group members and go to
 [People]($CANVAS_COURSE_REFERENCE$/users "People"){course-type="navigation"}
