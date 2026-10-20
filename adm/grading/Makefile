@@ -8,9 +8,13 @@ all: trnsfr-results.pdf trnsfr-results.sh
 .INTERMEDIATE: vetcyb-grading.tex
 vetcyb-grading.pdf: vetcyb-grading.tex
 # The generic %: %.nw rule has no recipe for .sh (NOTANGLE.sh is unset)
-# and the root chunks are named [[...]], so tangle explicitly.
+# and the root chunks are named [[...]], so tangle explicitly.  A failed
+# tangle must not leave a file behind that looks up to date.
+TANGLE.sh=	notangle -R'[[$@]]' $(filter %.nw,$^) > $@ && chmod +x $@ \
+		  || { ${RM} $@; false; }
+
 vetcyb-grading.sh vetcyb-grading-test.sh: vetcyb-grading.sh.nw
-	notangle -R'[[$@]]' $< > $@ || { ${RM} $@; false; }
+	${TANGLE.sh}
 
 vetcyb-grading.pdf: prompts.toml
 
@@ -28,15 +32,14 @@ ${GRADE_RESULTS}: test-grade-reflections.sh
 	bash $<
 
 test-grade-reflections.sh: vetcyb-grading.sh.nw vetcyb-grading.sh
-	${NOTANGLE.sh}
+	${TANGLE.sh}
 
 .INTERMEDIATE: trnsfr-results.tex
 trnsfr-results.pdf: trnsfr-results.nw
 	${NOWEAVE.pdf}
 
 trnsfr-results.sh: trnsfr-results.nw
-	${NOTANGLE.sh}
-	chmod +x $@
+	${TANGLE.sh}
 
 
 .PHONY: clean

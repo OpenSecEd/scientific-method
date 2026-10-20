@@ -2,20 +2,21 @@
 \usepackage[colorlinks]{hyperref}
 \usepackage{noweb}
 \noweboptions{shift,longchunks,longxref,breakcode}
-\usepackage{csquotes}
-
 %\usepackage[outputdir=ltxobj]{minted}
 \usepackage{minted}
+% after minted, which loads fvextra
+\usepackage{csquotes}
 
-%\usepackage[utf8]{inputenc}
-%\DeclareUnicodeCharacter{25CF}{$\bullet$}
-%\DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
-%  \vrule height2.2exdepth1exwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
-%\DeclareUnicodeCharacter{2500}{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
-%\DeclareUnicodeCharacter{2502}{\mbox{\kern.23em
-%  \vrule height2.2exdepth-1.8ptwidth.4pt\kern.23em}}
-%\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
-%  \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+% The tree(1) output in the reflections section uses box-drawing characters,
+% which pdfLaTeX has no glyphs for; draw them with rules.
+\DeclareUnicodeCharacter{25CF}{$\bullet$}
+\DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
+  \vrule height2.2exdepth1exwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
+\DeclareUnicodeCharacter{2500}{\mbox{\vrule height2.2ptdepth-1.8ptwidth.5em}}
+\DeclareUnicodeCharacter{2502}{\mbox{\kern.23em
+  \vrule height2.2exdepth-1.8ptwidth.4pt\kern.23em}}
+\DeclareUnicodeCharacter{2514}{\mbox{\kern.23em
+  \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
 
 \usepackage{cleveref}
 
@@ -162,7 +163,6 @@ report_components() {
       -A "^Participation INL1$" \
       -S canvaslms.grades.participation
   } \
-  | sed -E "s/ ?[HV]T[0-9]{2}( \(.*\))?//" \
   | merge_component_results \
   | ladok report -fv
 }
@@ -179,10 +179,17 @@ participation_courses="vetcyb(26h|(2[7-9]|[3-9][0-9])[hv])"
 @
 
 The two reports cannot go to [[ladok report]] as they are.
+The first column is the Canvas course code, [[DA2215 HT26 (vetcyb26h)]],
+but LADOK wants only the course code proper, [[DA2215]]: we keep its first
+word.
 [[canvaslms results]] takes the component code from the assignment group's
 name, so the participation rows say \enquote{Participation INL1}, which LADOK
 doesn't know; we rename it to INL1 (there is no option for this yet,
 dbosk/canvaslms\#65).
+We do both in [[awk]], field by field, rather than with a [[sed]] pattern over
+the whole row: the row ends with the graders' names, and an earlier pattern
+for the parenthesised round, [[\(.*\)]], reached as far as a parenthesis in a
+grader's name and erased the result.
 And a student who passed both tracks would be reported twice, with two
 dates.
 We keep the first row per student and course.
@@ -192,6 +199,7 @@ then), so either is correct; the INL1 report comes first in
 <<helper functions>>=
 merge_component_results() {
   awk -F'\t' -v OFS='\t' '
+    { split($1, code, " "); $1 = code[1] }
     $2 == "Participation INL1" { $2 = "INL1" }
     !seen[$1 FS $3]++'
 }
@@ -224,6 +232,8 @@ expect, with rows in its real output format (course title, group, student,
 grade, date, grader); any other call gets nothing.
 The fake [[ladok]] keeps what it is given.
 Student s3 passed both tracks, so the INL1 row, dated 7/1, must win.
+One of s3's graders has parentheses in their Canvas name; they must survive
+the clean-up of the course code, which is also in parentheses.
 <<test functions>>=
 test_report_components_sends_one_inl1_row_per_student() {
   local inl1="-c ${courses} -A ^INL1\$ -S canvaslms.grades.conjunctavgsurvey"
@@ -232,8 +242,8 @@ test_report_components_sends_one_inl1_row_per_student() {
   canvaslms() {
     case "$*" in
       "results ${inl1}")
-        printf '%s\t%s\t%s\t%s\t%s\t%s\n' "DA2215 HT26 (vetcyb26h)" \
-          INL1 s3 P 2027-01-07 "T <t@kth.se>" ;;
+        printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "DA2215 HT26 (vetcyb26h)" \
+          INL1 s3 P 2027-01-07 "T <t@kth.se>" "Tea (TA) <ta@kth.se>" ;;
       "results ${part}")
         printf '%s\t%s\t%s\t%s\t%s\t%s\n' \
           "DA2215 HT26 (vetcyb26h)" "Participation INL1" s1 P 2027-01-05 \
@@ -248,7 +258,7 @@ test_report_components_sends_one_inl1_row_per_student() {
   local reported="$(cat "${cache_dir}/ladok.in")"
   [ "$(echo "${reported}" | wc -l)" -eq 2 ] \
     && echo "${reported}" \
-       | grep -qP "^DA2215\tINL1\ts3\tP\t2027-01-07\tT <t@kth.se>$" \
+       | grep -qP "^DA2215\tINL1\ts3\tP\t2027-01-07\tT <t@kth.se>\tTea \(TA\) <ta@kth.se>$" \
     && echo "${reported}" \
        | grep -qP "^DA2215\tINL1\ts1\tP\t2027-01-05\tT <t@kth.se>$"
 }
@@ -650,8 +660,8 @@ or not.
 If they did not, we echo their username.
 The function reads [[course]] from its caller, [[grade_course_participation]]:
 bash scopes [[local]] variables dynamically, and [[students_to_grade]] cannot
-take the course as an argument since [[<<let [[passing_grades]] be the regex
-for passing grades>>]] already uses its first argument.
+take the course as an argument, since its first argument already goes to
+[[<<let [[passing_grades]] be the regex for passing grades>>]].
 <<helper functions>>=
 students_to_grade() {
   local results="$(cat)"
@@ -1377,7 +1387,7 @@ To do our evaluations, we used the following script.
 It runs a few grading rounds on a few students for each model configuration.
 Optimally, we'd run 20 rounds on all students, but that would take a long time 
 and be costly (but not more than a few euros).
-<<test-grade-reflections.sh>>=
+<<[[test-grade-reflections.sh]]>>=
 #!/bin/bash
 
 source vetcyb-grading.sh
@@ -1483,7 +1493,7 @@ done
 When we run the tests, we want to filter stdout and stderr to separate files.
 We're mostly interested in stderr, since that's where the fails appear.
 And the fails are fewer than the passes.
-<<test-grade-reflections.sh>>=
+<<[[test-grade-reflections.sh]]>>=
 test 1> >(tee test-grade_reflections.txt >&1) \
      2> >(tee test-grade_reflections-err.txt >&1) \
      | tee test-grade_reflections-all.txt

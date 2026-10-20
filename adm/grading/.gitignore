@@ -7,3 +7,8 @@ vetcyb-grading.sh
 vetcyb-grading.toc
 vetcyb24p2.reflections.d/
 vetcyb-grading-test.sh
+test-grade-reflections.sh
+trnsfr-results.sh
+trnsfr-results.tex
+trnsfr-results.pdf
+ltxobj/
