@@ -42,10 +42,13 @@ There are two ways to pass the course:
 We want a script that can be run by the [[grader]] script\footnote{%
   See \texttt{https://github.com/dbosk/grader/}.
 }.
-This will have the standard design (see [[report_INL1]]), except that we'll do 
-the participation grading before.
-This way we can set the grades of the INL1 assignments based on the 
-participation and prep.
+It works in two steps.
+First it grades the participation: it grades the reflections and, for every
+student who did all prep and took part in all seminars, sets P on the INL1
+project assignments, so that Canvas shows them that they don't have to do the
+project (\cref{Participation}).
+Then it reports to LADOK from both tracks' assignment groups, Participation
+INL1 and INL1, which are independent (\cref{Reporting}).
 <<[[vetcyb-grading.sh]]>>=
 #!/bin/bash
 
@@ -55,16 +58,6 @@ components="^INL1"
 
 <<helper functions>>
 
-report_components() {
-  local course="${1}"
-  local component="${2:-^INL1}"
-
-  canvaslms results -c "${courses}" -A "${components}" \
-    -S canvaslms.grades.conjunctavgsurvey \
-  | sed -E "s/ ?[HV]T[0-9]{2}( \(.*\))?//" \
-  | ladok report -fv
-}
-
 grade_participation() {
   local course="${1}"
   local components="${2:-^INL1}"
@@ -73,7 +66,7 @@ grade_participation() {
 
 main() {
   grade_participation "${courses}" "${components}"
-  report_components "${courses}" "${components}"
+  report_components "${courses}"
 }
 
 # run main if not sourced from another script
@@ -83,26 +76,232 @@ then
 fi
 @
 
+The parts of the script that only transform data can be tested without
+Canvas, LADOK or an LLM.
+We collect those tests in [[vetcyb-grading-test.sh]] ([[make test]]).
+It sources the script, which defines the functions without running
+[[main]], and points the caches at a temporary directory, so the tests read
+only the synthetic data they write themselves.
+The commands that reach a service are replaced by functions that fail: a test
+that would otherwise talk to Canvas, LADOK or an LLM, for instance because a
+cache path is wrong, fails instead of grading real students.
+A test that needs one of them defines its own fake and calls
+[[stub_services]] afterwards.
+<<[[vetcyb-grading-test.sh]]>>=
+#!/bin/bash
 
-\section{Participation}
+source ./vetcyb-grading.sh
+cache_dir=$(mktemp -d)
+trap 'rm -rf "${cache_dir}"' EXIT
 
-That solved reporting the final project to LADOK (option 
-\ref{FinalProjectOption} above).
-Now we need to translate the participation (option \ref{ParticipationOption}) 
+stub_services() {
+  local cmd
+  for cmd in canvaslms ladok llm
+  do
+    eval "${cmd}() { echo \"test called ${cmd} \$*\" >&2; return 99; }"
+  done
+}
+stub_services
+
+failures=0
+check() {
+  local name="${1}"
+  shift
+  if "$@"
+  then
+    echo "ok   ${name}"
+  else
+    echo "FAIL ${name}"
+    failures=$((failures + 1))
+  fi
+}
+
+<<test functions>>
+
+exit $((failures > 0))
+@
+
+
+\section{Reporting the results to LADOK}\label{Reporting}
+
+A student passes INL1 on one of two tracks, and from vetcyb26h on each track
+has its own assignment group in Canvas:
+\begin{description}
+\item[Participation INL1] the FeedbackFruits prep (100 points each), the
+  reflections and the live seminars (complete), and \enquote{Course
+  evaluation survey (seminars)};
+\item[INL1] the peer review, the final seminar, the final report and
+  \enquote{Course evaluation survey (project)}.
+\end{description}
+The groups are independent: a student who completes Participation INL1 has
+passed, whatever their INL1 assignments say.
+The participation grading below still sets P on the INL1 project assignments
+for those students, but only so that they can see in Canvas that they don't
+have to do the project; the LADOK result comes from their own group.
+
+Each group therefore gets its own report, summarized by the module that fits
+its grading.
+[[canvaslms.grades.participation]] requires [[complete]] or [[100]] on every
+item and dates the result by the latest one, which is the seminar survey in
+the last week of the course: that keeps the date late enough for CSN (see
+\cref{Participation}).
+That is also why the seminar survey must stay worth 100 points: a submitted
+graded survey gets full points, so its grade is [[100]].
+The INL1 group keeps [[canvaslms.grades.conjunctavgsurvey]], which counts a
+survey as passed once it is submitted.
+By default [[canvaslms results]] outputs only passing grades, so a student
+appears only in the report of the track they passed, and nothing reports an
+F to LADOK.
+<<helper functions>>=
+report_components() {
+  local courses="${1}"
+  {
+    canvaslms results -c "${courses}" -A "^INL1$" \
+      -S canvaslms.grades.conjunctavgsurvey
+    canvaslms results -c "${participation_courses}" \
+      -A "^Participation INL1$" \
+      -S canvaslms.grades.participation
+  } \
+  | sed -E "s/ ?[HV]T[0-9]{2}( \(.*\))?//" \
+  | merge_component_results \
+  | ladok report -fv
+}
+@
+
+Only the rounds from vetcyb26h on are reported by participation.
+The earlier rounds have no survey in Participation INL1, so
+[[canvaslms.grades.participation]] would date their students by their last
+seminar, weeks before the end of the course; in those rounds participation
+reaches LADOK through the INL1 grades set below, and the old survey in INL1
+gives the date.
+<<constants>>=
+participation_courses="vetcyb(26h|(2[7-9]|[3-9][0-9])[hv])"
+@
+
+The two reports cannot go to [[ladok report]] as they are.
+[[canvaslms results]] takes the component code from the assignment group's
+name, so the participation rows say \enquote{Participation INL1}, which LADOK
+doesn't know; we rename it to INL1 (there is no option for this yet,
+dbosk/canvaslms\#65).
+And a student who passed both tracks would be reported twice, with two
+dates.
+We keep the first row per student and course.
+Both rows are dated in the last week of the course (each track's survey opens
+then), so either is correct; the INL1 report comes first in
+[[report_components]], so we keep the project result.
+<<helper functions>>=
+merge_component_results() {
+  awk -F'\t' -v OFS='\t' '
+    $2 == "Participation INL1" { $2 = "INL1" }
+    !seen[$1 FS $3]++'
+}
+@
+
+Let's verify the merge on synthetic rows: one student per track and one
+who passed both, where the INL1 row comes first and must win.
+<<test functions>>=
+test_merge_renames_and_keeps_one_row_per_student() {
+  local merged=$(printf '%s\t%s\t%s\t%s\t%s\n' \
+                   DA2215 INL1 s2 P 2027-01-06 \
+                   DA2215 INL1 s3 P 2027-01-07 \
+                   DA2215 "Participation INL1" s1 P 2027-01-05 \
+                   DA2215 "Participation INL1" s3 P 2027-01-04 \
+                 | merge_component_results)
+  [ "$(echo "${merged}" | wc -l)" -eq 3 ] \
+    && ! echo "${merged}" | grep -q "Participation" \
+    && echo "${merged}" | grep -qP "^DA2215\tINL1\ts1\tP\t2027-01-05$" \
+    && echo "${merged}" | grep -qP "^DA2215\tINL1\ts3\tP\t2027-01-07$"
+}
+check "participation rows become INL1, one row per student" \
+  test_merge_renames_and_keeps_one_row_per_student
+@
+
+The whole report is tested with fakes for [[canvaslms]] and [[ladok]]: they
+are external services, and what matters here is which reports we ask for and
+what reaches LADOK.
+The fake [[canvaslms]] answers only the two exact [[results]] calls we
+expect, with rows in its real output format (course title, group, student,
+grade, date, grader); any other call gets nothing.
+The fake [[ladok]] keeps what it is given.
+Student s3 passed both tracks, so the INL1 row, dated 7/1, must win.
+<<test functions>>=
+test_report_components_sends_one_inl1_row_per_student() {
+  local inl1="-c ${courses} -A ^INL1\$ -S canvaslms.grades.conjunctavgsurvey"
+  local part="-c ${participation_courses} -A ^Participation INL1\$"
+  part="${part} -S canvaslms.grades.participation"
+  canvaslms() {
+    case "$*" in
+      "results ${inl1}")
+        printf '%s\t%s\t%s\t%s\t%s\t%s\n' "DA2215 HT26 (vetcyb26h)" \
+          INL1 s3 P 2027-01-07 "T <t@kth.se>" ;;
+      "results ${part}")
+        printf '%s\t%s\t%s\t%s\t%s\t%s\n' \
+          "DA2215 HT26 (vetcyb26h)" "Participation INL1" s1 P 2027-01-05 \
+            "T <t@kth.se>" \
+          "DA2215 HT26 (vetcyb26h)" "Participation INL1" s3 P 2027-01-04 \
+            "T <t@kth.se>" ;;
+    esac
+  }
+  ladok() { [ "$*" = "report -fv" ] && cat > "${cache_dir}/ladok.in"; }
+  report_components "${courses}"
+  stub_services
+  local reported="$(cat "${cache_dir}/ladok.in")"
+  [ "$(echo "${reported}" | wc -l)" -eq 2 ] \
+    && echo "${reported}" \
+       | grep -qP "^DA2215\tINL1\ts3\tP\t2027-01-07\tT <t@kth.se>$" \
+    && echo "${reported}" \
+       | grep -qP "^DA2215\tINL1\ts1\tP\t2027-01-05\tT <t@kth.se>$"
+}
+check "LADOK gets one cleaned INL1 row per student" \
+  test_report_components_sends_one_inl1_row_per_student
+@
+
+And that only the rounds with a seminar survey are reported by
+participation.
+[[canvaslms]] searches the course titles for the regex, so we test it the same
+way, unanchored, on titles as Canvas has them.
+<<test functions>>=
+test_participation_reported_from_vetcyb26h() {
+  local title
+  for title in "DA2215 HT26 (vetcyb26h)" "DA2215 VT27 (vetcyb27v)" \
+               "DA2215 HT31 (vetcyb31h)"
+  do
+    echo "${title}" | grep -qE "${participation_courses}" || return 1
+  done
+  for title in "DA2215 VT26 (vetcyb26v)" "DA2215 HT25 (vetcyb25h)" \
+               "DA2215 HT24 (vetcyb24-p2)" "DA2215 VT25 (vetcyb25-p4)"
+  do
+    echo "${title}" | grep -qE "${participation_courses}" && return 1
+  done
+  return 0
+}
+check "participation is reported from vetcyb26h on" \
+  test_participation_reported_from_vetcyb26h
+@
+
+
+\section{Participation}\label{Participation}
+
+The reporting (\cref{Reporting}) covers both options.
+Here we translate the participation (option \ref{ParticipationOption}) 
 to grades for the INL1 assignments.
 We want to grade the participation in the seminars and prep so that students 
 don't have to do the final project.
 
-The INL1 assignment group contains the following assignments:
+The INL1 assignment group contains the following assignments (vetcyb26h):
 \begin{verbatim}
 INL1	Peer review: Designing a methodology to answer a question
 INL1	Final version of the report for final seminar
-INL1	The final seminar on 8-9/1 at 8:15
-INL1	Course evaluation survey
+INL1	The final seminar on 4/1 at 08:15 and 5/1 at 13:15
+INL1	Course evaluation survey (project)
 \end{verbatim}
 We want to set grades on the first three assignments based on the participation 
 and prep.
 We use a mandatory course evaluation to simply get a date.
+Up to vetcyb26v there was one survey, in INL1; from vetcyb26h on each track
+has its own, \enquote{Course evaluation survey (seminars)} in Participation
+INL1 and \enquote{Course evaluation survey (project)} in INL1, with the
+questions for the other track left out.
 If the student finishes by participation, they will finish a few week earlier.
 CSN doesn't like this.
 So to get a date in the last week of the course, we'll let the students who 
@@ -111,7 +310,10 @@ That way we get a date in the last week of the course.
 Also, we get all the students to fill in the survey, instead of the usual two 
 students.
 
-The participation contains the following assignments:
+The participation contains the following assignments (vetcyb24p2; the
+optional \enquote{Theorem proving: 3} has since moved to the group Formal
+methods, so it is not required, and from vetcyb26h the group also holds the
+seminar survey):
 \begin{verbatim}
 Participation INL1	Overview of Science in Security
 Participation INL1	How to Design Computer Security Experiments
@@ -153,6 +355,11 @@ We will generate it as follows.
 We'll cache the results and only request it from Canvas if we don't have any 
 from before.
 We'll refresh as often as the system's tempdir is cleaned.
+All caches live in [[cache_dir]], so that the tests in
+[[vetcyb-grading-test.sh]] can point them at synthetic data instead of
+reaching Canvas.
+<<constants>>=
+cache_dir="${TMPDIR:-/tmp}"
 <<helper functions>>=
 assignments() {
   local course="${1}"
@@ -174,7 +381,7 @@ assignments_refresh() {
 <<constants>>=
 all_components="INL1"
 <<let [[assignments_cache]] be the cache file for [[course]]>>=
-local assignments_cache="/tmp/${course}.assignments"
+local assignments_cache="${cache_dir}/${course}.assignments"
 @
 
 The idea is that we use the `Live seminar` assignments to tick off the `The 
@@ -182,18 +389,31 @@ final seminar` assignment.
 Then we let the written prep assignments tick off the `Peer review` assignment.
 Let's write two functions that return the assignments for each of these.
 
-These functions will get the names of the assignments and filter on those 
+These functions will get the names of the assignments and filter on those
 exactly.
 However, if some are substrings of others, we might get false positives.
 But this will not be any issue for us.
+
+From vetcyb26h on, the Participation INL1 group also holds the
+\enquote{Course evaluation survey (seminars)}.
+It is part of the group so that [[canvaslms.grades.participation]] dates the
+LADOK result by it (see \cref{Reporting}), but it is not prep: it opens in
+the last week of the course, weeks after the last seminar.
+Counting it here would hold back the \enquote{you don't have to do the
+project} grades until January and would list the survey as unfinished prep in
+the feedback.
+So the names we filter on leave the surveys out.
 <<helper functions>>=
 filter_participation() {
   local course="${1}"
   grep -f <(assignments "${course}" \
             | grep -E "^Participation INL1" \
-            | cut -f 2)
+            | cut -f 2 \
+            | grep -vE "${survey_regex}")
 }
-
+<<constants>>=
+survey_regex="^Course evaluation survey"
+<<helper functions>>=
 filter_live_seminar() {
   local course="${1}"
   filter_participation "${course}" \
@@ -205,6 +425,25 @@ filter_peer_review() {
   filter_participation "${course}" \
   | grep -vE 'Live seminar [0-9]{1,2}/[0-9]{1,2}'
 }
+@
+
+Let's verify that the seminar survey is not treated as prep, even though
+it is in the Participation INL1 group.
+<<test functions>>=
+test_prep_excludes_seminar_survey() {
+  printf '%s\t%s\n' \
+    "Participation INL1" "Reflection on ethics" \
+    "Participation INL1" "Course evaluation survey (seminars)" \
+    "INL1" "Course evaluation survey (project)" \
+    > "${cache_dir}/testround.assignments"
+  local prep=$(printf '%s\t%s\t%s\t%s\n' \
+                 "Reflection on ethics" "s1" "complete" "2026-12-06" \
+                 "Course evaluation survey (seminars)" "s1" "" "" \
+               | filter_participation testround)
+  [ "$(echo "${prep}" | wc -l)" -eq 1 ] \
+    && echo "${prep}" | grep -q "^Reflection on ethics"
+}
+check "the seminar survey is not prep" test_prep_excludes_seminar_survey
 @
 
 We'll do the same to get the INL1 assignments.
@@ -274,12 +513,18 @@ local failed_students=$(<<students who didn't pass>>)
 participation_msg="
 You did all prep and actively participated in all seminars. You don't have to
 do the project.
+
+To get your grade reported, do the Course evaluation survey (seminars) in the
+module Pass by participation when it opens in the last week of the course.
 "
 @
 
 We must remember to set the grades for only the project assignments, not all
 INL1 assignments.
-The INL1 assignments group also includes a survey.
+The INL1 assignments group also includes the project survey, which the
+student must not get for free.
+And the participation message reminds them of their own survey: without it,
+[[canvaslms.grades.participation]] reports nothing.
 <<constants>>=
 project_assignments_regex="^(Peer review:|The final seminar|Final version of the report)"
 @
@@ -303,7 +548,7 @@ We only do this if we don't already have them.
 <<helper functions>>=
 results() {
   local course="${1}"
-  local results_cache="/tmp/${course}.results"
+  local results_cache="${cache_dir}/${course}.results"
   if [ ! -s "${results_cache}" ]
   then
     results_refresh "${course}"
@@ -356,7 +601,7 @@ their username instead of their name.
 <<helper functions>>=
 results_refresh() {
   local course="${1}"
-  local results_cache="/tmp/${course}.results"
+  local results_cache="${cache_dir}/${course}.results"
   canvaslms submissions -c "${course}" -A "${all_components}" -l \
   | cut -f 2-4,6 \
   > "${results_cache}"
@@ -403,6 +648,10 @@ We filter out the students in these results,
 then we go through student-by-student to check if they passed all assignments 
 or not.
 If they did not, we echo their username.
+The function reads [[course]] from its caller, [[grade_course_participation]]:
+bash scopes [[local]] variables dynamically, and [[students_to_grade]] cannot
+take the course as an argument since [[<<let [[passing_grades]] be the regex
+for passing grades>>]] already uses its first argument.
 <<helper functions>>=
 students_to_grade() {
   local results="$(cat)"
@@ -433,7 +682,7 @@ Then we know that they have either passed the course or started working on the
 project.
 <<if [[student]] passed any INL1 assignment, continue>>=
 if echo "${results}" | grep "${student}" \
-   | filter_INL1 | passed_any "^P"
+   | filter_INL1 "${course}" | passed_any "^P"
 then
   continue
 fi
@@ -453,12 +702,13 @@ If that date is later than all the other dates, then they are graded.
 Otherwise they're not.
 <<if [[student]] is already graded, continue>>=
 if echo "${results}" | grep "${student}" \
-   | is_graded
+   | is_graded "${course}"
 then
   continue
 fi
 <<helper functions>>=
 is_graded() {
+  local course="${1}"
   local results="$(cat)"
 
   local final_report_date=$(echo "${results}" \
@@ -466,7 +716,7 @@ is_graded() {
                             | cut -f 4)
 
   local latest_date=$(echo "${results}" \
-                      | filter_participation \
+                      | filter_participation "${course}" \
                       | cut -f 4 \
                       | sort \
                       | tail -n 1)
@@ -607,7 +857,7 @@ feedback_participation() {
   local course="${1}"
   local student="${2}"
   local student_results=$(results "${course}" | grep "${student}" \
-                          | filter_participation)
+                          | filter_participation "${course}")
   if ! echo "${student_results}" | passed_all
   then
     <<print assignments in [[student_results]] without a passing grade>>
@@ -737,14 +987,20 @@ It's written as `Live seminar 13/11 at 15:15`.
 So we want to change it into the date format `24-11-13`, that way it will be 
 comparable to today's date.
 The relevant year is in the course name, so we can get it from 
-[[course]]---which will have the format [[vetcyb24p2]].
+[[course]].
+That is the course code as [[canvaslms courses]] lists it, for instance
+[[DA2215 HT26 \(vetcyb26h\)]], so we pick the two digits after
+[[vetcyb]] and drop everything else.
+(Replacing only the matched part, as an earlier version did, left the rest of
+the code in the date, which then sorted after every [[today]], so the feedback
+below was never sent.)
 <<helper functions>>=
 last_seminar_date() {
   local course="${1}"
   local year=$(echo "${course}" \
-               | sed -E 's/vetcyb([0-9]{2})-?(p[1-4]|[hv])/\1/')
+               | sed -E 's/.*vetcyb([0-9]{2}).*/\1/')
   assignments "${course}" \
-  | filter_live_seminar \
+  | filter_live_seminar "${course}" \
   | cut -f 2 \
   | cut -d ' ' -f 3 \
   | <<rewrite the date to the format [[yy-mm-dd]]>> \
@@ -769,6 +1025,22 @@ inserting the year ([[${year}]]) at the beginning.
 sed -E "s|^([0-9]{1})/|0\1/|" \
 | sed -E "s|/([0-9]{1})$|/0\1|" \
 | sed -E "s|([0-9]{2})/([0-9]{2})|${year}-\2-\1|"
+@
+
+Let's verify it on a course named as [[canvaslms courses]] lists it, with
+the parentheses escaped as in [[<<list courses matching [[courses]] regex>>]].
+The last seminar is 7/12, a single-digit day, in an HT26 round.
+<<test functions>>=
+test_last_seminar_date() {
+  local course='DA2215 HT26 \(vetcyb26h\)'
+  printf '%s\t%s\n' \
+    "Participation INL1" "Live seminar 12/11 at 09:15: Literature reviews" \
+    "Participation INL1" "Live seminar 7/12 at 08:15: Science of Security" \
+    "Participation INL1" "Reflection on ethics" \
+    > "${cache_dir}/${course}.assignments"
+  [ "$(last_seminar_date "${course}")" = "26-12-07" ]
+}
+check "the last seminar date is yy-mm-dd" test_last_seminar_date
 @
 
 
@@ -837,7 +1109,7 @@ We'll only download ungraded submissions (by the [[-U]] option to
 [[canvaslms]]).
 Consequently, we'll only grade submissions that haven't been graded yet.
 <<download reflection assignments submissions for [[students_regex]]>>=
-local reflections_dir="/tmp/${course}.reflections.d"
+local reflections_dir="${cache_dir}/${course}.reflections.d"
 <<let [[reflection_assign_regex]] be a regex matching all reflection assignments>>
 if [ ! -d "${reflections_dir}" ]
 then
@@ -1187,7 +1459,7 @@ We need to force the download, in case we have already graded the students.
 So this will be the same as above, except that we don't use the [[-U]] flag.
 <<force download all reflection submissions, even graded ones>>=
 <<let [[students_regex]] be a regex matching all [[students]] to grade>>
-local reflections_dir="/tmp/${course}.reflections.d"
+local reflections_dir="${cache_dir}/${course}.reflections.d"
 <<let [[reflection_assign_regex]] be a regex matching all reflection assignments>>
 rm -Rf "${reflections_dir}"
 canvaslms submission -c "${course}" \

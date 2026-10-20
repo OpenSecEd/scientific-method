@@ -7,7 +7,10 @@ all: trnsfr-results.pdf trnsfr-results.sh
 
 .INTERMEDIATE: vetcyb-grading.tex
 vetcyb-grading.pdf: vetcyb-grading.tex
-vetcyb-grading.sh: vetcyb-grading.sh.nw
+# The generic %: %.nw rule has no recipe for .sh (NOTANGLE.sh is unset)
+# and the root chunks are named [[...]], so tangle explicitly.
+vetcyb-grading.sh vetcyb-grading-test.sh: vetcyb-grading.sh.nw
+	notangle -R'[[$@]]' $< > $@ || { ${RM} $@; false; }
 
 vetcyb-grading.pdf: prompts.toml
 
@@ -16,6 +19,10 @@ GRADE_RESULTS=test-grade_reflections-err.txt
 #vetcyb-grading.pdf: ${GRADE_RESULTS}
 vetcyb-grading.pdf: ./instruction-qualitative.md ./submission-qualitative.md
 vetcyb-grading.pdf: vetcyb-grading.sh
+
+.PHONY: test
+test: vetcyb-grading.sh vetcyb-grading-test.sh
+	bash vetcyb-grading-test.sh
 
 ${GRADE_RESULTS}: test-grade-reflections.sh
 	bash $<
@@ -36,7 +43,7 @@ trnsfr-results.sh: trnsfr-results.nw
 clean:
 	${RM} vetcyb-grading.pdf vetcyb-grading.sh
 	${RM} *.aux *.fdb_* *.fls *.log *.pdf *.tex
-	${RM} test-grade-reflections.sh
+	${RM} test-grade-reflections.sh vetcyb-grading-test.sh
 	${RM} test-grade_reflections.txt
 	${RM} test-grade_reflections-err.txt
 	${RM} trnsfr-results.pdf trnsfr-results.sh
