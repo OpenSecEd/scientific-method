@@ -29,7 +29,8 @@
 
 \let\email\texttt
 
-\usepackage[outputdir=ltxobj]{minted}
+% minted v3 finds the output directory itself (TeX Live 2024+)
+\usepackage{minted}
 \setminted{autogobble}
 
 \usepackage{pythontex}
