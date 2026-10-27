@@ -52,11 +52,11 @@ the files here are then re-dated and pushed. Skill: `canvas-course-repo`.
 
 The assignment groups are independent: everything in `Participation INL1`
 (FeedbackFruits prep at 100/100, reflections, seminars and `Course
-evaluation survey (seminars)`) passes the course on its own, whatever
+evaluation survey (participation)`) passes the course on its own, whatever
 `INL1` holds; `INL1` (peer review, final seminar, report and `Course
 evaluation survey (project)`) is the project track. The surveys share
 their joint questions; only the project one has the project questions.
-The seminar survey sits in the second `Pass by participation` module; its
+The participation survey sits in the second `Pass by participation` module; its
 file has no `modules:` because both such modules share one name.
 Both surveys have **Keep submissions anonymous** on. canvaslms neither
 exports nor sends `anonymous_submissions`, so the JSON files cannot record
@@ -75,7 +75,7 @@ it: check it in the web UI whenever a survey is created from a file.
   (dbosk/canvaslms#500); add the module's current `-p` as a workaround.
 - Grading: `canvaslms results -A "Participation INL1" -S
   canvaslms.grades.participation` needs `complete` or `100` on every item,
-  so the seminar survey must stay worth 100 points.
+  so the participation survey must stay worth 100 points.
 - `modules remove-item` leaves a gap in the positions; write the actual
   positions back into the files.
 - Course copies leave unresolved `$CANVAS_OBJECT_REFERENCE$/…g<hex>` links

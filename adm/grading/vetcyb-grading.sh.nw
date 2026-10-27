@@ -145,7 +145,7 @@ has its own assignment group in Canvas:
 \begin{description}
 \item[Participation INL1] the FeedbackFruits prep (100 points each), the
   reflections and the live seminars (complete), and \enquote{Course
-  evaluation survey (seminars)};
+  evaluation survey (participation)};
 \item[INL1] the peer review, the final seminar, the final report and
   \enquote{Course evaluation survey (project)}.
 \end{description}
@@ -324,7 +324,7 @@ We want to set grades on the first three assignments based on the participation
 and prep.
 We use a mandatory course evaluation to simply get a date.
 Up to vetcyb26v there was one survey, in INL1; from vetcyb26h on each track
-has its own, \enquote{Course evaluation survey (seminars)} in Participation
+has its own, \enquote{Course evaluation survey (participation)} in Participation
 INL1 and \enquote{Course evaluation survey (project)} in INL1, with the
 questions for the other track left out.
 If the student finishes by participation, they will finish a few week earlier.
@@ -420,7 +420,7 @@ However, if some are substrings of others, we might get false positives.
 But this will not be any issue for us.
 
 From vetcyb26h on, the Participation INL1 group also holds the
-\enquote{Course evaluation survey (seminars)}.
+\enquote{Course evaluation survey (participation)}.
 It is part of the group so that [[canvaslms.grades.participation]] dates the
 LADOK result by it (see \cref{Reporting}), but it is not prep: it opens in
 the last week of the course, weeks after the last seminar.
@@ -458,12 +458,12 @@ it is in the Participation INL1 group.
 test_prep_excludes_seminar_survey() {
   printf '%s\t%s\n' \
     "Participation INL1" "Reflection on ethics" \
-    "Participation INL1" "Course evaluation survey (seminars)" \
+    "Participation INL1" "Course evaluation survey (participation)" \
     "INL1" "Course evaluation survey (project)" \
     > "${cache_dir}/testround.assignments"
   local prep=$(printf '%s\t%s\t%s\t%s\n' \
                  "Reflection on ethics" "s1" "complete" "2026-12-06" \
-                 "Course evaluation survey (seminars)" "s1" "" "" \
+                 "Course evaluation survey (participation)" "s1" "" "" \
                | filter_participation testround)
   [ "$(echo "${prep}" | wc -l)" -eq 1 ] \
     && echo "${prep}" | grep -q "^Reflection on ethics"
@@ -539,7 +539,7 @@ participation_msg="
 You did all prep and actively participated in all seminars. You don't have to
 do the project.
 
-To get your grade reported, do the Course evaluation survey (seminars) in the
+To get your grade reported, do the Course evaluation survey (participation) in the
 module Pass by participation when it opens in the last week of the course.
 "
 @

@@ -1,14 +1,20 @@
 {
   "quiz_type": "classic",
   "settings": {
-    "title": "Course evaluation survey (seminars)",
+    "title": "Course evaluation survey (participation)",
     "description": "<p><strong>This survey is for you who pass by participation in the seminars.</strong> If you do the project, take the survey in the module \"The final assignment\" instead.</p>\n<p><strong>This course evaluation survey is mandatory.</strong> The reason for this is that if you complete the course by active participation, instead of doing the project, the date of the last thing you did in the course will be too early. Then CSN (the Swedish Board of Student Finance) might get unhappy and withdraw you study allowance and loan. That's why you must do take this survey at the last week of the course. <strong>Then I can use its date for the grading date</strong> and CSN will be happy and cause you no problems.</p>\n<p>And as an added bonus, I get feedback from more than the usual 5% of the students :-) <strong>I only use the date for the grading, not what you write in the survey.</strong> You can still say in the survey that you hated the course and that will not affect your grade. But in either case, <strong>you'll still be asked to fill the usual survey that's sent out after the course.</strong> (But in that one I can't ask certain types of questions, and few fill it in, sometimes so few that the system refuses to give the results to me due to \"too few participants\".)</p>",
     "quiz_type": "graded_survey",
     "time_limit": null,
     "allowed_attempts": 1,
-    "shuffle_questions": false,
     "shuffle_answers": false,
     "points_possible": 100.0,
+    "assignment_group": "^Participation\\ INL1$",
+    "assignment": {
+      "grading_type": "points",
+      "omit_from_final_grade": false,
+      "peer_reviews": false,
+      "automatic_peer_reviews": false
+    },
     "published": true,
     "due_at": null,
     "unlock_at": "2027-01-04T07:00:00Z",
@@ -17,7 +23,8 @@
     "one_question_at_a_time": false,
     "cant_go_back": false,
     "access_code": null,
-    "regex": "^Course evaluation survey \\(seminars\\)$"
+    "anonymous_submissions": true,
+    "regex": "^Course evaluation survey \\(participation\\)$"
   },
   "questions": [
     {
@@ -27,54 +34,68 @@
       "points_possible": 1.0,
       "answers": [
         {
-          "weight": 100,
-          "migration_id": "RESPONSE_4751",
           "id": 4751,
-          "text": "0-2 h/week"
+          "text": "0-2 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 100.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_6113",
           "id": 6113,
-          "text": "2-4 h/week"
+          "text": "2-4 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_7044",
           "id": 7044,
-          "text": "4-6 h/week"
+          "text": "4-6 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_3920",
           "id": 3920,
-          "text": "6-8 h/week"
+          "text": "6-8 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_7383",
           "id": 7383,
-          "text": "8-10 h/week"
+          "text": "8-10 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_4302",
           "id": 4302,
-          "text": "10-12 h/week"
+          "text": "10-12 h/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_9419",
           "id": 9419,
-          "text": "12 h or more/week"
+          "text": "12 h or more/week",
+          "html": "",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         }
       ],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -86,60 +107,68 @@
       "points_possible": 1.0,
       "answers": [
         {
-          "weight": 100,
-          "migration_id": "RESPONSE_5544",
-          "id": 5544,
-          "text": "It's a good idea to annotate the TAMOS lectures from a security perspective."
+          "id": "5544",
+          "text": "It's a good idea to annotate the TAMOS lectures from a security perspective.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 100.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_567",
-          "id": 567,
-          "text": "Annotating the TAMOS lectures would be more useful with more guidance."
+          "id": "567",
+          "text": "Annotating the TAMOS lectures would be more useful with more guidance.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_289",
-          "id": 289,
-          "text": "It was helpful to see others' annotations in the papers that we had to read."
+          "id": "289",
+          "text": "It was helpful to see others' annotations in the papers that we had to read.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_6275",
-          "id": 6275,
-          "text": "It would be helpful to not see the others' annotations in the papers until done with one's own annotations."
+          "id": "6275",
+          "text": "It would be helpful to not see the others' annotations in the papers until done with one's own annotations.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_3148",
-          "id": 3148,
-          "text": "It was too many papers to read for each seminar."
+          "id": "3148",
+          "text": "It was too many papers to read for each seminar.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_1117",
-          "id": 1117,
-          "text": "It was a suitable number of papers to read for each seminar."
+          "id": "1117",
+          "text": "It was a suitable number of papers to read for each seminar.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_924",
-          "id": 924,
-          "text": "It was too few papers to read for each seminar."
+          "id": "924",
+          "text": "It was too few papers to read for each seminar.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_2733",
-          "id": 2733,
-          "text": "Some topics would have benefited from more papers as example methodologies."
+          "id": "2733",
+          "text": "Some topics would have benefited from more papers as example methodologies.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         }
       ],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -151,36 +180,40 @@
       "points_possible": 1.0,
       "answers": [
         {
-          "weight": 100,
-          "migration_id": "RESPONSE_2415",
-          "id": 2415,
-          "text": "Reading the papers was good prep for the seminars."
+          "id": "2415",
+          "text": "Reading the papers was good prep for the seminars.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 100.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_8903",
-          "id": 8903,
-          "text": "Some topics should have had more papers to better prepare for the seminar."
+          "id": "8903",
+          "text": "Some topics should have had more papers to better prepare for the seminar.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_8722",
-          "id": 8722,
-          "text": "Writing the reflections was good prep for the seminars."
+          "id": "8722",
+          "text": "Writing the reflections was good prep for the seminars.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_9153",
-          "id": 9153,
-          "text": "The reflection instructions can be improved to better prepare us for the seminars."
+          "id": "9153",
+          "text": "The reflection instructions can be improved to better prepare us for the seminars.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         }
       ],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -193,10 +226,10 @@
       "answers": [],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -208,36 +241,40 @@
       "points_possible": 1.0,
       "answers": [
         {
-          "weight": 100,
-          "migration_id": "RESPONSE_8593",
-          "id": 8593,
-          "text": "The seminars helped me deepen my understanding for the science of security."
+          "id": "8593",
+          "text": "The seminars helped me deepen my understanding for the science of security.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 100.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_8391",
-          "id": 8391,
-          "text": "The seminars helped me better understand how the methods learned in TAMOS can be used in security."
+          "id": "8391",
+          "text": "The seminars helped me better understand how the methods learned in TAMOS can be used in security.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_222",
-          "id": 222,
-          "text": "It was helpful to discuss the topics with classmates during the seminars."
+          "id": "222",
+          "text": "It was helpful to discuss the topics with classmates during the seminars.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         },
         {
-          "weight": 0,
-          "migration_id": "RESPONSE_8058",
-          "id": 8058,
-          "text": "Some that I discussed with during a seminar weren't prepared so they couldn't contribute anything to the discussion."
+          "id": "8058",
+          "text": "Some that I discussed with during a seminar weren't prepared so they couldn't contribute anything to the discussion.",
+          "comments": "",
+          "comments_html": "",
+          "weight": 0.0
         }
       ],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -250,10 +287,10 @@
       "answers": [],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -266,10 +303,10 @@
       "answers": [],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
@@ -282,10 +319,10 @@
       "answers": [],
       "correct_comments": "",
       "incorrect_comments": "",
-      "neutral_comments": null,
-      "correct_comments_html": null,
-      "incorrect_comments_html": null,
-      "neutral_comments_html": null,
+      "neutral_comments": "",
+      "correct_comments_html": "",
+      "incorrect_comments_html": "",
+      "neutral_comments_html": "",
       "matching_answer_incorrect_matches": null,
       "formulas": null,
       "variables": null
