@@ -31,7 +31,7 @@ SHORT_TITLES = [
     (re.compile(r"courses that you are currently taking", re.I),
      "Courses you are currently taking"),
 ]
-COLUMNS_FROM = 8  # items; longer lists are set in two columns
+COLUMNS_FROM = 6  # items; longer lists are set in two columns
 TINY_FROM = 12  # items; even longer lists also in a smaller font
 SUMMARY_PROMPT = """\
 The input is a list of students' answers to the question "What research
