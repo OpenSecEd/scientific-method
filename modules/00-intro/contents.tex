@@ -10,6 +10,20 @@
   KTH EECS, \email{dbosk@kth.se}
 }
 
+\begin{pycode}
+from mentipy.latex import mc, open_text
+from mentipy.store import Store
+
+mentipy_common = {
+    "store": Store("mentipy.json"),
+    "qr_dir": "mentipy-obj",
+    "qr_format": "png",
+    "environment": "exercise",
+    "show_url": False,
+    "layout": "auto",
+}
+\end{pycode}
+
 \mode<article>{\maketitle}
 \mode<presentation>{%
   \begin{frame}
@@ -136,6 +150,143 @@ Consider the following examples.
       one out.%
     }
   \end{example}
+\end{frame}
+
+Before we look at what makes such claims unfalsifiable, try the following
+exercise on six claims: \enquote{all swans are white}, \enquote{there are no
+UFOs}, \enquote{UFOs exist}, \enquote{this system is secure}, \enquote{this
+system is insecure} and the password rule \enquote{to be secure, a password
+must have at least 8 characters and contain letters, digits and special
+characters}.
+
+\begin{frame}[fragile]
+  \begin{pycode}
+print(mc(
+    "Which of these claims could a single observation show to be false?",
+    [
+        "All swans are white.",
+        "There are no UFOs.",
+        "UFOs exist.",
+        "This system is secure.",
+        "This system is insecure.",
+        "To be secure, a password must have at least 8 characters and "
+        "contain letters, digits and special characters.",
+    ],
+    multi=True,
+    **mentipy_common,
+))
+  \end{pycode}
+\end{frame}
+
+\ltnote{%
+  Asked before the asymmetry is explained, so that the answers show whether
+  students already separate claims an observation can refute from claims it
+  can only confirm.
+  The options vary the form of the claim (universal, non-existence,
+  existence) and pair each everyday claim with a security claim of the same
+  form.
+  Each wrong answer marks one misconception: choosing \enquote{UFOs exist} or
+  \enquote{This system is insecure} confuses confirming a claim with refuting
+  it; missing \enquote{There are no UFOs} or \enquote{This system is secure}
+  takes negative or security claims to be untestable; choosing the password
+  rule takes a prescription to be testable as stated.
+  The UFO pair comes from the author's own note in the margin of
+  \citeauthor{SecurityAsAScience}'s Section~II-B.%
+}
+
+A black swan refutes \enquote{all swans are white} and a UFO refutes
+\enquote{there are no UFOs}, but no observation refutes \enquote{UFOs exist}:
+not having seen one only means that we haven't looked in the right place.
+It is the other way around for confirmation: one UFO confirms that UFOs exist,
+but no number of white swans confirms that all swans are white.
+Security claims have the same asymmetry (\cref{tab:refute-confirm}).
+
+\begin{frame}
+  \begin{table}
+    \footnotesize
+    \begin{tabular}{lll}
+      \toprule
+      Claim & Refuted by & Confirmed by \\
+      \midrule
+      All swans are white. & a black swan & nothing \\
+      There are no UFOs. & a UFO & nothing \\
+      UFOs exist. & nothing & a UFO \\
+      This system is secure. & a successful attack & nothing \\
+      This system is insecure. & nothing & a successful attack \\
+      The password rule. & nothing & nothing \\
+      \bottomrule
+    \end{tabular}
+    \caption{What a single observation can do to each claim: a claim that
+      something holds everywhere can be refuted but not confirmed, a claim
+      that something exists can be confirmed but not refuted.}
+    \label{tab:refute-confirm}
+  \end{table}
+\end{frame}
+
+\Textcite{SecurityAsAScience} put it as follows, and use the password rule as
+their example.
+
+\begin{frame}
+  \begin{example}
+    \textcquote[p.~109]{SecurityAsAScience}{%
+      We can observe that something is insecure (by observing a failure) but
+      no observation allows us to determine empirically that something is
+      secure\textelp{}%
+    }
+  \end{example}
+
+  \pause
+
+  \begin{example}
+    \textcquote[p.~110]{SecurityAsAScience}{%
+      To falsify the claim \enquote{a password must have at least 8
+      characters and contain letters, digits and special characters to be
+      secure} we would have to find a secure non-compliant password.
+      However, we can't find a secure password, since successfully avoiding
+      harm in the past is no guarantee about the future.%
+    }
+  \end{example}
+\end{frame}
+
+So the rule as stated cannot be tested.
+Can it be turned into a claim that can?
+
+\begin{frame}[fragile]
+  \begin{pycode}
+print(open_text(
+    "Rewrite the password rule from the previous slide so that an "
+    "observation could show it to be false.",
+    max_chars=280,
+    next=False,
+    **mentipy_common,
+))
+  \end{pycode}
+\end{frame}
+
+One way is to turn the rule into a prediction about outcomes, which an
+observation can contradict.
+That prediction has been tested, but late, since
+\textcquote[p.~110]{SecurityAsAScience}{%
+  storing passwords as salted hashes \textelp{} precluded easily measuring
+  whether mandates on character composition were having the predicted
+  effect.
+  Recent empirical work shows that they do not%
+}.
+
+\begin{frame}
+  \begin{block}{A version that can be refuted}
+    Accounts whose passwords follow the rule are guessed less often than
+    accounts whose passwords don't.
+  \end{block}
+
+  \pause
+
+  \begin{remark}
+    \textcquote[p.~101]{SecurityAsAScience}{%
+      Stating the evidence that would falsify a claim thus acts as a forcing
+      function to clarify vague claims and implicit assumptions.%
+    }
+  \end{remark}
 \end{frame}
 
 This leads us to the second question, we want the students to able to answer:

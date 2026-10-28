@@ -6,3 +6,6 @@ notes.fdb_latexmk
 notes.fls
 notes.log
 about-you.tex
+.venv/
+mentipy.json
+mentipy-obj/
