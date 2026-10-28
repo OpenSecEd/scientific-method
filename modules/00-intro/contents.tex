@@ -21,8 +21,12 @@ mentipy_common = {
     "environment": "exercise",
     "show_url": False,
     "layout": "auto",
+    # The public poll address (mentipy serve --public ssh), not the LAN one
+    "base_url": "http://faculty-shell.sys.kth.se:8080",
 }
 \end{pycode}
+% Let the poll address under the QR code break to fit its column
+\newcommand{\mentipyqrcaption}[1]{{\tiny\url{#1}}}
 
 \mode<article>{\maketitle}
 \mode<presentation>{%
