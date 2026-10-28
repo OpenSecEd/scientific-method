@@ -21,8 +21,9 @@ mentipy_common = {
     "environment": "exercise",
     "show_url": False,
     "layout": "auto",
-    # The public poll address (mentipy serve --public ssh), not the LAN one
-    "base_url": "http://faculty-shell.sys.kth.se:8080",
+    # No base_url: a fixed address would revert, on every rebuild, the
+    # QR codes that mentipy serve rewrites to the address it serves.  For
+    # a public lecture, set mentipy.base_url in the config instead.
 }
 \end{pycode}
 % Let the poll address under the QR code break to fit its column
