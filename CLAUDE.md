@@ -58,24 +58,24 @@ evaluation survey (project)`) is the project track. The surveys share
 their joint questions; only the project one has the project questions.
 The participation survey sits in the second `Pass by participation` module; its
 file has no `modules:` because both such modules share one name.
-Both surveys have **Keep submissions anonymous** on. canvaslms neither
-exports nor sends `anonymous_submissions`, so the JSON files cannot record
-it: check it in the web UI whenever a survey is created from a file.
+Both surveys have **Keep submissions anonymous** on, recorded as
+`anonymous_submissions` in their JSON files, which also record their
+`assignment_group`. They must stay Classic quizzes: canvaslms does not
+recognise a New Quizzes survey as a survey, so grading would want a passing
+grade on it.
 
 ### Gotchas
 
 - Two modules are both named `Pass by participation` (ids 229768, 229776),
   so files in them carry no `modules:`; place items with `canvaslms
-  modules add-item -c C '^229776$' ...` instead.
-- canvaslms cannot clear a date: `due_at: null` and `''` are not sent
-  (dbosk/canvaslms#527). Clear it in the web UI.
-- canvaslms cannot set an assignment group; a new quiz lands in the first
-  group (`Assignments`). Move it in the web UI (dbosk/canvaslms#528).
-- `modules edit --unpublish` alone fails with "Nothing to change"
-  (dbosk/canvaslms#500); add the module's current `-p` as a workaround.
+  modules add-item -c C '^229776$' ...` instead. `quizzes export` does write
+  a `modules:` for the participation survey: delete it when re-exporting.
+- A `null` date in a file is sent and clears the date in Canvas, and the quiz
+  JSON files have them (`due_at`, `lock_at`). So if a date was set in the web
+  UI, re-export the quiz before pushing it.
 - Grading: `canvaslms results -A "Participation INL1" -S
   canvaslms.grades.participation` needs `complete` or `100` on every item,
-  so the participation survey must stay worth 100 points.
+  except that a survey passes once completed, whatever its points.
 - `modules remove-item` leaves a gap in the positions; write the actual
   positions back into the files.
 - Course copies leave unresolved `$CANVAS_OBJECT_REFERENCE$/…g<hex>` links
