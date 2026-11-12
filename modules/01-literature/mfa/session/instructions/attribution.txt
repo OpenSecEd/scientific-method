@@ -1,0 +1,50 @@
+You are running one strand of a rapid literature review. Its protocol is already written and committed; your job is to execute the search for ONE research question exactly as the protocol says, and to report evidence on BOTH sides. Do not edit anything in the git repository. Write only under your output directory:
+  OUT=/tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/mfa-attribution
+(create it). Session name and slug: mfa-attribution.
+
+## Read first
+1. Load the `backing-claims` skill (Skill tool: skill="backing-claims") and follow it; read its references/scholar-cookbook.md and, when a paper is closed access, references/closed-access.md.
+2. Read the protocol: /home/dbosk/devel/edu/scientific-method/modules/01-literature/mfa/contents.tex — the sections Terms (cases P, P+, A1, A2, A3, B, C), Threat model (threats R1–R8, L1–L3), Queries, Inclusion and exclusion, Screening and reading, Grading the evidence (E1–E6).
+
+## Your research question (RQ2, attribution)
+"Is the effect of multi-factor authentication due to combining factors or to the strength of one of them? What does the password contribute once a cryptographic key is present, and what does a second factor contribute beside a strong, unique password?"
+The protocol predicts: against remote threats the effect comes from the strongest factor (beside a service-bound cryptographic key the password adds nothing), while against local threats a second, locally verified factor does add protection. That prediction may be wrong. Your job is NOT to confirm it. Find the strongest evidence for "one strong factor does the work" AND the strongest evidence for "the combination matters" (factor independence, defence in depth, cases where the password or PIN beside a key stopped an attack, key extraction or cloning, device theft, malware, synced passkeys, downgrade to a weaker factor). Also establish from the standards how they classify a cryptographic key unlocked by PIN or biometric (single- or multi-factor) and a key without user verification, and the reasons they give. If either pile ends up empty, the report must show the queries that came back empty. Direct evidence may be scarce (few studies isolate one factor's contribution): say plainly which conclusions rest on measurement, which on attack demonstrations, and which only on analysis.
+
+## Planned queries (run all, verbatim keywords, on ALL five providers)
+M = "multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification"   (the bare abbreviation MFA is deliberately excluded: it also means material flow analysis)
+K = passwordless OR passkey OR FIDO2 OR WebAuthn OR "security key" OR "single-factor"
+S1: (K) AND password AND (replace OR comparison OR "security analysis" OR evaluation)
+S2: (K) AND ("user verification" OR PIN OR biometric) AND (stolen OR theft OR "local attack")
+C1: (M) AND ("defence in depth" OR "defense in depth" OR "independent factors" OR "factor independence" OR "combination of factors")
+C2: (K) AND password AND ("still needed" OR fallback OR weakness OR vulnerability)
+Providers: openalex, wos, scopus, ieee, arxiv (-p openalex -p wos -p scopus -p ieee -p arxiv), --limit 40 each. Semantic Scholar (key rejected, HTTP 403) and DBLP (anti-bot page) are down today: do not use them, record them as not searched. Translate the SAME keywords into WoS TS=(...) and Scopus TITLE-ABS-KEY(...) where needed; never a different keyword set per provider. Run `scholar providers check` first and record its output.
+If a planned query returns mostly another topic, you may add a reworded query (same concept terms, the field's own vocabulary) — keep the original in the session and in the matrix, and list the rewording under "Deviations" with the reason. Never search for a paper by author or title to discover it; names are only for retrieving an item already identified. A redo must recover every relevant result of the query it replaces.
+
+Grey literature (standards on digital identity and authenticator assurance, specifications, public-authority guidance) is often not indexed: look for it with WebSearch using concept queries, record every such query verbatim with date and outcome, then retrieve the document from the issuing organisation and treat it as a known item.
+
+OpenAlex has a metered daily budget shared with three other agents running now (about 1000 requests in total): stay under roughly 200 OpenAlex requests, and if it answers HTTP 429, record the affected cells as failed, never as 0.
+
+## Screening
+Classify the WHOLE session: `scholar llm context mfa-attribution "<the RQ; inclusion/exclusion criteria from the protocol; tags: supports-claim = bears on the question and supports that one strong factor does the work / the password adds nothing beside a key; qualifies-claim = bears on it and shows the combination or the second factor matters, or narrows the claim; adjacent-subtopic = same field, other question (new scheme proposals, usability/adoption only, machine-to-machine); off-topic-false-hit = other field>"`, then `scholar llm classify mfa-attribution --no-examples` over all pending papers (seed the four category tags if needed). Decide papers it leaves pending with `scholar sessions decide`. Read every qualifies-claim row and every low-confidence row (< 0.7) yourself and override where the model is wrong. Tag the sources you cite with a theme tag.
+
+## Reading and verification
+Fetch full texts only through `~/.claude/skills/backing-claims/scripts/fetch_pdf.py --text <doi-or-url>` (scholar's PDF cache; KTH tunnel per closed-access.md; stop at any bot check or login form, do not work around it). Read the 8–15 most load-bearing sources in full text and capture for each a VERBATIM quote with locator (section/page) that states the finding. Corroborating sources get verified entries too; abstract-only reading must be flagged as such in VERIFIED. Run `scholar verify mfa-attribution` (retractions). A source whose existence or content you cannot check is listed as DROPPED, never cited. Do not cite from memory, titles or snippets.
+
+## Outputs (all in $OUT)
+1. `mfa-attribution.bib` — one entry per cited source, each under a provenance block (CLAIM / FOUND-VIA / PICKED / QUOTE / VERIFIED / COUNTER / DATE); run `~/.claude/skills/backing-claims/scripts/check_provenance.py` and `check_metadata.py` on it and fix what they report. Titles containing quotes use \mkbibquote{...}.
+2. `mfa-attribution.csv` — `scholar sessions export mfa-attribution` (the classified session).
+3. `mfa-attribution-full.tex` — `scholar sessions export mfa-attribution -f table --bearing-only --lang en --label hits-attribution --track "What each factor contributes" --theme <TAG>="<name>" ... -o $OUT/mfa-attribution-full` (if `-f table` is unavailable use the skill's scripts/session_table.py).
+4. `mfa-attribution-report.md` — the COMPLETE report (your reply to me is truncated at about 4 KB, so everything must be in the file):
+   - providers check output; date; the query × provider × hits matrix copied from `scholar sessions show mfa-attribution` (failed cells as failed with reason, never 0), including the exact string sent to each provider;
+   - every WebSearch/WebFetch/alphaXiv complement (tool, verbatim query, date, outcome);
+   - flow counts: records identified, after de-duplication, classified into each of the four categories, read in full text, read as abstract only, cited;
+   - Deviations from the planned queries;
+   - how the standards define factor, multi-factor, and classify cases B (key with user verification) and C (key alone), with verbatim quotes and locators;
+   - a case × threat table: rows P, P+, A1, A2, A3, B, C; columns R1–R8, L1–L3; each cell you have evidence for says resists / fails / partly, with the bib key and grade; cells without evidence are left empty (do not fill them from reasoning alone — if you add an analytical argument, mark it "analysis, no source");
+   - for each pair that isolates one factor's contribution (A3 vs C and B; P+ vs A1–A3; B vs C), what the evidence says the extra factor adds, per threat;
+   - findings sorted into supports / contradicts-or-narrows, each with the bib key, grade, one-sentence finding and the verbatim quote with locator;
+   - limitations (facts about the data and tools) and what could not be obtained (title, DOI, why);
+   - the exact command used to generate the table, the classification model, and the number of human overrides.
+Aim to finish within about 40 minutes of work; if time runs short, verify fewer sources properly rather than more sources superficially, and say what was left undone.
+
+Reply with one paragraph: the answer the evidence supports, how strong it is, the main contradicting or narrowing evidence, and the output paths.

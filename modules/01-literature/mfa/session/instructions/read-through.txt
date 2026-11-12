@@ -1,0 +1,36 @@
+Read four papers in full and check what a literature review says about each. This is a read-and-report task: do NOT edit anything in the git repository, do not run any LaTeX build, and do not touch `nytid`. Write only to
+  OUT=/tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/read-through
+(create it).
+
+## Background
+The review is `/home/dbosk/devel/edu/scientific-method/modules/01-literature/mfa/contents.tex` ("Is multi-factor authentication necessary or sufficient for secure authentication of users?"), with its sources in `mfa.bib` in the same directory; each source has a provenance comment block (CLAIM / FOUND-VIA / PICKED / QUOTE / VERIFIED / COUNTER). Read the report's sections "Terms", "Threat model" (threats R1–R8, L1–L3), "Grading the evidence" (grades E1–E6) and the Results so you know the cases (P, P+, A1, A2, A3, B, C) and what each source is used for. Four sources are cited with the mark "abstract only": so far only the abstract and the one quoted passage were confirmed. The PDFs are already downloaded; your job is to read each paper through and say whether the report's sentence about it holds as worded.
+
+## The four papers (PDF and text extraction in ~/.cache/scholar/pdfs/)
+For each, `<id>.pdf` is the PDF and `<id>.txt` a `pdftotext -layout` extraction (two-column papers interleave columns there; run `pdftotext <id>.pdf -` yourself for reading order, and use the layout version or `pdftotext -f N -l N` to find page numbers). The printed page numbers of the publication are what locators should use where they exist, otherwise PDF page plus section.
+
+1. Bib key `Lin2022PhishSheep` — id `11b8be0c43685cdd` — Lin et al., "Phish in Sheep's Clothing: Exploring the Authentication Pitfalls of Browser Fingerprinting", USENIX Security 2022.
+   Report sentence (on risk-based authentication): "phishing sites can copy the browser fingerprints it relies on".
+   Check: how fingerprint replication gets past risk-based authentication and two-factor authentication, on which and how many services, under what conditions (what the attacker must already hold, e.g. the password), whether it was run against real services, and how common the needed fingerprinting is among real phishing sites.
+2. Bib key `Holthouse2025TwentyThreeAndMe` — id `6f67f4463309e31c` — Holthouse, Owens and Bhunia, "The 23andMe Data Breach: Analyzing Credential Stuffing Attacks, Security Vulnerabilities, and Mitigation Strategies", arXiv 2502.04303.
+   Report sentence (threat R1): "A password chosen and reused by the user falls to credential stuffing; one analysed breach began with about 14 000 accounts taken over in that way".
+   Check: where the 14,000 figure comes from (the paper's own data, or a company statement or press it cites — name the cited source), what the paper's own method is (is it an analysis of public reports?), and what exactly it says about multi-factor authentication being absent or optional at the time.
+3. Bib key `Spooren2015Fingerprinting` — id `ea9ac25b8ead8b73` — Spooren, Preuveneers and Joosen, "Mobile Device Fingerprinting Considered Harmful for Risk-based Authentication", EuroSec 2015.
+   Report sentence: "on mobile devices those fingerprints are too alike to tell users apart".
+   Check: the data behind it (how many devices or users, which attributes), the measure used, and whether "too alike to tell users apart" overstates what the paper shows (it may say less reliable, more predictable or spoofable rather than indistinguishable).
+4. Bib key `NIST2016PIVPrivileged` — id `9bc27c3a2430ba53` — NIST Cybersecurity White Paper "Best Practices for Privileged User PIV Authentication" (2016).
+   Report sentence (under "What is required"): "An earlier white paper likewise argues for multi-factor authentication of privileged users in place of passwords".
+   Check: the reasons it gives (which attacks on passwords), whether it speaks of requirement or recommendation and on whose authority (it mentions an OMB plan), which authenticator it means (PIV card: a cryptographic key unlocked by a PIN, i.e. the report's case B), and whether it says anything on why two factors rather than the card's key alone.
+
+## What to report for each paper
+- Whether you read the whole paper (say which parts you skimmed, if any) and its length.
+- Method, data and sample in two or three sentences; the evidence grade (E1–E6) that fits, with a reason.
+- Verdict on the report's sentence: holds as worded / holds with a narrower wording / not supported. If narrower, propose the replacement sentence in plain English, at the strength the paper supports.
+- Two to four VERBATIM quotes that carry the finding, each with a locator (page and section). Copy them exactly; check each against the text you extracted (mind hyphenation at line ends and ligatures) and say that you did. Do not paraphrase inside quotation marks.
+- Caveats and limitations the authors state themselves, and any you see that they do not.
+- Anything else in the paper that bears on the review's four questions (effect of a second factor; what each factor contributes; sufficiency; necessity) and that the report does not use, with a quote and locator. Say which case and threat it concerns. If nothing, say so.
+- Check the bib entry's metadata (authors, title, venue, year, pages) against the paper's first page and list any difference.
+- A proposed replacement for the `VERIFIED:` field of the provenance block (two to four lines: full text read on 2026-11-12 from which copy, what was checked, why it applies and its limits).
+
+Do not cite from memory and do not add knowledge from outside the papers; if a paper does not say something, write that it does not. If a PDF turns out to be the wrong document or incomplete, stop on that paper and say so.
+
+Write the complete report to `$OUT/read-through-report.md` (your reply to me is truncated at about 4 KB). Reply with one short paragraph per paper: the verdict on the report's sentence and the most important thing I should change, plus the report path.

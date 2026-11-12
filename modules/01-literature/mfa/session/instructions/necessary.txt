@@ -1,0 +1,51 @@
+You are running one strand of a rapid literature review. Its protocol is already written and committed; your job is to execute the search for ONE research question exactly as the protocol says, and to report evidence on BOTH sides. Do not edit anything in the git repository. Write only under your output directory:
+  OUT=/tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/mfa-necessary
+(create it). Session name and slug: mfa-necessary.
+
+## Read first
+1. Load the `backing-claims` skill (Skill tool: skill="backing-claims") and follow it; read its references/scholar-cookbook.md and, when a paper is closed access, references/closed-access.md.
+2. Read the protocol: /home/dbosk/devel/edu/scientific-method/modules/01-literature/mfa/contents.tex — the sections Terms (cases P, P+, A1, A2, A3, B, C), Threat model (threats R1–R8, L1–L3), Necessary and sufficient, Queries, Inclusion and exclusion, Screening and reading, Grading the evidence (E1–E6).
+
+## Your research question (RQ4, necessity)
+"Is multi-factor authentication necessary: can comparable security be reached with a single factor, or by other means?"
+The protocol predicts: not necessary against the remote threats — a single cryptographic key (case C) resists them as well as the multi-factor cases do. That prediction may be wrong. Your job is NOT to confirm it. Find the strongest evidence that security comparable to MFA is reached without several factors (single-factor cryptographic authenticators, risk-based authentication, random unique passwords from a password manager) AND the strongest evidence that it is not: that single-factor schemes, including a key alone, fall to threats that multi-factor schemes resist; that the alternatives are weaker in measured compromise; and what the standards and regulations REQUIRE at which assurance level and the reasons they give (a requirement is evidence of expert consensus, grade E5, not of necessity in itself — report it as such). Be careful with definitions: a passkey unlocked by PIN or biometric may count as multi-factor in the standards, so "passwordless" is not automatically evidence against necessity; record for every alternative whether it is single-factor in the protocol's sense. If either pile ends up empty, the report must show the queries that came back empty.
+
+## Planned queries (run all, verbatim keywords, on ALL five providers)
+M = "multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification"   (the bare abbreviation MFA is deliberately excluded: it also means material flow analysis)
+K = passwordless OR passkey OR FIDO2 OR WebAuthn OR "security key" OR "single-factor"
+S1: (K OR "risk-based authentication" OR "password manager") AND (alternative OR "instead of" OR without) AND (M)
+S2: "risk-based authentication" AND (evaluation OR effectiveness OR security)
+C1: (M) AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)
+C2: ("password-only" OR "single-factor authentication") AND (insufficient OR inadequate OR compromise)
+Here S = worded to find support for "not necessary", C = worded to find evidence that MFA is necessary.
+Providers: openalex, wos, scopus, ieee, arxiv (-p openalex -p wos -p scopus -p ieee -p arxiv), --limit 40 each. Semantic Scholar (key rejected, HTTP 403) and DBLP (anti-bot page) are down today: do not use them, record them as not searched. Translate the SAME keywords into WoS TS=(...) and Scopus TITLE-ABS-KEY(...) where needed; never a different keyword set per provider. Run `scholar providers check` first and record its output.
+If a planned query returns mostly another topic, you may add a reworded query (same concept terms, the field's own vocabulary) — keep the original in the session and in the matrix, and list the rewording under "Deviations" with the reason. Never search for a paper by author or title to discover it; names are only for retrieving an item already identified. A redo must recover every relevant result of the query it replaces.
+
+Grey literature (standards on digital identity and authenticator assurance levels, regulations that mandate strong authentication, public-authority guidance) is often not indexed: look for it with WebSearch using concept queries, record every such query verbatim with date and outcome, then retrieve the document from the issuing organisation and treat it as a known item.
+
+OpenAlex has a metered daily budget shared with three other agents running now (about 1000 requests in total): stay under roughly 200 OpenAlex requests, and if it answers HTTP 429, record the affected cells as failed, never as 0.
+
+## Screening
+Classify the WHOLE session: `scholar llm context mfa-necessary "<the RQ; inclusion/exclusion criteria from the protocol; tags: supports-claim = bears on the question and shows comparable security reached without several factors (MFA not necessary); qualifies-claim = bears on it and shows single-factor or alternative schemes falling short, or MFA being required, or narrows the claim; adjacent-subtopic = same field, other question (new scheme proposals with only their own security argument, usability/adoption only, machine-to-machine); off-topic-false-hit = other field>"`, then `scholar llm classify mfa-necessary --no-examples` over all pending papers (seed the four category tags if needed). Decide papers it leaves pending with `scholar sessions decide`. Read every qualifies-claim row and every low-confidence row (< 0.7) yourself and override where the model is wrong. Tag the sources you cite with a theme tag.
+
+## Reading and verification
+Fetch full texts only through `~/.claude/skills/backing-claims/scripts/fetch_pdf.py --text <doi-or-url>` (scholar's PDF cache; KTH tunnel per closed-access.md; stop at any bot check or login form, do not work around it). Read the 8–15 most load-bearing sources in full text and capture for each a VERBATIM quote with locator (section/page) that states the finding. Corroborating sources get verified entries too; abstract-only reading must be flagged as such in VERIFIED. Run `scholar verify mfa-necessary` (retractions). A source whose existence or content you cannot check is listed as DROPPED, never cited. Do not cite from memory, titles or snippets.
+
+## Outputs (all in $OUT)
+1. `mfa-necessary.bib` — one entry per cited source, each under a provenance block (CLAIM / FOUND-VIA / PICKED / QUOTE / VERIFIED / COUNTER / DATE); run `~/.claude/skills/backing-claims/scripts/check_provenance.py` and `check_metadata.py` on it and fix what they report. Titles containing quotes use \mkbibquote{...}.
+2. `mfa-necessary.csv` — `scholar sessions export mfa-necessary` (the classified session).
+3. `mfa-necessary-full.tex` — `scholar sessions export mfa-necessary -f table --bearing-only --lang en --label hits-necessary --track "Is multi-factor authentication necessary" --theme <TAG>="<name>" ... -o $OUT/mfa-necessary-full` (if `-f table` is unavailable use the skill's scripts/session_table.py).
+4. `mfa-necessary-report.md` — the COMPLETE report (your reply to me is truncated at about 4 KB, so everything must be in the file):
+   - providers check output; date; the query × provider × hits matrix copied from `scholar sessions show mfa-necessary` (failed cells as failed with reason, never 0), including the exact string sent to each provider;
+   - every WebSearch/WebFetch/alphaXiv complement (tool, verbatim query, date, outcome);
+   - flow counts: records identified, after de-duplication, classified into each of the four categories, read in full text, read as abstract only, cited;
+   - Deviations from the planned queries;
+   - a table of alternatives: source key, year, alternative (key alone = case C; random unique password = case P+; risk-based authentication; other), single-factor in the protocol's sense or not, which threats (R1–R8, L1–L3) it was evaluated against, result compared with which multi-factor case, evidence grade E1–E6;
+   - a table of requirements: standard or regulation, level or scope, what is required (number and kind of factors, phishing resistance), the reason given, verbatim quote with locator;
+   - a case × threat summary for rows P, P+, C (and risk-based authentication as an extra row): each cell you have evidence for says resists / fails / partly with the bib key; cells without evidence stay empty;
+   - findings sorted into supports / contradicts-or-narrows, each with the bib key, grade, one-sentence finding and the verbatim quote with locator;
+   - limitations (facts about the data and tools) and what could not be obtained (title, DOI, why);
+   - the exact command used to generate the table, the classification model, and the number of human overrides.
+Aim to finish within about 40 minutes of work; if time runs short, verify fewer sources properly rather than more sources superficially, and say what was left undone.
+
+Reply with one paragraph: the answer the evidence supports, how strong it is, the main contradicting or narrowing evidence, and the output paths.

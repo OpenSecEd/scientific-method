@@ -546,7 +546,8 @@ The sources on types of review in \cref{sec:reviewtype} and the remark
 on the language restriction in \cref{sec:criteria} come from a fifth,
 small search on review methods that the protocol had not planned
 (\cref{sec:hits-method}).
-The search itself departed from the protocol as follows.
+The search itself departed from the protocol as follows; \cref{sec:session}
+tells how the session went.
 \begin{description}
   \item[Queries added] Six queries were added, for three of the
     questions, because the planned ones returned few records on the cases
@@ -576,7 +577,7 @@ The search itself departed from the protocol as follows.
     and read by four separate runs of the model.
     A fifth run then checked every quoted passage again against the full
     text, or against the abstract for sources read only as abstracts.
-    The check found one misquoted hyphen and led to three sources being
+    The check found one misquoted hyphen and led to two sources being
     dropped (\cref{sec:dropped}).
   \item[Sources read only as abstracts] Of the 64 sources cited, 16 could
     be read only at the level of the abstract, mostly because the
@@ -1393,6 +1394,7 @@ for the systematic review that \cref{sec:reviewtype} set aside.
 
 
 \appendix
+\crefalias{chapter}{appendix}
 
 \section{Queries and records found}\label{sec:hitlists}
 
@@ -1630,8 +1632,9 @@ is not among the records.
 
 \section{Sources dropped and documents not obtained}\label{sec:dropped}
 
-Three sources that a search run had cited were dropped in the second
-check.
+Two sources that a search run had cited were dropped in the second
+check, and two records that a run had classified as supporting were
+excluded.
 \begin{itemize}
   \item A report of laboratory trials of keys against relayed logins,
     published by its single author in a repository without review, of
@@ -1641,10 +1644,10 @@ check.
     banking regulators, known only from a garbled abstract.
     It reports the guidance at second hand; the guidance itself could
     not be retrieved.
-  \item Two studies of multi-factor authentication at a university and
-    in banking in Ghana (DOIs 10.56201/ijcsmt.vol.12.no1.2026.pg144.154
-    and 10.37602/ijssmr.2025.8106), whose abstracts state no size of
-    effect.
+  \item Excluded: two studies of multi-factor authentication, at a
+    university and in banking in Ghana, whose abstracts state no size of
+    effect (DOIs \url{10.56201/ijcsmt.vol.12.no1.2026.pg144.154} and
+    \url{10.37602/ijssmr.2025.8106}).
 \end{itemize}
 Three documents that the questions call for could not be retrieved,
 because the issuing site refused automated retrieval or the text is
@@ -1658,3 +1661,282 @@ sold.
   \item ISO/IEC 29115, the international standard on assurance of
     entity authentication.
 \end{itemize}
+
+
+\section{How the review was made}\label{sec:session}
+
+This appendix is an account of the session in which the review was made,
+written at the author's request by the language model that carried it
+out.
+In it, \enquote{I} is the model and \enquote{the author} is the person
+named on the first page.
+It is written for readers who will use such models in their own
+research, and it is organised around one question: what in this work can
+someone else check?
+
+The review was made in one working session on 12 November 2026, in
+Claude Code.
+That is a program in which a language model, here Claude Fable~5.2,
+works in a directory of files: it reads and writes the files, runs
+commands such as the search tool and the typesetting, and can start
+further runs of a model for parts of the work.
+A model working in this way is often called an agent.
+The author gave the instructions, and each draft was sent to the
+author's tablet.
+
+Much of what I did was governed by \emph{skills}.
+A skill is a text file of instructions for one kind of task, which the
+model reads when such a task comes up.
+The skills used here are the author's own, written and revised over
+earlier projects, and several of their rules record a mistake that was
+once made.
+They are to the model what a laboratory's written procedures are to a
+new member of the laboratory.
+
+\subsection{The course of the session}
+
+\Cref{tab:session} gives the steps in order.
+Three things in it were decided by the author and not by me: that the
+report should serve as an example, that the password may contribute
+nothing beside a key, which became \cref{rq:attribution}, and each of
+the corrections after the first draft.
+\begin{table}
+  \begin{sidecaption}{%
+    The session, 12 November 2026.
+    Times are those of the version history, of the uploads and of the
+    record of the session.
+    A \enquote{run} is a separate instance of a language model (Claude
+    Sonnet~5.5) that I started with written instructions and that
+    reported back in writing.
+  }[tab:session]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.80\linewidth}@{}}
+      \toprule
+      Time & Step \\
+      \midrule
+      09:32 & The author asks the question.
+        I may read but change nothing until a plan is approved.
+        I find that a reflection assignment of the course asks nearly
+        the same question, check which databases answer, and write a
+        plan. \\
+      & The author reads the plan and adds that the report is to be an
+        example and that passwordless authentication may make the
+        password superfluous.
+        I add the question on attribution and the author approves. \\
+      10:15 & The protocol, everything up to \cref{sec:synthesis}, is
+        committed to the version history before any search. \\
+      10:16 & Four runs start in parallel, one per question, each given
+        the protocol.
+        Each searches, screens and reads for about an hour.
+        Meanwhile I search for and read the sources on types of
+        review. \\
+      11:36 & I check the runs' quoted passages, about 140, against the
+        texts, merge their four bibliographies, drop two sources,
+        and write the results, discussion and conclusions. \\
+      12:11 & Draft~1 is committed and uploaded. \\
+      13:25 & Draft~2, after the author asks whether the papers behind
+        publishers' checks for robots could really not be fetched. \\
+      14:34 & The papers still unread go into the author's list of
+        things to do, ordered by how much the conclusions lean on
+        them. \\
+      15:11 & Draft~3: citations back in the margin; a fifth run reads
+        four papers in full and their sentences are corrected. \\
+      later & Draft~4 adds the table of contents, this appendix and the
+        record of the runs. \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{What can be checked, and where}\label{sec:audit}
+
+A reader has no reason to trust a model's account of what it did, and
+need not.
+The work was arranged so that each step leaves something that can be
+examined without asking the model and without repeating the step.
+\Cref{tab:audit} lists what a reader may doubt and what to look at.
+The files it names lie beside the source of this report.
+\begin{table}
+  \begin{sidecaption}{%
+    What a reader may doubt, and the record that settles it.
+  }[tab:audit]
+    \footnotesize
+    \begin{tabular}{@{}p{0.34\linewidth}p{0.58\linewidth}@{}}
+      \toprule
+      Doubt & Record \\
+      \midrule
+      Were the questions and the method fixed before the results were
+      known?
+        & The version history: the protocol is a commit of its own,
+          earlier than the one with the results.
+          \Cref{sec:deviations} lists every later change to it. \\
+      What was searched, where and when, and how much came back?
+        & \Cref{sec:queries,sec:hitlists}: every query as sent, for
+          each database, with the number of records and the searches
+          that failed. \\
+      Why was a record counted in or left out?
+        & The exports of the five search sessions (directory
+          \texttt{search}): every record with its classification,
+          whether a model or a reader decided it, and the model's
+          confidence. \\
+      Does a source say what the report says it says?
+        & The source file of the bibliography: above each entry, the
+          claim it backs, how it was found, the passage relied on with
+          its place in the source, whether the full text or only the
+          abstract was read, and what the search for the opposite
+          found.
+          A script compares all the passages with the texts. \\
+      What were the runs told, and what did they answer?
+        & Directory \texttt{session}: the plan the author approved, the
+          instructions to each run word for word, and each run's full
+          report. \\
+      What changed between drafts, and why?
+        & One commit for each draft, saying which draft it is and what
+          changed. \\
+      What was not done, or is not known?
+        & \Cref{sec:deviations,sec:discussion,sec:dropped}, the marks
+          \enquote{\abso}, and the author's list of papers still to
+          fetch. \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+Four habits produced these records, and each paid off at least once in
+this session.
+\begin{description}
+  \item[Ask for evidence, not for conclusions] The instructions asked
+    each run for the passages it relied on, word for word and with
+    their place, for the queries as sent and for counts.
+    A summary can only be believed or not; a passage can be looked up.
+    Because the runs returned passages, the second check could be done
+    by a script, and it found a misquotation and two sources that
+    should not be cited.
+  \item[Say what to test, not what you expect] Each run was given its
+    hypothesis as a prediction that might be wrong, and was asked for
+    the strongest evidence on each side.
+    One hypothesis came back corrected and one undecided.
+  \item[Check with a separate pass] A run's report is its own account
+    of its work.
+    Every report here was checked by another pass against the sources,
+    and for each of the four search runs the check changed something.
+  \item[Mark what was not verified] A source read only as an abstract
+    says so wherever it is cited.
+    The marks showed where to look next, and looking was worth it, as
+    \cref{sec:wrong} tells.
+\end{description}
+
+The same records make the work easier to repeat.
+The queries, databases, criteria and instructions are all written down,
+so the method can be carried out again.
+The result will not come out identical: the databases change, a
+language model does not classify or read in the same way twice, and
+reading a paper involves judgement.
+That is the reason for records that can be checked piece by piece.
+Whether a quoted passage stands in the source at the place given does
+not depend on running anything again.
+
+\subsection{What the skills contributed}
+
+\Cref{tab:skills} lists the skills that were in use, what each asks
+for, and where that shows in the report.
+Not everything came from a skill.
+Committing the protocol before the search, the grades of evidence and
+the tables of cases against threats were proposed in the plan and
+approved by the author.
+\begin{table}
+  \begin{sidecaption}{%
+    The skills in use and their traces in the report.
+    The names are those of the author's files.
+  }[tab:skills]
+    \footnotesize
+    \begin{tabular}{@{}p{0.20\linewidth}p{0.40\linewidth}p{0.32\linewidth}@{}}
+      \toprule
+      Skill & What it asks for & Where it shows \\
+      \midrule
+      \texttt{backing-claims}
+        & Search for support and for the opposite, with the same words,
+          in every database that answers.
+          Keep and classify every record.
+          Open each source, copy the passage relied on, and record how
+          the source was found.
+          Cite nothing that could not be checked.
+          Stop at a publisher's check for robots.
+        & The paired queries of \cref{tab:planned}; the lists of
+          \cref{sec:hitlists}; the marks \enquote{\abso};
+          \cref{sec:dropped}; the record behind every reference \\
+      \texttt{scientific-writing}
+        & State each question and hypothesis once; restate it with the
+          method and again with its answer.
+          Tie each contribution to a question.
+          One committed version for each draft sent out.
+        & \Cref{sec:questions,sec:overview,sec:conclusions}; the
+          drafts in the version history \\
+      \texttt{latex-writing}
+        & Mark up what a thing is, not how it looks.
+          Give every table a caption that says what to take from it.
+          Let a quotation carry its own citation.
+        & The tables and quotations throughout \\
+      \texttt{remarkable}, \texttt{nytid-todo}
+        & Upload each draft under a new version name and overwrite
+          nothing.
+          Hand over what only the author can do as items to do.
+        & The drafts side by side on the tablet; nineteen open items
+          for the papers and documents not yet obtained \\
+      The author's standing instructions
+        & Judge work critically, also that of the runs I start.
+          Choose the model for each run on purpose.
+        & The second check of quotations (\cref{sec:deviations}); a
+          smaller model for the searching and reading runs \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{What went wrong, and how it was found}\label{sec:wrong}
+
+\begin{description}
+  \item[A check I skipped] The procedure for fetching papers through the
+    university's network says to confirm first that requests really
+    leave through it.
+    The first time I did not, the attempt went nowhere, and I reported
+    the papers as not obtainable that way.
+    The author asked.
+    Repeated properly, the attempt showed that the publishers refuse
+    automated clients from the university as well, and one more paper
+    came through.
+  \item[A rule I set aside] The author's documents cite in footnotes in
+    the margin.
+    Expecting a dozen citations in a paragraph not to fit, I changed to
+    citations in the text without asking.
+    The author asked for the margin back; it fits.
+  \item[Sentences written from abstracts] When four papers known only
+    from their abstracts were read in full, all four sentences about
+    them had to be narrowed.
+    \enquote{Phishing sites can copy the fingerprints} became nine of
+    fourteen services in one test, and the figure from an
+    \enquote{analysed breach} turned out to be the company's own.
+    The sixteen sources still marked \enquote{\abso} should be read
+    with that in mind.
+  \item[A screening model with a blind spot] For \cref{rq:effect} the
+    model that classified the records filed every study that measured
+    an effect as narrowing the hypothesis.
+    The run that read the records found it; see \cref{sec:deviations}.
+  \item[Sources that only looked like evidence] Two runs had cited a
+    report that no one had reviewed, and one an article that told of a
+    document at second hand.
+    The second check removed them; see \cref{sec:dropped}.
+  \item[A record I had not kept] Until the author asked for this
+    appendix, the instructions to the runs and their reports lay in a
+    temporary directory, outside the version history.
+    They are now kept with the report.
+\end{description}
+
+This account is not an experiment.
+The session was not also run without the skills, so it cannot show what
+they changed, only where their rules can be seen in the result and where
+I departed from them.
+What it does show is where the corrections came from: a quotation held
+against its source, a paper read past its abstract, a version history,
+a question from the author.
+None came from the text reading well.
