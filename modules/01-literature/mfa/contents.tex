@@ -6,7 +6,7 @@
 
 Multi-factor authentication is commonly recommended as the way to make
 user authentication secure, and in places required: the United States
-government requires it of its agencies' staff\parencite{OMB2022ZeroTrust},
+government requires it of its agencies' staff\autocite{OMB2022ZeroTrust},
 and its cybersecurity agency writes that
 \textcquote[p.~1]{CISA2022PhishingResistant}{any form of MFA is better
 than no MFA}.
@@ -273,7 +273,7 @@ research, where the method comes from, is
 which components of the systematic review process are simplified or
 omitted to produce information in a timely manner}.
 The same notion is used in software engineering
-research \parencite{Cartaxo2020RapidReviewsSE}.
+research \autocite{Cartaxo2020RapidReviewsSE}.
 
 The search is nevertheless systematic in the sense that it is planned,
 documented and repeatable, which is what the course reading on rigour
@@ -294,7 +294,7 @@ concluded.
     statistical significance of the result changed in 6.5 to 38.6 per
     cent of the meta-analyses, depending on the shortcut, although no
     bias in a particular direction was
-    found \parencite{Marshall2019RapidVsSystematic}.
+    found \autocite{Marshall2019RapidVsSystematic}.
   \item[One screener] Records are screened once, by a language model
     whose doubtful decisions are checked by reading, and not by two
     independent human reviewers.
@@ -433,7 +433,7 @@ There is no limit on the year of publication; the year is reported,
 because the schemes in use have changed.
 Only records in English are included.
 For reviews of clinical trials that restriction has been found to change
-few conclusions \parencite[\abso]{NussbaumerStreit2020NonEnglish}; we
+few conclusions \autocite[\abso]{NussbaumerStreit2020NonEnglish}; we
 know of no such test for security research.
 
 A record is excluded if it
@@ -578,7 +578,7 @@ The search itself departed from the protocol as follows.
     text, or against the abstract for sources read only as abstracts.
     The check found one misquoted hyphen and led to three sources being
     dropped (\cref{sec:dropped}).
-  \item[Sources read only as abstracts] Of the 64 sources cited, 20 could
+  \item[Sources read only as abstracts] Of the 64 sources cited, 16 could
     be read only at the level of the abstract, mostly because the
     publishers' sites answer automated retrieval with a check for robots,
     also from the university's network, which we did not try to get
@@ -631,7 +631,7 @@ Between 28 and 45 records per question bear on it.
       \qquad excluded after reading & 2 & 1 & 1 & 0 \\
       \midrule
       Sources cited, with those outside the databases & 11 & 19 & 25 & 24 \\
-      \quad of which read only as abstract & 4 & 8 & 4 & 7 \\
+      \quad of which read only as abstract & 4 & 8 & 4 & 3 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -711,17 +711,17 @@ There is no group of accounts without challenges to compare with.
 
 The studies from outside the large providers report smaller effects.
 One marketplace reports 43 per cent fewer account takeovers after
-introducing a second factor \parencite[\abso]{Kawase2019AccountTakeover}.
+introducing a second factor \autocite[\abso]{Kawase2019AccountTakeover}.
 At three Canadian banks,
 \textcquote[abstract; \abso]{Kamar2026TwoFactorBanks}{mandatory 2FA
 significantly reduced the number of compromised bank accounts, whereas
 optional 2FA did not}.
 A study of Nigerian online banking reports that fraud cases fell by 10
-to 15 per cent \parencite[\abso]{Egenti2026Nigeria}; its figures come
+to 15 per cent \autocite[\abso]{Egenti2026Nigeria}; its figures come
 partly from a prototype and we give it little weight.
 The two provider statements, a 50 per cent decrease at Google
-\parencite{Google2022SaferInternet} and over 99.9 per cent of attacks
-blocked at Microsoft \parencite{Maynes2019OneSimpleAction}, give no
+\autocite{Google2022SaferInternet} and over 99.9 per cent of attacks
+blocked at Microsoft \autocite{Maynes2019OneSimpleAction}, give no
 method.
 
 Two studies separate kinds of second factor.
@@ -745,7 +745,7 @@ Services that take over accounts for hire were found able
 \textcquote[abstract; \abso]{Mirian2019HackForHire}{to bypass SMS
 two-factor authentication}.
 Flaws in how services implement the second step let an attacker skip it
-at three providers \parencite{Wang2024SimpleNotSecure}, and a criminal
+at three providers \autocite{Wang2024SimpleNotSecure}, and a criminal
 service sells stolen user profiles with which buyers
 \textcquote[abstract]{Campobasso2020IMPaaS}{effectively bypass
 multi-factor authentication mechanisms}.
@@ -790,7 +790,7 @@ The web standard for such keys says the same:
 user verification is multi-factor capable}.
 The United Kingdom's cyber security centre agrees and answers the
 objection that key and verification sit in one device: factors are kinds
-of evidence, not devices \parencite{NCSC2026CredentialsPaper}.
+of evidence, not devices \autocite{NCSC2026CredentialsPaper}.
 
 Passwordless authentication with a passkey is therefore, in the
 standards' terms, usually multi-factor authentication.
@@ -806,7 +806,7 @@ case of \cref{tab:cases} against each threat of \cref{tab:threats}.
 The rest of this subsection gives the sources, threat by threat.
 The one source that assesses most cases against most threats in one
 place is a technical paper by the United Kingdom's cyber security centre
-\parencite{NCSC2026CredentialsPaper}.
+\autocite{NCSC2026CredentialsPaper}.
 It is an assessment by an authority (E5): it does not say how each
 verdict was reached, and its authors recommend passkeys.
 Where it is the only source for a cell we say so.
@@ -859,15 +859,16 @@ Where it is the only source for a cell we say so.
 \end{table}
 
 \paragraph{Guessing and reuse (\threat{R1})}
-A password chosen and reused by the user falls to credential stuffing;
-one analysed breach began with about 14\,000 accounts taken over in that
-way \parencite[\abso]{Holthouse2025TwentyThreeAndMe}.
+A password reused by the user falls to credential stuffing: one breach
+began, by the company's own count, with about 14\,000 accounts that an
+attacker entered with passwords leaked from other services
+\autocite[sec.~1]{Holthouse2025TwentyThreeAndMe}.
 A random password unique to the service does not, and neither does any
 case with a second factor or a key, in the assessment of
 \textcite{NCSC2026CredentialsPaper}.
 The measurements agree for the second factor: the effect at Microsoft
 was 98.56 per cent for accounts whose password had already leaked
-\parencite{Meyer2023MFAEffect}.
+\autocite{Meyer2023MFAEffect}.
 
 \paragraph{Phishing (\threat{R3}, \threat{R4})}
 A password alone, however strong, can be phished.
@@ -882,11 +883,11 @@ A laboratory relay captured the session through codes by text message,
 call, email and app and through push approvals, and its author judges
 \textcquote[abstract]{Kikuchi2025Evilginx}{that 80\% of major web
 services are vulnerable}; a small controlled campaign found the same for
-simulated logins \parencite{Cuellar2026AiTM}.
+simulated logins \autocite{Cuellar2026AiTM}.
 A cryptographic key bound to the service resists both threats in every
 source that examines it: a formal analysis that assumes the password
-already lost \parencite{Jacomme2021FormalMFA}, a proof of the web
-protocol's authentication property \parencite{Barbosa2021ProvableFIDO2},
+already lost \autocite{Jacomme2021FormalMFA}, a proof of the web
+protocol's authentication property \autocite{Barbosa2021ProvableFIDO2},
 and an analysis of attacks concluding that
 \textcquote[abstract]{Berladskyy2026AttackVectors}{The claim that
 passkeys are phishing-resistant largely holds true}.
@@ -917,10 +918,10 @@ that can be taken over.
 \paragraph{Approval by the user (\threat{R6})}
 With the password known, an attacker who triggers a push approval was
 let in by the user in about 68 per cent of the sessions of one
-experiment \parencite[\abso]{Jubur2021PushBypass}.
+experiment \autocite[\abso]{Jubur2021PushBypass}.
 The United States cybersecurity agency lists such
 \enquote{push bombing} among the weaknesses of some forms of
-multi-factor authentication \parencite{CISA2022PhishingResistant}.
+multi-factor authentication \autocite{CISA2022PhishingResistant}.
 The cyber security centre rates keys as not exposed to it.
 We found no report of the frequency of this attack in use.
 
@@ -929,17 +930,22 @@ What is stolen here is the session that follows a successful login, so
 no authenticator prevents it; the cyber security centre notes that
 common malware copies session cookies as well as passwords, and that a
 relayed login leaves the session with the attacker
-\parencite{NCSC2026CredentialsPaper}.
+\autocite{NCSC2026CredentialsPaper}.
 The criminal service above trades in such stolen sessions
-\parencite{Campobasso2020IMPaaS}, and a review describes cookie theft as
-a service \parencite[\abso]{Pazmino2025Cookie}.
+\autocite{Campobasso2020IMPaaS}, and a review describes cookie theft as
+a service \autocite[\abso]{Pazmino2025Cookie}.
+The white paper on smart cards for privileged users says as much of its
+own scheme:
+\textcquote[p.~8]{NIST2016PIVPrivileged}{An attacker able to gain
+control of a privileged user's device may be able to hijack privileged
+access sessions}.
 
 \paragraph{Recovery and fallback (\threat{R8})}
 An account is as strong as its weakest way in.
 On popular sites, a second factor was in some cases switched off on
-request when the user said it was lost \parencite{Gerlitz2023Recovery},
+request when the user said it was lost \autocite{Gerlitz2023Recovery},
 although in a test of ten services a password reset alone did not get
-past the second factor \parencite{Buttner2025Inconsistencies}.
+past the second factor \autocite{Buttner2025Inconsistencies}.
 For keys, a login can be pushed down to a weaker method where one is
 still enrolled; a vendor demonstrated this and adds that
 \textcquote{Miron2025Downgrade}{there is currently no evidence for the
@@ -970,9 +976,9 @@ steal a user's device-bound passkey, provided it is protected by user
 verification mechanisms}.
 That protection has been broken in particular products: extracting the
 PIN was shown to be straightforward in practice
-\parencite[\abso]{Barbosa2023RogueKey},
+\autocite[\abso]{Barbosa2023RogueKey},
 the protocol for the PIN was found to have flaws
-\parencite{Guan2022FormalFIDO2}, and of the Windows configurations
+\autocite{Guan2022FormalFIDO2}, and of the Windows configurations
 tested
 \textcquote[abstract; \abso]{Lee2025WindowsHello}{only systems with
 Enhanced Sign-in Security (ESS) prevented our attacks}.
@@ -989,7 +995,7 @@ extensions
 \textcquote[abstract]{Yadav2024LocalAttacks}{finds no evidence of the
 attacks in the wild}.
 A Trojan took over passkey logins in every trial of one laboratory
-study \parencite{Mitra2026WoodenHorse}, and with a deceptive overlay
+study \autocite{Mitra2026WoodenHorse}, and with a deceptive overlay
 \textcquote[abstract; \abso]{Mahdad2024FIDOLA}{users approved
 approximately 95.55\% of cross-service attacks}.
 The cyber security centre is milder: it rates passkeys as
@@ -1002,9 +1008,9 @@ concludes that
 \textcquote[abstract]{Mitra2026TrustBoundary}{the weak link in a FIDO2
 deployment is rarely the crypto layer}, one that passwords and keys are
 both exposed to malicious scripts and extensions
-\parencite[\abso]{Gautam2025Secret}, and one that second factors
+\autocite[\abso]{Gautam2025Secret}, and one that second factors
 believed secure against malware on the terminal are not
-\parencite[\abso]{Mahdad2023SoK2FA}.
+\autocite[\abso]{Mahdad2023SoK2FA}.
 
 \subsection{Attribution}\label{sec:res-attribution}
 
@@ -1104,14 +1110,14 @@ resistance to downgrade
 \textcquote[abstract; \abso]{Bindel2023ProvableFIDO2}{can be improved}.
 One demonstrated attack on the protocol between client and token deletes
 the user's keys without logging in as the user
-\parencite{Casagrande2025CTRAPS}.
+\autocite{Casagrande2025CTRAPS}.
 We found no formal result that covers recovery, sessions and malware
 for a whole account.
 A proof is in any case weaker evidence here than it looks: of the many
 multi-factor schemes published with a proof,
 \textcquote[abstract; \abso]{Wang2023Proofs}{most of them have been
 shortly found to be insecure}, and a recent analysis found
-vulnerabilities in ten more \parencite{Ang2025Excavating}.
+vulnerabilities in ten more \autocite{Ang2025Excavating}.
 No source separates a key with a password from a key with user
 verification, so the two rows rest on the same evidence.
 
@@ -1162,11 +1168,16 @@ It has limits.
 At large services
 \textcquote[abstract]{Makowski2023RBA}{several test cases rarely trigger
 the RBA system}, the criminal service of \cref{sec:res-effect} defeats
-it with stolen profiles \parencite{Campobasso2020IMPaaS}, phishing sites
-can copy the browser fingerprints it relies on
-\parencite[\abso]{Lin2022PhishSheep}, and on mobile devices those
-fingerprints are too alike to tell users apart
-\parencite[\abso]{Spooren2015Fingerprinting}.
+it with stolen profiles \autocite{Campobasso2020IMPaaS}, and a phishing
+page can copy the browser fingerprints it relies on.
+In one test, with the user's password in hand, that made 9 of 14 real
+services skip the second factor \autocite[p.~1658]{Lin2022PhishSheep},
+although the authors find that phishing sites
+\textcquote[p.~1661]{Lin2022PhishSheep}{are not yet widely replicating}
+the fingerprints of the sites they imitate.
+On mobile devices such fingerprints carry little information and are
+easy to predict and to replay
+\autocite[sec.~4.2 and~5.1]{Spooren2015Fingerprinting}.
 Nor is it an alternative with one factor: when it does ask for more,
 \textcquote[conclusion]{Wiefling2019ReallyYou}{verification codes are
 currently the unwritten standard}, so it rations a second factor
@@ -1177,7 +1188,7 @@ factor}.
 \paragraph{A strong, unique password}
 It resists guessing and reuse and nothing else in \cref{tab:remote}.
 The cyber security centre advises it together with a second step where
-passkeys are not available \parencite{NCSC2026PasskeysPage}.
+passkeys are not available \autocite{NCSC2026PasskeysPage}.
 Two web searches for a measured comparison of such passwords with
 multi-factor authentication returned no study.
 
@@ -1192,14 +1203,18 @@ tells its agencies that for staff
 and gives as reason
 \textcquote[p.~7]{OMB2022ZeroTrust}{that enterprise users are among the
 most valuable targets for phishing}.
-An earlier white paper likewise argues for multi-factor authentication
-of privileged users in place of passwords
-\parencite[\abso]{NIST2016PIVPrivileged}.
+An earlier white paper explains the same government's requirement that
+privileged users log in with a smart card, a key unlocked by a PIN or
+biometric, in place of a password.
+Its reason for two factors is that
+\textcquote[p.~2]{NIST2016PIVPrivileged}{An attacker would have to
+compromise two factors---not just one---to gain access}; it does not
+consider the key without the PIN.
 The United Kingdom's centre now recommends
 \textcquote{NCSC2026PasskeysBlog}{passkeys wherever a service supports
 them, and two-step verification (2SV) where it does not}, and advises
 services against asking for a second factor at every login
-\parencite{NCSC2026Methods}.
+\autocite{NCSC2026Methods}.
 A requirement shows what experts agree on (E5), not that fewer factors
 would fail.
 The reason these texts give is phishing, and the property they ask for
@@ -1260,7 +1275,7 @@ following limits apply.
     IEEE Xplore answered only the planned queries.
     One database returns no abstracts, so some records were classified
     on their titles.
-  \item[Reading] Nearly a third of the sources cited were read only as
+  \item[Reading] A quarter of the sources cited were read only as
     abstracts, among them the only null result for the first question
     and the experiments on push approval and deceptive overlays.
     An abstract states what the authors conclude and cannot be checked
@@ -1342,12 +1357,11 @@ not hold.
 
 Some of what this review left undone can be completed without new
 research.
-The 20 sources read only as abstracts should be read in full, first the
+The 16 sources read only as abstracts should be read in full, first the
 study of mandatory and optional use at banks
-\parencite{Kamar2026TwoFactorBanks} and the experiments on push
+\autocite{Kamar2026TwoFactorBanks} and the experiments on push
 approvals and overlays
-\parencite{Jubur2021PushBypass,Mahdad2024FIDOLA}; four of the 20 are
-freely available and were obtained too late to be read through.
+\autocite{Jubur2021PushBypass,Mahdad2024FIDOLA}.
 Three documents could not be retrieved at all (\cref{sec:dropped}).
 The four failed searches in IEEE Xplore should be repeated, and all
 queries run on Semantic Scholar and DBLP.
@@ -1466,6 +1480,7 @@ of Canadian banks, and found no study of self-selection.
 
 \input{search/mfa-effect-full}
 
+\clearpage
 \subsection{Attribution}
 
 \begin{table}[h]
@@ -1494,6 +1509,7 @@ One standard, ISO/IEC 29115, is sold and was not obtained.
 
 \input{search/mfa-attribution-full}
 
+\clearpage
 \subsection{Sufficiency}
 
 \begin{table}[h]
@@ -1535,6 +1551,7 @@ News articles were not used.
 
 \input{search/mfa-sufficient-full}
 
+\clearpage
 \subsection{Necessity}
 
 \begin{table}[h]
@@ -1574,6 +1591,7 @@ returned only vendors' pages, which are not cited.
 
 \input{search/mfa-necessary-full}
 
+\clearpage
 \subsection{Types of review}\label{sec:hits-method}
 
 The claims of \cref{sec:reviewtype} about types of review and about what

@@ -1309,9 +1309,9 @@
 @misc{Cloudflare2022Phishing,
   author = {{Cloudflare}},
   title = {The mechanics of a sophisticated phishing scam and how we stopped it},
-  year = {2022},
-  howpublished = {Cloudflare blog, 9 August 2022},
+  howpublished = {Cloudflare blog},
   url = {https://blog.cloudflare.com/2022-07-sms-phishing-attacks/},
+  date = {2022-08-09},
 }
 
 % === provenance: Miron2025Downgrade ===
@@ -1327,9 +1327,9 @@
 @misc{Miron2025Downgrade,
   author = {Miron, Yaniv},
   title = {Don't Phish-let Me Down: {FIDO} Authentication Downgrade},
-  year = {2025},
-  howpublished = {Proofpoint Threat Insight blog, 12 August 2025},
+  howpublished = {Proofpoint Threat Insight blog},
   url = {https://www.proofpoint.com/us/blog/threat-insight/dont-phish-let-me-down-fido-authentication-downgrade},
+  date = {2025-08-12},
 }
 
 % === provenance: Thomas2019Hygiene ===
@@ -1344,9 +1344,9 @@
 @misc{Thomas2019Hygiene,
   author = {Thomas, Kurt and Moscicki, Angelika},
   title = {New Research: How Effective Is Basic Account Hygiene at Preventing Hijacking},
-  year = {2019},
-  howpublished = {Google Security Blog, 17 May 2019},
+  howpublished = {Google Security Blog},
   url = {https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html},
+  date = {2019-05-17},
 }
 
 % ===================================================================
@@ -1423,10 +1423,17 @@
 % FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p wos --limit 40 (session "mfa-necessary", query S2, date 2026-11-12)
 % PICKED: USENIX Security paper demonstrating an attack on RBA (E3); full text not retrieved (usenix.org URL guessed by me returned 404; not re-tried by title). Evidence grade: E3.
 % QUOTE (Abstract WoS record): "we demonstrate how phishing attackers can replicate users' fingerprints on different devices to deceive the risk-based authentication systems of high-value web services (e.g., cryptocurrency trading) to completely bypass two-factor authentication"
-% VERIFIED: ABSTRACT ONLY (WoS record, abstract text from the session); applies because the abstract states the attack result
-%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
-%   PDF cache) and the quoted passage confirmed in it; the paper was not read
-%   through, so it still counts as read at abstract level.
+% VERIFIED: full text read on 2026-11-12 from the USENIX open-access PDF
+%   (scholar cache; printed pp. 1651-1668; appendices B-E skimmed).  The
+%   demonstration is on 14 real services with the authors' own accounts and
+%   two devices: the second factor was skipped at 9 of 14 (the "ten of 16" of
+%   the introduction counts a service without 2FA), given the victim's
+%   password and a visit from the victim's usual device.  Not credential
+%   stuffing; fails where 2FA is asked at every login or the IP address must
+%   match.  In the wild "not yet widely" replicated (p. 1661).  Services
+%   anonymised and hand-picked.  Grade E3.
+% QUOTE (Sec. 4.2, p. 1658): "our attack can successfully bypass 2FA in 9 out of the 14 websites"
+% QUOTE (Sec. 5, p. 1661): "our findings show that phishing sites are not yet widely replicating the fingerprint-generation process of targeted websites."
 % COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
 % DATE: 2026-11-12
 @inproceedings{Lin2022PhishSheep,
@@ -1434,7 +1441,9 @@
   author = {Lin, Xu and Ilia, Panagiotis and Solanki, Saumya and Polakis, Jason},
   year = {2022},
   booktitle = {31st USENIX Security Symposium},
-  publisher = {USENIX Association}
+  publisher = {USENIX Association},
+  pages = {1651--1668},
+  url = {https://www.usenix.org/conference/usenixsecurity22/presentation/lin-xu},
 }
 
 % === provenance: Spooren2015Fingerprinting ===
@@ -1442,10 +1451,15 @@
 % FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p openalex --limit 40 (session "mfa-necessary", query S2, date 2026-11-12)
 % PICKED: Early critical assessment of a risk signal (E3/E4); abstract-level only; classified qualifies-claim. Evidence grade: E4.
 % QUOTE (Abstract): "Our research shows that particularly for mobile devices the fingerprints carry a lot of similarity, even across models and brands, making them less reliable for risk assessment and step-up authentication."
-% VERIFIED: ABSTRACT ONLY (OpenAlex record); full text not fetched
-%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
-%   PDF cache) and the quoted passage confirmed in it; the paper was not read
-%   through, so it still counts as read at abstract level.
+% VERIFIED: full text read on 2026-11-12 from the open-access PDF (scholar
+%   cache, 6 pp., no printed page numbers).  59 mobile devices from one week
+%   of volunteers, one algorithm (OpenAM 12); identical fingerprints for
+%   some model pairs (iPhone 4/4s, 5/5s, some Moto G); components are
+%   predictable from brand and model and can be harvested and replayed.  The
+%   authors call the sample "very limited".  About devices, not users; from
+%   2015, before canvas fingerprints.  Grade E4.
+% QUOTE (Sec. 4.2, PDF p. 4): "the device fingerprint has so little entropy that the added value for its use in risk assessment is questionable"
+% QUOTE (Sec. 5.1, PDF p. 5): "It suffices for an adversary to lure a user into visiting a web page controlled by the adversary to obtain the browser's fingerprint."
 % COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
 % DATE: 2026-11-12
 @inproceedings{Spooren2015Fingerprinting,
@@ -1482,14 +1496,19 @@
 }
 
 % === provenance: Holthouse2025TwentyThreeAndMe ===
-% CLAIM: In the 2023 23andMe breach, credential stuffing against single-factor password accounts compromised about 14,000 accounts and exposed millions of related profiles; multi-factor authentication was absent.
+% CLAIM: In the 2023 23andMe breach, by the company's own count, an attacker entered about 14,000 accounts with passwords reused from other services; the paper names the absence of MFA and rate limiting as aggravating and says the company made two-step verification mandatory afterwards.
 % FOUND-VIA: scholar search C1 (M AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)) -p arxiv --limit 40 (session "mfa-necessary", query C1, date 2026-11-12)
 % PICKED: Case study of an observed incident (E3, secondary analysis of public information); abstract only; does not compare with other single-factor schemes. Evidence grade: E3.
 % QUOTE (Abstract): "The attack highlights the increasing threat of credential stuffing, exacerbated by poor password hygiene and the absence of robust security measures such as multi-factor authentication (MFA) and rate limiting."
-% VERIFIED: ABSTRACT ONLY (arXiv record); applies because it shows the R1 failure of reused passwords (case P)
-%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
-%   PDF cache) and the quoted passage confirmed in it; the paper was not read
-%   through, so it still counts as read at abstract level.
+% VERIFIED: full text read on 2026-11-12 from the arXiv PDF (scholar cache,
+%   8 pp.).  The 14,000 figure is 23andMe's own statement (press release and
+%   blog, the paper's ref. [16]) relayed by the paper, which has no method
+%   section and no data of its own; the figure is therefore E6.  The paper
+%   says "accessed" or "compromised", not taken over, and is inconsistent on
+%   the mechanism (credential stuffing in Sec. 1, brute force and stuffing
+%   elsewhere).  On MFA the body says only that two-step verification was
+%   made mandatory afterwards, not whether it was offered before.
+% QUOTE (Sec. 1, PDF p. 2): "In a press release from 23andMe, they noted that Golem was able to access less than 0.1%, or roughly 14,000 user accounts, of the existing 14 million 23andMe customers through credential stuffing."
 % COUNTER: scholar search C2 -- no more primary measurement of the incident was found.
 % DATE: 2026-11-12
 @misc{Holthouse2025TwentyThreeAndMe,
@@ -1507,10 +1526,16 @@
 % FOUND-VIA: scholar search ("password-only" OR "single-factor authentication") AND (insufficient OR inadequate OR compromise) -p openalex --limit 40 (session "mfa-necessary", query C2, date 2026-11-12)
 % PICKED: NIST white paper (E5, requirement for a privileged-user population); abstract only. Evidence grade: E5.
 % QUOTE (Abstract): "This white paper further explains the need for multifactor PIV-based user authentication to take the place of password-based single-factor authentication for privileged users."
-% VERIFIED: ABSTRACT ONLY (OpenAlex record)
-%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
-%   PDF cache) and the quoted passage confirmed in it; the paper was not read
-%   through, so it still counts as read at abstract level.
+% VERIFIED: full text read on 2026-11-12 from the NIST open-access PDF
+%   (scholar cache, 23 pp.; printed pp. 1-16 read, tables and references
+%   skimmed).  The requirement is OMB's (CSIP, October 2015); the paper
+%   explains it and recommends practices.  The authenticator is the PIV
+%   card, a key unlocked by a PIN or biometric (the report's case B), not
+%   multi-factor authentication in general.  No data; no comparison with the
+%   key alone.  The series number and DOI are not printed in the PDF.
+%   Grade E5.
+% QUOTE (Sec. 1.1, p. 2): "An attacker would have to compromise two factors—not just one—to gain access"
+% QUOTE (Sec. 2.2, p. 8): "An attacker able to gain control of a privileged user's device may be able to hijack privileged access sessions and impersonate that user on critical systems."
 % COUNTER: scholar search S1/S2 -- not applicable to a requirement.
 % DATE: 2026-11-12
 @misc{NIST2016PIVPrivileged,

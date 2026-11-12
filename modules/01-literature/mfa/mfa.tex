@@ -3,6 +3,9 @@
 \let\subsection\section
 \let\section\chapter
 \marginparmargin{outer}
+% A paragraph of the results can carry a dozen margin citations, each a
+% pending float; LaTeX's default pool is too small for that.
+\extrafloats{300}
 
 \input{preamble.tex}
 

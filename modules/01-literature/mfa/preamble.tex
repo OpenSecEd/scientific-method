@@ -9,16 +9,15 @@
 \usepackage{longtable}
 \usepackage{subcaption}
 
-% Author--year citations with the list of references at the end: the review
-% cites several sources per sentence, which margin citations cannot carry.
+% Verbose citations: with memoir and didactic, \autocite sets the full
+% reference as a footnote in the margin at first use and a short form after.
 \usepackage[
   natbib,
   backend=biber,
-  style=authoryear-comp,
-  maxcitenames=2,
+  style=verbose,
+  citestyle=verbose,
+  singletitle=false,
   maxbibnames=99,
-  uniquelist=false,
-  dashed=false,
 ]{biblatex}
 \addbibresource{mfa.bib}
 
@@ -27,7 +26,7 @@
 \renewcommand{\foreignabbrfont}{}
 
 \usepackage[strict]{csquotes}
-\SetCiteCommand{\parencite}
+\SetCiteCommand{\autocite}
 
 \usepackage{xparse}
 \usepackage{amsmath}
@@ -37,10 +36,9 @@
 \usepackage{thm-restate}
 
 \usepackage{didactic}
-% didactic sets up margin citations and hides DOIs and URLs; this review
-% cites in the text and needs the identifiers in its list of references.
-\ExecuteBibliographyOptions{doi=true,url=true}
-\AtBeginDocument{\SetCiteCommand{\parencite}}
+% didactic leaves DOIs and URLs out of the margin citations; the list of
+% references at the end gives them.
+\AtBeginBibliography{\toggletrue{bbx:doi}\toggletrue{bbx:url}}
 
 \usepackage[capitalize]{cleveref}
 
