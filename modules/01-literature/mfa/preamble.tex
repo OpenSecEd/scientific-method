@@ -9,15 +9,16 @@
 \usepackage{longtable}
 \usepackage{subcaption}
 
-% Verbose citations: with memoir and didactic the full reference is set as
-% a margin note at first use.
+% Author--year citations with the list of references at the end: the review
+% cites several sources per sentence, which margin citations cannot carry.
 \usepackage[
   natbib,
   backend=biber,
-  style=verbose,
-  citestyle=verbose,
-  singletitle=false,
+  style=authoryear-comp,
+  maxcitenames=2,
   maxbibnames=99,
+  uniquelist=false,
+  dashed=false,
 ]{biblatex}
 \addbibresource{mfa.bib}
 
@@ -26,7 +27,7 @@
 \renewcommand{\foreignabbrfont}{}
 
 \usepackage[strict]{csquotes}
-\SetCiteCommand{\autocite}
+\SetCiteCommand{\parencite}
 
 \usepackage{xparse}
 \usepackage{amsmath}
@@ -36,6 +37,10 @@
 \usepackage{thm-restate}
 
 \usepackage{didactic}
+% didactic sets up margin citations and hides DOIs and URLs; this review
+% cites in the text and needs the identifiers in its list of references.
+\ExecuteBibliographyOptions{doi=true,url=true}
+\AtBeginDocument{\SetCiteCommand{\parencite}}
 
 \usepackage[capitalize]{cleveref}
 
@@ -55,6 +60,13 @@
 \NewDocumentCommand{\case}{m}{\textsf{#1}}
 % A threat of the threat model (see the table of threats).
 \NewDocumentCommand{\threat}{m}{\textsf{#1}}
+% Cells of the tables of cases against threats.
+\NewDocumentCommand{\res}{}{$+$}
+\NewDocumentCommand{\fail}{}{$-$}
+\NewDocumentCommand{\partly}{}{$\pm$}
+\NewDocumentCommand{\na}{}{n/a}
+% A source read only at abstract level.
+\NewDocumentCommand{\abso}{}{abstract only}
 
 % The article's sections are memoir chapters; name them as the prose does.
 \AtBeginDocument{%

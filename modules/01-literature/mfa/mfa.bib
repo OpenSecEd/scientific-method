@@ -1,3 +1,1582 @@
 % Bibliography for the MFA review.  Every entry carries a provenance block
 % (CLAIM / FOUND-VIA / PICKED / QUOTE / VERIFIED / COUNTER / DATE) above it.
-% Empty in the protocol version: no search has been run yet.
+% A source used for several questions has one block per use.  Session names
+% in FOUND-VIA are those of the search tool (scholar): mfa-method,
+% mfa-effect, mfa-attribution, mfa-sufficient, mfa-necessary; their exports
+% are in search/.  Entries were written by the search strand that first
+% cited the source; every quoted passage was checked again against the full
+% text or, where marked ABSTRACT ONLY, against the abstract.
+
+% ===================================================================
+% Method: types of literature review, and what a rapid review gives up
+% scholar session: mfa-method (2026-11-12; openalex wos scopus ieee arxiv;
+% s2 and dblp not searched: key rejected / anti-bot page)
+% ===================================================================
+
+% === provenance: Tricco2015RapidReviews ===
+% CLAIM: A rapid review is a knowledge synthesis in which steps of the
+%   systematic review process are simplified or omitted to save time;
+%   typical shortcuts are a limited search and screening by one person.
+% FOUND-VIA: scholar search '"rapid review" AND ("single reviewer" OR
+%   "single screening" OR shortcuts OR "streamlined") AND (bias OR accuracy
+%   OR "missed studies" OR limitations)' -n mfa-method -p openalex (also
+%   wos, scopus, ieee, arxiv with the same keywords), 2026-11-12.
+% PICKED: a scoping review of 100 articles on rapid-review methods, open
+%   access; states the working definition that later guidance reuses and
+%   tabulates which shortcuts are taken in practice.
+% QUOTE (Background): "Rapid reviews are a form of knowledge synthesis in
+%   which components of the systematic review process are simplified or
+%   omitted to produce information in a timely manner"
+% QUOTE (Methods, Definition): "A formal definition for a rapid review
+%   does not exist."
+% VERIFIED: full text read (Europe PMC full-text XML of PMC4574114,
+%   https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4574114/fullTextXML,
+%   accessed 2026-11-12); the definition is the paper's stated working
+%   definition.
+% COUNTER: same session, query S1 ('"rapid review" AND "scoping review" AND
+%   "systematic review" AND (typology OR "review types" OR definitions OR
+%   methodologies)'): the definition is contested only in that no formal
+%   one exists, which the source says itself; the claim is worded as "a
+%   working definition".
+% DATE: 2026-11-12
+@article{Tricco2015RapidReviews,
+  author = {Tricco, Andrea C. and Antony, Jesmin and Zarin, Wasifa and
+            Strifler, Lisa and Ghassemi, Marco and Ivory, John and
+            Perrier, Laure and Hutton, Brian and Moher, David and
+            Straus, Sharon E.},
+  title = {A scoping review of rapid review methods},
+  journal = {BMC Medicine},
+  volume = {13},
+  number = {1},
+  pages = {224},
+  year = {2015},
+  doi = {10.1186/s12916-015-0465-6},
+}
+
+% === provenance: Cartaxo2020RapidReviewsSE ===
+% CLAIM: Rapid reviews are also used in software engineering research,
+%   where they likewise omit or simplify steps of a systematic review.
+% FOUND-VIA: scholar search '"rapid review" AND ("single reviewer" OR
+%   "single screening" OR shortcuts OR "streamlined") AND (bias OR accuracy
+%   OR "missed studies" OR limitations)' -n mfa-method -p openalex,
+%   2026-11-12.
+% PICKED: the only hit that treats rapid reviews in computing rather than
+%   in health research; a methods chapter in an edited volume on empirical
+%   methods in software engineering.
+% QUOTE (Sect. 1): "To achieve these goals, RRs omit or simplify some steps
+%   of SRs. For instance, RRs can limit the search sources or use just one
+%   person to screen primary studies"
+% VERIFIED: full text read, author's preprint arXiv:2003.10006 (scholar PDF
+%   cache); page numbers of the published chapter not checked against the
+%   preprint, so the quote is located by section.
+% COUNTER: none needed beyond Tricco2015RapidReviews: this entry only shows
+%   that the notion is used in computing.
+% DATE: 2026-11-12
+@incollection{Cartaxo2020RapidReviewsSE,
+  author = {Cartaxo, Bruno and Pinto, Gustavo and Soares, Sergio},
+  title = {Rapid Reviews in Software Engineering},
+  booktitle = {Contemporary Empirical Methods in Software Engineering},
+  publisher = {Springer International Publishing},
+  pages = {357--384},
+  year = {2020},
+  doi = {10.1007/978-3-030-32489-6_13},
+  eprint = {2003.10006},
+  eprinttype = {arxiv},
+}
+
+% === provenance: Munn2018ScopingOrSystematic ===
+% CLAIM: A scoping review maps the available evidence on a broad topic
+%   (what kinds of evidence exist, where the gaps are) and suits questions
+%   that are not yet precise enough for a systematic review.
+% FOUND-VIA: scholar search '"rapid review" AND "scoping review" AND
+%   "systematic review" AND (typology OR "review types" OR definitions OR
+%   methodologies)' -n mfa-method -p openalex (also wos, scopus, ieee,
+%   arxiv with the same keywords), 2026-11-12.
+% PICKED: guidance written to help authors choose between the two review
+%   types, by the group that maintains the scoping-review methodology; open
+%   access; states the indications for each type side by side.
+% QUOTE (Indications for scoping reviews): "The general purpose for
+%   conducting scoping reviews is to identify and map the available
+%   evidence"
+% QUOTE (Indications for scoping reviews): "Scoping reviews are useful for
+%   examining emerging evidence when it is still unclear what other, more
+%   specific questions can be posed and valuably addressed by a more
+%   precise systematic review"
+% VERIFIED: full text read (Europe PMC full-text XML of PMC6245623,
+%   accessed 2026-11-12).
+% COUNTER: same session, both queries: no hit disputes the mapping purpose;
+%   Moher et al. (10.1186/s13643-015-0163-7, read in full) describe the
+%   scoping review the same way ("an overview of a broad field").
+% DATE: 2026-11-12
+@article{Munn2018ScopingOrSystematic,
+  author = {Munn, Zachary and Peters, Micah D. J. and Stern, Cindy and
+            Tufanaru, Catalin and McArthur, Alexa and Aromataris, Edoardo},
+  title = {Systematic review or scoping review? Guidance for authors when
+           choosing between a systematic or scoping review approach},
+  journal = {BMC Medical Research Methodology},
+  volume = {18},
+  number = {1},
+  pages = {143},
+  year = {2018},
+  doi = {10.1186/s12874-018-0611-x},
+}
+
+% === provenance: Waffenschmidt2019SingleScreening ===
+% CLAIM: Screening by a single reviewer misses relevant studies that two
+%   independent reviewers would find (median 5 per cent, range 0 to 58 per
+%   cent, in the evaluations reviewed).
+% FOUND-VIA: scholar search '"rapid review" AND ("single reviewer" OR
+%   "single screening" OR shortcuts OR "streamlined") AND (bias OR accuracy
+%   OR "missed studies" OR limitations)' -n mfa-method -p openalex,
+%   2026-11-12.
+% PICKED: a methodological systematic review of exactly this shortcut, open
+%   access; preferred over the single randomised trial in the same result
+%   list (10.1016/j.jclinepi.2020.01.005, "missed 13 percent"), whose full
+%   text could not be obtained and which is therefore not cited.
+% QUOTE (Abstract, Results): "The median proportion of missed studies was
+%   5% (range 0 to 58%)."
+% QUOTE (Abstract, Conclusions): "Single screening of the titles and
+%   abstracts of studies retrieved in bibliographic searches is not
+%   equivalent to double screening, as substantially more studies are
+%   missed."
+% VERIFIED: full text read (Europe PMC full-text XML of PMC6599339,
+%   accessed 2026-11-12).  The evaluations concern human reviewers in
+%   health research; nothing in it measures screening by a language model.
+% COUNTER: this entry is itself the counter-evidence to "the shortcut is
+%   harmless"; the same source qualifies it: with experienced reviewers the
+%   missed studies had no or negligible impact on the meta-analyses.
+% DATE: 2026-11-12
+@article{Waffenschmidt2019SingleScreening,
+  author = {Waffenschmidt, Siw and Knelangen, Marco and Sieben, Wiebke and
+            B{\"u}hn, Stefanie and Pieper, Dawid},
+  title = {Single screening versus conventional double screening for study
+           selection in systematic reviews: a methodological systematic
+           review},
+  journal = {BMC Medical Research Methodology},
+  volume = {19},
+  number = {1},
+  pages = {132},
+  year = {2019},
+  doi = {10.1186/s12874-019-0782-0},
+}
+
+% === provenance: Marshall2019RapidVsSystematic ===
+% CLAIM: Rapid-review shortcuts can change a review's quantitative results
+%   compared with the full systematic review.
+% FOUND-VIA: scholar search '"rapid review" AND ("single reviewer" OR
+%   "single screening" OR shortcuts OR "streamlined") AND (bias OR accuracy
+%   OR "missed studies" OR limitations)' -n mfa-method -p openalex,
+%   2026-11-12.
+% PICKED: the largest comparison in the result list (2,512 systematic
+%   reviews re-run with simulated rapid methods); open access via PMC.
+% QUOTE (Abstract, Results): "Changes in statistical significance occurred
+%   in 6.5--38.6% of meta-analyses."
+% QUOTE (Abstract, Results): "We found no evidence of bias with any rapid
+%   review method."
+% VERIFIED: full text read (Europe PMC full-text XML of PMC6524137,
+%   accessed 2026-11-12).  Concerns meta-analyses of clinical trials; the
+%   present review does no meta-analysis, so the source supports only the
+%   general point that shortcuts lose information.
+% COUNTER: the second quote is the qualification: information is lost, but
+%   no systematic bias in one direction was found.
+% DATE: 2026-11-12
+@article{Marshall2019RapidVsSystematic,
+  author = {Marshall, Iain J. and Marshall, Rachel and Wallace, Byron C.
+            and Brassey, Jon and Thomas, James},
+  title = {Rapid reviews may produce different results to systematic
+           reviews: a meta-epidemiological study},
+  journal = {Journal of Clinical Epidemiology},
+  volume = {109},
+  pages = {30--41},
+  year = {2019},
+  doi = {10.1016/j.jclinepi.2018.12.015},
+}
+
+% === provenance: NussbaumerStreit2020NonEnglish ===
+% CLAIM: Restricting a review to publications in English rarely changes its
+%   conclusions (shown for reviews of clinical interventions).
+% FOUND-VIA: scholar search '"rapid review" AND ("single reviewer" OR
+%   "single screening" OR shortcuts OR "streamlined") AND (bias OR accuracy
+%   OR "missed studies" OR limitations)' -n mfa-method -p scopus (also
+%   openalex, wos, ieee, arxiv with the same keywords), 2026-11-12;
+%   classified qualifies-claim (a shortcut shown harmless).
+% PICKED: the one record in the session that evaluates the language
+%   restriction this review applies; a meta-epidemiological study of 59
+%   Cochrane reviews.
+% QUOTE (Abstract, Conclusion): "Exclusion of non-English publications from
+%   systematic reviews on clinical interventions had a minimal effect on
+%   overall conclusions and could be a viable methodological shortcut,
+%   especially for rapid reviews."
+% VERIFIED: ABSTRACT ONLY (abstract retrieved from Europe PMC by DOI,
+%   2026-11-12; the article is not open access).  Concerns clinical
+%   intervention reviews; whether it carries over to security research is
+%   not shown.
+% COUNTER: this entry is the counter-evidence to "every shortcut costs
+%   accuracy"; the same abstract cautions that "the majority of excluded
+%   studies were small".
+% DATE: 2026-11-12
+@article{NussbaumerStreit2020NonEnglish,
+  author = {Nussbaumer-Streit, Barbara and Klerings, Irma and Dobrescu,
+            Andreea I. and Persad, Emma and Stevens, Adrienne and
+            Garritty, Chantelle and Kamel, Chris and Affengruber, Lisa and
+            King, Valerie J. and Gartlehner, Gerald},
+  title = {Excluding non-English publications from evidence-syntheses did
+           not change conclusions: a meta-epidemiological study},
+  journal = {Journal of Clinical Epidemiology},
+  volume = {118},
+  pages = {42--54},
+  year = {2020},
+  doi = {10.1016/j.jclinepi.2019.10.011},
+}
+
+% === provenance: Bandara2015Rigor ===
+% CLAIM: A defined and documented search strategy is what makes a
+%   literature review transparent and repeatable.
+% FOUND-VIA: known item: the course reading for the literature-review
+%   seminar of DA2215 (modules/02-passwd, key SLRinIS in its bibliography);
+%   read from the copy in the course repository.  Not returned by the
+%   topic queries of session mfa-method, which are worded for review types.
+% PICKED: it is the text the students have read, so the example builds on
+%   it; it is a methods paper from information systems, not from health
+%   research like the other method sources.
+% QUOTE (p. 163, Search Strategy): "Defining a search strategy significantly
+%   contributes to methodical rigor; it provides transparency, clarity, and
+%   replicability."
+% VERIFIED: full-text PDF read (publisher's copy, AIS Electronic Library);
+%   metadata checked against Crossref (10.17705/1CAIS.03708).
+% COUNTER: none run: the claim is a methodological norm stated by the
+%   source, used here to motivate our own procedure, not an empirical
+%   finding.
+% DATE: 2026-11-12
+@article{Bandara2015Rigor,
+  author = {Bandara, Wasana and Furtmueller, Elfi and Gorbacheva, Elena and
+            Miskon, Suraya and Beekhuyzen, Jenine},
+  title = {Achieving Rigor in Literature Reviews: Insights from Qualitative
+           Data Analysis and Tool-Support},
+  journal = {Communications of the Association for Information Systems},
+  volume = {37},
+  pages = {154--204},
+  year = {2015},
+  doi = {10.17705/1CAIS.03708},
+}
+
+% ===================================================================
+% Sources first cited for the question on effect (RQ1)
+% ===================================================================
+
+% === provenance: Meyer2023MFAEffect ===
+% CLAIM: MFA greatly reduces the compromise rate of commercial (enterprise) accounts, and an authenticator app outperforms SMS.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (("account compromise" OR "account takeover" OR hijacking) AND (effectiveness OR empirical OR measurement))' -p openalex --limit 40 (session "mfa-effect"; also S2 openalex, C1/R2 arxiv)
+% PICKED: the only study in the hit list that compares compromise rates with and without MFA over a large population of real accounts (E2); primary source. Vendor-authored (Microsoft), arXiv preprint, not peer reviewed.
+% QUOTE (Abstract): "MFA reduces the risk of compromise by 99.22% across the entire population and by 98.56% in cases of leaked credentials. We further demonstrate that dedicated MFA applications, such as Microsoft Authenticator, outperform SMS-based authentication, though both methods provide significantly enhanced security compared to not using MFA."
+% QUOTE (Sec. 3, scope of the sample): "we obtained a list of active Microsoft Azure Active Directory users that had their account reviewed due to suspicious activity between April 22, 2022, and September 22, 2022."
+% QUOTE (Sec. 5, factor kinds, leaked-credential sample): "we find that SMS was 40.8% less effective than Microsoft Authenticator" ; Table 2 failure rates: Authenticator OTP 0.99%, Authenticator Notifications 0.97%, SMS 1.66%.
+% VERIFIED: full text read (arXiv PDF via scholar cache). Applies to enterprise Azure AD accounts only; figures rest on a sample of accounts with suspicious activity and a benchmark-multiplier estimate; MFA is not randomised (tenant administrators decide), so self-selection is not excluded; the authors are the provider's staff. No hardware security keys or phishing-resistant factors are separated.
+% COUNTER: counter queries C1 (all five providers) and the planned counter-searches returned attacks on MFA (see wang2024, campobasso2020) and bank studies with weaker effects (kamar2026), none reporting zero effect of MFA in a population comparison; the figure is narrowed to "for the population and period Microsoft reviewed".
+% DATE: 2026-11-12
+@online{Meyer2023MFAEffect,
+  title = {How effective is multifactor authentication at deterring cyberattacks?},
+  author = {Meyer, Lucas Augusto and Romero, Sergio and Bertoli, Gabriele and Burt, Tom and Weinert, Alex and Lavista Ferres, Juan},
+  year = {2023},
+  eprint = {2305.00945},
+  eprinttype = {arxiv},
+  eprintclass = {cs.CR},
+  doi = {10.48550/arXiv.2305.00945},
+  url = {http://arxiv.org/abs/2305.00945},
+}
+
+% === provenance: Doerfler2019LoginChallenges ===
+% --- use 1 of 2: question on effect (RQ1) ---
+% CLAIM: Login challenges that need a registered device (SMS code, on-device prompt, app code, security key) block most hijacking attempts, and kinds of second factor differ in how much they block, especially against phishing and targeted attackers.
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR ... "two-step verification") AND (("account compromise" OR "account takeover" OR hijacking) AND (effectiveness OR empirical OR measurement)))' -p wos --limit 40 (session "mfa-effect"; also Scopus S1 and R1)
+% PICKED: peer-reviewed (WWW 2019) measurement on 350,000 real hijacking attempts, breaks down by factor kind (E2); primary source. Authors at Google/NYU.
+% QUOTE (Abstract): "Device-based challenges provide the best protection, blocking over 94% of hijacking attempts rooted in phishing and 100% of automated hijacking attempts."
+% QUOTE (Sec. 1, key findings): "On-device prompts, like those shown during two-factor authentication, provide the strongest protection. They blocked 99% of attacks rooted in phishing and 90% of targeted attacks."
+% QUOTE (Sec. 4.1): "security keys provide the best protection, blocking 100% of attacks in our dataset."
+% VERIFIED: full text read (copy served by par.nsf.gov, cached by scholar). Applies to risk-triggered challenges at Google, not to always-on second factors; the denominator is hijacking attempts that reached a challenge; the security-key rate has a 95% interval of +-25 to 28 points (Table 3), so "100%" rests on few cases; no comparison group without challenges.
+% COUNTER: C1 and counter-search results (hack-for-hire, ImpaaS, bypass studies) show phishing kits relaying SMS codes; consistent with this paper's own finding that SMS challenges stopped 76% of targeted attacks (Sec. 1, key findings), against 90% for on-device prompts.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on sufficiency (RQ3) ---
+% CLAIM: Measured on 350,000 real hijacking attempts at Google, device-based second challenges block over 94% of phishing-rooted hijacks and 100% of automated ones, i.e. strongly but not completely (A1/A2-type second factors, R1, R3).
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("SIM swap" OR "push fatigue" OR "prompt bombing" OR "session hijacking" OR "account recovery"))' -p wos --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("SIM swap" OR "push fatigue" OR "prompt bombing" OR "session hijacking" OR "account recovery"))' -p scopus --limit 40 -n mfa-sufficient
+% PICKED: Only peer-reviewed measurement on real hijacking attempts in the session that quantifies how much is left after a second factor; ACM closed access (Cloudflare check), abstract only.
+% QUOTE (abstract): "Device-based challenges provide the best protection, blocking over 94% of hijacking attempts rooted in phishing and 100% of automated hijacking attempts."
+% VERIFIED: abstract only (ACM refuses automated fetch; not worked around)
+% EVIDENCE-GRADE: E2
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@inproceedings{Doerfler2019LoginChallenges,
+  title = {Evaluating Login Challenges as a Defense Against Account Takeover},
+  author = {Doerfler, Periwinkle and Thomas, Kurt and Marincenko, Maija and Ranieri, Juri and Jiang, Yu and Moscicki, Angelika and McCoy, Damon},
+  booktitle = {The World Wide Web Conference},
+  year = {2019},
+  pages = {372--382},
+  doi = {10.1145/3308558.3313481},
+}
+
+% === provenance: Kamar2026TwoFactorBanks ===
+% --- use 1 of 2: question on effect (RQ1) ---
+% CLAIM: Whether 2FA reduces account takeover depends on whether it is mandatory: optional 2FA at banks showed no measurable reduction.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR ... "two-step verification") AND (("account compromise" OR "account takeover" OR hijacking) AND (effectiveness OR empirical OR measurement))' -p openalex --limit 40 (session "mfa-effect"; also WoS and Scopus S1); WebSearch "natural experiment two-factor authentication account takeover fraud banks mandatory versus optional" (2026-11-12) returned the abstract again
+% PICKED: the only natural experiment found that separates optional from mandatory 2FA on measured compromise (E2, quasi-experimental).
+% QUOTE (Abstract): "Bayesian time series analysis revealed that mandatory 2FA significantly reduced the number of compromised bank accounts, whereas optional 2FA did not."
+% VERIFIED: ABSTRACT ONLY (Crime & Delinquency, SAGE; no open-access copy, publisher behind a bot check, not circumvented). Outcome is compromised accounts seen in illicit-market threat intelligence (a proxy), three banks, March 2021 to February 2022; factor kind not stated in the abstract.
+% COUNTER: this is itself the narrowing source; no source found contradicting it.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: Mandatory two-factor authentication, but not optional 2FA, significantly reduced compromised bank accounts at three Canadian banks.
+% FOUND-VIA: scholar search C1 (M AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)) -p scopus -p wos --limit 40 (session "mfa-necessary", query C1, date 2026-11-12)
+% PICKED: Natural experiment on illicit-market data (E2); shows that availability of 2FA without mandate does not help; abstract only; effect rather than necessity. Evidence grade: E2.
+% QUOTE (Abstract): "Bayesian time series analysis revealed that mandatory 2FA significantly reduced the number of compromised bank accounts, whereas optional 2FA did not."
+% VERIFIED: ABSTRACT ONLY (Scopus/WoS record); journal full text not open access
+% COUNTER: scholar search C1/C2 -- no study in the hit list measures a single-factor scheme at the same banks.
+% DATE: 2026-11-12
+@article{Kamar2026TwoFactorBanks,
+  title = {Evaluating the Effectiveness of Two-Factor Authentication (2FA) in Mitigating Account Takeover Fraud: A Natural Experimental Study on Canadian Banks},
+  author = {Kamar, Eden and Howell, C. Jordan and Maimon, David and Fraser, Isabelle},
+  journal = {Crime \& Delinquency},
+  year = {2026},
+  volume = {72},
+  number = {11},
+  pages = {3477--3499},
+  doi = {10.1177/00111287261441235},
+}
+
+% === provenance: Kawase2019AccountTakeover ===
+% CLAIM: Adding a second factor (mutual two-factor authentication) reduced account takeovers at one online marketplace by 43%.
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR ... "two-step verification") AND (("compromised accounts" OR "account compromise" OR "account takeover" OR hijacking OR hijacked) AND (reduces OR reduction OR "real-world" OR "large-scale" OR prevented OR blocks)))' -p wos --limit 40 (session "mfa-effect"; reworded query R1, also Scopus and OpenAlex)
+% PICKED: a before/after measurement on real accounts of an operator (E2), with a moderate effect size, contrasting with the 99% figures.
+% QUOTE (Abstract): "implemented a mutual two-factor authentication that achieved a reduction of 43% of account takeovers."
+% VERIFIED: ABSTRACT ONLY (ACM; publisher behind a bot check, not circumvented). Single operator, before/after design, factor kind not stated in the abstract.
+% COUNTER: none found contradicting; it is itself a smaller effect than meyer2023.
+% DATE: 2026-11-12
+@inproceedings{Kawase2019AccountTakeover,
+  title = {Internet Fraud: The Case of Account Takeover in Online Marketplace},
+  author = {Kawase, Ricardo and Diana, Francesca and Czeladka, Mateusz and Sch{\"u}ler, Markus and Faust, Manuela},
+  booktitle = {Proceedings of the 30th ACM Conference on Hypertext and Social Media},
+  year = {2019},
+  pages = {181--190},
+  doi = {10.1145/3342220.3343651},
+}
+
+% === provenance: Egenti2026Nigeria ===
+% CLAIM: In Nigerian online banking, fraud fell by only 10-15% after 2FA spread, and app-based 2FA had a lower compromise rate than SMS (0% versus 4%).
+% FOUND-VIA: scholar search '("multi-factor authentication" OR ... "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))' -p openalex --limit 40 (session "mfa-effect")
+% PICKED: reports a small effect size and a factor comparison, but from a mixed-method study with a prototype; low trust.
+% QUOTE (Abstract): "fraud cases decreased by about 10-15% after the proliferation of 2FA while there was a reduction in the compromise rate to 0% for app-based authentication compared to 4% for SMS-OTP."
+% VERIFIED: ABSTRACT ONLY (not read in full text). Method (statistical data 2019-2024, expert opinion, prototype) is only summarised; the 0% versus 4% figure comes from the prototype evaluation and not from real accounts; a before/after comparison confounded by everything else that changed in 2019-2024.
+% COUNTER: none found contradicting.
+% DATE: 2026-11-12
+@article{Egenti2026Nigeria,
+  title = {The Effectiveness of Two-Factor Authentication in Preventing Online Banking Fraud in Nigeria},
+  author = {Egenti, Grace and Ojo, John Ajayi},
+  journal = {NOUN Interdisciplinary Journal of Computing, E-Learning \& Application (NOUN-IJCEA)},
+  year = {2026},
+  volume = {1},
+  number = {1},
+  pages = {39--51},
+  doi = {10.70882/noun-ijcea.2026.1119},
+}
+
+% === provenance: Wang2024SimpleNotSecure ===
+% --- use 1 of 2: question on effect (RQ1) ---
+% CLAIM: Implementations of 2FA can be bypassed without the second factor (remember-this-device cookies), so a deployed 2FA does not always give the protection of the scheme.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR ... "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))' -p arxiv --limit 40 (session "mfa-effect"; also OpenAlex S1 and S2)
+% PICKED: empirical analysis of 407 deployed 2FA systems; demonstrates attacks in practice (E3).
+% QUOTE (Abstract): "Our analysis and evaluation found three zero-day vulnerabilities on three service providers that could allow an attacker to access a victim's account without possessing the victim's second authentication factor, thereby bypassing 2FA protections entirely."
+% VERIFIED: full text read (arXiv PDF via scholar cache) for the abstract and introduction; shows that a bypass exists, not how often; three of 407 systems. The introduction repeats Google's "50% decrease" as a reported figure.
+% COUNTER: this is itself a narrowing source.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on sufficiency (RQ3) ---
+% CLAIM: Deployed 2FA with a "remember this device" cookie can be bypassed without the second factor (case A1, threat R7, demonstrated on real services with test accounts).
+% FOUND-VIA: scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (bypass OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle")' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: Only peer-style measurement in the session that tests deployed 2FA implementations (407 systems, Tranco top 10,000) for bypass without the second factor; the other AiTM papers study the relay, this one the session/device-trust state.
+% QUOTE (abstract): "three zero-day vulnerabilities on three service providers that could allow an attacker to access a victim’s account without possessing the victim’s second authentication factor, thereby bypassing 2FA protections entirely"
+% VERIFIED: full-text PDF (arXiv v1) read; abstract and §1 contributions; test accounts only, services anonymised; applies because it is a demonstrated bypass of deployed 2FA
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@online{Wang2024SimpleNotSecure,
+  title = {Simple But Not Secure: An Empirical Security Analysis of Two-factor Authentication Systems},
+  author = {Wang, Zhi and Yang, Xin and Chen, Du and Gao, Han and Tian, Meiqi and Jia, Yan and Li, Wanpeng},
+  year = {2024},
+  eprint = {2411.11551},
+  eprinttype = {arxiv},
+  eprintclass = {cs.CR},
+  doi = {10.48550/arXiv.2411.11551},
+  url = {http://arxiv.org/abs/2411.11551},
+}
+
+% === provenance: Campobasso2020IMPaaS ===
+% --- use 1 of 3: question on effect (RQ1) ---
+% CLAIM: Criminal platforms sell user profiles that bypass risk-based and multi-factor authentication at scale, so MFA protection against attackers with stolen credentials is not absolute.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR ... "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))' -p arxiv --limit 40 (session "mfa-effect")
+% PICKED: observed attack infrastructure with 260,000 profiles (E3).
+% QUOTE (Abstract): "Impersonation-as-a-Service (IMPaaS) allows attackers to systematically collect and enforce user profiles (consisting of user credentials, cookies, device and behavioural fingerprints, and other metadata) to circumvent risk-based authentication system and effectively bypass multi-factor authentication mechanisms."
+% VERIFIED: full text read for abstract and Sections 1-2 (arXiv PDF via scholar cache). Shows capability, not the share of MFA-protected accounts compromised; mainly bypasses risk-based authentication and cookie/session theft.
+% COUNTER: itself a narrowing source.
+% DATE: 2026-11-12
+% --- use 2 of 3: question on sufficiency (RQ3) ---
+% CLAIM: Criminal infrastructure sells stolen user profiles (credentials, cookies, fingerprints) that bypass risk-based authentication and multifactor authentication on 260,000 users (threats R7, L3), observed in real use.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (bypass OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle")' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: The only source in the session that observes the attack in operation (a live criminal platform) and not in a lab; ACM-published version closed access, arXiv v2 read.
+% QUOTE (abstract): "to circumvent risk-based authentication system and effectively bypass multifactor authentication mechanisms"
+% VERIFIED: full-text PDF (arXiv v2) read; abstract and §1; the paper does not say which second factor types are bypassed, so no case is assigned beyond "MFA"
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+% --- use 3 of 3: question on necessity (RQ4) ---
+% CLAIM: A criminal marketplace sells victim profiles (credentials, cookies, device and behavioural fingerprints) that let attackers circumvent risk-based authentication and thereby bypass multi-factor authentication at scale.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p arxiv --limit 40 (session "mfa-necessary", query S2, date 2026-11-12); full text via fetch_pdf.py --text https://arxiv.org/pdf/2009.04344 (arXiv version of the CCS paper)
+% PICKED: Observed in-the-wild attack on RBA (E3); shows the limit of context-based alternatives. Evidence grade: E3.
+% QUOTE (Abstract): "to circumvent risk-based authentication system and effectively bypass multifactor authentication mechanisms"
+% QUOTE (Sec. 1, Fig. 1 caption area): "By only owning the credentials of the victim, the attacker cannot bypass the MFA as the Risk-Based Authentication (RBA) system will detect an anomaly in the profile of the authenticating user."
+% VERIFIED: full-text PDF read; applies because the platform analysed supplies the profile that RBA expects
+% COUNTER: scholar search S2/C2 -- no work refuting the existence of the marketplace was found.
+% DATE: 2026-11-12
+@inproceedings{Campobasso2020IMPaaS,
+  title = {Impersonation-as-a-Service: Characterizing the Emerging Criminal Infrastructure for User Impersonation at Scale},
+  author = {Campobasso, Michele and Allodi, Luca},
+  booktitle = {Proceedings of the 2020 ACM SIGSAC Conference on Computer and Communications Security},
+  year = {2020},
+  pages = {1665--1680},
+  doi = {10.1145/3372297.3417892},
+}
+
+% === provenance: Mirian2019HackForHire ===
+% CLAIM: Targeted attackers hired on black markets bypassed SMS two-factor authentication by tailored phishing, but the market was small and unreliable.
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR ... "two-step verification") AND (("compromised accounts" OR ... ) AND (reduces OR reduction OR "real-world" OR "large-scale" OR prevented OR blocks)))' -p wos --limit 40 (session "mfa-effect", R1; also Scopus)
+% PICKED: observed attacks in a controlled purchase study (E3) that qualify the SMS figures of doerfler2019.
+% QUOTE (Abstract): "Attackers primarily relied on tailored phishing messages, with enough sophistication to bypass SMS two-factor authentication."
+% VERIFIED: ABSTRACT ONLY (ACM; publisher behind a bot check, not circumvented). 27 services, 5 succeeded, synthetic identities.
+% COUNTER: itself a narrowing source.
+% DATE: 2026-11-12
+@inproceedings{Mirian2019HackForHire,
+  title = {Hack for Hire: Exploring the Emerging Market for Account Hijacking},
+  author = {Mirian, Ariana and DeBlasio, Joe and Savage, Stefan and Voelker, Geoffrey M. and Thomas, Kurt},
+  booktitle = {The World Wide Web Conference},
+  year = {2019},
+  pages = {1279--1289},
+  doi = {10.1145/3308558.3313489},
+}
+
+% === provenance: Catalano2025BitM ===
+% --- use 1 of 2: question on effect (RQ1) ---
+% CLAIM: Browser-in-the-middle attacks combined with reflected XSS defeat all MFA methods including FIDO2 hardware keys, in the demonstrated setting.
+% FOUND-VIA: scholar search 'TS=(... "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))' -p wos --limit 40 (session "mfa-effect", C1; session also lists it for other questions)
+% PICKED: the strongest-claiming attack against the factor kind (security key) that Doerfler reports as 100% effective (E3).
+% QUOTE (Abstract): "we show how the effectiveness of BitM-used along a Reflected XSS vulnerability exploitation-can be improved resulting in the novel BitM + attack that proves to be capable of defeating any available MFA method including FIDO2/WebAuthn solutions that rely on hardware dongles"
+% VERIFIED: ABSTRACT ONLY (Springer; full text not obtainable through the tunnel: HTML returned instead of a PDF). A proof-of-concept needing an XSS vulnerability on the target site; says nothing about frequency.
+% COUNTER: itself a narrowing source.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: A browser-in-the-middle attack combined with reflected cross-site scripting can defeat FIDO2/WebAuthn hardware-key authentication.
+% FOUND-VIA: scholar search scholar search '(K OR "risk-based authentication" OR "password manager") AND (alternative OR "instead of" OR without) AND (M)' -p openalex --limit 40 (session "mfa-necessary", query S1, date 2026-11-12)
+% PICKED: Attack paper (E3) against the strongest alternative; closed access in this run, so abstract only. Evidence grade: E3.
+% QUOTE (Abstract): "the novel BitM + attack that proves to be capable of defeating any available MFA method"
+% VERIFIED: ABSTRACT ONLY (OpenAlex record); the Springer and institutional-repository PDFs answered 403/HTML, no workaround attempted
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@article{Catalano2025BitM,
+  title = {Defeating {FIDO2/CTAP2/WebAuthn} using browser in the middle and reflected cross site scripting},
+  author = {Catalano, Christian and Chezzi, Andrea and Barletta, Vita Santa and Tommasi, Franco},
+  journal = {Journal of Computer Virology and Hacking Techniques},
+  year = {2025},
+  volume = {21},
+  number = {1},
+  doi = {10.1007/s11416-025-00556-2},
+}
+
+% === provenance: Google2022SaferInternet ===
+% CLAIM: Google reports that auto-enrolling over 150 million accounts in two-step verification in 2021 was followed by a 50% decrease in compromised accounts among those users.
+% FOUND-VIA: WebSearch "Google 2-step verification auto-enrolled 150 million accounts 50% decrease in accounts being compromised" (allowed domains blog.google, security.googleblog.com, cloud.google.com), 2026-11-12; document then retrieved from the issuer with curl.
+% PICKED: the largest reported deployment figure and the only one that sidesteps self-selection by auto-enrolment; grey literature (E6).
+% QUOTE (section "Keeping your information safe"): "In 2021, we auto-enrolled over 150 million people in two-step verification (2SV). As a result of this effort, we have seen a 50% decrease in accounts being compromised."
+% VERIFIED: page read at blog.google on 2026-11-12. No method, no counts, no comparison group, and per press coverage (secondary, not verified) only accounts with recovery options were enrolled. Provider's claim only.
+% COUNTER: no independent verification found by WebSearch (query "two-factor authentication limitations overstated effectiveness self-selection careful users compromised accounts evidence").
+% DATE: 2026-11-12
+@online{Google2022SaferInternet,
+  title = {Keeping you safe online with Google and beyond},
+  author = {{Google}},
+  year = {2022},
+  url = {https://blog.google/technology/safety-security/safer-internet-day-2022},
+  urldate = {2026-11-12},
+}
+
+% === provenance: Maynes2019OneSimpleAction ===
+% CLAIM: Microsoft asserts that MFA can block over 99.9 percent of account compromise attacks.
+% FOUND-VIA: WebSearch "MFA blocks 99.9 percent of account compromise attacks identity security Microsoft" (allowed domains microsoft.com, techcommunity.microsoft.com), 2026-11-12; document retrieved from the issuer with curl.
+% PICKED: the most-cited vendor figure; graded E6 to show that the headline number has no disclosed method.
+% QUOTE: "MFA can block over 99.9 percent of account compromise attacks"
+% VERIFIED: page read at microsoft.com on 2026-11-12. No method or data in the post; meyer2023 (same company) later reports 99.22% with a method.
+% COUNTER: the same company's later measurement (meyer2023) gives 99.22% and 98.56% for leaked credentials, a little lower.
+% DATE: 2026-11-12
+@online{Maynes2019OneSimpleAction,
+  title = {One simple action you can take to prevent 99.9 percent of attacks on your accounts},
+  author = {Maynes, Melanie},
+  organization = {Microsoft Security Blog},
+  year = {2019},
+  month = 8,
+  url = {https://www.microsoft.com/en-us/security/blog/2019/08/20/one-simple-action-you-can-take-to-prevent-99-9-percent-of-account-attacks/},
+  urldate = {2026-11-12},
+}
+
+% ===================================================================
+% Sources first cited for the question on attribution (RQ2)
+% ===================================================================
+
+% === provenance: NIST2025SP80063B ===
+% --- use 1 of 3: question on attribution (RQ2) ---
+% CLAIM: NIST classifies a cryptographic key activated by PIN or biometric as multi-factor, and a key without activation (or with the activation flag unset) as single-factor.
+% FOUND-VIA: WebSearch (standard) "NIST SP 800-63B authenticator assurance level multi-factor cryptographic authenticator user verification single-factor", 2026-11-12; then known-item retrieval of the NIST publication from nvlpubs.nist.gov via scripts/fetch_pdf.py --text https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63B-4.pdf
+% PICKED: The issuing body's own normative text (E5); supersedes SP 800-63B-3 and the withdrawn supplement 800-63Bsup1 (read: withdrawal notice).
+% QUOTE: §3.1.7 (p. 27-28): "A multi-factor cryptographic authenticator is "something you have" and is activated by an activation factor that represents either "something you know" or "something you are.""
+%   §3.1.7.2 (p. 28-29): "If such a flag is present and indicates that an activation factor was not used, the authentication [...] SHALL be treated as single-factor."
+%   §3.1.6 (p. 26): "A single-factor cryptographic authenticator is "something you have.""
+% VERIFIED: Full-text PDF read (July 2025 final); quotes machine-checked against the extracted text.
+% COUNTER: Searched for dissent inside the standard: AAL1 permits single-factor use, §3.2.5 says phishing resistance needs only single- or multi-factor cryptographic authentication, i.e. the standard itself does not make the second factor the source of phishing resistance.
+% DATE: 2026-11-12
+% --- use 2 of 3: question on sufficiency (RQ3) ---
+% CLAIM: The US federal standard states that out-of-band authentication is not phishing-resistant and requires verifiers to offer a phishing-resistant option at AAL2 (standard; separates multi-factor cases by phishing resistance).
+% FOUND-VIA: WebSearch (2026-11-12) "NIST SP 800-63B-4 Digital Identity Guidelines Authentication and Authenticator Management phishing resistance requirement AAL2" (allowed_domains nist.gov) -> fetch_pdf.py https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63B-4.pdf
+% PICKED: The governing US standard (final 2025 version) retrieved from nvlpubs.nist.gov; E5.
+% QUOTE (§3.1.3, PDF p.29): "Out-of-band authentication is not phishing-resistant."
+% QUOTE (2, §2.2.2, PDF p.18): "Verifiers SHALL offer at least one phishing-resistant authentication option at AAL2"
+% VERIFIED: full-text PDF read for the quoted passages only
+% EVIDENCE-GRADE: E5
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+% --- use 3 of 3: question on necessity (RQ4) ---
+% CLAIM: The principal US standard on digital identity requires two distinct factors at AAL2 and AAL3 but allows single-factor authentication (including a single-factor cryptographic key) at AAL1, and recognises single-factor cryptographic authentication as capable of phishing resistance; risk signals do not substitute for a factor.
+% FOUND-VIA: scholar search '(M) AND ("assurance level" OR "phishing-resistant" OR "NIST SP 800-63B" OR "strong customer authentication")' -p openalex --limit 40 (session "mfa-necessary", query C3 [supplementary], date 2026-11-12); full text retrieved via fetch_pdf.py --text 10.6028/nist.sp.800-63b-4
+% PICKED: The binding standard behind US federal requirements and widely copied; primary source for the assurance levels (E5). Alternatives: ISO/IEC 29115 and eIDAS implementing regulation 2015/1502 (not retrieved). Evidence grade: E5.
+% QUOTE (Sec. 2.1 AAL1, p. 4): "AAL1 requires either single-factor or multi-factor authentication using a wide range of available authentication technologies."
+% QUOTE (Sec. 2.2 AAL2, p. 6): "Proof of possession and control of two distinct authentication factors through the use of secure authentication protocols is required."
+% QUOTE (Sec. 3.2.5 phishing resistance, p. 35): "Phishing resistance requires single- or multi-factor cryptographic authentication."
+% QUOTE (Sec. 2 introduction, p. 4): "The use of potential fraud indicators prior to or during the authentication process does not impact or change the AAL of a transaction or substitute for an authentication factor."
+% QUOTE (Sec. 2.3.1 AAL3, p. 8): "Single-factor cryptographic authentication (Sec. 3.1.6) used in conjunction with either a password (Sec. 3.1.1) or a biometric comparison"
+% QUOTE (Sec. 3.1.6, p. 26): "Single-factor cryptographic authenticators used at AAL3 SHALL use public-key cryptography to protect the authentication secrets from compromise of the verifier."
+% QUOTE (Sec. 1 introduction, p. 1): "Stronger authentication (i.e., a higher AAL) requires malicious actors to have better capabilities and to expend greater resources to successfully subvert the authentication process."
+% VERIFIED: full-text PDF read (July 2025 final); applies because the sections quoted define what each level requires and give the reason (attacker cost), E5 not a necessity proof
+% COUNTER: scholar search C1/C2 -- none of the retrieved records refutes the content of the standard; the AAL1 text shows that the standard itself does not require several factors at the lowest level.
+% DATE: 2026-11-12
+@techreport{NIST2025SP80063B,
+  author = {Temoshok, David and Fenton, James L and Choong, Yee-Yin and Lefkovitz, Naomi and Regenscheid, Andrew and Galluzzo, Ryan and Richer, Justin P},
+  title = {Digital Identity Guidelines: Authentication and Authenticator Management},
+  institution = {National Institute of Standards and Technology},
+  type = {NIST Special Publication},
+  number = {800-63B-4},
+  year = {2025},
+  month = 7,
+  doi = {10.6028/NIST.SP.800-63B-4}
+}
+
+% === provenance: W3C2026WebAuthn3 ===
+% CLAIM: WebAuthn classifies an authenticator that supports user verification as multi-factor capable and one that does not as single-factor capable.
+% FOUND-VIA: WebSearch (standard) "W3C WebAuthn Level 3 user verification user presence multi-factor authenticator security considerations", 2026-11-12; then WebFetch/curl of https://www.w3.org/TR/webauthn-3/ (issuing body)
+% PICKED: The specification that defines the user-verification flag; primary source (E5).
+% QUOTE: §6.2.3 Authentication Factor Capability: "Therefore, an authenticator that supports user verification is multi-factor capable . Conversely, an authenticator that is not multi-factor capable is single-factor capable ."
+%   §6.2.3: "All WebAuthn Authenticators belong to the something you have class, but an authenticator that supports user verification can also act as one or two additional kinds of authentication factor ."
+% VERIFIED: HTML page read in full for §6.2.3 and §6.1; quotes machine-checked against the extracted text. (Page title says Recommendation 25 August 2026.)
+% COUNTER: No passage in the specification denies that PIN/biometric verification is a second factor; the spec itself says the relying party can only see the UV flag, not verify the factor.
+% DATE: 2026-11-12
+@misc{W3C2026WebAuthn3,
+  editor = {Cappalli, Tim and Kumar, Akshay and Lundberg, Emil and Miller, Matthew and {Pascoe} and Satragno, Nina},
+  title = {Web Authentication: An {API} for accessing Public Key Credentials -- Level 3},
+  howpublished = {W3C Recommendation},
+  year = {2026},
+  month = 8,
+  url = {https://www.w3.org/TR/2026/REC-webauthn-3-20260825/},
+  urldate = {2026-11-12},
+}
+
+% === provenance: NCSC2026CredentialsPaper ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: Against commonly observed attacks, a FIDO2 credential (one strong factor, with user verification) is assessed as at least as secure as password plus a traditional second factor; the two diverge on device theft and malware.
+% FOUND-VIA: WebSearch (standard) "NCSC guidance passkeys passwordless authentication single factor versus multi-factor device unlock stolen phone", 2026-11-12; followed the technical-paper link from https://www.ncsc.gov.uk/passkeys; retrieved the paper from ncsc.gov.uk
+% PICKED: The only source found that compares password+2SV with a passkey threat by threat, including a device-theft row and a statement on the strongest password; issuing authority is a national cyber agency (E5, with analytical (E4) tables).
+% QUOTE: Abstract: "shows that at all stages of a credential's lifecycle, and against all commonly observed attacks, FIDO2 credentials including passkeys are as secure or more secure than all forms of traditional MFA for individuals."
+%   §Overall comparison: "FIDO2 credentials including passkeys are multifactor authentication where user verification is performed as part of the authentication."
+%   §Physical access: "An attacker who has stolen a device and has the passcode to the device (and that of the credential manager, if it is different) will be able to view and export passwords and other credentials depending on the credential manager."
+% VERIFIED: Full HTML page read; quotes machine-checked. The paper is an assessment by the agency without a stated search or measurement method for its table: do not read the table as measurement.
+% COUNTER: Counter-evidence inside the paper: Table 1 marks device theft with a weak PIN as "Potentially vulnerable" for FIDO2 and "Commonly vulnerable" for traditional MFA; a remembered password not stored on the device is not revealed by device theft; downgrade attacks via the remaining weaker authenticator are expected. The agency is also an interested party in recommending passkeys.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: The UK NCSC assesses that FIDO2 credentials are as secure or more secure than traditional MFA (password plus second factor) against all common credential attacks, and that passkeys with user verification are themselves multi-factor.
+% FOUND-VIA: WebSearch (standard) "NCSC guidance multi-factor authentication for online services recommendation passkeys single factor", 2026-11-12; paper located from the NCSC blog page and read at https://www.ncsc.gov.uk/paper/traditional-user-and-fido2-credentials-personal-use (HTML, not cacheable by fetch_pdf.py; text extracted with curl, access date 2026-11-12)
+% PICKED: Public-authority technical paper (E5 with a stated method, expert analysis tabulating attacks by credential type, including a row for random passwords from a credential manager); individual-user perspective only. Evidence grade: E5.
+% QUOTE (Summary and recommendations): "FIDO2 credentials including passkeys are more secure than traditional multifactor authentication against all common attacks, and at all stages of the credential lifecycle."
+% QUOTE (Summary and recommendations): "FIDO2 credentials including passkeys are multifactor authentication where user verification is performed as part of the authentication."
+% QUOTE (Attacks, user verification): "Occasionally arguments are made that as the passkey private key and the user verification (via biometrics or PIN) are on the same device, it cannot be two factor"
+% QUOTE (Summary and recommendations): "All traditional / classical multifactor authentication including passwords, SMS codes, email codes, TOTP codes, TOTP tokens and notification approval systems are inherently phishable"
+% VERIFIED: HTML text read in full for the quoted sections and Tables 19a-19c; applies because it compares password-only (manager-generated), traditional MFA and FIDO2 per attack; the tables are the NCSC's assessment, not measurements
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@misc{NCSC2026CredentialsPaper,
+  author = {{National Cyber Security Centre}},
+  title = {Comparing the security properties of traditional user credentials and FIDO2 credentials for personal use},
+  howpublished = {NCSC technical paper},
+  year = {2026},
+  month = 4,
+  url = {https://www.ncsc.gov.uk/paper/traditional-user-and-fido2-credentials-personal-use},
+  urldate = {2026-11-12},
+}
+
+% === provenance: CISA2022PhishingResistant ===
+% --- use 1 of 3: question on attribution (RQ2) ---
+% CLAIM: Public-authority guidance ranks FIDO/WebAuthn and PKI-based authentication as the strongest MFA forms because of resistance to phishing, not because of the number of factors.
+% FOUND-VIA: WebSearch (standard) "CISA implementing phishing-resistant MFA fact sheet FIDO WebAuthn PKI-based not vulnerable to phishing", 2026-11-12; retrieved the PDF from cisa.gov
+% PICKED: Issuing authority's own text (E5); used for the ranking table.
+% QUOTE: p. 3 (Recommended Implementations): "Table 1 lists forms of MFA from strongest to weakest based on their susceptibility to the above cyber threats:"
+%   FIDO/WebAuthn Authentication: "In addition to being "something that you have," FIDO authentication can incorporate various other types of factors, such as biometrics or PIN codes."
+% VERIFIED: Full PDF read via pdftotext; quotes machine-checked. Ranking is by phishing susceptibility only (the table lists app-based and SMS forms below).
+% COUNTER: The fact sheet does not address device theft or malware, so it neither supports nor contradicts the local-threat half.
+% DATE: 2026-11-12
+% --- use 2 of 3: question on sufficiency (RQ3) ---
+% CLAIM: A public authority classifies some MFA forms as vulnerable to phishing and push bombing and names FIDO/WebAuthn as the only widely available phishing-resistant option (standard/guidance, cases A1-A3 vs B).
+% FOUND-VIA: WebSearch (2026-11-12) "phishing-resistant multi-factor authentication FIDO WebAuthn fact sheet government guidance" -> fetch_pdf.py <cisa.gov URL>
+% PICKED: Authority guidance retrieved from the issuer; E5 consensus: states what is recommended and why, not that attacks succeed.
+% QUOTE (p.3): "The only widely available phishing-resistant authentication is FIDO/WebAuthn authentication."
+% QUOTE (2, p.1): "not all forms of MFA are equally secure. Some forms are vulnerable to phishing, “push bombing” attacks,"
+% VERIFIED: full-text PDF read
+% EVIDENCE-GRADE: E5
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+% --- use 3 of 3: question on necessity (RQ4) ---
+% CLAIM: CISA recommends phishing-resistant MFA and says any form of MFA is better than none; the US Office of Management and Budget requires agencies to adopt it.
+% FOUND-VIA: WebSearch (standard) "phishing-resistant multi-factor authentication government guidance requirement fact sheet", 2026-11-12; document retrieved from the issuing organisation via fetch_pdf.py --text https://cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf
+% PICKED: Public-authority guidance (E5), October 2022. Evidence grade: E5.
+% QUOTE (p. 1): "While any form of MFA is better than no MFA and will reduce an organization's attack surface, phishing-resistant MFA is the gold standard and organizations should make migrating to it a high priority effort"
+% QUOTE (p. 1): "MFA is a security control that requires a user to present a combination of two or more different authenticators (something you know, something you have, or something you are) to verify their identity for login."
+% VERIFIED: full-text PDF read; applies as an expert-consensus requirement statement, not as evidence of necessity
+% COUNTER: WebSearch queries on requirements found no public authority that accepts single-factor password-only for staff.
+% DATE: 2026-11-12
+@misc{CISA2022PhishingResistant,
+  author = {{Cybersecurity and Infrastructure Security Agency}},
+  title = {Implementing Phishing-Resistant MFA},
+  howpublished = {Fact sheet},
+  year = {2022},
+  month = 10,
+  url = {https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf},
+  urldate = {2026-11-12},
+}
+
+% === provenance: Yadav2024LocalAttacks ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: A malicious browser extension can break the protection of a FIDO2 key; and in some cases passwordless authentication presents more risk than a separate strong password (local threat L3), and a cloned key defeats clone detection (L1).
+% FOUND-VIA: scholar session mfa-attribution, query S1 on wos and arxiv, query S2 on openalex (the preprint and the NDSS version are two records of one paper); exact strings in the report
+% PICKED: Systematic analysis plus implemented attacks on ten real FIDO2 web servers (E3); the one source that compares passwordless with password-only under a local attacker.
+% QUOTE: Abstract/§I (arXiv v1): "We were surprised to discover two attacks (3 and 4) where passwordless authentication presents more risk than passwords alone in the presence of a compromised extension."
+%   §I: "This risk did not exist in the world of passwords when a user had a different strong password on their high-value account."
+%   §I: "The FIDO2 specification focuses on remote attackers and thus their threat model assumes a trusted client (browser and browser extensions)."
+% VERIFIED: Full text read (arXiv v1, two-column PDF; the first quote reads "highvalue" in the extraction because the PDF hyphenates across a line). Quotes machine-checked. Attack demonstrations, not frequency: the authors found no evidence of these attacks in the wild (static and dynamic analysis of extensions).
+% COUNTER: Counter: the same paper finds no in-the-wild use of the attacks, and says the attacks need a compromised extension; it does not show that a password beside a key would have stopped them in a combined (2FA) deployment, only that a unique password was not exposed to them.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on sufficiency (RQ3) ---
+% CLAIM: FIDO2 (cases A3, B) fails against local attackers: seven attacks demonstrated on ten popular web servers via a compromised browser extension or physical access to a hardware key; none found in the wild.
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: The only source in the session that demonstrates attacks on deployed FIDO2 relying parties for the local threats L1 and L3, with a stated no-evidence-in-the-wild check.
+% QUOTE (abstract): "we demonstrate the feasibility of seven attacks that exploit those flaws"
+% QUOTE (2, abstract): "A static and dynamic analysis of current browser extensions finds no evidence of the attacks in the wild."
+% VERIFIED: full-text PDF (arXiv v1) read, abstract and §1; second quote in QUOTE2
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+%   Reading copy: Full text read from the arXiv preprint 2308.02973 (doi 10.48550/arXiv.2308.02973)
+@inproceedings{Yadav2024LocalAttacks,
+  author = {Yadav, Tarun Kumar and Seamons, Kent},
+  title = {A Security and Usability Analysis of Local Attacks Against FIDO2},
+  booktitle = {Proceedings 2024 Network and Distributed System Security Symposium},
+  year = {2024},
+  doi = {10.14722/ndss.2024.24327},
+}
+
+% === provenance: Buttner2025DeviceBound ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: For a key without activation by the user, physical access (L1) is the risk; user verification (PIN or fingerprint) is what makes a stolen device-bound passkey hard to use, and the security of a synced passkey is concentrated in the provider.
+% FOUND-VIA: scholar session mfa-attribution, queries S1 (openalex, scopus), S2 and C2 (openalex), and the preprint on arxiv; alphaXiv discover_papers 2026-11-12 returned the preprint too
+% PICKED: The only paper found that compares device-bound with synced passkeys against passwords with the Bonneau framework; analytical (E4).
+% QUOTE: §3.1 (arXiv v1): "Even for an attacker with physical access to the device, it will be difficult to steal a user's device-bound passkey, provided it is protected by user verification mechanisms, e.g., a PIN or fingerprint."
+%   Abstract: "show that the security of synced passkeys is mainly concentrated in the passkey provider."
+% VERIFIED: Full text read (arXiv v1); quotes machine-checked. Analysis, not measurement.
+% COUNTER: Qualifies the single-factor reading: the key alone (case C) is not what protects a stolen device; the activation factor is.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: Synced passkeys remove guessing and phishing but concentrate their security in the passkey provider, a single point of failure.
+% FOUND-VIA: scholar search '(K) AND (phishing OR "account takeover" OR "credential stuffing") AND (evaluation OR measurement OR "security analysis" OR "formal analysis")' -p openalex --limit 40 (session "mfa-necessary", query S1b, date 2026-11-12) [supplementary query S1b, see Deviations; K and M as in the protocol]; full text via fetch_pdf.py --text 10.5220/0013380600003899 (arXiv copy)
+% PICKED: Systematic evaluation with the Bonneau et al. framework (E4); narrows the claim for synced passkeys (threats R2-like and L-like at the provider). Evidence grade: E4.
+% QUOTE (Sec. 5.1): "The security of synced passkeys is mainly concentrated in the passkey providers as a trusted third-party service."
+% QUOTE (Sec. 5.1): "Synced passkeys provide many more benefits than legacy passwords because of asymmetric cryptography, eliminating the risk of guessing credentials and phishing."
+% VERIFIED: full-text PDF read; applies because it compares device-bound and synced passkeys against passwords
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+%   Reading copy: Full text read from the arXiv preprint 2501.07380
+@inproceedings{Buttner2025DeviceBound,
+  author = {Büttner, Andre and Gruschka, Nils},
+  title = {Device-Bound vs. Synced Credentials: A Comparative Evaluation of Passkey Authentication},
+  booktitle = {Proceedings of the 11th International Conference on Information Systems Security and Privacy},
+  year = {2025},
+  pages = {651--659},
+  doi = {10.5220/0013380600003899},
+}
+
+% === provenance: Berladskyy2026AttackVectors ===
+% --- use 1 of 3: question on attribution (RQ2) ---
+% CLAIM: Attacks on passkeys that bypass the key (infected authenticator, spoofed website with a valid certificate) exist but require substantial effort; the remote-phishing resistance of a key holds.
+% FOUND-VIA: scholar session mfa-attribution, queries S1 (arxiv, openalex), S2 (openalex), C2 (arxiv, openalex); alphaXiv discover_papers "passkey WebAuthn FIDO2 password security analysis user verification" 2026-11-12
+% PICKED: Implements two attacks and reviews others (E3); recent.
+% QUOTE: Abstract: "The claim that passkeys are phishing-resistant largely holds true, significantly raising the bar compared to traditional password-based authentication."
+%   Abstract: "Our results demonstrate that successful attacks on passkeys require substantial effort and resources."
+% VERIFIED: Full text read (arXiv v1); quotes machine-checked. Preprint, not refereed.
+% COUNTER: Both attacks (infected authenticator; authenticator deception with a CA-store change) need prior compromise of the user's device: they are local threats (L3), where the key does not stand alone.
+% DATE: 2026-11-12
+% --- use 2 of 3: question on sufficiency (RQ3) ---
+% CLAIM: Two implemented attacks on passkeys (infected authenticator, certificate-store manipulation) succeed only with substantial effort and resources; the phishing-resistance claim largely holds (case B, R3/R4 resist; L3 needs host compromise).
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p openalex --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p arxiv --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p openalex --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: The clearest statement in the session that qualifies the "FIDO2 is attackable" literature: it implements attacks and concludes the claim largely holds. Preprint.
+% QUOTE (abstract): "The claim that passkeys are phishing-resistant largely holds true, significantly raising the bar compared to traditional password-based authentication."
+% QUOTE (2, abstract): "Our results demonstrate that successful attacks on passkeys require substantial effort and resources."
+% VERIFIED: full-text PDF (arXiv v1) read, abstract and §1; preprint, not peer reviewed
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+% --- use 3 of 3: question on necessity (RQ4) ---
+% CLAIM: Passkeys (FIDO2) resist phishing: the two attacks implemented against them, an infected authenticator and a spoofed website via a modified browser certificate store, need substantial effort and resources.
+% FOUND-VIA: scholar search '(K) AND (phishing OR "account takeover" OR "credential stuffing") AND (evaluation OR measurement OR "security analysis" OR "formal analysis")' -p arxiv -p openalex --limit 40 (session "mfa-necessary", query S1b, date 2026-11-12) [supplementary query S1b, see Deviations; K and M as in the protocol]; full text via fetch_pdf.py --text 10.48550/arXiv.2604.20826
+% PICKED: Recent (April 2026) analysis with two implemented attacks (E3), arXiv preprint (not peer reviewed); supports that a bound key resists remote phishing. Passkeys here include user verification, so the case is B or C. Evidence grade: E3.
+% QUOTE (Abstract): "The claim that passkeys are phishing-resistant largely holds true, significantly raising the bar compared to traditional password-based authentication."
+% QUOTE (Abstract): "Our results demonstrate that successful attacks on passkeys require substantial effort and resources."
+% VERIFIED: full-text PDF read; applies because the demonstrated attacks are the strongest the authors found against FIDO2; preprint
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@misc{Berladskyy2026AttackVectors,
+  author = {Berladskyy, Alexander and A{\ss}muth, Andreas},
+  title = {An Analysis of Attack Vectors Against FIDO2 Authentication},
+  year = {2026},
+  eprint = {2604.20826},
+  archiveprefix = {arXiv},
+  doi = {10.48550/arXiv.2604.20826}
+}
+
+% === provenance: Mitra2026TrustBoundary ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: FIDO2 resists remote attacks by construction but relies on assumptions about the user's environment; compromise of the browser, OS or hardware can break it (local threat L3).
+% FOUND-VIA: scholar session mfa-attribution, query S2 on openalex; alphaXiv discover_papers 2026-11-12
+% PICKED: Threat-model reassessment with attack vectors characterised by privilege and skill (E4/E3); recent.
+% QUOTE: Abstract: "These findings support the thesis that the weak link in a FIDO2 deployment is rarely the crypto layer."
+%   Abstract: "compromising the environment at any layer — the browser, the OS, or the hardware — can affect the security of FIDO2."
+% VERIFIED: Abstract and §Related work read in full text (arXiv v1); quotes machine-checked. Preprint, not refereed, authors affiliated with a security company (DigitalFortress).
+% COUNTER: Does not show that a second factor would have stopped the described chains; it argues for layered mitigations.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on sufficiency (RQ3) ---
+% CLAIM: FIDO2 security assumes an uncompromised environment; compromising browser, OS or hardware can affect it, and attack vectors can be chained (case B, L1-L3).
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p arxiv --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: Threat-model analysis of eight FIDO2 attack vectors; preprint by the same group as Mitra2026Wooden; analytical, grade E4/E5.
+% QUOTE (abstract): "compromising the environment at any layer — the browser, the OS, or the hardware — can affect the security of FIDO2"
+% VERIFIED: full-text PDF (arXiv) read, abstract only in detail; preprint
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@misc{Mitra2026TrustBoundary,
+  author = {Mitra, Aditya and Abhiram, Kolluru Sai and Sethuraman, Sibi Chakkaravarthy and S, Anitha},
+  title = {Beyond the Trust Boundary: A Critical Reassessment of the FIDO2 Threat Model},
+  year = {2026},
+  eprint = {2609.03789},
+  archiveprefix = {arXiv},
+  doi = {10.48550/arXiv.2609.03789}
+}
+
+% === provenance: Jacomme2021FormalMFA ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: Under the assumption that the password is already compromised, formal analysis shows which second factors still resist phishing, malware and spoofed fingerprints; a hardware key (U2F) is secure under many scenarios but not against malware controlling the USB interface.
+% FOUND-VIA: scholar session mfa-attribution, query C2 on wos; full text from the HAL copy https://inria.hal.science/hal-03468848/document via scripts/fetch_pdf.py --text
+% PICKED: The one formal analysis that isolates the second factor by assuming the password is lost (E4, with laboratory validation of attacks).
+% QUOTE: Sect. 1 (HAL copy p. 3): "Compromised passwords: our basic assumption is that the user's password has been compromised."
+%   Sect. 5 (HAL copy p. 21): "U2F is secure under many threat scenarios, including some that combine phishing and fingerprint spoofing. However, an attack is found when the computer runs malware that [...]" (the attack: malware controlling the USB interface).
+% VERIFIED: Full text read (HAL author copy); first quote machine-checked, second quote cut where the PDF extraction interleaves a formula. Covers U2F and Google 2-step, not WebAuthn/passkeys with user verification.
+% COUNTER: Qualifies: a second factor adds protection only under the stated malware and phishing model, and the strongest factor (U2F) still fails under malware (L3).
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: In a formal analysis of Google 2-step and FIDO U2F, U2F resists phishing but a malware-controlled computer lets an attacker abuse the user's token, contradicting claims of protection against malware.
+% FOUND-VIA: scholar search '(K) AND (phishing OR "account takeover" OR "credential stuffing") AND (evaluation OR measurement OR "security analysis" OR "formal analysis")' -p wos --limit 40 (session "mfa-necessary", query S1b, date 2026-11-12) [supplementary query S1b, see Deviations; K and M as in the protocol]; full text via fetch_pdf.py --text https://inria.hal.science/hal-03468848/document
+% PICKED: Formal analysis (E4, ProVerif) with lab validation; compares password+key (U2F) variants under combined threats; HAL author copy of the TOPS article. Evidence grade: E4.
+% QUOTE (Sec. 5.5, after Table 5): "This contradicts claims that Yubikeys (an implementation of U2F token) guarantee protection against "phishing, session hijacking, man-in-the-middle, and malware attacks." While the claim indeed holds for the first threats, malware attacks are still possible."
+% QUOTE (Sec. 5.5): "To summarize, one might expect U2F to protect against malware, as it is based on a secure hardware token providing cryptographic capabilities. Thus, even if U2F does provide a better security than most existing solutions, it does not uphold this promise completely."
+% VERIFIED: full-text PDF read; applies because it is the only analysed scheme with a hardware key and it shows threat-by-threat results (phishing resisted, local malware not)
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+%   Reading copy: Full text read from the open HAL copy hal-03468848
+@article{Jacomme2021FormalMFA,
+  author = {Jacomme, Charlie and Kremer, Steve},
+  title = {An Extensive Formal Analysis of Multi-factor Authentication Protocols},
+  journal = {ACM Transactions on Privacy and Security},
+  volume = {24},
+  number = {2},
+  pages = {1--34},
+  year = {2021},
+  doi = {10.1145/3440712},
+}
+
+% === provenance: Guan2022FormalFIDO2 ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: Formal analysis of FIDO2 finds flaws in the Client PIN mechanism, i.e. in the user verification that makes a key multi-factor.
+% FOUND-VIA: scholar session mfa-attribution, query S1 on openalex and wos; full text through curl over the KTH tunnel from link.springer.com (fetch_pdf.py did not accept the Springer URL)
+% PICKED: Formal analysis of the whole FIDO2 stack including CTAP2 Client PIN (E4).
+% QUOTE: Abstract: "The results also reveal that the newly introduced Client PIN mechanism has flaws"
+% VERIFIED: Full text read (8 pages); quote machine-checked.
+% COUNTER: Qualifies the multi-factor reading of case B: the PIN part of the activation is itself attackable in the model.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on sufficiency (RQ3) ---
+% CLAIM: Symbolic verification finds that FIDO2 (cases A3, B) fails some strong authentication properties and that the Client PIN mechanism (user verification) has flaws.
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p openalex --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis"))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Symbolic (not computational) analysis of FIDO2 as a whole including the Client PIN; complements the computational proofs of Barbosa2021FIDO2 and Bindel2023FIDO2.
+% QUOTE (abstract): "The verification results show FIDO2 fails to achieve some strong authentication properties."
+% VERIFIED: full-text PDF via KTH tunnel read (abstract and §1); result stated at the level of the abstract, the specific properties were not audited
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+%   Reading copy: Full text read via the Springer PDF through the KTH network
+@inproceedings{Guan2022FormalFIDO2,
+  author = {Guan, Jingjing and Li, Hui and Ye, Haisong and Zhao, Ziming},
+  title = {A Formal Analysis of the FIDO2 Protocols},
+  booktitle = {Computer Security -- ESORICS 2022},
+  series = {Lecture Notes in Computer Science},
+  pages = {3--21},
+  year = {2022},
+  doi = {10.1007/978-3-031-17143-7_1},
+}
+
+% === provenance: Buttner2025Inconsistencies ===
+% CLAIM: Account recovery (R8) in ten services: password reset did or did not require the second factor, so a weaker fallback can decide the strength of the account.
+% FOUND-VIA: scholar session mfa-attribution, query S1 on scopus and wos
+% PICKED: Measurement of ten real services (E2, small sample); the only full-text-read source with a recovery measurement.
+% QUOTE: Sect. 4.3 (p. 175): "Importantly, a password reset does not imply regaining access to an account." and "Even when the password could be reset without the second factor, it would not allow bypassing 2FA during the subsequent login."
+%   Same section: three of nine services (Amazon, ChatGPT, Pinterest) allowed a password reset without the second factor.
+% VERIFIED: Full text read (15 pages, curl via KTH); quotes machine-checked. Small sample, services not randomly chosen.
+% COUNTER: On balance the paper reports that recovery did NOT bypass 2FA login; it therefore narrows, not supports, the fallback worry for these ten services.
+% DATE: 2026-11-12
+%   Reading copy: Full text read via the Springer PDF through the KTH network
+@incollection{Buttner2025Inconsistencies,
+  author = {Büttner, Andre and Gruschka, Nils and Broen, Sverre Stafsengen and Pöhn, Daniela},
+  title = {Authentication Inconsistencies Across Online Services: A Multi-Scenario Security Analysis},
+  booktitle = {ARES 2025 Workshops},
+  series = {Lecture Notes in Computer Science},
+  volume = {15997},
+  pages = {166--180},
+  year = {2025},
+  doi = {10.1007/978-3-032-00639-4_10},
+}
+
+% === provenance: Gautam2025Secret ===
+% CLAIM: Passwords (also unique ones) and FIDO2 messages are both exposed to malicious scripts and extensions in the browser (L3).
+% FOUND-VIA: scholar session mfa-attribution, query S2 on openalex (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Peer-reviewed (CCS 2025) and from the same group as the local-attacks paper; shows the local threat applies to passwords and to FIDO2.
+% QUOTE: abstract: "malicious client-side scripts and browser extensions can steal passwords after the manager has autofilled them into the web page"
+%   abstract: "we generalize our design, creating a second defense that prevents recently discovered local attacks against the FIDO2 protocols"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Proposes defences, so the demonstration of the attack is secondary here (excluded as scheme proposal if read narrowly; kept because it states both local threats).
+% DATE: 2026-11-12
+@inproceedings{Gautam2025Secret,
+  author = {Gautam, Anuj and Yadav, Tarun and Smith, Garrett and Seamons, Kent and Ruoti, Scott},
+  title = {Passwords and FIDO2 Are Meant To Be Secret: A Practical Secure Authentication Channel for Web Browsers},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  pages = {1859--1873},
+  year = {2025},
+  doi = {10.1145/3719027.3765195}
+}
+
+% === provenance: Barbosa2023RogueKey ===
+% CLAIM: The PIN that provides user verification can be extracted by a local attacker and a rogue key registered (L2/L3).
+% FOUND-VIA: scholar session mfa-attribution, query C2 on openalex (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Implemented attack on commercial FIDO2 authenticators (E3), not a hypothesis.
+% QUOTE: abstract: "two of these attacks, which appear to be folklore in the community, are actually straightforward to launch in practice (user PIN extraction, impersonation and rogue key registration)"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Attack needs local access; no frequency data.
+% DATE: 2026-11-12
+@inproceedings{Barbosa2023RogueKey,
+  author = {Barbosa, Manuel and Cirne, André and Esquível, Luís},
+  title = {Rogue key and impersonation attacks on FIDO2: From theory to practice},
+  booktitle = {Proceedings of the 18th International Conference on Availability, Reliability and Security},
+  pages = {1--11},
+  year = {2023},
+  doi = {10.1145/3600160.3600174}
+}
+
+% === provenance: Lee2025WindowsHello ===
+% --- use 1 of 3: question on attribution (RQ2) ---
+% CLAIM: A platform passkey activated by biometrics can be extracted and reused on another device by a local attacker unless the platform has hardware protections (L1/L3).
+% FOUND-VIA: scholar session mfa-attribution, query C2 on ieee, scopus, wos (exact strings in mfa-attribution-report.md, section Queries); scholar session mfa-attribution, query S1 on ieee, scopus, wos (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Practical attacks across configurations (E3); shows the strength of the key depends on host security.
+% QUOTE: abstract: "Among all tested cases, only systems with Enhanced Sign-in Security (ESS) prevented our attacks."
+%   abstract: "we show that the use of biometrics weakens data protection"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Windows-specific; fixes may exist since publication.
+% DATE: 2026-11-12
+% --- use 2 of 3: question on sufficiency (RQ3) ---
+% CLAIM: Attacks on Windows passwordless authentication (key with user verification, case B) bypass biometrics and extract passkeys; only systems with Enhanced Sign-in Security prevented them (L1, L3; implementation flaw).
+% FOUND-VIA: scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Peer-reviewed attack on a deployed platform authenticator, with an explicit statement of which configuration resisted; IEEE closed access, abstract only.
+% QUOTE (abstract): "Among all tested cases, only systems with Enhanced Sign-in Security (ESS) prevented our attacks."
+% VERIFIED: abstract only (IEEE not fetched)
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+% --- use 3 of 3: question on necessity (RQ4) ---
+% CLAIM: Windows Hello passwordless authentication can be bypassed through misconfigured TPM integration and forged biometric templates; only systems with Enhanced Sign-in Security resisted the attacks.
+% FOUND-VIA: scholar search '(K) AND (phishing OR "account takeover" OR "credential stuffing") AND (evaluation OR measurement OR "security analysis" OR "formal analysis")' -p scopus -p wos --limit 40 (session "mfa-necessary", query S1b, date 2026-11-12) [supplementary query S1b, see Deviations; K and M as in the protocol]
+% PICKED: ACSAC 2025 attack on a platform passkey (local threats L1/L3); abstract only. Evidence grade: E3.
+% QUOTE (Abstract): "Among all tested cases, only systems with Enhanced Sign-in Security (ESS) prevented our attacks."
+% VERIFIED: ABSTRACT ONLY (Scopus/WoS record); no open-access full text found
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@inproceedings{Lee2025WindowsHello,
+  author = {Lee, Jeongho and Kang, Minkyeong and Lee, Seunghwan and Choi, Hyoung-Kee},
+  title = {False Promises of Passwordless: Defeating Windows Hello through TPM Misuses},
+  booktitle = {2025 IEEE Annual Computer Security Applications Conference (ACSAC)},
+  pages = {308--321},
+  year = {2025},
+  doi = {10.1109/ACSAC67867.2025.00037}
+}
+
+% === provenance: Mahdad2024FIDOLA ===
+% --- use 1 of 2: question on attribution (RQ2) ---
+% CLAIM: A hardware security key used as second factor or alone can be tricked by an overlay attack on the host OS (L3).
+% FOUND-VIA: scholar session mfa-attribution, query C2 on scopus, wos (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Attack demonstration (E3) against hardware keys in 2FA and passwordless use.
+% QUOTE: abstract: "Two-factor authentication (2FA) systems aim to secure user accounts, provided that either the password or the second factor device remains uncompromised. However, in this research, we challenge this perception"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Abstract is short; attack details not read.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: A cross-service overlay attack on FIDO2 security keys with limited displays made users approve about 95.55 percent of attacker requests in a user study.
+% FOUND-VIA: scholar search scholar search '(K OR "risk-based authentication" OR "password manager") AND (alternative OR "instead of" OR without) AND (M)' -p openalex -p wos --limit 40 (session "mfa-necessary", query S1, date 2026-11-12)
+% PICKED: CCS 2024 attack (E3/E1 user study) against hardware keys in 2FA and passwordless setups; ACM answered 403, abstract only. Evidence grade: E3.
+% QUOTE (Abstract): "users approved approximately 95.55% of cross-service attacks when presented with a screen overlay"
+% VERIFIED: ABSTRACT ONLY (WoS/OpenAlex record); ACM full text answered 403 also through the KTH tunnel
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@inproceedings{Mahdad2024FIDOLA,
+  author = {Mahdad, Ahmed Tanvir and Jubur, Mohammed and Saxena, Nitesh},
+  title = {Breaching Security Keys without Root: FIDO2 Deception Attacks via Overlays exploiting Limited Display Authenticators},
+  booktitle = {Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security},
+  pages = {1686--1700},
+  year = {2024},
+  doi = {10.1145/3658644.3690286}
+}
+
+% === provenance: Mahdad2023SoK2FA ===
+% CLAIM: A second factor independent of the password is the usual defence against malware on the terminal (L3), but the literature's 2FA schemes are not all secure against concurrent session injection.
+% FOUND-VIA: scholar session mfa-attribution, query C1 on scopus (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: SoK on the combination argument itself (E4): states the community view that the independent second factor helps against terminal malware and tests it.
+% QUOTE: abstract: "As password-only authentication cannot adequately protect against malware on terminals"
+%   abstract: "According to the community view in the literature, 2FA-oriented methods appear to be secure in the presence of malware on the authentication terminal."
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Covers academic schemes, not deployed passkeys.
+% DATE: 2026-11-12
+@inproceedings{Mahdad2023SoK2FA,
+  author = {Mahdad, Ahmed Tanvir and Saxena, Nitesh},
+  title = {SoK: A Comprehensive Evaluation of 2FA-based Schemes in the Face of Active Concurrent Attacks from User Terminal},
+  booktitle = {Proceedings of the 16th ACM Conference on Security and Privacy in Wireless and Mobile Networks},
+  pages = {175--186},
+  year = {2023},
+  doi = {10.1145/3558482.3590183}
+}
+
+% === provenance: AlQubaisi2020Rush ===
+% CLAIM: A passwordless single-factor FIDO key (case C) is compared by threat model with a password (case P) and judged more secure.
+% FOUND-VIA: scholar session mfa-attribution, query S1 on ieee, openalex (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: The one source found that frames case C (single-factor key) against case P explicitly (E4).
+% QUOTE: abstract: "Our analysis shows that although password-based authentication is less secure than FIDO SF authentication"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Undergraduate conference paper; analysis, and concerns adoption obstacles as much as security.
+% DATE: 2026-11-12
+@inproceedings{AlQubaisi2020Rush,
+  author = {Alqubaisi, Fatima and Wazan, Ahmad Samer and Ahmad, Liza and Chadwick, David W},
+  title = {Should We Rush to Implement Password-less Single Factor FIDO2 based Authentication?},
+  booktitle = {2020 12th Annual Undergraduate Research Conference on Applied Computing (URC)},
+  pages = {1--6},
+  year = {2020},
+  doi = {10.1109/URC49805.2020.9099190}
+}
+
+% === provenance: Wang2025TwoFAIllusion ===
+% CLAIM: Across 50 major websites the combination of 1FA, 2FA and password reset leaves weak links (R8).
+% FOUND-VIA: scholar session mfa-attribution, query C2 on ieee, scopus, wos (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Measurement of deployed sites (E2, by the abstract); the closest measurement found of fallback paths.
+% QUOTE: abstract: "highlighting both the overestimated strengths and overlooked weaknesses of current deployments"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Abstract-only: the finding itself is not stated in the abstract, only that weaknesses exist.
+% DATE: 2026-11-12
+@inproceedings{Wang2025TwoFAIllusion,
+  author = {Wang, Ke Coby and Arora, Sunpreet S. and Reiter, Michael K.},
+  title = {The 2FA Illusion: Uncovering Weak Links of Web Account Access in the Wild},
+  booktitle = {2025 IEEE Annual Computer Security Applications Conference (ACSAC)},
+  pages = {658--672},
+  year = {2025},
+  doi = {10.1109/ACSAC67867.2025.00060}
+}
+
+% === provenance: Jubur2021PushBypass ===
+% CLAIM: With the password already known, a one-push second factor adds little: users accepted the attacker's notification (R6).
+% FOUND-VIA: scholar session mfa-attribution, query C2 on wos (exact strings in mfa-attribution-report.md, section Queries)
+% PICKED: Controlled human-factors lab study (E1) of A2 and push-based passwordless; isolates what the push adds beside a leaked password.
+% QUOTE: abstract: "In case of 2FA schemes, we assume that the attacker knows the victim's password (e.g., obtained via breached password databases)"
+%   abstract: "Even for the non-spoofed sessions (our primary attack), the attack success rates are about 68%"
+% VERIFIED: ABSTRACT ONLY (full text not obtained: closed access behind a bot check or paywall); quotes machine-checked against the abstract in the session. Treat as a claim by the authors that was not verified in the body text.
+% COUNTER: Lab study; success rates are not field rates.
+% DATE: 2026-11-12
+@inproceedings{Jubur2021PushBypass,
+  author = {Jubur, Mohammed and Shrestha, Prakash and Saxena, Nitesh and Prakash, Jay},
+  title = {Bypassing Push-based Second Factor and Passwordless Authentication with Human-Indistinguishable Notifications},
+  booktitle = {Proceedings of the 2021 ACM Asia Conference on Computer and Communications Security},
+  pages = {447--461},
+  year = {2021},
+  doi = {10.1145/3433210.3453084}
+}
+
+% ===================================================================
+% Sources first cited for the question on sufficiency (RQ3)
+% ===================================================================
+
+% === provenance: Kikuchi2025Evilginx ===
+% CLAIM: A reverse-proxy AiTM tool (Evilginx) defeats SMS, call, e-mail, TOTP and push 2FA (case A1/A2, threat R4), and the paper only assumes, not tests, that FIDO2/WebAuthn and passkeys resist it.
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant"))' -p wos --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant"))' -p scopus --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p openalex --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Lab test of the relay plus a survey of 102 websites; the only source in the session that tabulates AiTM susceptibility per second-factor type. Its FIDO row is an assumption, which limits what it can say about cases A3 and B.
+% QUOTE (§4.1, p.154 (on Table 2 rows FIDO2/WebAuthn and Passkey)): "Therefore, we assume that these MFA methods are resilient against Evilginx."
+% QUOTE (2, abstract): "revealing that 80% of major web services are vulnerable to Evilginx attacks"
+% VERIFIED: full-text PDF via KTH tunnel read; abstract states "80% of major web services are vulnerable to Evilginx attacks"; the FIDO resistance is an assumption in the text, not a measured result
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@incollection{Kikuchi2025Evilginx,
+  author = {Kikuchi, Hiroaki},
+  title = {Impact Assessment of Adversary-in-the-Middle Attack Evilginx Bypassing 2FA},
+  year = {2025},
+  booktitle = {Proceedings of ICR 2025},
+  series = {Lecture Notes in Networks and Systems},
+  volume = {1487},
+  pages = {149--158},
+  publisher = {Springer},
+  doi = {10.1007/978-3-031-95652-2_14},
+}
+
+% === provenance: Cuellar2026AiTM ===
+% CLAIM: In a controlled AiTM campaign with 30 students, simulated credential submissions led to MFA completion and session-artifact exposure (cases A1/A2, threat R4); exploratory, one sample.
+% FOUND-VIA: scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (bypass OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle"))' -p scopus --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant"))' -p scopus --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p scopus --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis"))' -p scopus --limit 40 -n mfa-sufficient
+% PICKED: Corroboration only: small exploratory sample (n=30), simulated; weaker than Kikuchi2025Evilginx and Wang2024Simple but shows the relay end to end with human participants.
+% QUOTE (abstract): "In the controlled AiTM flow, these submissions also led to MFA completion and session-artifact exposure events."
+% VERIFIED: full-text PDF via KTH tunnel read; authors state results are exploratory and not generalisable
+% EVIDENCE-GRADE: E1
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+%   Reading copy: Scopus lists the volume as 2027; the paper is exploratory, n=30
+@incollection{Cuellar2026AiTM,
+  author = {Lara Cuellar, Oscar Alberto and Vinueza Bustamante, Bryan Steven and Lopez Tito, Juan Fernando and Cabezas Erazo, Dario Sebasti{\'a}n},
+  title = {Traditional Multi Factor Authentication Under {AiTM} Phishing: A Controlled Campaign in {Ecuador}},
+  year = {2026},
+  booktitle = {Communications in Computer and Information Science},
+  publisher = {Springer},
+  doi = {10.1007/978-3-032-41327-7_14},
+}
+
+% === provenance: Pazmino2025Cookie ===
+% CLAIM: Malware-as-a-Service cookie theft lets attackers bypass MFA and take over accounts at scale (threats R7, L3).
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("SIM swap" OR "push fatigue" OR "prompt bombing" OR "session hijacking" OR "account recovery"))' -p wos --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("SIM swap" OR "push fatigue" OR "prompt bombing" OR "session hijacking" OR "account recovery"))' -p scopus --limit 40 -n mfa-sufficient
+% PICKED: Review (2020-2025) corroborating the session-theft route observed in Campobasso2020IMPaaS; peer-reviewed open-access journal; abstract only.
+% QUOTE (abstract): "enabling attackers to bypass multi-factor authentication and perpetrate large-scale account takeovers"
+% VERIFIED: abstract only (full text not read)
+% EVIDENCE-GRADE: E5
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@article{Pazmino2025Cookie,
+  author = {Pazmi{\~n}o Ortiz, Leandro Antonio and Maldonado Soliz, Ivonne Fernanda and Guevara Balarezo, Vanessa Katherine},
+  title = {The Adaptive Ecosystem of {MaaS}-Driven Cookie Theft: Dynamics, Anticipatory Analysis Concepts, and Proactive Defenses},
+  year = {2025},
+  journal = {Future Internet},
+  volume = {17},
+  number = {8},
+  doi = {10.3390/fi17080365},
+}
+
+% === provenance: Ang2025Excavating ===
+% CLAIM: Published academic MFA protocols (smart card / WSN schemes) contain critical vulnerabilities; analytical, not deployed web MFA.
+% FOUND-VIA: scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (bypass OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle")' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: Systematic analysis of 10+ MFA protocols; scope is academic schemes, so it bears on the sufficiency claim only for "MFA protocols as designed in the literature".
+% QUOTE (abstract): "we manage to identify critical vulnerabilities in ten of the MFA protocols investigated"
+% VERIFIED: full-text PDF (arXiv v1) read, abstract and introduction; threat models are those of the schemes (smart card loss, key leakage), not R1-R8
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+%   Reading copy: Published version 2025; arXiv v1 (2024) read
+@misc{Ang2025Excavating,
+  author = {Ang, Kok Wee and Chekole, Eyasu Getahun and Zhou, Jianying},
+  title = {Excavating Vulnerabilities Lurking in Multi-Factor Authentication Protocols: A Systematic Security Analysis},
+  year = {2025},
+  archiveprefix = {arXiv},
+  eprint = {2407.20459},
+  doi = {10.1145/3734864},
+  journal = {ACM Computing Surveys},
+  volume = {57},
+}
+
+% === provenance: Wang2023Proofs ===
+% CLAIM: Many MFA schemes with a formal security proof were later found insecure; a proof of a scheme does not establish that MFA as such is secure (case-independent, E4 caveat).
+% FOUND-VIA: scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant")' -p openalex --limit 40 -n mfa-sufficient; scholar search '("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant")' -p ieee --limit 40 -n mfa-sufficient; scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("formal verification" OR "provable security" OR "security proof" OR "phishing-resistant"))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Directly addresses the reliability of the "formally proven" MFA claims that the C1 query is meant to find; closed access, abstract only.
+% QUOTE (abstract): "Hundreds of new schemes have been successfully proposed, and many are even equipped with a formal security proof. However, most of them have been shortly found to be insecure and cannot achieve the claimed security goals."
+% VERIFIED: abstract only (IEEE closed access; not fetched)
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@article{Wang2023Proofs,
+  author = {Wang, Qingxuan and Wang, Ding},
+  title = {Understanding Failures in Security Proofs of Multi-Factor Authentication for Mobile Devices},
+  year = {2023},
+  journal = {IEEE Transactions on Information Forensics and Security},
+  doi = {10.1109/TIFS.2022.3227753},
+}
+
+% === provenance: Barbosa2021ProvableFIDO2 ===
+% CLAIM: A provable-security analysis confirms the authentication security of WebAuthn but proves CTAP2 secure only in a weak sense (cases A3, B, against a network adversary and malicious clients as modelled).
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p openalex --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis"))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: First provable-security analysis of FIDO2; the strongest formal result in favour of case B resisting R3/R4 under its model; closes with design flaws in CTAP2, so it both supports and narrows.
+% QUOTE (abstract): "First, our proof confirms the authentication security of WebAuthn. Then, we show CTAP2 can only be proved secure in a weak sense"
+% VERIFIED: full-text PDF via KTH tunnel read (abstract and introduction)
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@inproceedings{Barbosa2021ProvableFIDO2,
+  author = {Barbosa, Manuel and Boldyreva, Alexandra and Chen, Shan and Warinschi, Bogdan},
+  title = {Provable Security Analysis of {FIDO2}},
+  year = {2021},
+  booktitle = {Advances in Cryptology -- CRYPTO 2021},
+  series = {Lecture Notes in Computer Science},
+  volume = {12827},
+  publisher = {Springer},
+  doi = {10.1007/978-3-030-84252-9_5},
+}
+
+% === provenance: Bindel2023ProvableFIDO2 ===
+% CLAIM: A formal security analysis of FIDO2 with CTAP 2.1/WebAuthn 2 (including user verification) exists; downgrade resilience can be improved for some threat models, i.e. it is not complete as specified.
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis")' -p openalex --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis"))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Latest provable-security result on user verification and downgrade for case B; IEEE closed access (figshare copy not a PDF), abstract only.
+% QUOTE (abstract): "we show that for some threat models, the downgrade resilience of FIDO2 can be improved, and show how to achieve this with a simple modification"
+% VERIFIED: abstract only (full text not obtained)
+% EVIDENCE-GRADE: E4
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@inproceedings{Bindel2023ProvableFIDO2,
+  author = {Bindel, Nina and Cremers, Cas and Zhao, Mang},
+  title = {{FIDO2}, {CTAP} 2.1, and {WebAuthn} 2: Provable Security and Post-Quantum Instantiation},
+  year = {2023},
+  booktitle = {2023 IEEE Symposium on Security and Privacy (SP)},
+  doi = {10.1109/SP46215.2023.10179454},
+}
+
+% === provenance: Gerlitz2023Recovery ===
+% CLAIM: On popular websites, losing the second factor can be recovered by weak means (e-mail, a request without proof), so the second factor can be disabled by a route that does not need it (threat R8; usability study, attacker view not tested).
+% FOUND-VIA: scholar search 'TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ("SIM swap" OR "push fatigue" OR "prompt bombing" OR "session hijacking" OR "account recovery"))' -p scopus --limit 40 -n mfa-sufficient
+% PICKED: Audit of 12 recovery procedures on real services; usability-oriented, but it records the observation relevant to R8; authors say they did not test the attacker view.
+% QUOTE (p.235, Discussion): "Interestingly, after disclaiming that we did not have access to this, the second factor was disabled anyway."
+% VERIFIED: full-text PDF read; the authors note that they "did not investigate the easiness of accessing the account specifically from an attacker’s view"
+% EVIDENCE-GRADE: E2
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@inproceedings{Gerlitz2023Recovery,
+  author = {Gerlitz, Eva and H{\"a}ring, Maximilian and M{\"a}dler, Charlotte Theresa and Smith, Matthew and Tiefenau, Christian},
+  title = {Adventures in Recovery Land: Testing the Account Recovery of Popular Websites When the Second Factor is Lost},
+  year = {2023},
+  booktitle = {Nineteenth Symposium on Usable Privacy and Security (SOUPS 2023)},
+  pages = {227--243},
+  publisher = {USENIX Association},
+}
+
+% === provenance: Kunke2021Recovery ===
+% --- use 1 of 2: question on sufficiency (RQ3) ---
+% CLAIM: Recovery mechanisms for FIDO2 passwordless accounts have many drawbacks and some reintroduce passwords (threat R8, cases A3/B).
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p openalex --limit 40 -n mfa-sufficient; scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p arxiv --limit 40 -n mfa-sufficient
+% PICKED: The only source in the session that evaluates recovery specifically for FIDO2 passwordless accounts; heuristic evaluation, not an attack.
+% QUOTE (abstract): "Some even rely on passwords, taking passwordless authentication ad absurdum."
+% VERIFIED: full-text PDF (arXiv) read, abstract and introduction; heuristic evaluation of 12 mechanisms, no attack carried out
+% EVIDENCE-GRADE: E5
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+% --- use 2 of 2: question on necessity (RQ4) ---
+% CLAIM: Account-recovery mechanisms for passwordless single-factor FIDO2 authentication have many drawbacks, and some rely on passwords.
+% FOUND-VIA: scholar search '(K) AND (phishing OR "account takeover" OR "credential stuffing") AND (evaluation OR measurement OR "security analysis" OR "formal analysis")' -p arxiv -p openalex --limit 40 (session "mfa-necessary", query S1b, date 2026-11-12) [supplementary query S1b, see Deviations; K and M as in the protocol]; full text via fetch_pdf.py --text 10.48550/arXiv.2105.12477
+% PICKED: Only source that states explicitly it evaluates single-factor FIDO2 (case C); heuristic evaluation of 12 recovery mechanisms (E4); bears on R8. Evidence grade: E4.
+% QUOTE (Abstract): "Our results show that the currently used methods have many drawbacks. Some even rely on passwords, taking passwordless authentication ad absurdum."
+% QUOTE (Sec. 1): "This standard allows strong cryptographic single factor authentication and uses a different asymmetric cryptographical key for each online service"
+% QUOTE (Limitations): "The results are limited to passwordless FIDO2 single-factor authentication systems only."
+% VERIFIED: full-text PDF read; applies because recovery is the fallback (R8) that the key-alone scheme depends on; heuristic, no user test
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@inproceedings{Kunke2021Recovery,
+  author = {Kunke, Johannes and Wiefling, Stephan and Ullmann, Markus and Lo Iacono, Luigi},
+  title = {Evaluation of Account Recovery Strategies with {FIDO2}-based Passwordless Authentication},
+  year = {2021},
+  booktitle = {Open Identity Summit 2021},
+  series = {Lecture Notes in Informatics},
+  publisher = {Gesellschaft f{\"u}r Informatik},
+  eprint = {2105.12477},
+  archiveprefix = {arXiv},
+  doi = {10.48550/arXiv.2105.12477},
+}
+
+% === provenance: Mitra2026WoodenHorse ===
+% CLAIM: A Trojan on the user\'s device compromises WebAuthn sessions in a proof-of-concept (cases A3/B, threat L3, R7).
+% FOUND-VIA: scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p wos --limit 40 -n mfa-sufficient; scholar search 'TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p scopus --limit 40 -n mfa-sufficient
+% PICKED: Peer-reviewed journal demonstration of the malware threat on WebAuthn; proof of concept in the lab, 100% success against the tested configuration.
+% QUOTE (abstract): "Our experiments achieved a 100% attack success rate while evading detection by Windows Defender and over 60 antivirus engines on VirusTotal."
+% VERIFIED: full-text PDF via KTH tunnel read (abstract and §1); lab proof of concept, no real users
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@article{Mitra2026WoodenHorse,
+  author = {Mitra, Aditya and Priya, V. S. Devi and Chakkaravarthy, S. Sibi and Gosh, Anisha and Alshehri, Mohammad},
+  title = {Passkey in the Wooden Horse: A Deep Dive into Trojan Based Compromise of Passwordless Credentials},
+  year = {2026},
+  journal = {Telecommunication Systems},
+  volume = {89},
+  pages = {131},
+  doi = {10.1007/s11235-026-01496-y},
+}
+
+% === provenance: Casagrande2025CTRAPS ===
+% CLAIM: CTAP protocol-level attacks delete FIDO2 credentials including passkeys without user interaction, on six authenticators and ten relying parties; an availability/integrity attack on the key, not shown to authenticate as the user (case B, L1/proximity).
+% FOUND-VIA: scholar search '(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware)' -p arxiv --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware))' -p wos --limit 40 -n mfa-sufficient; scholar search 'TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND ("formal verification" OR "formal analysis" OR "provable security" OR "security proof" OR "phishing-resistant" OR "security analysis"))' -p wos --limit 40 -n mfa-sufficient
+% PICKED: Protocol-level attack on the authenticator API of the key in cases A3/B; included because it is a documented successful attack on the key store, with the limitation stated in CLAIM.
+% QUOTE (abstract): "They include zero-click attacks capable of deleting FIDO2 credentials, including passkeys, without user interaction."
+% VERIFIED: full-text PDF (arXiv v2) read, abstract and introduction
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient: C1 (formal verification / provable security / security proof / phishing-resistant) and the K-block queries S3, C2 (same concept terms with passkey, FIDO2, WebAuthn) on openalex, wos, scopus, arxiv (ieee: failed, daily quota); WebSearch concept queries listed in the report.
+% DATE: 2026-11-12
+@inproceedings{Casagrande2025CTRAPS,
+  author = {Casagrande, Marco and Antonioli, Daniele},
+  title = {{CTRAPS}: {CTAP} Client Impersonation and {API} Confusion on {FIDO2}},
+  year = {2025},
+  booktitle = {2025 IEEE 10th European Symposium on Security and Privacy (EuroS\&P)},
+  doi = {10.1109/EuroSP63326.2025.00063},
+  eprint = {2412.02349},
+  archiveprefix = {arXiv},
+}
+
+% === provenance: CSRB2023Lapsus ===
+% CLAIM: A US public review of real incidents found that SMS and voice MFA was defeated by SIM swapping and that widely used MFA implementations are not sufficient (case A1 by text message, threat R5, observed in use).
+% FOUND-VIA: WebSearch (2026-11-12) "MFA fatigue push bombing incident review board report Lapsus$ authentication"; then WebSearch "Cyber Safety Review Board Review of the Attacks Associated with Lapsus$ and Related Threat Groups report pdf" (allowed_domains cisa.gov, dhs.gov) -> fetch_pdf.py https://www.cisa.gov/sites/default/files/2023-08/CSRB_Lapsus$_508c.pdf
+% PICKED: Authority review of observed intrusions (Lapsus$ 2021-2022), not a vendor claim; found via WebSearch concept query and retrieved from cisa.gov as a known item.
+% QUOTE (Executive Summary, PDF p.5): "The Board found that the multi-factor authentication (MFA) implementations used broadly in the digital ecosystem today are not sufficient for most organizations or consumers."
+% QUOTE (2, Executive Summary, PDF p.5): "attackers gained initial access to targeted organizations through Subscriber Identity Module (SIM) swapping attacks, which allowed them to intercept one-time passcodes and push notifications sent via SMS, effectively defeating this widely used MFA control"
+% VERIFIED: full-text PDF read (executive summary and §on SIM swaps)
+% EVIDENCE-GRADE: E2
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+@techreport{CSRB2023Lapsus,
+  author = {{Cyber Safety Review Board}},
+  title = {Review of the Attacks Associated with {Lapsus\$} and Related Threat Groups},
+  year = {2023},
+  institution = {{U.S. Department of Homeland Security, Cybersecurity and Infrastructure Security Agency}},
+  url = {https://www.cisa.gov/sites/default/files/2023-08/CSRB_Lapsus$_508c.pdf},
+}
+
+% === provenance: Cloudflare2022Phishing ===
+% CLAIM: In a real-time phishing attack in July 2022 three employees entered credentials but the attackers could not log in because each employee had a FIDO2 hardware key (case A3, threat R3/R4 resists, observed in real use; provider report).
+% FOUND-VIA: WebSearch (2026-11-12) "Cloudflare 0ktapus phishing attack hardware security keys prevented account takeover postmortem" -> curl https://blog.cloudflare.com/2022-07-sms-phishing-attacks/
+% PICKED: Provider incident report (E6) of a targeted attack that failed against FIDO2 keys; no independent verification.
+% QUOTE (blog text): "While the attacker attempted to log in to our systems with the compromised username and password credentials, they could not get past the hard key requirement."
+% VERIFIED: full text of the web page fetched (curl) and quote located; provider claim, method not disclosed
+% EVIDENCE-GRADE: E6
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+@misc{Cloudflare2022Phishing,
+  author = {{Cloudflare}},
+  title = {The mechanics of a sophisticated phishing scam and how we stopped it},
+  year = {2022},
+  howpublished = {Cloudflare blog, 9 August 2022},
+  url = {https://blog.cloudflare.com/2022-07-sms-phishing-attacks/},
+}
+
+% === provenance: Miron2025Downgrade ===
+% CLAIM: A phishing proxy can force a Microsoft Entra ID user off FIDO onto a weaker method (downgrade, then session theft) if an alternative method exists; shown by the vendor in the lab, not observed in the wild (cases A3/B, threat R8, R4, R7).
+% FOUND-VIA: WebSearch (2026-11-12) "passkey downgrade attack authentication method fallback bypass WebAuthn session cookie theft infostealer"; then WebSearch "Proofpoint researchers phishing proxy downgrade FIDO authentication Microsoft Entra unsupported browser spoof" (allowed_domains proofpoint.com) -> curl the issuing page
+% PICKED: The only documented downgrade attack on cases A3/B in the results; vendor research blog (E6/E3), lab demonstration with a stated absence of in-the-wild evidence.
+% QUOTE (blog text, "Authentication downgrade"): "Although technically feasible, there is currently no evidence for the usage of this technique by threat actors in the wild."
+% QUOTE (2, blog text): "The attack sequence relies on the existence of an alternative authentication method (usually MFA), besides FIDO, for the targeted user account."
+% VERIFIED: full text of the web page fetched (curl) and quotes located
+% EVIDENCE-GRADE: E3
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+@misc{Miron2025Downgrade,
+  author = {Miron, Yaniv},
+  title = {Don't Phish-let Me Down: {FIDO} Authentication Downgrade},
+  year = {2025},
+  howpublished = {Proofpoint Threat Insight blog, 12 August 2025},
+  url = {https://www.proofpoint.com/us/blog/threat-insight/dont-phish-let-me-down-fido-authentication-downgrade},
+}
+
+% === provenance: Thomas2019Hygiene ===
+% CLAIM: At Google, no user who exclusively used security keys fell victim to targeted phishing during the study (case A3/B, R3/R4 resists, observed in real use; provider report).
+% FOUND-VIA: WebSearch (2026-11-12) "Google security blog new research how effective is basic account hygiene at preventing hijacking security key phishing bots targeted attacks" -> curl the Google page
+% PICKED: Provider report (E6) of the measurement behind Doerfler2019Challenges and a companion study; only measurement in the sources showing zero compromise for a key-based scheme; no method disclosed on the page.
+% QUOTE (blog text): "zero users that exclusively use security keys fell victim to targeted phishing during our investigation"
+% VERIFIED: full text of the web page fetched (curl) and quote located; provider claim
+% EVIDENCE-GRADE: E6
+% COUNTER: WebSearch concept queries for the opposite direction (phishing-resistant, security key prevented) and scholar queries C1, C2 on the same session; see report.
+% DATE: 2026-11-12
+@misc{Thomas2019Hygiene,
+  author = {Thomas, Kurt and Moscicki, Angelika},
+  title = {New Research: How Effective Is Basic Account Hygiene at Preventing Hijacking},
+  year = {2019},
+  howpublished = {Google Security Blog, 17 May 2019},
+  url = {https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html},
+}
+
+% ===================================================================
+% Sources first cited for the question on necessity (RQ4)
+% ===================================================================
+
+% === provenance: Wiefling2022PumpUp ===
+% CLAIM: Risk-based authentication (password plus login-context signals, step-up to a further factor only when risk is high) blocked most simulated naive and targeted attackers who hold only the stolen password at one large online service, with few re-authentication requests for daily users.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p openalex -p wos -p arxiv --limit 40 (session "mfa-necessary", query S2, date 2026-11-12); full text via fetch_pdf.py --text https://arxiv.org/pdf/2206.15139 (OA copy of the same article)
+% PICKED: Largest real-world RBA evaluation (3.3 million users, 31.3 million logins), E2/E3 with simulated attackers on real login data; picked over the 2019 small-service study. Evidence grade: E2.
+% QUOTE (Sec. 15 Conclusion, p. 6:28): "Therefore, we consider RBA an effective measure to protect users from the majority of attacks involving stolen passwords."
+% QUOTE (Sec. 1, p. 6:2): "It can be considered a scalable interim solution to strengthen password-based authentication, until more secure authentication methods are in place."
+% QUOTE (Sec. 1, p. 6:2): "recommend RBA to protect users against attacks involving stolen passwords"
+% VERIFIED: full-text PDF (arXiv version) read; applies because attacker models (naive, VPN, targeted, very targeted) are replayed against real logins; phishing/malware attackers are not simulated beyond a replay model, so R3/R4 are not covered
+% COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
+% DATE: 2026-11-12
+@article{Wiefling2022PumpUp,
+  title = {Pump Up Password Security! Evaluating and Enhancing Risk-Based Authentication on a Real-World Large-Scale Online Service},
+  volume = {26},
+  url = {https://doi.org/10.1145/3546069},
+  doi = {10.1145/3546069},
+  number = {1},
+  journal = {ACM Transactions on Privacy and Security},
+  publisher = {Association for Computing Machinery (ACM)},
+  author = {Wiefling, Stephan and Jørgensen, Paul René and Thunem, Sigurd and Iacono, Luigi Lo},
+  year = {2022},
+  pages = {1–36}
+}
+
+% === provenance: Wiefling2019ReallyYou ===
+% CLAIM: RBA is deployed by large online services; its step-up factor is usually a verification code, so RBA reduces how often a second factor is asked for but does not remove it.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p openalex -p wos -p arxiv --limit 40 (session "mfa-necessary", query S2, date 2026-11-12); full text via fetch_pdf.py --text 10.1007/978-3-030-22312-0_10 (Unpaywall: arXiv copy)
+% PICKED: First black-box measurement of RBA at eight services (E2/E3); corroborates Wiefling2022 on the step-up mechanism. Evidence grade: E2.
+% QUOTE (Conclusion): "verification codes are currently the unwritten standard for additional RBA authentication factors."
+% QUOTE (Abstract): "RBA is recommended by the NIST digital identity guidelines"
+% VERIFIED: full-text PDF read; applies because it documents that RBA falls back to an additional factor and was found vulnerable on specific implementations
+% COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
+% DATE: 2026-11-12
+@incollection{Wiefling2019ReallyYou,
+  title = {Is This Really You? An Empirical Study on Risk-Based Authentication Applied in the Wild},
+  isbn = {9783030223120},
+  url = {https://doi.org/10.1007/978-3-030-22312-0_10},
+  doi = {10.1007/978-3-030-22312-0_10},
+  booktitle = {ICT Systems Security and Privacy Protection},
+  publisher = {Springer International Publishing},
+  author = {Wiefling, Stephan and Lo Iacono, Luigi and Dürmuth, Markus},
+  year = {2019},
+  pages = {134–148}
+}
+
+% === provenance: Makowski2023RBA ===
+% CLAIM: At Google, Amazon and Facebook the risk-based step-up was rarely triggered in black-box tests, and its behaviour depends on how the account was set up and which fallback methods are configured.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p openalex -p wos -p arxiv --limit 40 (session "mfa-necessary", query S2, date 2026-11-12); full text via fetch_pdf.py --text https://arxiv.org/pdf/2308.15156 (OA copy)
+% PICKED: Independent re-evaluation (E3, black-box testing) narrowing the RBA claim; classified qualifies-claim. Evidence grade: E3.
+% QUOTE (Abstract): "several test cases rarely trigger the RBA system"
+% QUOTE (Sec. 1 introduction): "We confirm the observation of Wiefling et al. [41] that RBA is rarely triggered at several services."
+% VERIFIED: full-text PDF read; applies because rarely triggered step-up means RBA alone gives weak protection against some attackers
+% COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
+% DATE: 2026-11-12
+@inproceedings{Makowski2023RBA,
+  series = {ARES 2023},
+  title = {Evaluation of Real-World Risk-Based Authentication at Online Services Revisited: Complexity Wins},
+  url = {https://doi.org/10.1145/3600160.3605024},
+  doi = {10.1145/3600160.3605024},
+  booktitle = {Proceedings of the 18th International Conference on Availability, Reliability and Security},
+  publisher = {ACM},
+  author = {Makowski, Jan-Phillip and Pöhn, Daniela},
+  year = {2023},
+  pages = {1–9}
+}
+
+% === provenance: Lin2022PhishSheep ===
+% CLAIM: Phishing kits can replicate a victim's browser fingerprint on another device and thereby deceive the risk-based authentication of high-value services to bypass two-factor authentication.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p wos --limit 40 (session "mfa-necessary", query S2, date 2026-11-12)
+% PICKED: USENIX Security paper demonstrating an attack on RBA (E3); full text not retrieved (usenix.org URL guessed by me returned 404; not re-tried by title). Evidence grade: E3.
+% QUOTE (Abstract WoS record): "we demonstrate how phishing attackers can replicate users' fingerprints on different devices to deceive the risk-based authentication systems of high-value web services (e.g., cryptocurrency trading) to completely bypass two-factor authentication"
+% VERIFIED: ABSTRACT ONLY (WoS record, abstract text from the session); applies because the abstract states the attack result
+%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
+%   PDF cache) and the quoted passage confirmed in it; the paper was not read
+%   through, so it still counts as read at abstract level.
+% COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
+% DATE: 2026-11-12
+@inproceedings{Lin2022PhishSheep,
+  title = {Phish in Sheep's Clothing: Exploring the Authentication Pitfalls of Browser Fingerprinting},
+  author = {Lin, Xu and Ilia, Panagiotis and Solanki, Saumya and Polakis, Jason},
+  year = {2022},
+  booktitle = {31st USENIX Security Symposium},
+  publisher = {USENIX Association}
+}
+
+% === provenance: Spooren2015Fingerprinting ===
+% CLAIM: Mobile-device fingerprints carry a lot of similarity across models and brands, which makes them less reliable inputs for risk-based step-up authentication.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p openalex --limit 40 (session "mfa-necessary", query S2, date 2026-11-12)
+% PICKED: Early critical assessment of a risk signal (E3/E4); abstract-level only; classified qualifies-claim. Evidence grade: E4.
+% QUOTE (Abstract): "Our research shows that particularly for mobile devices the fingerprints carry a lot of similarity, even across models and brands, making them less reliable for risk assessment and step-up authentication."
+% VERIFIED: ABSTRACT ONLY (OpenAlex record); full text not fetched
+%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
+%   PDF cache) and the quoted passage confirmed in it; the paper was not read
+%   through, so it still counts as read at abstract level.
+% COUNTER: scholar search S2 on all providers (session "mfa-necessary") -- surfaced the attacks that bypass RBA (Campobasso2020, Lin2022, Spooren2015) and the rarely-triggered finding (Makowski2023); the claim is narrowed to naive and targeted attackers who do not hold a victim profile.
+% DATE: 2026-11-12
+@inproceedings{Spooren2015Fingerprinting,
+  series = {EuroSys ’15},
+  title = {Mobile device fingerprinting considered harmful for risk-based authentication},
+  url = {https://doi.org/10.1145/2751323.2751329},
+  doi = {10.1145/2751323.2751329},
+  booktitle = {Proceedings of the Eighth European Workshop on System Security},
+  publisher = {ACM},
+  author = {Spooren, Jan and Preuveneers, Davy and Joosen, Wouter},
+  year = {2015},
+  pages = {1–6}
+}
+
+% === provenance: Buttner2024Recovery ===
+% CLAIM: Account recovery is an entry point for account takeover, and at Google, Amazon and LinkedIn the risk-based recovery differs widely in what it asks of a suspicious user.
+% FOUND-VIA: scholar search '"risk-based authentication" AND (evaluation OR effectiveness OR security)' -p arxiv -p scopus -p wos --limit 40 (session "mfa-necessary", query S2, date 2026-11-12); full text via fetch_pdf.py --text 10.1007/978-981-97-1274-8_26 (Unpaywall: arXiv copy)
+% PICKED: Measurement of recovery flows (E3, black-box testing); bears on threat R8 for RBA and MFA alike. Evidence grade: E3.
+% QUOTE (Conclusion): "Account recovery mechanisms remain a relevant entry point for account takeover attacks"
+% QUOTE (Conclusion): "their implementations differed widely in suspicious contexts, from asking users for background knowledge or pre-configured MFA methods (Google) to showing a CAPTCHA challenge (Amazon and LinkedIn)"
+% VERIFIED: full-text PDF read; applies because recovery is a fallback path whatever the login scheme
+% COUNTER: scholar search C2 -- none found refuting it.
+% DATE: 2026-11-12
+@incollection{Buttner2024Recovery,
+  title = {Is It Really You Who Forgot the Password? When Account Recovery Meets Risk-Based Authentication},
+  isbn = {9789819712748},
+  url = {https://doi.org/10.1007/978-981-97-1274-8_26},
+  doi = {10.1007/978-981-97-1274-8_26},
+  booktitle = {Ubiquitous Security},
+  publisher = {Springer Nature Singapore},
+  author = {Büttner, Andre and Pedersen, Andreas Thue and Wiefling, Stephan and Gruschka, Nils and Lo Iacono, Luigi},
+  year = {2024},
+  pages = {401–419}
+}
+
+% === provenance: Holthouse2025TwentyThreeAndMe ===
+% CLAIM: In the 2023 23andMe breach, credential stuffing against single-factor password accounts compromised about 14,000 accounts and exposed millions of related profiles; multi-factor authentication was absent.
+% FOUND-VIA: scholar search C1 (M AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)) -p arxiv --limit 40 (session "mfa-necessary", query C1, date 2026-11-12)
+% PICKED: Case study of an observed incident (E3, secondary analysis of public information); abstract only; does not compare with other single-factor schemes. Evidence grade: E3.
+% QUOTE (Abstract): "The attack highlights the increasing threat of credential stuffing, exacerbated by poor password hygiene and the absence of robust security measures such as multi-factor authentication (MFA) and rate limiting."
+% VERIFIED: ABSTRACT ONLY (arXiv record); applies because it shows the R1 failure of reused passwords (case P)
+%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
+%   PDF cache) and the quoted passage confirmed in it; the paper was not read
+%   through, so it still counts as read at abstract level.
+% COUNTER: scholar search C2 -- no more primary measurement of the incident was found.
+% DATE: 2026-11-12
+@misc{Holthouse2025TwentyThreeAndMe,
+  url = {https://arxiv.org/abs/2502.04303},
+  author = {Holthouse, Ryan and Owens, Serena and Bhunia, Suman},
+  title = {The 23andMe Data Breach: Analyzing Credential Stuffing Attacks, Security Vulnerabilities, and Mitigation Strategies},
+  year = {2025},
+  eprint = {2502.04303},
+  archiveprefix = {arXiv},
+  howpublished = {arXiv preprint}
+}
+
+% === provenance: NIST2016PIVPrivileged ===
+% CLAIM: NIST states that federal privileged users must use multifactor PIV-based authentication instead of password-based single-factor authentication, following an OMB requirement.
+% FOUND-VIA: scholar search ("password-only" OR "single-factor authentication") AND (insufficient OR inadequate OR compromise) -p openalex --limit 40 (session "mfa-necessary", query C2, date 2026-11-12)
+% PICKED: NIST white paper (E5, requirement for a privileged-user population); abstract only. Evidence grade: E5.
+% QUOTE (Abstract): "This white paper further explains the need for multifactor PIV-based user authentication to take the place of password-based single-factor authentication for privileged users."
+% VERIFIED: ABSTRACT ONLY (OpenAlex record)
+%   Verification pass 2026-11-12: an open-access copy was then fetched (scholar
+%   PDF cache) and the quoted passage confirmed in it; the paper was not read
+%   through, so it still counts as read at abstract level.
+% COUNTER: scholar search S1/S2 -- not applicable to a requirement.
+% DATE: 2026-11-12
+@misc{NIST2016PIVPrivileged,
+  title = {Best Practices for Privileged User {PIV} Authentication},
+  author = {{National Institute of Standards and Technology}},
+  year = {2016},
+  doi = {10.6028/nist.cswp.4},
+  url = {https://doi.org/10.6028/nist.cswp.4},
+  howpublished = {NIST Cybersecurity White Paper 4}
+}
+
+% === provenance: OMB2022ZeroTrust ===
+% CLAIM: US federal agencies must use phishing-resistant MFA for staff, contractors and partners and must offer it as an option to public users, because enterprise users are valuable phishing targets.
+% FOUND-VIA: WebSearch (standard) "zero trust federal strategy phishing-resistant multi-factor authentication agencies memorandum", 2026-11-12; retrieved from whitehouse.gov via fetch_pdf.py --text https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf
+% PICKED: Binding US federal requirement (E5), January 2022; primary source behind CISA2022. Evidence grade: E5.
+% QUOTE (p. 5, Identity actions): "For agency staff, contractors, and partners, phishing-resistant MFA is required."
+% QUOTE (p. 5, Identity actions): "For public users, phishing-resistant MFA must be an option."
+% QUOTE (p. 7): "This requirement for phishing-resistant methods is necessitated by the reality that enterprise users are among the most valuable targets for phishing."
+% QUOTE (p. 5, footnote 6): ""phishing-resistant" authentication refers to authentication processes designed to detect and prevent disclosure of authentication secrets and outputs to a website or application masquerading as a legitimate system."
+% VERIFIED: full-text PDF read; applies as a requirement and the reason given (phishing), E5
+% COUNTER: none found.
+% DATE: 2026-11-12
+@techreport{OMB2022ZeroTrust,
+  title = {Moving the {U.S.} Government Toward Zero Trust Cybersecurity Principles},
+  author = {{Executive Office of the President, Office of Management and Budget}},
+  year = {2022},
+  number = {M-22-09},
+  institution = {Office of Management and Budget},
+  url = {https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf},
+  urldate = {2026-11-12},
+}
+
+% === provenance: NCSC2026PasskeysBlog ===
+% CLAIM: The NCSC recommends passkeys wherever a service supports them and 2SV where it does not, while stating that passkeys with user verification are multi-factor.
+% FOUND-VIA: WebSearch (standard) "NCSC guidance multi-factor authentication for online services recommendation passkeys single factor", 2026-11-12; page retrieved with curl from https://www.ncsc.gov.uk/blogs/passkeys-are-more-secure-than-traditional-ways-to-log-in
+% PICKED: Official NCSC announcement (E5) of the position behind NCSC2026paper; April 2026 (CYBERUK 2026). Evidence grade: E5.
+% QUOTE (Blog text): "At CYBERUK 2026 in Glasgow, the NCSC announced that we will begin recommending passkeys wherever a service supports them, and two-step verification (2SV) where it does not."
+% QUOTE (Blog text): "FIDO2 credentials, including passkeys, are as secure or more secure than traditional MFA against all common credential attacks observed in the wild."
+% QUOTE (Blog text): "When user verification is required as part of the login, FIDO2 authentication constitutes multi-factor authentication"
+% VERIFIED: HTML page read in full; applies as an expert-consensus statement; note the NCSC itself counts a passkey with user verification as multi-factor, so it does not show that a single factor suffices
+% COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
+% DATE: 2026-11-12
+@misc{NCSC2026PasskeysBlog,
+  title = {Passkeys are more secure than traditional ways to log in},
+  author = {Chismon, Dave},
+  year = {2026},
+  howpublished = {NCSC blog post},
+  url = {https://www.ncsc.gov.uk/blogs/passkeys-are-more-secure-than-traditional-ways-to-log-in},
+  urldate = {2026-11-12},
+}
+
+% === provenance: NCSC2026PasskeysPage ===
+% CLAIM: The NCSC advises strong, manager-generated passwords plus 2SV where passkeys are unavailable.
+% FOUND-VIA: WebSearch (standard) "NCSC guidance multi-factor authentication for online services recommendation passkeys single factor", 2026-11-12; page retrieved with curl from https://www.ncsc.gov.uk/information/passkeys-what-you-need-to-know
+% PICKED: Official NCSC public guidance (E5); the page itself recommends a password manager only together with 2SV. Evidence grade: E5.
+% QUOTE (Passkeys page): "Where passkeys are not an available option, you should continue to use strong passwords, for example generated by a password manager and enable 2SV ."
+% QUOTE (Passkeys page): "Passkeys are a more secure alternative to passwords and traditional 2SV or MFA."
+% VERIFIED: HTML page read; applies as guidance, E5
+% COUNTER: none found.
+% DATE: 2026-11-12
+%   Note: title as shown in the page URL
+@misc{NCSC2026PasskeysPage,
+  title = {Passkeys: what you need to know},
+  author = {{National Cyber Security Centre}},
+  year = {2026},
+  howpublished = {Web page},
+  url = {https://www.ncsc.gov.uk/information/passkeys-what-you-need-to-know},
+  urldate = {2026-11-12},
+}
+
+% === provenance: NCSC2026Methods ===
+% CLAIM: The NCSC advises online services not to demand a second factor at every login but only for high-impact activities and when suspicious activity is detected (risk-based use of MFA).
+% FOUND-VIA: WebSearch (standard) "NCSC guidance multi-factor authentication for online services recommendation passkeys single factor", 2026-11-12; document retrieved via fetch_pdf.py --text https://www.ncsc.gov.uk/sites/default/files/2026-07/Authentication-methods-choosing-the-right-type.pdf
+% PICKED: Official NCSC guidance for customer-facing services (E5); it keeps MFA as the strengthening step and uses risk to ration it. Evidence grade: E5.
+% QUOTE (MFA section): "You should not mandate use of a second factor every time an MFA-protected service is used, as this would soon be irritating for users."
+% QUOTE (MFA section): "A second factor should also be required whenever suspicious account activity is detected, such as a sign-in from an unfamiliar device, or from a different part of the world than is normal for that user."
+% VERIFIED: full-text PDF read; applies as guidance, E5
+% COUNTER: none found.
+% DATE: 2026-11-12
+@misc{NCSC2026Methods,
+  title = {Authentication methods: choosing the right type},
+  author = {{National Cyber Security Centre}},
+  year = {2026},
+  howpublished = {Guidance document},
+  url = {https://www.ncsc.gov.uk/sites/default/files/2026-07/Authentication-methods-choosing-the-right-type.pdf},
+  urldate = {2026-11-12},
+}

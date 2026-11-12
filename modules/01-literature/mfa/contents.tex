@@ -5,9 +5,11 @@
 \section{Introduction}\label{sec:intro}
 
 Multi-factor authentication is commonly recommended as the way to make
-user authentication secure.
-% TODO: back "commonly recommended" with the standards and guidance the
-% search finds; until then it is the premise of the question, not a finding.
+user authentication secure, and in places required: the United States
+government requires it of its agencies' staff\parencite{OMB2022ZeroTrust},
+and its cybersecurity agency writes that
+\textcquote[p.~1]{CISA2022PhishingResistant}{any form of MFA is better
+than no MFA}.
 This report asks whether the literature supports two stronger readings of
 that recommendation: that multi-factor authentication is \emph{sufficient}
 for secure authentication of users, and that it is \emph{necessary}.
@@ -253,10 +255,33 @@ standards require at which level and why, by testing \cref{h:necessary}:
 
 This is a rapid review with a scoping aim: it maps what kinds of evidence
 exist for four related questions and reports what that evidence says.
-The search is systematic in the sense that it is planned, documented and
-repeatable.
-% TODO: cite the typology of reviews this classification follows, and the
-% course reading on rigour in literature reviews, once verified.
+
+The aim is that of a scoping review, whose purpose is
+\textcquote{Munn2018ScopingOrSystematic}{to identify and map the
+available evidence}.
+Such a review suits a topic where it is
+\textcquote{Munn2018ScopingOrSystematic}{still unclear what other, more
+specific questions can be posed and valuably addressed by a more precise
+systematic review}.
+That is the situation here: the title asks one question, but answering it
+takes four, and the evidence for them is of different kinds.
+
+The conduct is that of a rapid review.
+There is no formal definition of one; a working definition from health
+research, where the method comes from, is
+\textcquote{Tricco2015RapidReviews}{a form of knowledge synthesis in
+which components of the systematic review process are simplified or
+omitted to produce information in a timely manner}.
+The same notion is used in software engineering
+research \parencite{Cartaxo2020RapidReviewsSE}.
+
+The search is nevertheless systematic in the sense that it is planned,
+documented and repeatable, which is what the course reading on rigour
+asks of any review:
+\textcquote[p.~163]{Bandara2015Rigor}{Defining a search strategy
+significantly contributes to methodical rigor; it provides transparency,
+clarity, and replicability.}
+
 It is not a systematic review.
 Three shortcuts separate it from one, and each limits what may be
 concluded.
@@ -264,9 +289,19 @@ concluded.
   \item[Capped search] At most 40 records are taken per database and
     query, so the search samples the most relevant records and does not
     exhaust the literature.
+    Shortcuts in the search lose information: when 2512 systematic
+    reviews of clinical trials were repeated with rapid methods, the
+    statistical significance of the result changed in 6.5 to 38.6 per
+    cent of the meta-analyses, depending on the shortcut, although no
+    bias in a particular direction was
+    found \parencite{Marshall2019RapidVsSystematic}.
   \item[One screener] Records are screened once, by a language model
     whose doubtful decisions are checked by reading, and not by two
     independent human reviewers.
+    Among human reviewers a single screener misses relevant studies, a
+    median of 5 per cent and at worst 58 per cent in the evaluations
+    reviewed by \textcite{Waffenschmidt2019SingleScreening}.
+    We know of no corresponding figure for the language model used here.
   \item[Graded, not appraised] Each included study is graded by its
     design (\cref{sec:grading}); no instrument for appraising the quality
     of individual studies is applied.
@@ -397,6 +432,9 @@ of one of the kinds in \cref{tab:grades}.
 There is no limit on the year of publication; the year is reported,
 because the schemes in use have changed.
 Only records in English are included.
+For reviews of clinical trials that restriction has been found to change
+few conclusions \parencite[\abso]{NussbaumerStreit2020NonEnglish}; we
+know of no such test for security research.
 
 A record is excluded if it
 \begin{itemize}
@@ -500,31 +538,1099 @@ fails for a set of threats if a single-factor row resists all of them.
 
 \subsection{Deviations from the protocol}\label{sec:deviations}
 
-None so far: this section is completed after the search.
+Everything above this subsection was written before the search, with
+three exceptions, all of them added sources.
+The two sources for the premise in the first paragraph of the
+introduction were found by the search.
+The sources on types of review in \cref{sec:reviewtype} and the remark
+on the language restriction in \cref{sec:criteria} come from a fifth,
+small search on review methods that the protocol had not planned
+(\cref{sec:hits-method}).
+The search itself departed from the protocol as follows.
+\begin{description}
+  \item[Queries added] Six queries were added, for three of the
+    questions, because the planned ones returned few records on the cases
+    with a cryptographic key or mostly proposals of new schemes.
+    They use the same term blocks and are marked as added in the tables
+    of \cref{sec:hitlists}; the planned queries were kept.
+  \item[Searches that failed] IEEE Xplore allows a fixed number of
+    requests a day.
+    The planned queries were all answered, but four of the added ones
+    were not, and are reported as failed.
+  \item[Screening model] The search tool's default language model was
+    not available.
+    Claude Sonnet 5.5 classified the records for three questions and for
+    the search on review methods, Claude Opus 4.8 those for
+    \cref{rq:effect}.
+    For \cref{rq:effect} the model filed every measurement study under
+    \enquote{contradicts or narrows}, apparently because the studies also
+    report differences between factors; 52 records were reclassified by
+    reading.
+    For the other questions 14, 15 and 9 records were reclassified.
+  \item[Records of low confidence] The protocol promised that every
+    record classified with low confidence would be read again.
+    That was done for the records classified as bearing on a question.
+    Records classified as adjacent with low confidence were checked on
+    their titles, and only some on their abstracts.
+  \item[A second check of quotations] The four questions were searched
+    and read by four separate runs of the model.
+    A fifth run then checked every quoted passage again against the full
+    text, or against the abstract for sources read only as abstracts.
+    The check found one misquoted hyphen and led to three sources being
+    dropped (\cref{sec:dropped}).
+  \item[Sources read only as abstracts] Of the 64 sources cited, 21 could
+    be read only at the level of the abstract, mostly because the
+    publisher's site refused automated retrieval.
+    They are marked \enquote{\abso} where they are cited.
+  \item[Synthesis tables] The cells of the tables of cases against
+    threats hold a symbol and not a citation; the sources are cited in
+    the text, threat by threat.
+    No query had terms for threats \threat{R2} and \threat{L2}, and the
+    search found no evidence on them, so those columns are open.
+  \item[Grades] Two runs graded one source differently; it was set to
+    the grade that fits its method (an evaluation by analysis, E4).
+\end{description}
 
 
 \section{Results}\label{sec:results}
 
-Not yet written: the search has not been run.
+\subsection{What the search returned}\label{sec:flow}
+
+\Cref{tab:flow} gives the number of records at each step.
+Most records returned by a query that names multi-factor authentication
+are proposals of new schemes, which the criteria of \cref{sec:criteria}
+count as adjacent.
+Between 28 and 45 records per question bear on it.
+\begin{table}
+  \begin{sidecaption}{%
+    Records at each step, per question.
+    \enquote{Supporting} and \enquote{contradicting} are relative to the
+    hypothesis of the question.
+    Distinct records are counted after merging versions of the same
+    work.
+    Sources cited include standards and reports found outside the
+    databases; a source cited for two questions is counted under both.
+  }[tab:flow]
+    \footnotesize
+    \begin{tabular}{@{}lrrrr@{}}
+      \toprule
+      & \multicolumn{4}{c}{Question} \\
+      \cmidrule(l){2-5}
+      Step & 1 & 2 & 3 & 4 \\
+      \midrule
+      Records returned by the databases & 627 & 522 & 780 & 772 \\
+      Distinct records & 387 & 289 & 508 & 497 \\
+      \quad classified as adjacent & 290 & 208 & 342 & 406 \\
+      \quad classified as another topic & 69 & 48 & 123 & 46 \\
+      \quad bearing on the question & 28 & 33 & 43 & 45 \\
+      \qquad cited & 9 & 15 & 19 & 18 \\
+      \qquad supporting, not cited & 0 & 7 & 16 & 9 \\
+      \qquad contradicting or narrowing, not cited & 17 & 10 & 7 & 18 \\
+      \qquad excluded after reading & 2 & 1 & 1 & 0 \\
+      \midrule
+      Sources cited, with those outside the databases & 11 & 19 & 25 & 24 \\
+      \quad of which read only as abstract & 5 & 8 & 4 & 8 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{Effect}\label{sec:res-effect}
+
+Five studies measure compromise of real accounts with and without a
+second factor (grade E2), and two providers state a figure without a
+method (E6).
+\Cref{tab:effects} lists them.
+All seven point the same way: less compromise with a second factor.
+\begin{table}
+  \begin{sidecaption}{%
+    Reported effects of a second factor on account compromise.
+    \enquote{Abs.} marks a source read only as an abstract.
+    The figures measure different things and cannot be pooled.
+  }[tab:effects]
+    \footnotesize
+    \begin{tabular}{@{}p{0.19\linewidth}p{0.25\linewidth}p{0.30\linewidth}l@{}}
+      \toprule
+      Source & Setting & Reported effect & Grade \\
+      \midrule
+      Meyer et al.\ 2023
+        & Microsoft business accounts under review for suspicious
+          activity
+        & 99.22\% lower risk of compromise; 98.56\% when the password
+          had leaked
+        & E2 \\
+      Doerfler et al.\ 2019
+        & Google accounts, 350\,000 hijacking attempts
+        & Device-based challenges blocked over 94\% of attempts from
+          phishing and 100\% of automated ones
+        & E2 \\
+      Kamar et al.\ 2026 (abs.)
+        & Three Canadian banks
+        & Mandatory: fewer compromised accounts; optional: no
+          significant change
+        & E2 \\
+      Kawase et al.\ 2019 (abs.)
+        & One online marketplace
+        & 43\% fewer account takeovers
+        & E2 \\
+      Egenti and Ojo 2026 (abs.)
+        & Online banking in Nigeria
+        & Fraud cases down 10 to 15\%
+        & E2 \\
+      Google 2022
+        & Google accounts enrolled automatically
+        & 50\% fewer compromised accounts
+        & E6 \\
+      Microsoft 2019
+        & Microsoft cloud services
+        & Blocks over 99.9\% of account compromise attacks
+        & E6 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+The two largest studies are by the providers' own staff.
+\Textcite{Meyer2023MFAEffect} estimate, for Microsoft's business
+customers, that
+\textcquote[abstract]{Meyer2023MFAEffect}{MFA reduces the risk of
+compromise by 99.22\% across the entire population and by 98.56\% in
+cases of leaked credentials}.
+The sample is accounts that were reviewed because of suspicious
+activity, and whether an account had a second factor was decided by its
+organisation, not assigned at random.
+\Textcite{Doerfler2019LoginChallenges} study challenges that Google
+shows when a login looks risky, which is not the same as a second factor
+required at every login:
+\textcquote[abstract]{Doerfler2019LoginChallenges}{Device-based
+challenges provide the best protection, blocking over 94\% of hijacking
+attempts rooted in phishing and 100\% of automated hijacking attempts}.
+There is no group of accounts without challenges to compare with.
+
+The studies from outside the large providers report smaller effects.
+One marketplace reports 43 per cent fewer account takeovers after
+introducing a second factor \parencite[\abso]{Kawase2019AccountTakeover}.
+At three Canadian banks,
+\textcquote[abstract; \abso]{Kamar2026TwoFactorBanks}{mandatory 2FA
+significantly reduced the number of compromised bank accounts, whereas
+optional 2FA did not}.
+A study of Nigerian online banking reports that fraud cases fell by 10
+to 15 per cent \parencite[\abso]{Egenti2026Nigeria}; its figures come
+partly from a prototype and we give it little weight.
+The two provider statements, a 50 per cent decrease at Google
+\parencite{Google2022SaferInternet} and over 99.9 per cent of attacks
+blocked at Microsoft \parencite{Maynes2019OneSimpleAction}, give no
+method.
+
+Two studies separate kinds of second factor.
+At Microsoft, a code by text message was
+\textcquote[sec.~5]{Meyer2023MFAEffect}{40.8\% less effective than
+Microsoft Authenticator}, an app, although the failure rates were low
+for both (1.66 against about 1 per cent).
+At Google, codes by text message were
+\textcquote[sec.~1]{Doerfler2019LoginChallenges}{preventing only 96\% of
+attacks rooted in phishing and 76\% of targeted attacks}, against 99 and
+90 per cent for prompts on the user's device, and
+\textcquote[sec.~4.1]{Doerfler2019LoginChallenges}{security keys provide
+the best protection, blocking 100\% of attacks in our dataset}.
+Challenges that ask for something the user knows, such as a secondary
+email address, stopped only 10 per cent of the attempts from phishing.
+
+Several sources narrow the result.
+The null result for optional two-factor authentication above is the only
+measurement in which a second factor made no difference.
+Services that take over accounts for hire were found able
+\textcquote[abstract; \abso]{Mirian2019HackForHire}{to bypass SMS
+two-factor authentication}.
+Flaws in how services implement the second step let an attacker skip it
+at three providers \parencite{Wang2024SimpleNotSecure}, and a criminal
+service sells stolen user profiles with which buyers
+\textcquote[abstract]{Campobasso2020IMPaaS}{effectively bypass
+multi-factor authentication mechanisms}.
+These show that a bypass is possible, not how often it happens.
+
+The search worded to find the opposite, a study in which multi-factor
+authentication made no difference or made things worse, returned none
+apart from the optional case above.
+That is the outcome of a capped search and not proof that no such study
+exists.
+
+In sum, \cref{h:effect} holds in its direction.
+Its second half, that the size differs widely between kinds of second
+factor, holds only in part: within one provider the kinds differ by a
+few percentage points of the attempts, while the spread between studies,
+from 43 to over 99 per cent, mixes the kind of factor with the setting,
+the outcome measured and who did the measuring.
+No study found measures compromise for a cryptographic key without a
+password (cases \case{B} and \case{C}) against a password with a second
+factor.
+
+\subsection{How the standards classify the cases}\label{sec:res-standards}
+
+The working definitions of \cref{sec:terms} agree with the standards.
+The guideline of the United States standards institute defines
+multi-factor authentication by kinds of factor, and at its second
+assurance level
+\textcquote[sec.~2.2.1]{NIST2025SP80063B}{authentication SHALL use
+either a multi-factor authenticator or a combination of two separate
+authentication factors}.
+
+All three standards and assessments read classify a key with user
+verification (case \case{B}) as multi-factor and a key without it (case
+\case{C}) as single-factor.
+In the guideline, a key that is unlocked by a PIN or biometric is a
+multi-factor authenticator, and if the key reports that it was not
+unlocked in that way the authentication
+\textcquote[sec.~3.1.7.2]{NIST2025SP80063B}{SHALL be treated as
+single-factor}.
+The web standard for such keys says the same:
+\textcquote[sec.~6.2.3]{W3C2026WebAuthn3}{an authenticator that supports
+user verification is multi-factor capable}.
+The United Kingdom's cyber security centre agrees and answers the
+objection that key and verification sit in one device: factors are kinds
+of evidence, not devices \parencite{NCSC2026CredentialsPaper}.
+
+Passwordless authentication with a passkey is therefore, in the
+standards' terms, usually multi-factor authentication.
+What the standards attach to the key itself, whether or not it is
+unlocked by a second factor, is resistance to phishing:
+\textcquote[sec.~3.2.5]{NIST2025SP80063B}{Phishing resistance requires
+single- or multi-factor cryptographic authentication.}
+
+\subsection{Cases against threats}\label{sec:res-table}
+
+\Cref{tab:remote,tab:local} summarise what the sources say about each
+case of \cref{tab:cases} against each threat of \cref{tab:threats}.
+The rest of this subsection gives the sources, threat by threat.
+The one source that assesses most cases against most threats in one
+place is a technical paper by the United Kingdom's cyber security centre
+\parencite{NCSC2026CredentialsPaper}.
+It is an assessment by an authority (E5): it does not say how each
+verdict was reached, and its authors recommend passkeys.
+Where it is the only source for a cell we say so.
+\begin{table}
+  \begin{sidecaption}{%
+    Cases against remote threats.
+    \res{} resists, \fail{} fails, \partly{} depends on conditions given
+    in the text, \na{} the threat does not apply, empty: no evidence
+    found.
+    The row for case \case{C} rests on the standards' classification, not
+    on tests.
+  }[tab:remote]
+    \footnotesize
+    \begin{tabular}{@{}lcccccccc@{}}
+      \toprule
+      Case & \threat{R1} & \threat{R2} & \threat{R3} & \threat{R4}
+        & \threat{R5} & \threat{R6} & \threat{R7} & \threat{R8} \\
+      \midrule
+      \case{P}  & \fail & & \fail & \fail & \na & & \fail & \\
+      \case{P+} & \res  & & \fail & \fail & \na & & \fail & \\
+      \case{A1} & \res  & & \res  & \fail & \fail & & \fail & \partly \\
+      \case{A2} & \res  & & \res  & \fail & & \fail & \fail & \partly \\
+      \case{A3} & \res  & & \res  & \res  & \na & & \fail & \partly \\
+      \case{B}  & \res  & & \res  & \res  & \na & \res & \fail & \partly \\
+      \case{C}  &       & & \res  & \res  & \na & & & \partly \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+\begin{table}
+  \begin{sidecaption}{%
+    Cases against local threats; symbols as in \cref{tab:remote}.
+    No source tests case \case{C}.
+  }[tab:local]
+    \footnotesize
+    \begin{tabular}{@{}lccc@{}}
+      \toprule
+      Case & \threat{L1} & \threat{L2} & \threat{L3} \\
+      \midrule
+      \case{P}  & \res    & & \fail \\
+      \case{P+} & \fail   & & \fail \\
+      \case{A1} & \partly & & \partly \\
+      \case{A2} & \fail   & & \fail \\
+      \case{A3} & \partly & & \fail \\
+      \case{B}  & \partly & & \fail \\
+      \case{C}  &         & & \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\paragraph{Guessing and reuse (\threat{R1})}
+A password chosen and reused by the user falls to credential stuffing;
+one analysed breach began with about 14\,000 accounts taken over in that
+way \parencite[\abso]{Holthouse2025TwentyThreeAndMe}.
+A random password unique to the service does not, and neither does any
+case with a second factor or a key, in the assessment of
+\textcite{NCSC2026CredentialsPaper}.
+The measurements agree for the second factor: the effect at Microsoft
+was 98.56 per cent for accounts whose password had already leaked
+\parencite{Meyer2023MFAEffect}.
+
+\paragraph{Phishing (\threat{R3}, \threat{R4})}
+A password alone, however strong, can be phished.
+A code or a push approval stops the use of a phished password later but
+not a login relayed as it happens: the cyber security centre calls all
+such second factors
+\textcquote[summary]{NCSC2026CredentialsPaper}{inherently phishable}, and
+the guideline states that
+\textcquote[sec.~3.1.3]{NIST2025SP80063B}{Out-of-band authentication is
+not phishing-resistant}.
+A laboratory relay captured the session through codes by text message,
+call, email and app and through push approvals, and its author judges
+\textcquote[abstract]{Kikuchi2025Evilginx}{that 80\% of major web
+services are vulnerable}; a small controlled campaign found the same for
+simulated logins \parencite{Cuellar2026AiTM}.
+A cryptographic key bound to the service resists both threats in every
+source that examines it: a formal analysis that assumes the password
+already lost \parencite{Jacomme2021FormalMFA}, a proof of the web
+protocol's authentication property \parencite{Barbosa2021ProvableFIDO2},
+and an analysis of attacks concluding that
+\textcquote[abstract]{Berladskyy2026AttackVectors}{The claim that
+passkeys are phishing-resistant largely holds true}.
+Two providers report the same from use, without a method: at one,
+attackers who had employees' passwords
+\textcquote{Cloudflare2022Phishing}{could not get past the hard key
+requirement}, and at the other
+\textcquote{Thomas2019Hygiene}{zero users that exclusively use security
+keys fell victim to targeted phishing}.
+One demonstrated attack defeats keys too, when the service has a flaw
+that lets the attacker run a script in its pages
+\parencite[\abso]{Catalano2025BitM}.
+
+\paragraph{Taking over the channel (\threat{R5})}
+A public review of a series of real intrusions found that
+\textcquote[p.~5]{CSRB2023Lapsus}{attackers gained initial access to
+targeted organizations through Subscriber Identity Module (SIM) swapping
+attacks, which allowed them to intercept one-time passcodes and push
+notifications sent via SMS, effectively defeating this widely used MFA
+control}.
+The threat applies only where the second factor travels over a channel
+that can be taken over.
+
+\paragraph{Approval by the user (\threat{R6})}
+With the password known, an attacker who triggers a push approval was
+let in by the user in about 68 per cent of the sessions of one
+experiment \parencite[\abso]{Jubur2021PushBypass}.
+The United States cybersecurity agency lists such
+\enquote{push bombing} among the weaknesses of some forms of
+multi-factor authentication \parencite{CISA2022PhishingResistant}.
+The cyber security centre rates keys as not exposed to it.
+We found no report of the frequency of this attack in use.
+
+\paragraph{Session theft (\threat{R7})}
+What is stolen here is the session that follows a successful login, so
+no authenticator prevents it; the cyber security centre notes that
+common malware copies session cookies as well as passwords, and that a
+relayed login leaves the session with the attacker
+\parencite{NCSC2026CredentialsPaper}.
+The criminal service above trades in such stolen sessions
+\parencite{Campobasso2020IMPaaS}, and a review describes cookie theft as
+a service \parencite[\abso]{Pazmino2025Cookie}.
+
+\paragraph{Recovery and fallback (\threat{R8})}
+An account is as strong as its weakest way in.
+On popular sites, a second factor was in some cases switched off on
+request when the user said it was lost \parencite{Gerlitz2023Recovery},
+although in a test of ten services a password reset alone did not get
+past the second factor \parencite{Buttner2025Inconsistencies}.
+For keys, a login can be pushed down to a weaker method where one is
+still enrolled; a vendor demonstrated this and adds that
+\textcquote{Miron2025Downgrade}{there is currently no evidence for the
+usage of this technique by threat actors in the wild}.
+The methods for recovering an account after losing a key
+\textcquote[abstract]{Kunke2021Recovery}{have many drawbacks. Some even
+rely on passwords, taking passwordless authentication ad absurdum.}
+Recovery remains
+\textcquote[conclusion]{Buttner2024Recovery}{a relevant entry point for
+account takeover attacks}, and a study of account access in use reports
+\textcquote[abstract; \abso]{Wang2025TwoFAIllusion}{overlooked
+weaknesses of current deployments}.
+
+\paragraph{A lost or stolen device (\threat{L1})}
+Here the cyber security centre's assessment is the main source.
+It rates passwords kept in a password manager, codes from an app or by
+text message, push approvals and passkeys on a phone as exposed when the
+device is stolen and its PIN is weak, and a separate hardware token as
+not exposed, whether the token produces codes or holds a key unlocked by
+a PIN or password.
+A password that the user remembers is the exception among the secrets:
+\textcquote[note to table~19]{NCSC2026CredentialsPaper}{theft of a
+device even with the PIN won't reveal that password}.
+For a key bound to the device, what stands between a thief and the
+account is user verification:
+\textcquote[sec.~3.1]{Buttner2025DeviceBound}{it will be difficult to
+steal a user's device-bound passkey, provided it is protected by user
+verification mechanisms}.
+That protection has been broken in particular products: extracting the
+PIN was shown to be straightforward in practice
+\parencite[\abso]{Barbosa2023RogueKey},
+the protocol for the PIN was found to have flaws
+\parencite{Guan2022FormalFIDO2}, and of the Windows configurations
+tested
+\textcquote[abstract; \abso]{Lee2025WindowsHello}{only systems with
+Enhanced Sign-in Security (ESS) prevented our attacks}.
+
+\paragraph{Malware on the device (\threat{L3})}
+Every case fails against malware in at least one source.
+A formal analysis finds hardware tokens secure against phishing but
+concludes that
+\textcquote[sec.~5.5]{Jacomme2021FormalMFA}{malware attacks are still
+possible}.
+Seven attacks through a malicious browser extension were demonstrated on
+ten sites that use keys; the authors add that their analysis of existing
+extensions
+\textcquote[abstract]{Yadav2024LocalAttacks}{finds no evidence of the
+attacks in the wild}.
+A Trojan took over passkey logins in every trial of one laboratory
+study \parencite{Mitra2026WoodenHorse}, and with a deceptive overlay
+\textcquote[abstract; \abso]{Mahdad2024FIDOLA}{users approved
+approximately 95.55\% of cross-service attacks}.
+The cyber security centre is milder: it rates passkeys as
+\enquote{situation dependent} and a hardware token with a PIN as not
+exposed to malware, which the demonstrations above contradict.
+For codes it separates those produced on the infected device, which
+fail, from those of a separate token, which do not.
+Three further analyses agree that the device is the weak point: one
+concludes that
+\textcquote[abstract]{Mitra2026TrustBoundary}{the weak link in a FIDO2
+deployment is rarely the crypto layer}, one that passwords and keys are
+both exposed to malicious scripts and extensions
+\parencite[\abso]{Gautam2025Secret}, and one that second factors
+believed secure against malware on the terminal are not
+\parencite[\abso]{Mahdad2023SoK2FA}.
+
+\subsection{Attribution}\label{sec:res-attribution}
+
+No study found isolates the contribution of one factor in measured
+compromise.
+The answer to \cref{rq:attribution} therefore rests on
+\cref{tab:remote,tab:local}, that is on assessment, analysis and attack
+demonstrations, read as three comparisons.
+
+\paragraph{A second factor beside a strong password}
+Compare the rows \case{P+} and \case{A1}--\case{A3}.
+Against guessing and reuse the second factor adds nothing, because the
+strong password already resists.
+Against a phished password used later it adds protection.
+Against a relayed login a code or push adds nothing and a key adds
+everything.
+A code by text message and a push each bring a threat of their own
+(\threat{R5}, \threat{R6}).
+Against the local threats a second factor helps when it is not on the
+device that holds the password.
+What a second factor adds thus depends on which factor it is, and for
+the remote threats a weak one adds little to a strong password.
+The large measured effects of \cref{sec:res-effect} do not contradict
+this: they compare with passwords as users choose them, and the one
+figure for passwords already known to the attacker, 98.56 per cent, is
+the work of the second factor alone.
+
+\paragraph{A password beside a key}
+Compare the rows \case{A3}, \case{B} and \case{C}.
+Against the remote threats no source shows the password adding
+anything.
+The formal analysis of hardware tokens takes as its
+\textcquote[sec.~1]{Jacomme2021FormalMFA}{basic assumption} that the
+password is already compromised, and finds the token secure against
+phishing all the same; the attackers at Cloudflare held the passwords
+and were stopped by the key.
+The review board that examined the intrusions of \threat{R5} draws the
+same conclusion and recommends
+\textcquote[p.~6]{CSRB2023Lapsus}{passwordless solutions}.
+Against the local threats the password is not idle.
+It is the one secret that a stolen device does not hold, and one study
+of local attacks found
+\textcquote[sec.~I]{Yadav2024LocalAttacks}{two attacks (3 and 4) where
+passwordless authentication presents more risk than passwords alone in
+the presence of a compromised extension}.
+
+\paragraph{User verification beside a key}
+Compare the rows \case{B} and \case{C}.
+The standards distinguish them, but no source tests a key alone.
+That user verification is what protects a stolen key is stated by
+analysis and, for weak PINs and particular products, contradicted by
+the attacks under \threat{L1} above.
+
+\Cref{h:attribution} is thus supported in its first half and corrected
+in its second.
+Against the remote threats the protection is that of the strongest
+factor, and a password beside a key bound to the service adds nothing
+that any source could show; this rests on analysis, assessment and two
+providers' reports, not on measurement.
+Against the local threats a second factor does add protection, as
+predicted, but only if it is not kept on the same device, and the
+factor that most plainly meets that condition is a remembered password.
+
+\subsection{Sufficiency}\label{sec:res-sufficient}
+
+By the rule of \cref{sec:synthesis}, multi-factor authentication is not
+sufficient for a case if any cell in its row is a successful attack.
+Every multi-factor row of \cref{tab:remote,tab:local} has one.
+
+For a code or a push beside a password (cases \case{A1} and \case{A2})
+the attacks are documented in use.
+The review board cited above concludes from real intrusions that
+\textcquote[p.~5]{CSRB2023Lapsus}{the multi-factor authentication (MFA)
+implementations used broadly in the digital ecosystem today are not
+sufficient for most organizations or consumers}.
+
+For the cases with a key (\case{A3} and \case{B}) the evidence is of
+another kind.
+No source reports an attack that defeats the key itself from a
+distance, and none reports an account protected by a key being taken
+over in use.
+The attacks that succeed go around the key: through a weaker method
+left enrolled, through recovery, through the session after login, or
+through malware on the user's device.
+All are demonstrations in a laboratory or by a vendor, several of them
+not yet peer reviewed, and two of their authors state that they found
+no sign of use.
+Formal results cover the protocol and not the account: the
+authentication of the web protocol is proved, the protocol between
+client and token
+\textcquote[abstract]{Barbosa2021ProvableFIDO2}{can only be proved
+secure in a weak sense}, and another analysis finds that the scheme
+\textcquote[abstract]{Guan2022FormalFIDO2}{fails to achieve some strong
+authentication properties}.
+A later analysis of the current protocol versions finds that their
+resistance to downgrade
+\textcquote[abstract; \abso]{Bindel2023ProvableFIDO2}{can be improved}.
+One demonstrated attack on the protocol between client and token deletes
+the user's keys without logging in as the user
+\parencite{Casagrande2025CTRAPS}.
+We found no formal result that covers recovery, sessions and malware
+for a whole account.
+A proof is in any case weaker evidence here than it looks: of the many
+multi-factor schemes published with a proof,
+\textcquote[abstract; \abso]{Wang2023Proofs}{most of them have been
+shortly found to be insecure}, and a recent analysis found
+vulnerabilities in ten more \parencite{Ang2025Excavating}.
+No source separates a key with a password from a key with user
+verification, so the two rows rest on the same evidence.
+
+\Cref{h:sufficient} is supported: no multi-factor case is sufficient
+against all the threats of \cref{tab:threats}.
+The strength of that conclusion differs.
+It is strong for codes and push approvals, where the failures are
+observed.
+For keys it rests on demonstrated possibility, and it holds because the
+threat model includes what happens around the authenticator.
+Against phishing alone, the evidence found gives no reason to call a
+key insufficient.
+
+\subsection{Necessity}\label{sec:res-necessary}
+
+By the rule of \cref{sec:synthesis}, multi-factor authentication is not
+necessary against a set of threats if a single-factor row resists all
+of them.
+Three single-factor alternatives were examined.
+
+\paragraph{A key alone}
+The standards treat a key without user verification as a legitimate
+single-factor authenticator.
+The guideline's lowest level
+\textcquote[sec.~2.1]{NIST2025SP80063B}{requires either single-factor or
+multi-factor authentication}, and it attributes resistance to phishing
+to the cryptographic authenticator whether single- or multi-factor
+(\cref{sec:res-standards}).
+The scheme
+\textcquote[sec.~1]{Kunke2021Recovery}{allows strong cryptographic
+single factor authentication}, and one analysis judges that
+\textcquote[abstract; \abso]{AlQubaisi2020Rush}{password-based
+authentication is less secure than FIDO SF authentication}.
+But the search found no source that tests a key alone against a
+multi-factor case, for any threat.
+The comparisons that exist, above all the cyber security centre's, are
+for a key with user verification, which is multi-factor.
+
+\paragraph{Risk-based authentication}
+Here the service judges each login from its context and asks for more
+only when the login looks unusual.
+Replaying attacks on a record of 31.3 million login attempts at a real
+service, the largest study concludes:
+\textcquote[p.~6:28]{Wiefling2022PumpUp}{we consider RBA an effective
+measure to protect users from the majority of attacks involving stolen
+passwords}.
+It has limits.
+At large services
+\textcquote[abstract]{Makowski2023RBA}{several test cases rarely trigger
+the RBA system}, the criminal service of \cref{sec:res-effect} defeats
+it with stolen profiles \parencite{Campobasso2020IMPaaS}, phishing sites
+can copy the browser fingerprints it relies on
+\parencite[\abso]{Lin2022PhishSheep}, and on mobile devices those
+fingerprints are too alike to tell users apart
+\parencite[\abso]{Spooren2015Fingerprinting}.
+Nor is it an alternative with one factor: when it does ask for more,
+\textcquote[conclusion]{Wiefling2019ReallyYou}{verification codes are
+currently the unwritten standard}, so it rations a second factor
+without replacing it, and the guideline rules that such signals do not
+\textcquote[sec.~2]{NIST2025SP80063B}{substitute for an authentication
+factor}.
+
+\paragraph{A strong, unique password}
+It resists guessing and reuse and nothing else in \cref{tab:remote}.
+The cyber security centre advises it together with a second step where
+passkeys are not available \parencite{NCSC2026PasskeysPage}.
+Two web searches for a measured comparison of such passwords with
+multi-factor authentication returned no study.
+
+\paragraph{What is required}
+The authorities require more than one factor at their upper levels.
+At the guideline's second level
+\textcquote[sec.~2.2]{NIST2025SP80063B}{Proof of possession and control
+of two distinct authentication factors through the use of secure
+authentication protocols is required}; the United States government
+tells its agencies that for staff
+\textcquote[p.~5]{OMB2022ZeroTrust}{phishing-resistant MFA is required}
+and gives as reason
+\textcquote[p.~7]{OMB2022ZeroTrust}{that enterprise users are among the
+most valuable targets for phishing}.
+An earlier white paper likewise argues for multi-factor authentication
+of privileged users in place of passwords
+\parencite[\abso]{NIST2016PIVPrivileged}.
+The United Kingdom's centre now recommends
+\textcquote{NCSC2026PasskeysBlog}{passkeys wherever a service supports
+them, and two-step verification (2SV) where it does not}, and advises
+services against asking for a second factor at every login
+\parencite{NCSC2026Methods}.
+A requirement shows what experts agree on (E5), not that fewer factors
+would fail.
+The reason these texts give is phishing, and the property they ask for
+is one that the same guideline grants a single-factor key.
+
+\Cref{h:necessary} is neither refuted nor established.
+The evidence supports a weaker statement: against the remote threats it
+is the binding of a key to the service that protects, not the number of
+factors, so the standards' own reasoning does not make several factors
+necessary there.
+The stronger statement, that a key alone resists the remote threats as
+well as the multi-factor cases, is untested.
+Two further facts limit it.
+No case in \cref{tab:remote}, with one factor or several, resists
+session theft or weak recovery, so there is no secure single-factor row
+by the rule above, and no secure multi-factor row either.
+And a key alone protects a lost device with nothing: that follows from
+what case \case{C} is and needs no source, which is also why none of the
+sources bothers to test it.
 
 
 \section{Discussion and limitations}\label{sec:discussion}
 
-Not yet written.
+The four answers fit one picture.
+Against attackers at a distance, authentication is about as strong as
+its strongest factor.
+A second factor helps a weak password a great deal, which is what the
+measurements show, and helps a strong password only against the threats
+that the second factor itself resists.
+Once a factor is present that cannot be phished, the others add nothing
+that the sources could show.
+A second factor does its own work in one place, when the device is in
+the wrong hands, and there it must be something the device does not
+hold.
+Several factors is therefore the wrong thing to count: what matters is
+which threats each factor resists and whether the factors can be lost
+together.
+
+This picture is our reading of evidence of unequal strength, and the
+following limits apply.
+\begin{description}
+  \item[Kinds of evidence] Only the first question is answered from
+    measurements of real accounts, and those are mostly the providers'
+    own, without random assignment.
+    The other three rest on demonstrations, analysis and one authority's
+    assessment.
+    That assessment fills many cells of
+    \cref{tab:remote,tab:local} alone, gives no method, and comes from a
+    body that recommends passkeys.
+  \item[What was not found] No measurement isolates one factor.
+    No source tests a key alone.
+    Nothing was found on stolen server credentials (\threat{R2}) or
+    shared devices (\threat{L2}), for which the queries had no terms.
+    Absence from a capped search is weak evidence of absence.
+  \item[The search] At most 40 records were taken per query and
+    database, and many queries reached that limit.
+    Two databases, Semantic Scholar and DBLP, could not be searched, and
+    IEEE Xplore answered only the planned queries.
+    One database returns no abstracts, so some records were classified
+    on their titles.
+  \item[Reading] A third of the sources cited were read only as
+    abstracts, among them the only null result for the first question
+    and the experiments on push approval and deceptive overlays.
+    An abstract states what the authors conclude and cannot be checked
+    against their data.
+  \item[Screening] One language model screened each question, and its
+    decisions were checked by the same kind of model.
+    For the first question it misfiled every supporting study.
+    Whatever a model misses systematically, a second run of a model is
+    likely to miss as well; no human screened the records.
+  \item[Recency] Several of the sources on attacks against keys are
+    preprints from 2025 and 2026.
+    Their findings have not been reviewed, and products may have been
+    fixed since.
+  \item[Unmeasured dimensions] The review asks only about security.
+    Usability, availability and the cost of losing a factor decide what
+    can be deployed, and adoption decides the effect, as the difference
+    between mandatory and optional use suggests.
+\end{description}
 
 
 \section{Conclusions}\label{sec:conclusions}
 
-Not yet written.
+Multi-factor authentication is not sufficient for secure authentication
+of users, and the literature does not show it to be necessary against
+attackers at a distance; it is needed, in a limited sense, against the
+loss of the device.
+The answers to the four questions follow.
+
+\rqeffect*
+Yes.
+Every measurement found shows less compromise with a second factor.
+The size is not well established: the two providers' measurements are
+above 94 per cent, one provider's own statement is 50 per cent,
+independent studies report between 10 and 43 per cent, and optional use
+showed no effect at two banks.
+Codes by text message do worse than apps and prompts, and keys best.
+\Cref{h:effect} holds in direction, and in part as to size.
+
+\rqattribution*
+Against remote threats, to the strength of one factor.
+No source shows a password adding protection beside a cryptographic key
+bound to the service, and a weak second factor adds little beside a
+strong password.
+Against local threats a second factor adds protection if it is not kept
+on the same device, and a remembered password is such a factor.
+\Cref{h:attribution} is supported in its first half and corrected in
+its second.
+None of this rests on measurement.
+
+\rqsufficient*
+No.
+Codes and push approvals are defeated in use, by relayed logins, by
+taking over the phone number and by tired users.
+Keys have not been shown defeated from a distance, but accounts
+protected by them can be entered through fallback methods, recovery,
+stolen sessions and malware, as demonstrations show.
+\Cref{h:sufficient} is supported, strongly for codes and push approvals
+and on demonstrated possibility for keys.
+
+\rqnecessary*
+Not shown either way.
+What protects against the remote threats is a key bound to the service,
+which the standards allow as a single factor, but no source tests a key
+alone, and the strongest evidence is for a key with user verification,
+which is multi-factor.
+Risk-based authentication and strong passwords are not substitutes.
+Against a lost device a key alone protects nothing.
+\Cref{h:necessary} is neither refuted nor established.
+
+For the recommendation that prompted the question this means that
+\enquote{use multi-factor authentication} is sound advice as a
+correction of weak passwords, and that the advice which the evidence
+supports better is narrower: use a factor that cannot be phished, and
+protect it against loss of the device with something the device does
+not hold.
 
 
 \section{Future work}\label{sec:future}
 
-Not yet written.
+Some of what this review left undone can be completed without new
+research.
+The 21 sources read only as abstracts should be read in full, first the
+study of mandatory and optional use at banks
+\parencite{Kamar2026TwoFactorBanks} and the experiments on push
+approvals and overlays
+\parencite{Jubur2021PushBypass,Mahdad2024FIDOLA}; four of the 21 are
+freely available and were obtained too late to be read through.
+Three documents could not be retrieved at all (\cref{sec:dropped}).
+The four failed searches in IEEE Xplore should be repeated, and all
+queries run on Semantic Scholar and DBLP.
+A second, human screener should classify a sample of the records, to
+measure what the model missed.
+
+The questions that the evidence leaves open need new studies.
+\begin{itemize}
+  \item A measurement of compromise that separates the cases: accounts
+    with a key alone, a key with user verification, and a password with
+    a key, at one provider.
+    If a password beside a key showed a measurable benefit, the answer
+    to \cref{rq:attribution} would change; if a key alone did as well as
+    the others, \cref{rq:necessary} would be answered with a no for the
+    remote threats.
+  \item A study of device loss in use: how often a stolen device leads
+    to a compromised account, with and without user verification, and
+    with what kind of PIN.
+  \item A measurement with a comparison group of a strong, unique
+    password against the same password with a second factor.
+  \item Reports of incidents involving keys.
+    The absence of any documented takeover of an account protected by a
+    key is the weakest point of the conclusion on sufficiency: one such
+    report would turn demonstrated possibility into observed fact.
+\end{itemize}
+This rapid review maps the ground.
+The two questions on attribution and necessity are now precise enough
+for the systematic review that \cref{sec:reviewtype} set aside.
 
 
 \appendix
 
 \section{Queries and records found}\label{sec:hitlists}
 
-Not yet written: the search has not been run.
+For each question this appendix gives the queries with the number of
+records each database returned, and the list of the records that bear
+on the question.
+All searches were run on 12 November 2026 with the tool
+\texttt{scholar}.
+$M$ and $K$ are the term blocks of \cref{sec:queries}; $K'$ is $K$
+without \q{single-factor} and with \kw{passkeys} added.
+Web of Science received each query as \texttt{TS=(\dots)} and Scopus as
+\texttt{TITLE-ABS-KEY(\dots)}, the other databases as written.
+At most 40 records were taken per query and database, so 40 means
+\enquote{at least 40}.
+In the lists, a record marked \emph{cited} was read and is cited in the
+report; the others carry the model's classification and its confidence.
+
+% Author's note (verification and reproduction), all five searches:
+%   scholar sessions : mfa-effect, mfa-attribution, mfa-sufficient,
+%                      mfa-necessary, mfa-method
+%   exports          : search/<session>.csv (classified session),
+%                      search/<session>-full.tex (the tables input below)
+%   searched         : 2026-11-12; providers openalex wos scopus ieee arxiv
+%                      (s2: key rejected, HTTP 403 -- not searched; dblp:
+%                      anti-bot page, HTTP 202 text/html -- not searched;
+%                      ieee: daily quota of 200 requests exhausted after the
+%                      planned queries -- four added queries failed)
+%   classification   : scholar llm context + llm classify --no-examples
+%                      -t supports-claim -t qualifies-claim
+%                      -t adjacent-subtopic -t off-topic-false-hit;
+%                      model anthropic/claude-sonnet-5-5 (mfa-effect:
+%                      anthropic/claude-opus-4-8); human overrides 52
+%                      (effect), 14 (attribution), 15 (sufficient), 9
+%                      (necessary), written partly by editing the session
+%                      files because `sessions decide` only appends tags
+%   hit-list tables  : scholar sessions export <session> -f table
+%                      --bearing-only --lang en --label hits-<name>
+%                      --track "<title>" --theme TAG="name" ...
+%                      (themes: effect measured-effect, bypass-attack;
+%                      attribution local-malware, key-resists-remote,
+%                      fallback-recovery, synced-passkeys,
+%                      second-factor-weakness, formal-analysis; sufficient
+%                      aitm, recovery, fidoatk, analysis; necessary RBA,
+%                      FIDO, REC, STD, ATT; method review-types,
+%                      shortcut-cost)
+%   provenance       : mfa.bib, one block per use of a source
+
+\subsection{Effect}
+
+\begin{table}[h]
+  \begin{sidecaption}{%
+    Queries for \cref{rq:effect} and records returned by OpenAlex (OA;
+    not open access), Web of Science (WoS), Scopus, IEEE Xplore (IEEE)
+    and arXiv.
+    S: worded to find support for the hypothesis, C: against it; an
+    asterisk marks a query added after the first run.
+  }[tab:q-effect]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+      \toprule
+      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      \midrule
+      S1 & as in \cref{tab:planned} & 40 & 9 & 13 & 5 & 2 \\
+      S2 & as in \cref{tab:planned} & 40 & 9 & 16 & 8 & 1 \\
+      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 40 \\
+      S3* & $M$ \kw{AND} (\q{compromised accounts} \kw{OR} \q{account
+        compromise} \kw{OR} \q{account takeover} \kw{OR} \kw{hijacking}
+        \kw{OR} \kw{hijacked}) \kw{AND} (\kw{reduces} \kw{OR}
+        \kw{reduction} \kw{OR} \q{real-world} \kw{OR} \q{large-scale}
+        \kw{OR} \kw{prevented} \kw{OR} \kw{blocks})
+        & 40 & 25 & 29 & 18 & 3 \\
+      S4* & $M$ \kw{AND} (\kw{adoption} \kw{OR} \kw{deployment} \kw{OR}
+        \kw{enabled}) \kw{AND} (\kw{compromised} \kw{OR} \kw{breach}
+        \kw{OR} \kw{hijacked} \kw{OR} \q{account takeover}) \kw{AND}
+        (\kw{users} \kw{OR} \kw{accounts} \kw{OR} \kw{customers})
+        & 40 & 39 & 40 & 40 & 10 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+Outside the databases, seven web searches were made for measurements by
+providers and for studies of self-selection among users of a second
+factor; they led to the two provider statements cited and to the study
+of Canadian banks, and found no study of self-selection.
+
+\input{search/mfa-effect-full}
+
+\subsection{Attribution}
+
+\begin{table}[h]
+  \begin{sidecaption}{%
+    Queries for \cref{rq:attribution} and records returned; columns and
+    marks as in \cref{tab:q-effect}.
+  }[tab:q-attribution]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+      \toprule
+      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      \midrule
+      S1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 15 \\
+      S2 & as in \cref{tab:planned} & 40 & 6 & 23 & 26 & 1 \\
+      C1 & as in \cref{tab:planned} & 40 & 12 & 21 & 8 & 1 \\
+      C2 & as in \cref{tab:planned} & 40 & 39 & 40 & 40 & 10 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+Outside the databases, six web searches were made for standards and
+guidance on how keys with and without user verification are classified;
+they led to the guideline, the web standard, and the papers of the
+United Kingdom's and the United States' agencies.
+One standard, ISO/IEC 29115, is sold and was not obtained.
+
+\input{search/mfa-attribution-full}
+
+\subsection{Sufficiency}
+
+\begin{table}[h]
+  \begin{sidecaption}{%
+    Queries for \cref{rq:sufficient} and records returned; columns and
+    marks as in \cref{tab:q-effect}.
+    Here S is worded to find attacks and C to find evidence of security.
+    \enquote{--} means that the search failed: the daily quota of IEEE
+    Xplore was used up.
+  }[tab:q-sufficient]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+      \toprule
+      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      \midrule
+      S1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 18 \\
+      S2 & as in \cref{tab:planned} & 40 & 21 & 37 & 19 & 3 \\
+      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 2 \\
+      S3* & ($K'$) \kw{AND} (\kw{attack} \kw{OR} \kw{bypass} \kw{OR}
+        \kw{downgrade} \kw{OR} \kw{vulnerability} \kw{OR} \kw{phishing}
+        \kw{OR} \q{man-in-the-middle} \kw{OR}
+        \q{adversary-in-the-middle} \kw{OR} \q{account recovery} \kw{OR}
+        \q{session hijacking} \kw{OR} \kw{malware})
+        & 40 & 40 & 40 & -- & 40 \\
+      C2* & ($K'$) \kw{AND} (\q{formal verification} \kw{OR} \q{formal
+        analysis} \kw{OR} \q{provable security} \kw{OR} \q{security
+        proof} \kw{OR} \q{phishing-resistant} \kw{OR} \q{security
+        analysis})
+        & 40 & 40 & 40 & -- & 40 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+Outside the databases, ten web searches were made for reviews of
+incidents by public authorities and for reports by providers; they led
+to the review of the Lapsus\$ intrusions, the guidance on
+phishing-resistant authentication, and the three provider reports cited.
+News articles were not used.
+
+\input{search/mfa-sufficient-full}
+
+\subsection{Necessity}
+
+\begin{table}[h]
+  \begin{sidecaption}{%
+    Queries for \cref{rq:necessary} and records returned; columns and
+    marks as in \cref{tab:q-effect,tab:q-sufficient}.
+    Here S is worded to find alternatives to several factors and C to
+    find evidence that several are needed.
+  }[tab:q-necessary]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+      \toprule
+      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      \midrule
+      S1 & as in \cref{tab:planned} & 40 & 30 & 28 & 27 & 2 \\
+      S2 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 12 \\
+      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 40 \\
+      C2 & as in \cref{tab:planned} & 40 & 27 & 36 & 14 & 1 \\
+      S3* & ($K$) \kw{AND} (\kw{phishing} \kw{OR} \q{account takeover}
+        \kw{OR} \q{credential stuffing}) \kw{AND} (\kw{evaluation}
+        \kw{OR} \kw{measurement} \kw{OR} \q{security analysis} \kw{OR}
+        \q{formal analysis})
+        & 40 & 12 & 20 & -- & 8 \\
+      C3* & $M$ \kw{AND} (\q{assurance level} \kw{OR}
+        \q{phishing-resistant} \kw{OR} \q{NIST SP 800-63B} \kw{OR}
+        \q{strong customer authentication})
+        & 40 & 13 & 21 & -- & 1 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+One search of Web of Science timed out and was repeated unchanged.
+Outside the databases, six web searches were made for standards,
+regulations and guidance, and two for measured comparisons of strong
+passwords and of keys with multi-factor authentication; the latter two
+returned only vendors' pages, which are not cited.
+
+\input{search/mfa-necessary-full}
+
+\subsection{Types of review}\label{sec:hits-method}
+
+The claims of \cref{sec:reviewtype} about types of review and about what
+the shortcuts of a rapid review cost were backed by a search of their
+own, with one query in each direction.
+The course reading cited there was retrieved as a known document and
+is not among the records.
+\begin{table}[h]
+  \begin{sidecaption}{%
+    Queries on types of review and records returned; columns as in
+    \cref{tab:q-effect}.
+    S: worded to find definitions of the types, C: to find what
+    shortcuts cost or do not cost.
+  }[tab:q-method]
+    \footnotesize
+    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+      \toprule
+      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      \midrule
+      S1 & \q{rapid review} \kw{AND} \q{scoping review} \kw{AND}
+        \q{systematic review} \kw{AND} (\kw{typology} \kw{OR} \q{review
+        types} \kw{OR} \kw{definitions} \kw{OR} \kw{methodologies})
+        & 40 & 19 & 40 & 1 & 0 \\
+      C1 & \q{rapid review} \kw{AND} (\q{single reviewer} \kw{OR}
+        \q{single screening} \kw{OR} \kw{shortcuts} \kw{OR}
+        \q{streamlined}) \kw{AND} (\kw{bias} \kw{OR} \kw{accuracy}
+        \kw{OR} \q{missed studies} \kw{OR} \kw{limitations})
+        & 40 & 35 & 40 & 1 & 0 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\input{search/mfa-method-full}
+
+
+\section{Sources dropped and documents not obtained}\label{sec:dropped}
+
+Three sources that a search run had cited were dropped in the second
+check.
+\begin{itemize}
+  \item A report of laboratory trials of keys against relayed logins,
+    published by its single author in a repository without review, of
+    which only the abstract could be read (DOI 10.5281/zenodo.23955576).
+    The claims it supported are carried by other sources.
+  \item A trade-press article of 2006 about guidance from United States
+    banking regulators, known only from a garbled abstract.
+    It reports the guidance at second hand; the guidance itself could
+    not be retrieved.
+  \item Two studies of multi-factor authentication at a university and
+    in banking in Ghana (DOIs 10.56201/ijcsmt.vol.12.no1.2026.pg144.154
+    and 10.37602/ijssmr.2025.8106), whose abstracts state no size of
+    effect.
+\end{itemize}
+Three documents that the questions call for could not be retrieved,
+because the issuing site refused automated retrieval or the text is
+sold.
+\begin{itemize}
+  \item The European Union's regulatory technical standard on strong
+    customer authentication, Delegated Regulation (EU) 2018/389.
+  \item The guidance of 2005 on authentication in internet banking by
+    the United States Federal Financial Institutions Examination
+    Council.
+  \item ISO/IEC 29115, the international standard on assurance of
+    entity authentication.
+\end{itemize}
