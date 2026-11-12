@@ -1,0 +1,65 @@
+\usepackage{iftex}
+\ifpdftex
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+\usepackage[british]{babel}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{subcaption}
+
+% Verbose citations: with memoir and didactic the full reference is set as
+% a margin note at first use.
+\usepackage[
+  natbib,
+  backend=biber,
+  style=verbose,
+  citestyle=verbose,
+  singletitle=false,
+  maxbibnames=99,
+]{biblatex}
+\addbibresource{mfa.bib}
+
+\usepackage[all]{foreign}
+\renewcommand{\foreignfullfont}{}
+\renewcommand{\foreignabbrfont}{}
+
+\usepackage[strict]{csquotes}
+\SetCiteCommand{\autocite}
+
+\usepackage{xparse}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+
+\usepackage{didactic}
+
+\usepackage[capitalize]{cleveref}
+
+% Research questions use didactic's question environment; hypotheses are
+% numbered separately.
+\DeclareTranslation{English}{Hypothesis}{Hypothesis}
+\DeclareTranslation{English}{hypothesis}{hypothesis}
+\DeclareTranslation{English}{hypotheses}{hypotheses}
+\DeclareTranslation{English}{Hypotheses}{Hypotheses}
+\ProvideSemanticEnv{hypothesis}[block]{Hypothesis}
+  {hypothesis}{hypotheses}{Hypothesis}{Hypotheses}
+
+% A search phrase, as typed into a database.
+\NewDocumentCommand{\q}{m}{\texttt{\textquotedbl #1\textquotedbl}}
+\NewDocumentCommand{\kw}{m}{\texttt{#1}}
+% The cases compared (see the table of cases).
+\NewDocumentCommand{\case}{m}{\textsf{#1}}
+% A threat of the threat model (see the table of threats).
+\NewDocumentCommand{\threat}{m}{\textsf{#1}}
+
+% The article's sections are memoir chapters; name them as the prose does.
+\AtBeginDocument{%
+  \crefname{chapter}{Section}{Sections}%
+  \Crefname{chapter}{Section}{Sections}%
+  \crefname{appendix}{Appendix}{Appendices}%
+  \Crefname{appendix}{Appendix}{Appendices}%
+}

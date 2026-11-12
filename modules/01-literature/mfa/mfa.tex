@@ -1,0 +1,32 @@
+\documentclass[a4paper,10pt,article,oneside]{memoir}
+\let\subsubsection\subsection
+\let\subsection\section
+\let\section\chapter
+\marginparmargin{outer}
+
+\input{preamble.tex}
+
+\usepackage[inline]{enumitem}
+
+\title{%
+  Is multi-factor authentication necessary or sufficient for secure
+  authentication of users?\\
+  \large A rapid review of the literature%
+}
+% XXX Author line and the wording of the AI disclosure to be confirmed.
+\author{Daniel Bosk\thanks{%
+  Searches, screening and drafting were carried out with Claude Code
+  (Anthropic), see \cref{sec:screening}.%
+}}
+\date{Draft 2026-11-12}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  \input{abstract.tex}
+\end{abstract}
+
+\input{contents.tex}
+
+\printbibliography
+\end{document}
