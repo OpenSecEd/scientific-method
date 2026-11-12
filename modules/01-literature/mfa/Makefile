@@ -4,6 +4,7 @@ all: mfa.pdf
 SRC+=		preamble.tex abstract.tex contents.tex
 SRC+=		mfa.bib
 SRC+=		$(wildcard search/*.tex)
+SRC+=		asta-mfa-report.pdf
 
 mfa.pdf: mfa.tex ${SRC}
 

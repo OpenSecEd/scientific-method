@@ -1,7 +1,6 @@
 # The sources of Asta's report, and how they relate to this review
 
-Asta's report (`../Necessity and Sufficiency of MFA for Secure User
-Authentication.pdf`, created 2026-11-12 15:45) cites 41 sources, each linked
+Asta's report (`../asta-mfa-report.pdf`, created 2026-11-12 15:45) cites 41 sources, each linked
 to a Semantic Scholar record. The table lists them in the order of first
 citation. Titles, venues, citation counts and DOIs are from Semantic
 Scholar's public API (one batch request by corpus id, 2026-11-12).
