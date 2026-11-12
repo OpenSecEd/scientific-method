@@ -334,6 +334,7 @@ service providers are often not indexed in these databases.
 They are looked for with a web search, whose queries are recorded, and
 then retrieved from the issuing organisation.
 
+\needspace{8\baselineskip}
 \subsection{Queries}\label{sec:queries}
 
 All queries share the block of terms
@@ -1393,6 +1394,11 @@ The two questions on attribution and necessity are now precise enough
 for the systematic review that \cref{sec:reviewtype} set aside.
 
 
+% The review's own sources.  The appendix that compares the review with
+% Asta's report is a reference section of its own, with its own list.
+\printbibliography[section=0]
+
+
 \appendix
 \crefalias{chapter}{appendix}
 
@@ -1940,3 +1946,306 @@ What it does show is where the corrections came from: a quotation held
 against its source, a paper read past its abstract, a version history,
 a question from the author.
 None came from the text reading well.
+
+
+\begin{refsection}
+\section{Comparison with a report by Asta}\label{sec:asta}
+
+The author gave the first instruction of the session, \enquote{Please
+research whether multi-factor authentication (MFA) is necessary or
+sufficient for secure authentication of users}, word for word to Asta,
+a research assistant of the Allen Institute for AI, and saved its
+answer, a report of twelve pages \autocite{Asta2026Report}.
+This appendix compares the two results: what each has that the other
+lacks.
+Nothing in the review was changed on account of Asta's report; a study
+that Asta found and we did not is named here only, and the sources
+cited in this appendix are listed at its end, apart from the review's.
+
+Four cautions apply.
+Asta was given one instruction, while this review was directed further
+by the author and took a working day.
+There is one run of each, and either could have come out differently.
+The kinds of Asta's sources are judged here from their titles, where
+they were published and the passages Asta quotes, without reading them.
+And the comparison is made by the language model that made the review,
+which thus judges its own work against another's.
+For that reason the record is kept: Asta's report is reproduced in
+\cref{sec:asta-report}, and the directory \texttt{session} holds a
+table of its 41 sources with our judgement of each.
+
+\subsection{The two answers}
+
+\Cref{tab:asta} sets the answers and the methods side by side.
+The two agree that multi-factor authentication is not sufficient, and
+for overlapping reasons: weak recovery, codes that can be phished or
+intercepted, relayed logins, tired users and stolen sessions.
+Both end by recommending factors that resist phishing.
+They differ on necessity.
+\begin{table}
+  \begin{sidecaption}{%
+    The review and Asta's report compared.
+    Numbers of sources by kind are in \cref{tab:asta-kinds}.
+  }[tab:asta]
+    \footnotesize
+    \begin{tabular}{@{}p{0.19\linewidth}p{0.37\linewidth}p{0.36\linewidth}@{}}
+      \toprule
+      & This review & Asta's report \\
+      \midrule
+      Sufficient?
+        & No; for each kind of second factor, what defeats it
+        & No; reasons listed for multi-factor authentication as a
+          whole \\
+      Necessary?
+        & Not shown either way; against remote threats the protection
+          is that of one key
+        & \enquote{Often necessary}, argued from the weakness of
+          passwords \\
+      Compared with
+        & A chosen password, a strong password, a key alone, a key
+          with user verification
+        & Passwords, as \enquote{single-factor authentication} \\
+      Threats
+        & Eleven, stated before the search
+        & Named where they come up \\
+      Measured effect
+        & Five studies of real accounts, two providers' statements
+        & One figure, at second hand \\
+      Standards
+        & Read directly
+        & At second hand, through two articles \\
+      Sources
+        & 64, of which 57 on the questions
+        & 41 \\
+      Record of the search
+        & Queries, databases, date, counts, every record classified
+        & None in the report \\
+      Record per citation
+        & The passage and its place, how the source was found, whether
+          the full text was read
+        & The passage, and a link to the source \\
+      Marked as unverified
+        & Sources read only as abstracts (16)
+        & Statements not taken from a source (5) \\
+      Length
+        & 22 pages and appendices
+        & 12 pages \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{The sources}
+
+The two sets of sources hardly overlap.
+Of Asta's 41 sources, two are among ours, the analyses of proofs and of
+protocols cited in \cref{sec:res-sufficient}.
+Five more were returned by our searches and not cited: four were
+classified as adjacent and one as narrowing.
+The other 34 were not returned by our searches at all.
+Of our 57 sources on the questions, Asta's report has the same two.
+
+\Cref{tab:asta-kinds} shows why.
+Asta drew mostly on reviews and on papers that propose a scheme or
+system, and quoted what they say about multi-factor authentication in
+general, often from their introductions.
+Our criteria (\cref{sec:criteria}) counted such papers as adjacent and
+asked for studies, attacks, analyses and standards.
+\begin{table}
+  \begin{sidecaption}{%
+    Sources by kind.
+    The classification is ours for both sets; for Asta's sources it was
+    made without reading them.
+    For this review the seven sources on review methods are left out.
+  }[tab:asta-kinds]
+    \footnotesize
+    \begin{tabular}{@{}p{0.60\linewidth}rr@{}}
+      \toprule
+      Kind of source & This review & Asta \\
+      \midrule
+      Study of deployed authentication, real accounts or incidents
+        & 15 & 1 \\
+      Attack shown in a test & 14 & 0 \\
+      Analysis of schemes or protocols & 12 & 3 \\
+      Standard or guidance from an authority & 9 & 0 \\
+      Provider's report & 5 & 0 \\
+      Review or overview & 1 & 22 \\
+      Proposal of a new scheme or system & 0 & 11 \\
+      Other & 1 & 4 \\
+      \midrule
+      All & 57 & 41 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{What Asta's report has that this review lacks}
+
+\begin{description}
+  \item[A study of recovery that we missed] Asta cites a study in which
+    the authors set up multi-factor authentication at 71 websites and
+    then tried to recover the accounts.
+    They report
+    \textcquote[abstract]{Klivan2023Recovery}{that many websites deploy
+    insecure Multi-Factor Authentication recovery procedures and allowed
+    us to circumvent and disable Multi-Factor Authentication when having
+    access to the accounts' associated email addresses}.
+    It bears directly on threat \threat{R8}.
+    None of our searches returned it.
+    Our query asked for the phrase \q{account recovery}, and the paper
+    speaks of recovery procedures; and Semantic Scholar, to which all of
+    Asta's sources are linked, was the database we could not search.
+  \item[What else is needed] Asta's report has a section on controls
+    beside multi-factor authentication: protected transport, careful
+    handling of tokens and sessions, and checks that adapt to the risk
+    of a login.
+    This review says what fails and stops there.
+  \item[Use in practice] Asta mentions lockout when a factor is lost,
+    cost, users' frustration, and that a check at login says nothing
+    about who holds the session later.
+    We excluded usability by our criteria and note the gap in
+    \cref{sec:discussion}.
+  \item[A direct answer] Asta's report answers the question in its
+    first lines and in twelve pages.
+\end{description}
+
+\subsection{What this review has that Asta's report lacks}
+
+\begin{description}
+  \item[Terms fixed before the search] The review says what counts as
+    multi-factor authentication, which cases are compared and which
+    threats count (\cref{sec:terms,sec:threats}).
+    Asta's report defines multi-factor authentication and compares it
+    with passwords.
+  \item[Measurements of the effect] The studies of real accounts in
+    \cref{sec:res-effect}, with the null result for optional use.
+    Asta's one figure is the Microsoft measurement, reached through a
+    paper on password management that reports it
+    \autocite{Ngandu2025PasswordManagement}: correct, but as the share
+    of protected accounts that stayed secure, without the comparison
+    with unprotected ones.
+  \item[The standards themselves] Asta's statement on assurance levels
+    rests on an article that it quotes as saying that the standards
+    institute
+    \textcquote[quoting one of its sources]{Asta2026Report}{now requires
+    AAL2 compliance, which mandates multi-factor authentication, for
+    systems managing controlled unclassified information}.
+    The revision of the guideline that we read does not say this; it
+    sets the second level as the minimum where personal information is
+    made available online \autocite[sec.~2]{NIST2025SP80063B}.
+    The standards' classification of a key with and without user
+    verification, on which our answer to necessity turns, is absent
+    from Asta's report.
+  \item[Attacks and incidents at first hand] The review of real
+    intrusions, the tests of relayed logins, push approvals, local
+    attacks and downgrade, and the formal analyses of the key-based
+    protocols (\cref{sec:res-table}).
+    Asta names most of these attacks, from reviews.
+  \item[The question of attribution] Whether the benefit comes from
+    several factors or from one strong one.
+    That question came from the author during the session.
+    But the cases with a single strong factor were in our plan before
+    the author's comment; that first version of the plan is kept in the
+    record of the session.
+  \item[What was not found] The review reports the searches for the
+    opposite, the cells without evidence and the sources not read.
+    Asta's report does not say what it looked for and did not find.
+\end{description}
+
+\subsection{Why the answers on necessity differ}
+
+Asta argues that
+\textcquote{Asta2026Report}{MFA is often necessary because one factor
+alone, especially a password, is too easy to steal, guess, reuse, or
+phish}.
+All fifteen sources of that section set multi-factor authentication
+against passwords, or against single-factor authentication in general;
+none considers a single factor that is not a password.
+The step from \enquote{passwords are too weak} to \enquote{several
+factors are needed} passes over the possibility of one strong factor,
+which is where this review ends up (\cref{sec:res-necessary}).
+Asta's own closing section grants that multi-factor authentication
+\textcquote{Asta2026Report}{is not a universal logical requirement in
+every situation}.
+
+The same section relays an argument that the review's results speak
+against.
+One of its sources, as quoted, describes multi-factor authentication as
+\textcquote[quoting one of its sources]{Asta2026Report}{utilizing the
+multiplication rule of probability to achieve exponential improvements
+in security}, and Asta summarises that adding factors helps
+\textcquote{Asta2026Report}{because all of them must be defeated
+together}.
+The rule holds for factors that fail independently.
+Those in use often do not: a relayed login takes password and code in
+one step (\threat{R4}), and a stolen phone can hold the password
+manager, the code generator and the passkey at once (\threat{L1}).
+Asta's section on insufficiency names relayed logins among the attacks,
+but the report does not carry them back to its argument for necessity.
+
+\subsection{What can be checked in each}
+
+Asta's report states no method.
+It names no queries, databases, date or criteria and no number of
+records examined, so its search can neither be examined nor repeated
+from the report.
+
+What it does give can be checked, and holds up.
+Every source is linked, and all 41 links lead to a record with the
+title Asta gives.
+Each citation comes with the passage relied on.
+We compared five such passages with the full texts of three sources
+\autocite{Klivan2023Recovery,Ngandu2025PasswordManagement,Husak2016HTTPS}
+and found all five word for word.
+And statements that are not taken from a source carry a label saying
+so, in five places.
+
+The passages and labels also show two weaknesses.
+\begin{description}
+  \item[The answer itself has no source] The closing section, which
+    answers the question, carries only the labels for statements
+    generated by the model.
+  \item[Citations at second hand] Four sources are cited for a claim
+    that the passage shown from them does not contain.
+    In each case another quoted source cites them for it: a paper that
+    proposes a protocol stands for attacks by fatigue, an overview of
+    cloud computing for the interception of text messages, a protocol
+    for devices for threats from insiders, and a paper on recognising
+    browsers from encrypted traffic for encryption as a defence.
+    We read the last of these: it mentions neither multi-factor
+    authentication nor attacks by a man in the middle
+    \autocite{Husak2016HTTPS}.
+\end{description}
+This review has its own form of the second weakness, in the sixteen
+sources read only as abstracts, and \cref{sec:wrong} shows what that
+cost.
+
+\subsection{What the comparison shows}
+
+With one run of each, not much.
+Two systems given the same sentence agreed on sufficiency and differed
+on necessity, and the difference can be traced to two things that the
+sentence did not ask for: fixing what is compared with what before
+searching, and deciding which kinds of source count as evidence.
+In this session both came from the protocol.
+Whether Asta would do the same if told to was not tried.
+The comparison also gave something back: a second, independent search
+found a study that ours had missed.
+
+\printbibliography[heading=subbibliography,title={Sources cited in this appendix}]
+\end{refsection}
+
+
+\section{Asta's report}\label{sec:asta-report}
+
+The twelve pages that follow reproduce the report by Asta that
+\cref{sec:asta} discusses, as the author saved it on 12 November 2026,
+unchanged.
+In the original each citation is a link to the source's record at
+Semantic Scholar.
+The links are lost in this reproduction; they are in the file kept with
+the source of this report, and the record of the session lists the
+sources with their identifiers.
+
+\includepdf[pages=-,scale=0.84,offset=0 9mm,pagecommand={\thispagestyle{plain}}]%
+  {Necessity and Sufficiency of MFA for Secure User Authentication.pdf}

@@ -13,6 +13,8 @@ reported, so that the work can be checked. The report's last appendix
 | `instructions/effect.txt`, `attribution.txt`, `sufficient.txt`, `necessary.txt` | The written instructions given to the four search runs, verbatim (started 10:16-10:17) |
 | `instructions/read-through.txt` | The instructions for the run that read four papers in full (started 14:57) |
 | `reports/*.md` | The full report each run wrote, unedited |
+| `plan-first-version.md` | The plan as first written (09:54), before the author's comment on it |
+| `asta-sources.md` | The 41 sources of Asta's report with our classification, our own 57 by the same kinds, and the checks made on Asta's citations (for the comparison appendix) |
 | `scripts/verify_quotes.py` | Compares every quoted passage in a bibliography's provenance blocks with a directory of extracted full texts |
 | `scripts/merge_bib.py` | Merged the four runs' bibliographies under common keys |
 
