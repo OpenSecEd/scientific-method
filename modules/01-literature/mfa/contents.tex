@@ -578,9 +578,11 @@ The search itself departed from the protocol as follows.
     text, or against the abstract for sources read only as abstracts.
     The check found one misquoted hyphen and led to three sources being
     dropped (\cref{sec:dropped}).
-  \item[Sources read only as abstracts] Of the 64 sources cited, 21 could
+  \item[Sources read only as abstracts] Of the 64 sources cited, 20 could
     be read only at the level of the abstract, mostly because the
-    publisher's site refused automated retrieval.
+    publishers' sites answer automated retrieval with a check for robots,
+    also from the university's network, which we did not try to get
+    past.
     They are marked \enquote{\abso} where they are cited.
   \item[Synthesis tables] The cells of the tables of cases against
     threats hold a symbol and not a citation; the sources are cited in
@@ -629,7 +631,7 @@ Between 28 and 45 records per question bear on it.
       \qquad excluded after reading & 2 & 1 & 1 & 0 \\
       \midrule
       Sources cited, with those outside the databases & 11 & 19 & 25 & 24 \\
-      \quad of which read only as abstract & 5 & 8 & 4 & 8 \\
+      \quad of which read only as abstract & 4 & 8 & 4 & 7 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -894,9 +896,13 @@ attackers who had employees' passwords
 requirement}, and at the other
 \textcquote{Thomas2019Hygiene}{zero users that exclusively use security
 keys fell victim to targeted phishing}.
-One demonstrated attack defeats keys too, when the service has a flaw
-that lets the attacker run a script in its pages
-\parencite[\abso]{Catalano2025BitM}.
+One demonstrated attack defeats keys too.
+It needs the attacker's code to run in the user's browser inside the
+service's own pages, through a scripting flaw in the service or through
+malware, and was shown against one demonstration site; as its authors
+put it, it does not target
+\textcquote[sec.~8]{Catalano2025BitM}{the cryptography technology of
+FIDO hardware authenticators}.
 
 \paragraph{Taking over the channel (\threat{R5})}
 A public review of a series of real intrusions found that
@@ -1254,7 +1260,7 @@ following limits apply.
     IEEE Xplore answered only the planned queries.
     One database returns no abstracts, so some records were classified
     on their titles.
-  \item[Reading] A third of the sources cited were read only as
+  \item[Reading] Nearly a third of the sources cited were read only as
     abstracts, among them the only null result for the first question
     and the experiments on push approval and deceptive overlays.
     An abstract states what the authors conclude and cannot be checked
@@ -1336,11 +1342,11 @@ not hold.
 
 Some of what this review left undone can be completed without new
 research.
-The 21 sources read only as abstracts should be read in full, first the
+The 20 sources read only as abstracts should be read in full, first the
 study of mandatory and optional use at banks
 \parencite{Kamar2026TwoFactorBanks} and the experiments on push
 approvals and overlays
-\parencite{Jubur2021PushBypass,Mahdad2024FIDOLA}; four of the 21 are
+\parencite{Jubur2021PushBypass,Mahdad2024FIDOLA}; four of the 20 are
 freely available and were obtained too late to be read through.
 Three documents could not be retrieved at all (\cref{sec:dropped}).
 The four failed searches in IEEE Xplore should be repeated, and all

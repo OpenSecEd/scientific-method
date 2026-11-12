@@ -466,7 +466,16 @@
 % FOUND-VIA: scholar search 'TS=(... "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))' -p wos --limit 40 (session "mfa-effect", C1; session also lists it for other questions)
 % PICKED: the strongest-claiming attack against the factor kind (security key) that Doerfler reports as 100% effective (E3).
 % QUOTE (Abstract): "we show how the effectiveness of BitM-used along a Reflected XSS vulnerability exploitation-can be improved resulting in the novel BitM + attack that proves to be capable of defeating any available MFA method including FIDO2/WebAuthn solutions that rely on hardware dongles"
-% VERIFIED: ABSTRACT ONLY (Springer; full text not obtainable through the tunnel: HTML returned instead of a PDF). A proof-of-concept needing an XSS vulnerability on the target site; says nothing about frequency.
+% VERIFIED: full text read in the verification pass, 2026-11-12 (open access;
+%   Springer PDF fetched with curl through the KTH network after the search
+%   run had recorded it as abstract only): abstract, Sect. 4.1, 6 and 8.  The
+%   attack needs attacker code in the victim's browser on the service's own
+%   origin (reflected XSS in the service, or a malicious extension or
+%   malware); shown as a proof of concept against one demonstration site.
+%   Sect. 4.1 states that a plain browser-in-the-middle relay fails against
+%   hardware keys.
+% QUOTE (Sect. 8): "Rather than targeting the cryptography technology of FIDO
+%   hardware authenticators, our BitM + attack operates on the WebAuthn APIs"
 % COUNTER: itself a narrowing source.
 % DATE: 2026-11-12
 % --- use 2 of 2: question on necessity (RQ4) ---
@@ -474,7 +483,16 @@
 % FOUND-VIA: scholar search scholar search '(K OR "risk-based authentication" OR "password manager") AND (alternative OR "instead of" OR without) AND (M)' -p openalex --limit 40 (session "mfa-necessary", query S1, date 2026-11-12)
 % PICKED: Attack paper (E3) against the strongest alternative; closed access in this run, so abstract only. Evidence grade: E3.
 % QUOTE (Abstract): "the novel BitM + attack that proves to be capable of defeating any available MFA method"
-% VERIFIED: ABSTRACT ONLY (OpenAlex record); the Springer and institutional-repository PDFs answered 403/HTML, no workaround attempted
+% VERIFIED: full text read in the verification pass, 2026-11-12 (open access;
+%   Springer PDF fetched with curl through the KTH network after the search
+%   run had recorded it as abstract only): abstract, Sect. 4.1, 6 and 8.  The
+%   attack needs attacker code in the victim's browser on the service's own
+%   origin (reflected XSS in the service, or a malicious extension or
+%   malware); shown as a proof of concept against one demonstration site.
+%   Sect. 4.1 states that a plain browser-in-the-middle relay fails against
+%   hardware keys.
+% QUOTE (Sect. 8): "Rather than targeting the cryptography technology of FIDO
+%   hardware authenticators, our BitM + attack operates on the WebAuthn APIs"
 % COUNTER: scholar search C1/C2/S1b on all providers (session "mfa-necessary") -- surfaced attacks on FIDO2 (BitM+XSS, FIDOLA, Windows Hello) and recovery weaknesses; the claim is narrowed to phishing/credential-stuffing/server-leak threats and excludes recovery and local-malware threats.
 % DATE: 2026-11-12
 @article{Catalano2025BitM,
