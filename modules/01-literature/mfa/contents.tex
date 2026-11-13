@@ -558,14 +558,14 @@ fails for a set of threats if a single-factor row resists all of them.
 
 Everything above this subsection was written before the search, with
 the exceptions told here: three added sources, and the changes of the
-second round (below).
+second and third rounds (below).
 The two sources for the premise in the first paragraph of the
 introduction were found by the search.
 The sources on types of review in \cref{sec:reviewtype} and the remark
 on the language restriction in \cref{sec:criteria} come from a fifth,
 small search on review methods that the protocol had not planned
 (\cref{sec:hits-method}).
-The search departed from the protocol in two rounds;
+The search departed from the protocol in three rounds;
 \cref{sec:session} tells how the session went.
 In the first round, on 12 November, it departed as follows.
 \begin{description}
@@ -679,7 +679,55 @@ The version history shows the wording before and after.
     One run proposed to change a cell of \cref{tab:local} on the
     strength of a new source; I did not follow it, for the reason given
     where the source is cited.
-    Of the 71 sources now cited, 18 are read only as abstracts.
+    Of the 71 sources then cited, 18 were read only as abstracts.
+\end{description}
+
+The third round, on the afternoon of 13 November, followed from the
+comparison with a report by Asta (\cref{sec:asta}).
+That report cites a study of account recovery which bears on threat
+\threat{R8} and which neither round had returned.
+\Cref{sec:missed} tells how the study was traced and what the case
+shows; what was changed is this.
+\begin{description}
+  \item[Queries added] Three queries were added for
+    \cref{rq:sufficient}; they are marked with a dagger in
+    \cref{tab:q-sufficient}.
+    The planned query had searched for threat \threat{R8} with the one
+    phrase \q{account recovery}.
+    Two of the new queries use the words in which \cref{tab:threats}
+    states the threat, with their common forms (\kw{recovery},
+    \kw{recover}, \kw{fallback}, \kw{reset}, \kw{lockout},
+    \q{backup codes}), once with the block $M$ and once with the block
+    for keys.
+    They are worded for the threat and not for an answer, so they
+    should return evidence in both directions.
+    The third adds \kw{circumvent} and its forms as another word for
+    \kw{bypass}.
+    I took that word from the abstract of the missed study, so the
+    third query is fitted to it; the other two are not.
+  \item[Run and screened as in the second round] The queries were run
+    without a limit on the five databases.
+    The records of four databases and the OpenAlex records that match
+    in title or abstract were screened, 1\,097 in all, of which 409 had
+    not been seen before; the full-text matches were kept and counted.
+    Claude Sonnet 5.5 classified the 409, and 57 of them from the title
+    alone.
+    I read the twelve records that it filed as bearing on the question
+    and the thirty that it was unsure of, and the titles of the records
+    that it excluded for a reason other than proposing a new scheme.
+    Of the rest I read the titles that name authentication or
+    recovery.
+    I reclassified eight records, five from bearing to adjacent and
+    three the other way, and corrected the label of two records from
+    the second round.
+  \item[Not independent of Asta's report] The round was made because
+    of that report.
+    The comparison in \cref{sec:asta} therefore describes the review as
+    it stood after the second round.
+  \item[Sources added] The round added four sources, cited in
+    \cref{sec:res-table}; one of them could be read only as an
+    abstract.
+    Of the 75 sources now cited, 19 are read only as abstracts.
 \end{description}
 
 
@@ -688,18 +736,19 @@ The version history shows the wording before and after.
 \subsection{What the search returned}\label{sec:flow}
 
 \Cref{tab:flow} gives the number of records at each step, after the
-second round.
+third round, which added to \cref{rq:sufficient} only.
 Most records returned by a query that names multi-factor authentication
 are proposals of new schemes, which the criteria of \cref{sec:criteria}
 count as adjacent; \cref{tab:excluded} gives the numbers for each
 criterion.
-Between 37 and 112 records per question bear on it.
+Between 37 and 119 records per question bear on it.
 The first round, with its limit, had screened between 289 and 508
 distinct records per question and found between 28 and 45 that bear on
 it.
 \begin{table}
   \begin{sidecaption}{%
-    Records at each step, per question, after the second round.
+    Records at each step, per question, after the third round; that
+    round changed the column for question 3 only.
     The first row counts, query by query, the records that OpenAlex
     matches in their full text; they are kept but not screened, apart
     from the 40 per query that the first round screened.
@@ -717,19 +766,19 @@ it.
       \cmidrule(l){2-5}
       Step & 1 & 2 & 3 & 4 \\
       \midrule
-      Full-text matches in OpenAlex, kept & 38\,295 & 18\,429 & 26\,736 & 20\,275 \\
-      Records collected for screening & 2\,080 & 1\,236 & 6\,678 & 3\,754 \\
-      Distinct records & 1\,121 & 561 & 3\,847 & 2\,128 \\
-      \quad classified as adjacent & 888 & 443 & 1\,773 & 1\,641 \\
-      \quad classified as another topic & 186 & 81 & 1\,962 & 428 \\
-      \quad bearing on the question & 47 & 37 & 112 & 59 \\
-      \qquad cited & 10 & 17 & 31 & 21 \\
-      \qquad supporting, not cited & 3 & 9 & 66 & 11 \\
+      Full-text matches in OpenAlex, kept & 38\,295 & 18\,429 & 45\,038 & 20\,275 \\
+      Records collected for screening & 2\,080 & 1\,236 & 7\,775 & 3\,754 \\
+      Distinct records & 1\,121 & 561 & 4\,235 & 2\,128 \\
+      \quad classified as adjacent & 888 & 443 & 1\,980 & 1\,641 \\
+      \quad classified as another topic & 186 & 81 & 2\,136 & 428 \\
+      \quad bearing on the question & 47 & 37 & 119 & 59 \\
+      \qquad cited & 10 & 17 & 35 & 21 \\
+      \qquad supporting, not cited & 3 & 9 & 69 & 11 \\
       \qquad contradicting or narrowing, not cited & 32 & 11 & 15 & 27 \\
       \qquad excluded after reading & 2 & 0 & 0 & 0 \\
       \midrule
-      Sources cited, with those outside the databases & 13 & 20 & 28 & 27 \\
-      \quad of which read only as abstract & 6 & 8 & 4 & 4 \\
+      Sources cited, with those outside the databases & 13 & 20 & 32 & 27 \\
+      \quad of which read only as abstract & 6 & 8 & 5 & 4 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -750,12 +799,12 @@ it.
       \cmidrule(l){3-6}
       \multicolumn{2}{@{}l}{Criterion} & 1 & 2 & 3 & 4 \\
       \midrule
-      \ref{x:scheme} & New scheme with only its own argument & 475 & 273 & 950 & 993 \\
-      \ref{x:machine} & Between machines & 35 & 7 & 181 & 92 \\
-      \ref{x:usability} & Usability or adoption only & 65 & 38 & 102 & 117 \\
-      \ref{x:opinion} & No evidence or method of its own & 254 & 104 & 471 & 418 \\
-      \ref{x:other} & Evidence on another question & 88 & 35 & 107 & 119 \\
-      \ref{x:english} & Not in English & 3 & 7 & 33 & 19 \\
+      \ref{x:scheme} & New scheme with only its own argument & 475 & 273 & 1\,071 & 993 \\
+      \ref{x:machine} & Between machines & 35 & 7 & 183 & 92 \\
+      \ref{x:usability} & Usability or adoption only & 65 & 38 & 116 & 117 \\
+      \ref{x:opinion} & No evidence or method of its own & 254 & 104 & 529 & 418 \\
+      \ref{x:other} & Evidence on another question & 88 & 35 & 126 & 119 \\
+      \ref{x:english} & Not in English & 3 & 7 & 38 & 19 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1105,6 +1154,31 @@ On popular sites, a second factor was in some cases switched off on
 request when the user said it was lost \autocite{Gerlitz2023Recovery},
 although in a test of ten services a password reset alone did not get
 past the second factor \autocite{Buttner2025Inconsistencies}.
+The largest test found is of 71 services
+\autocite{Klivan2023Recovery}.
+The researchers switched on a second factor, on most services codes
+from an app or by text message, then said that they had lost it and
+asked to be let in.
+They got back into 37 of the 71 accounts without the second factor and
+without the means of recovery that they had set up, and write that
+\textcquote[sec.~5.2]{Klivan2023Recovery}{having access to the email
+address we used for account creation was sufficient for most of the
+accounts we regained access to. This effectively reduces the security
+of MFA to that of email security}.
+They were the holders of the accounts and knew the passwords, a part of
+their sample was picked by hand, and ten services refused to let them
+in without the second factor or the means of recovery.
+This study was missing after two rounds of the search;
+\cref{sec:missed} tells how it was found.
+The authenticator can have a recovery of its own.
+Of 22 widely installed apps that generate codes and can back up their
+secrets, 19 could store the backup with a cloud service, and of these
+\textcquote[sec.~5.6]{Gilsenan2023TOTPApps}{4 relied solely on SMS OTP
+to authenticate users during recovery}.
+The authors tested the apps on their own accounts and conclude that
+\textcquote[abstract]{Gilsenan2023TOTPApps}{most backup strategies end
+up placing trust in the same technologies that TOTP 2FA is meant to
+supersede: passwords, SMS, and email}.
 For keys, a login can be pushed down to a weaker method where one is
 still enrolled; a vendor demonstrated this and adds that
 \textcquote{Miron2025Downgrade}{there is currently no evidence for the
@@ -1112,6 +1186,10 @@ usage of this technique by threat actors in the wild}.
 The methods for recovering an account after losing a key
 \textcquote[abstract]{Kunke2021Recovery}{have many drawbacks. Some even
 rely on passwords, taking passwordless authentication ad absurdum.}
+One proposal, in which a second key registered in advance takes the
+place of a lost one, has been proved to meet its security goals in a
+formal model \autocite[abstract; \abso]{Frymann2020ARKG}; it is a
+proposal, and the proof says nothing of what services deploy.
 Recovery remains
 \textcquote[conclusion]{Buttner2024Recovery}{a relevant entry point for
 account takeover attacks}, and a study of account access in use reports
@@ -1154,6 +1232,14 @@ This narrows the centre's rating of a hardware token as not exposed.
 It does not change the cell for case \case{A3}, because a thief who
 has the password and the key can log in without copying anything; and
 that key has no user verification, so case \case{B} is not tested.
+How often a stolen device leads to a compromised account is hardly
+studied.
+In interviews with twenty people whose phones had been stolen, the
+\textcquote[sec.~4.3.2]{Bhardwaj2025PhoneTheft}{participants were
+uncertain about whether they had experienced any privacy harm}.
+The study is mostly about thefts for the sake of the device, its
+participants chose to take part, and it leaves to later studies how
+often a thief gets into the accounts.
 
 \paragraph{Malware on the device (\threat{L3})}
 Every case fails against malware in at least one source.
@@ -1477,6 +1563,20 @@ following limits apply.
     either day.
     One database returns no abstracts, so some records were classified
     on their titles.
+  \item[A threat searched with one phrase] Two rounds of the search did
+    not return a study of account recovery on 71 services, because the
+    one query for threat \threat{R8} asked for the phrase
+    \q{account recovery} and the study speaks of recovery procedures.
+    We learned of it from another tool's report, and three added
+    queries then returned it together with three further sources
+    (\cref{sec:missed}).
+    The same planned query names three more threats by one or two
+    phrases each (\q{SIM swap}, \q{push fatigue}, \q{prompt bombing},
+    \q{session hijacking}).
+    Those were not searched again with other wordings, so studies of
+    them may be missing in the same way.
+    A search by keyword finds what shares its words, and its record
+    shows what was found, not what was missed.
   \item[Reading] A quarter of the sources cited were read only as
     abstracts, among them the only null result for the first question
     and the experiments on push approval and deceptive overlays.
@@ -1561,7 +1661,7 @@ not hold.
 
 Some of what this review left undone can be completed without new
 research.
-The 18 sources read only as abstracts should be read in full, first the
+The 19 sources read only as abstracts should be read in full, first the
 study of mandatory and optional use at banks
 \autocite{Kamar2026TwoFactorBanks}, the two reviews
 \autocite{Wang2019CaseTwoFactor,Woods2023MetaReview} and the
@@ -1569,6 +1669,13 @@ experiments on push approvals and overlays
 \autocite{Jubur2021PushBypass,Mahdad2024FIDOLA}.
 Three documents could not be retrieved at all (\cref{sec:dropped}).
 All queries should be run on Semantic Scholar and DBLP.
+The three other threats that a planned query names by one or two
+phrases each should be searched again with the other words an author
+might use, as was done for recovery in the third round.
+A search by meaning should be run for every threat of
+\cref{tab:threats}, and the works that it returned for two questions
+and that our records lack, 39 of them, should be screened
+(\cref{sec:missed}).
 The records that match only in their full text in OpenAlex were kept
 and not screened; a sample of them should be screened, to learn what a
 search of titles and abstracts misses.
@@ -1587,6 +1694,8 @@ The questions that the evidence leaves open need new studies.
   \item A study of device loss in use: how often a stolen device leads
     to a compromised account, with and without user verification, and
     with what kind of PIN.
+    The one interview study found asks for the same
+    \autocite{Bhardwaj2025PhoneTheft}.
   \item A measurement with a comparison group of a strong, unique
     password against the same password with a second factor.
   \item Reports of incidents involving keys.
@@ -1618,6 +1727,9 @@ database.
 On 13 November every search that had reached that limit, and the four
 that IEEE Xplore had not answered, were repeated without a limit; the
 tables give the numbers of that second run.
+Three queries for \cref{rq:sufficient} were added and run in the
+afternoon of 13 November (\cref{sec:deviations}); they are marked with
+a dagger.
 $M$ and $K$ are the term blocks of \cref{sec:queries}; $K'$ is $K$
 without \q{single-factor} and with \kw{passkeys} added.
 Web of Science received each query as \texttt{TS=(\dots)} and Scopus as
@@ -1683,6 +1795,20 @@ report; the others carry the model's classification and its confidence.
 %   exports          : scripts/export.sh, scripts/strip_abstracts.py
 %   instructions and reports of the four runs: session/round2/instructions,
 %                      session/round2/reports
+%
+% Third round, 2026-11-13 afternoon (record: session/round3/):
+%   searches         : three queries (queries.json, worklist.json) into the
+%                      session mfa-sufficient: go.sh = add.py (wos, scopus,
+%                      ieee, arxiv, `-l 0`), oa_ta.py (OpenAlex, title or
+%                      abstract), run.py openalex (full text, to CSV only)
+%   abstracts        : fill_abstracts.py (OpenAlex, pending records only)
+%   classification   : classify.sh, as in the second round; my changes by
+%                      round2/scripts/retag.py, clean_x.py, cited_only.py
+%                      (new theme device-loss)
+%   the missed study : where it was (README.md there), oa_abstracts.py,
+%                      oa_semantic.py + semantic/ (OpenAlex search.semantic),
+%                      s2probe.py + s2/ (Semantic Scholar, failed: HTTP 429);
+%                      alphaXiv discover_papers timed out three times
 
 \subsection{Effect}
 
@@ -1761,6 +1887,11 @@ One standard, ISO/IEC 29115, is sold and was not obtained.
     Queries for \cref{rq:sufficient} and records returned; columns and
     marks as in \cref{tab:q-effect}.
     Here S is worded to find attacks and C to find evidence of security.
+    A dagger marks the queries of the third round, in which $R$ stands
+    for \kw{recovery} \kw{OR} \kw{recover} \kw{OR} \kw{fallback}
+    \kw{OR} \q{fall-back} \kw{OR} \kw{reset} \kw{OR} \kw{lockout}
+    \kw{OR} \q{locked out} \kw{OR} \q{backup code} \kw{OR}
+    \q{backup codes}.
   }[tab:q-sufficient]
     \footnotesize
     \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
@@ -1781,6 +1912,14 @@ One standard, ISO/IEC 29115, is sold and was not obtained.
         proof} \kw{OR} \q{phishing-resistant} \kw{OR} \q{security
         analysis})
         & 3107 & 162 & 62 & 115 & 251 & 115 \\
+      S4\textdagger & $M$ \kw{AND} ($R$)
+        & 9993 & 339 & 84 & 135 & 68 & 12 \\
+      S5\textdagger & ($K'$) \kw{AND} ($R$)
+        & 5236 & 167 & 37 & 66 & 90 & 26 \\
+      S6\textdagger & ($M$ \kw{OR} $K'$) \kw{AND} (\kw{circumvent}
+        \kw{OR} \kw{circumvention} \kw{OR} \kw{circumvented} \kw{OR}
+        \kw{circumventing})
+        & 3073 & 30 & 10 & 15 & 11 & 7 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1921,6 +2060,14 @@ keys at real services (DOI \url{10.1145/3576915.3623063}), and two
 measurements of relayed logins in use, one of them without a DOI
 (DOI \url{10.1145/3460120.3484765}).
 They are on the author's list.
+In the third round, the analysis of a proposal for recovering a lost
+key \autocite{Frymann2020ARKG} could be read only as an abstract: the
+publisher and the archive that holds a copy both refused automated
+retrieval.
+A chapter of a practitioner's book on attacks through downgrade and
+recovery (DOI \url{10.1002/9781119672357.ch13}) was not obtained
+either; it is counted among the records that support the hypothesis and
+is not cited.
 
 The run for \cref{rq:necessary} also read again, for that question, the
 analysis of attacks on the interface between a key and the computer
@@ -1954,7 +2101,7 @@ research, and it is organised around one question: what in this work can
 someone else check?
 
 The review was made in a working session on 12 November 2026 and
-extended the next morning, in Claude Code.
+extended the next day, in Claude Code.
 That is a program in which a language model, here Claude Fable~5.2,
 works in a directory of files: it reads and writes the files, runs
 commands such as the search tool and the typesetting, and can start
@@ -1980,7 +2127,8 @@ report should serve as an example, that the password may contribute
 nothing beside a key, which became \cref{rq:attribution}, each of
 the corrections after the first draft, and on the second day that no
 search is to be limited, which of the new records to screen and which
-to read in full.
+to read in full, and that the study which the search had missed be
+searched for with new queries and its story told.
 \begin{table}
   \begin{sidecaption}{%
     The session, 12 and 13 November 2026.
@@ -2052,6 +2200,26 @@ to read in full.
         I restart it. \\
       later & I read the runs' reports, check their quoted passages,
         correct the labels in the sessions, and write draft~6. \\
+      14:37 & The author asks why the full-text matches in OpenAlex were
+        not screened, and then whether the study that Asta had found is
+        among them.
+        I look instead of answering from memory.
+        It is in none of the records screened and among the full-text
+        matches for 13 of the 20 queries.
+        Web of Science holds its whole abstract and had not returned it
+        either, so the cause is the wording of our query; OpenAlex holds
+        only the first sentence of the abstract. \\
+      14:56 & The author asks for the queries that would have found it,
+        for whatever else they find, and for the story to be told.
+        Three queries run on the five databases, without a limit.
+        They return the study and 408 other records not seen before. \\
+      15:03 & The model classifies the 409 records.
+        I read those it files as bearing and those it is unsure of, and
+        four papers in full, and correct eight of its decisions. \\
+      15:17 & I ask a search by meaning two questions in plain words.
+        It returns the missed study in fourth and in tenth place.
+        Two other such searches that I try do not answer. \\
+      later & Draft~7, with \cref{sec:missed}. \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -2190,7 +2358,7 @@ approved by the author.
         & Upload each draft under a new version name and overwrite
           nothing.
           Hand over what only the author can do as items to do.
-        & The drafts side by side on the tablet; twenty-five open items
+        & The drafts side by side on the tablet; twenty-six open items
           for the papers and documents not yet obtained \\
       The same skills, amended on the second day
         & Never limit a search; ask what to screen and what to read
@@ -2233,8 +2401,8 @@ approved by the author.
     \enquote{Phishing sites can copy the fingerprints} became nine of
     fourteen services in one test, and the figure from an
     \enquote{analysed breach} turned out to be the company's own.
-    The sources still marked \enquote{\abso}, eighteen after the
-    second round, should be read with that in mind.
+    The sources still marked \enquote{\abso}, nineteen after the
+    third round, should be read with that in mind.
   \item[A screening model with a blind spot] For \cref{rq:effect} the
     model that classified the records filed every study that measured
     an effect as narrowing the hypothesis.
@@ -2270,6 +2438,15 @@ approved by the author.
     on.
     Nothing was lost but the hour.
     A run's silence says nothing about what it is doing.
+  \item[A threat that I searched with one phrase] I wrote the planned
+    query for four threats as a list of phrases, one or two for each,
+    and for recovery the phrase was \q{account recovery}.
+    A study that says \enquote{recovery procedures} did not match, and
+    nothing in the record of the search showed that anything was
+    missing.
+    It came to light through the comparison with another tool's report
+    and a question from the author; \cref{sec:missed} gives the whole
+    case.
 \end{description}
 
 This account is not an experiment.
@@ -2292,11 +2469,16 @@ a research assistant of the Allen Institute for AI, and saved its
 answer, a report of twelve pages \autocite{Asta2026Report}.
 This appendix compares the two results: what each has that the other
 lacks.
-Nothing in the review was changed on account of Asta's report; a study
-that Asta found and we did not is named here only, and the sources
-cited in this appendix are listed at its end, apart from the review's.
-The second round of the search (\cref{sec:deviations}) was not steered
-by Asta's sources either; the numbers below are those after it.
+Through the first two rounds of the search nothing in the review was
+changed on account of Asta's report, and the sources cited in this
+appendix are listed at its end, apart from the review's.
+The second round (\cref{sec:deviations}) was not steered by Asta's
+sources; the numbers below are those after it.
+The third round was: it was made because this comparison showed a
+study that we had missed, and \cref{sec:missed} tells of it.
+This appendix describes the review as it stood before that round, with
+71 sources, so that the comparison stays one of two independent
+results.
 
 Four cautions apply.
 Asta was given one instruction, while this review was directed further
@@ -2442,6 +2624,8 @@ asked for studies, attacks, analyses and standards.
     and did not screen (\cref{sec:deviations}).
     That is what the decision not to screen them cost in this one
     case.
+    \Cref{sec:missed} takes the case further: three added queries
+    returned the study, and it is now cited in \cref{sec:res-table}.
   \item[What else is needed] Asta's report has a section on controls
     beside multi-factor authentication: protected transport, careful
     handling of tokens and sessions, and checks that adapt to the risk
@@ -2577,10 +2761,313 @@ searching, and deciding which kinds of source count as evidence.
 In this session both came from the protocol.
 Whether Asta would do the same if told to was not tried.
 The comparison also gave something back: a second, independent search
-found a study that ours had missed.
+found a study that ours had missed, and tracing why showed a weakness
+of our queries that our own record could not show
+(\cref{sec:missed}).
 
 \printbibliography[heading=subbibliography,title={Sources cited in this appendix}]
 \end{refsection}
+
+
+\section{A study that the search missed}\label{sec:missed}
+
+This appendix tells how a study that bears on one of the threats came
+to be missing after two rounds of a documented search, how that was
+noticed, and what repairing it showed.
+It is here less for the study than for what the case teaches about
+searching.
+As in \cref{sec:session}, \enquote{I} is the language model.
+
+\subsection{What was missing, and how it came to light}
+
+The study tests what happens when the second factor is lost
+\autocite{Klivan2023Recovery}.
+Its authors opened accounts at 71 services, switched on a second
+factor, and then asked to be let in without it.
+That is threat \threat{R8}, and no source we had tested it on as many
+services.
+
+Neither round of the search returned the study.
+We know of it because Asta's report cites it (\cref{sec:asta}).
+Nothing in our own record pointed to a gap.
+The table of queries had a query that names recovery, every database
+had answered it, and the counts were there; a reader checking the
+record would have found it in order.
+A record of a search shows what the search found.
+It took a second search, made by other means, to show what ours had
+not found.
+
+The author then asked whether the study was among the records that
+OpenAlex matches in their full text, which we had kept and not
+screened.
+I could have answered from memory.
+I looked instead, and looking gave more than the answer.
+
+\subsection{Where the study was}
+
+\Cref{tab:missed} gives the result.
+The study was in none of the records that we had screened and in the
+unscreened full-text matches for 13 of our 20 queries.
+There it stood far down: for the query that names recovery it was
+121st of 1\,954, and the first round had screened the first 40.
+\begin{table}
+  \begin{sidecaption}{%
+    Whether each way of searching returns the missed study.
+    Positions are in the order in which the database returned the
+    records.
+    The queries of the first two rounds are those of
+    \cref{sec:hitlists}; S4 to S6 are the queries added in the third
+    round (\cref{tab:q-sufficient}).
+  }[tab:missed]
+    \footnotesize
+    \begin{tabular}{@{}L{0.30\linewidth}L{0.20\linewidth}L{0.38\linewidth}@{}}
+      \toprule
+      Way of searching & Queries & The study \\
+      \midrule
+      By keyword in title, abstract and keywords, five databases
+        & The 20 of the first two rounds
+        & Returned for none \\
+      \addlinespace
+      By keyword in the full text, OpenAlex
+        & The same 20
+        & Returned for 13, between 121st and 3\,967th place \\
+      \midrule
+      By keyword in title, abstract and keywords, five databases
+        & S4, on recovery
+        & Returned by four of the five databases \\
+      \addlinespace
+        & S5, the same for keys
+        & Not returned: the abstract has none of the terms for keys \\
+      \addlinespace
+        & S6, on circumvention
+        & Returned by three databases; not by OpenAlex \\
+      \addlinespace
+      By keyword in the full text, OpenAlex
+        & S4, S5, S6
+        & 58th of 9\,993, 355th of 5\,236, 35th of 3\,073 \\
+      \midrule
+      By meaning, OpenAlex, at most 50 works
+        & The author's first instruction
+        & 10th \\
+      \addlinespace
+        & Threat \threat{R8} as a sentence
+        & 4th \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+\subsection{Why the queries missed it}
+
+The planned query for four of the threats was a list of phrases, one
+or two for each threat, and for recovery the phrase was
+\q{account recovery} (query S2 for \cref{rq:sufficient} in
+\cref{tab:planned}).
+The study's abstract speaks of \enquote{recovery procedures} and of
+users who \enquote{recover from losing access}, and says that the
+authors could \enquote{circumvent and disable} the second factor.
+The two words \enquote{account recovery} never stand together in it.
+The query for attacks asked for \kw{bypass}, \kw{phishing} and two
+names for relayed logins; the abstract has none of them.
+No other query came nearer.
+
+The cause is the wording and not a database.
+Web of Science holds the whole abstract, searches it, and returned the
+study for none of the 20 queries.
+
+Looking also showed something about OpenAlex that I had not known.
+It holds only the first sentence of this study's abstract.
+That is why the added query S6 found the study in three databases and
+not in OpenAlex: the word \kw{circumvent} comes later in the abstract.
+I compared the abstracts for the 48 records that had come to us from
+Web of Science with an abstract.
+OpenAlex had the whole abstract for 30, none for 9, less than half of
+it for 3 and a shortened one for 2; four it did not find.
+These 48 are the records that Web of Science was the first database to
+return, so they are no fair sample of what OpenAlex holds.
+They do show that a search of titles and abstracts in OpenAlex is not
+the same search as in Web of Science, although
+\cref{sec:deviations} treats the two alike.
+
+One thing in the protocol would have made the fault easier to see.
+It named no studies that the queries had to return.
+With such a list, a query that returns none of the known studies on a
+threat shows itself before anyone relies on it.
+This study could not have been on the list, since we did not know it,
+and whether the list would have caught the fault was not tried.
+
+\subsection{The repair, and what else it returned}
+
+The three added queries are described in \cref{sec:deviations}.
+Two are worded from the threat as \cref{tab:threats} states it; the
+third uses a word taken from the missed study.
+They returned 409 records that we had not seen.
+Ten of these bear on the question, and they are seven works.
+\begin{itemize}
+  \item The missed study, now cited for threat \threat{R8}
+    (\cref{sec:res-table}).
+  \item A study of the backup functions of 22 apps that generate codes
+    \autocite{Gilsenan2023TOTPApps}.
+    It shows a recovery on the side of the authenticator, which the
+    review had not considered.
+  \item Interviews with twenty victims of phone theft
+    \autocite{Bhardwaj2025PhoneTheft}, the only account found of the
+    loss of a device in use (\threat{L1}).
+    The model had excluded it as evidence on another question; I found
+    it among the records of low confidence.
+  \item A formal analysis of a proposal for recovering a lost key
+    \autocite[\abso]{Frymann2020ARKG}, which speaks for the security
+    of recovery and not against it.
+  \item Two works that agree with what is already cited, a book chapter
+    on attacks through recovery and a study of malware that steals
+    credentials, and a second version of a survey that the second round
+    had already counted.
+    They are not cited.
+\end{itemize}
+No cell of \cref{tab:remote,tab:local} changed.
+The paragraph on recovery gained its largest test and a new kind of
+evidence, and the paragraph on stolen devices its only study of thefts
+that happened.
+
+The repair has limits.
+It was made knowing the answer, so it shows that the queries now find
+this study and not that they find the others like it.
+The third query is fitted to the study.
+And recovery was one of four threats in that list of phrases; the
+other three were not searched again (\cref{sec:discussion}).
+
+\subsection{How Asta came by it, and a test of searching by meaning}
+
+Asta's report states no method.
+Its form, sections of text with quoted passages and a mark on every
+statement that has no source, is that of a system which the institute
+describes in a paper \autocite{Singh2025ScholarQA}.
+By that description the system searches in two ways, with
+\textcquote[sec.~2.1]{Singh2025ScholarQA}{its endpoint for keyword
+search over paper abstracts, and our new endpoint for querying snippets
+from open-access papers}, and before it does,
+\textcquote[sec.~2.1]{Singh2025ScholarQA}{A query decomposer
+re-formulates the user query for each endpoint}.
+The passages are matched by their meaning as well as by their words: a
+model turns each passage and the question into vectors and the nearest
+passages are taken, and a second model then ranks what was found.
+Whether the version that wrote our report works in this way we cannot
+tell.
+
+Two things follow for our case.
+Asta quotes the study's abstract and nothing else from it, so the full
+text was not needed to find it.
+And the name of the database is not the reason.
+The paper search of Semantic Scholar, by its own documentation, is one
+of two that
+\textcquote[step~1]{SemanticScholar2026Tutorial}{use Semantic Scholar's
+custom-trained ranker to perform keyword searches}.
+What matched the study to a question that shares few words with it is
+the rewording of the question by a language model and the matching by
+meaning that Asta's system adds.
+
+I tried to see such a search at work.
+Semantic Scholar's search of passages did not answer: without a key the
+public service replied \enquote{too many requests} through nine minutes
+of repeated attempts, and the key at hand is rejected.
+A second tool, tried three times, did not answer either.
+These searches count as failed, not as empty.
+OpenAlex has a search of this kind, which
+\textcquote{OpenAlex2026Semantic}{returns works whose meaning is closest
+to your query, even when the wording differs}.
+It compares the question with the title, abstract and venue of every
+work and returns at most 50 works.
+I asked it two questions, written down before I saw a result: the
+author's first instruction word for word, and threat \threat{R8} as a
+sentence (\enquote{an attacker uses account recovery or a weaker
+fallback login to get around multi-factor authentication}).
+\Cref{tab:semantic} gives the result.
+\begin{table}
+  \begin{sidecaption}{%
+    What the search by meaning in OpenAlex returned for two questions
+    in plain words, 50 works each, and how our screening of the first
+    two rounds had classified those works.
+    Adjacent: excluded by a criterion of \cref{sec:criteria}.
+  }[tab:semantic]
+    \footnotesize
+    \begin{tabular}{@{}L{0.30\linewidth}rrrr@{}}
+      \toprule
+      & Place of the & \multicolumn{3}{c}{Of the 50 works} \\
+      \cmidrule(l){3-5}
+      Question & missed study & bearing & adjacent & not in our records \\
+      \midrule
+      The author's first instruction & 10 & 0 & 29 & 21 \\
+      Threat \threat{R8} as a sentence & 4 & 7 & 20 & 23 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+
+The search by meaning returned the study for both questions, in tenth
+place for an instruction that does not mention recovery at all.
+The same database, searched by keyword in its full text with our first
+twenty queries, had it in 121st place at best.
+
+The table also shows what such a search does not do.
+For the general question, all 29 works that we had already screened
+were ones we had excluded, the largest group being surveys and
+overviews without evidence of their own: a general question gets
+general papers.
+For the precise question, seven of the 27 were works we had found to
+bear on it.
+A search by meaning rewards a precise question as a search by keyword
+does.
+It returns a list of 50 and no count of what matched, because nothing
+matches or fails to match: every work is merely nearer or farther.
+So it cannot fill a table such as \cref{tab:flow}, and
+\enquote{the search found none} cannot be said of it.
+Its order also depends on more than meaning, for
+\textcquote{OpenAlex2026Semantic}{works with more citations get a small
+boost}, and on a model that the provider chooses and can replace.
+
+The works that it returned and that our records lack are not screened.
+For the precise question there are 19 after the third round, and nine
+of them are, by their titles, studies of fallback authentication as
+such.
+They name no second factor, so no query built on the block $M$ can
+return them.
+They are listed in the record of the session and named in
+\cref{sec:future}.
+
+Neither kind of search contains the other.
+Our first two rounds had returned 18 of Asta's 41 sources, and Asta's
+report has two of the 64 sources that we then cited on the questions
+(\cref{sec:asta}).
+
+\subsection{What the case shows}
+
+\begin{description}
+  \item[A record shows what was found] Our record of the search was
+    complete and in order, and it could not show the gap.
+    A second search by another method did.
+    Where a conclusion leans on \enquote{the search found none}, a
+    search of another kind is the check.
+  \item[A phrase is not a concept] A query should hold the words that
+    an author might use for the thing, and not only the name that the
+    protocol gives it.
+    Each line of the threat model should be checked for whether the
+    queries have words for it; we had noted two threats without any
+    (\cref{sec:deviations}) and overlooked four that had one or two
+    phrases each.
+  \item[Look before answering] The question whether the study was
+    among the unscreened records had a true answer from memory.
+    The cause, the state of the abstract in one database and the test
+    against another database came only from looking.
+  \item[Meaning for finding, keywords for the record] One question in
+    plain words to a search by meaning would have shown this gap on the
+    first day, and its results are a source of words for the queries.
+    The keyword search is what can be repeated, counted and reported.
+    This case speaks for using both, and one case cannot say how much
+    each adds.
+  \item[A repair made knowing the answer proves little] The added
+    queries were written after the missing study was known.
+    That they return it shows nothing about what else is missing.
+\end{description}
 
 
 \section{Asta's report}\label{sec:asta-report}

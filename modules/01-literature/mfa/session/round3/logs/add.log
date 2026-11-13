@@ -1,0 +1,12 @@
+mfa-sufficient-q0-ieee	rc=0	8s
+mfa-sufficient-q0-arxiv	rc=0	8s
+mfa-sufficient-q0-wos	rc=0	7s
+mfa-sufficient-q0-scopus	rc=0	14s
+mfa-sufficient-q1-ieee	rc=0	11s
+mfa-sufficient-q1-arxiv	rc=0	22s
+mfa-sufficient-q1-wos	rc=0	11s
+mfa-sufficient-q1-scopus	rc=0	11s
+mfa-sufficient-q2-ieee	rc=0	13s
+mfa-sufficient-q2-arxiv	rc=0	12s
+mfa-sufficient-q2-wos	rc=0	12s
+mfa-sufficient-q2-scopus	rc=0	11s

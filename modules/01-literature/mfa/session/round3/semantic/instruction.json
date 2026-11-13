@@ -1,0 +1,352 @@
+[
+{
+"id": "https://openalex.org/W2784017372",
+"doi": "https://doi.org/10.3390/cryptography2010001",
+"title": "Multi-Factor Authentication: A Survey",
+"publication_year": 2018,
+"relevance_score": 1.10169133667308
+},
+{
+"id": "https://openalex.org/W3143648442",
+"doi": "https://doi.org/10.1007/978-3-319-58808-7_5",
+"title": "Multi-Factor Authentication",
+"publication_year": 2017,
+"relevance_score": 1.028366797955403
+},
+{
+"id": "https://openalex.org/W3004890695",
+"doi": "https://doi.org/10.1016/j.cose.2020.101745",
+"title": "A survey on multi-factor authentication for online banking in the wild",
+"publication_year": 2020,
+"relevance_score": 0.9845897383014052
+},
+{
+"id": "https://openalex.org/W2943527182",
+"doi": "https://doi.org/10.23919/icact.2019.8701960",
+"title": "Multi-Factor Authentication in Cyber Physical System: A State of Art Survey",
+"publication_year": 2019,
+"relevance_score": 0.9712270031746932
+},
+{
+"id": "https://openalex.org/W2969054107",
+"doi": "https://doi.org/10.48550/arxiv.1908.05901",
+"title": "Evaluating User Perception of Multi-Factor Authentication: A Systematic Review",
+"publication_year": 2019,
+"relevance_score": 0.9601551805309642
+},
+{
+"id": "https://openalex.org/W4319935958",
+"doi": "https://doi.org/10.14569/ijacsa.2023.0140119",
+"title": "Current Multi-factor of Authentication: Approaches, Requirements, Attacks and Challenges",
+"publication_year": 2023,
+"relevance_score": 0.950293724206581
+},
+{
+"id": "https://openalex.org/W120627734",
+"doi": "https://doi.org/10.1007/978-3-642-31552-7_57",
+"title": "A Comprehensive Study on Multifactor Authentication Schemes",
+"publication_year": 2012,
+"relevance_score": 0.9331762788547052
+},
+{
+"id": "https://openalex.org/W3165395273",
+"doi": "https://doi.org/10.30564/ssid.v3i1.3152",
+"title": "The Role of Multi-factor Authentication for Modern Day Security",
+"publication_year": 2021,
+"relevance_score": 0.9219581851802515
+},
+{
+"id": "https://openalex.org/W4224256822",
+"doi": "https://doi.org/10.5281/zenodo.6472756",
+"title": "The Necessity of Multi Factor Authentication",
+"publication_year": 2022,
+"relevance_score": 0.9175929954151659
+},
+{
+"id": "https://openalex.org/W4388858451",
+"doi": "https://doi.org/10.1145/3576915.3623180",
+"title": "\"We've Disabled MFA for You\": An Evaluation of the Security and Usability of Multi-Factor Authentication Recovery Deployments",
+"publication_year": 2023,
+"relevance_score": 0.916838548732102
+},
+{
+"id": "https://openalex.org/W3161894933",
+"doi": "https://doi.org/10.1109/tifs.2021.3081263",
+"title": "Practical Threshold Multi-Factor Authentication",
+"publication_year": 2021,
+"relevance_score": 0.90902751372756
+},
+{
+"id": "https://openalex.org/W2966998009",
+"doi": "https://doi.org/10.48550/arxiv.1908.05902",
+"title": "MFA is a Waste of Time! Understanding Negative Connotation Towards MFA Applications via User Generated Content",
+"publication_year": 2019,
+"relevance_score": 0.9047809801728
+},
+{
+"id": "https://openalex.org/W1483112216",
+"doi": "https://doi.org/10.13140/rg.2.2.18515.53288",
+"title": "Security of Multifactor Authentication Model to Improve Authentication Systems",
+"publication_year": 2019,
+"relevance_score": 0.9028381351152777
+},
+{
+"id": "https://openalex.org/W3033234548",
+"doi": "https://doi.org/10.1145/3394788.3394789",
+"title": "On Data Protection Using Multi-Factor Authentication",
+"publication_year": 2019,
+"relevance_score": 0.8989815253614659
+},
+{
+"id": "https://openalex.org/W4296060533",
+"doi": "https://doi.org/10.1007/978-1-4842-8628-9_7",
+"title": "Multi-Factor Authentication",
+"publication_year": 2022,
+"relevance_score": 0.8909711398275729
+},
+{
+"id": "https://openalex.org/W2616394704",
+"doi": "https://doi.org/10.1016/b978-0-12-803843-7.00050-8",
+"title": "Context-Aware Multifactor Authentication Survey",
+"publication_year": 2017,
+"relevance_score": 0.8893970742206373
+},
+{
+"id": "https://openalex.org/W4388098609",
+"doi": "https://doi.org/10.5267/j.ijdns.2023.10.003",
+"title": "Choosing the right MFA method for online systems: A comparative analysis",
+"publication_year": 2023,
+"relevance_score": 0.8838627898890559
+},
+{
+"id": "https://openalex.org/W2157654262",
+"doi": "https://doi.org/10.1109/etncc.2011.5958480",
+"title": "Design, implementation and analysis of multi layer, Multi Factor Authentication (MFA) setup for webmail access in multi trust networks",
+"publication_year": 2011,
+"relevance_score": 0.8835359875244787
+},
+{
+"id": "https://openalex.org/W4367559202",
+"doi": "https://doi.org/10.5281/zenodo.7882397",
+"title": "THE NECESSITY AND BENEFIT OF MULTI FACTOR AUTHENTICATION",
+"publication_year": 2023,
+"relevance_score": 0.88080895
+},
+{
+"id": "https://openalex.org/W4248860792",
+"doi": "https://doi.org/10.1007/978-1-4842-6200-9_15",
+"title": "Multifactor Authentication",
+"publication_year": 2020,
+"relevance_score": 0.872988728058415
+},
+{
+"id": "https://openalex.org/W3111143293",
+"doi": "https://doi.org/10.1007/978-1-4842-6570-3_6",
+"title": "Multi-factor Authentication",
+"publication_year": 2020,
+"relevance_score": 0.8722840248314686
+},
+{
+"id": "https://openalex.org/W3209548259",
+"doi": null,
+"title": "An Adaptive Approach Towards The Selection of Authentication Factors in Multi-factor Authentication (MFA) System",
+"publication_year": 2016,
+"relevance_score": 0.8701354
+},
+{
+"id": "https://openalex.org/W4311685872",
+"doi": "https://doi.org/10.55621/idpro.92",
+"title": "Multi-factor Authentication",
+"publication_year": 2022,
+"relevance_score": 0.8659019892473315
+},
+{
+"id": "https://openalex.org/W4411551370",
+"doi": "https://doi.org/10.2139/ssrn.5291927",
+"title": "Multi-Factor Authentication (Securing the Digital Age)",
+"publication_year": 2025,
+"relevance_score": 0.8651453
+},
+{
+"id": "https://openalex.org/W3002512491",
+"doi": "https://doi.org/10.1007/978-3-030-39749-4_9",
+"title": "MuFASA: A Tool for High-level Specification and Analysis of Multi-factor Authentication Protocols",
+"publication_year": 2020,
+"relevance_score": 0.86077065093136
+},
+{
+"id": "https://openalex.org/W4402064206",
+"doi": "https://doi.org/10.1016/b978-0-443-13223-0.00051-5",
+"title": "Context-Aware Multifactor Authentication Survey",
+"publication_year": 2017,
+"relevance_score": 0.8604826084267451
+},
+{
+"id": "https://openalex.org/W3161597393",
+"doi": "https://doi.org/10.15167/sinigaglia-federico_phd2020-05-29",
+"title": "Security Analysis of Multi-Factor Authentication Security Protocols",
+"publication_year": 2020,
+"relevance_score": 0.8597477560786101
+},
+{
+"id": "https://openalex.org/W3045802237",
+"doi": "https://doi.org/10.4018/ijsst.2020070104",
+"title": "Review on Multi-Factor Authentication (MFA) Sources and Operation Challenges",
+"publication_year": 2020,
+"relevance_score": 0.8562516972860436
+},
+{
+"id": "https://openalex.org/W4402015026",
+"doi": "https://doi.org/10.33365/jti.v18i2.4035",
+"title": "PROTECTION SECOND LAYER MENGGUNAKAN MULTI FACTOR AUTHENTICATOR UNTUK MEMVERFIKASI KEABSAHAN ACCOUNT EMAIL DI DALAM ACTIVE DIRECTORY",
+"publication_year": 2024,
+"relevance_score": 0.8539953819446163
+},
+{
+"id": "https://openalex.org/W3197654992",
+"doi": "https://doi.org/10.1007/978-3-030-86586-3_11",
+"title": "AuthGuide: Analyzing Security, Privacy and Usability Trade-Offs in Multi-factor Authentication",
+"publication_year": 2021,
+"relevance_score": 0.853673092560028
+},
+{
+"id": "https://openalex.org/W192308400",
+"doi": null,
+"title": "Influences on the Adoption of Multifactor Authentication",
+"publication_year": 2011,
+"relevance_score": 0.8509937456749107
+},
+{
+"id": "https://openalex.org/W4393066116",
+"doi": "https://doi.org/10.1109/idciot59759.2024.10467901",
+"title": "A Comprehensive Analysis on using Multifactor Authentication System for Three Level Security",
+"publication_year": 2024,
+"relevance_score": 0.850723114859337
+},
+{
+"id": "https://openalex.org/W2998977286",
+"doi": "https://doi.org/10.31274/cc-20240624-1000",
+"title": "MFAProxy: A reverse proxy for multi-factor authentication",
+"publication_year": 2019,
+"relevance_score": 0.8501341091095272
+},
+{
+"id": "https://openalex.org/W4384069338",
+"doi": "https://doi.org/10.1108/oxan-db280441",
+"title": "Cyber trends underline need for mature MFA",
+"publication_year": 2023,
+"relevance_score": 0.8486758352107927
+},
+{
+"id": "https://openalex.org/W2612339746",
+"doi": "https://doi.org/10.21744/irjmis.v4i3.464",
+"title": "Multi-factor Authentication and their Approaches",
+"publication_year": 2017,
+"relevance_score": 0.8464914615814172
+},
+{
+"id": "https://openalex.org/W4391874625",
+"doi": "https://doi.org/10.32523/2616-7263-2022-140-3-114-124",
+"title": "Comparison of information security methods of information-communication infrastructure: Multi-Factor Authentication",
+"publication_year": 2022,
+"relevance_score": 0.8447557636022737
+},
+{
+"id": "https://openalex.org/W2924215321",
+"doi": null,
+"title": "Multi-Factor Authentication",
+"publication_year": 2019,
+"relevance_score": 0.84323764
+},
+{
+"id": "https://openalex.org/W2567429983",
+"doi": null,
+"title": "What is Multi-Factor Authentication?",
+"publication_year": 2014,
+"relevance_score": 0.8431308
+},
+{
+"id": "https://openalex.org/W4412933968",
+"doi": "https://doi.org/10.1109/icest66328.2025.11098219",
+"title": "Multi-Factor Authentication Fatigue: A Growing Concern in User Experience and Security",
+"publication_year": 2025,
+"relevance_score": 0.8429601216303538
+},
+{
+"id": "https://openalex.org/W3095752449",
+"doi": "https://doi.org/10.55621/idpro.49",
+"title": "Designing MFA for Humans",
+"publication_year": 2020,
+"relevance_score": 0.8425304911120638
+},
+{
+"id": "https://openalex.org/W4378220263",
+"doi": "https://doi.org/10.58587/18292437-2023.2-100",
+"title": "Ensuring Information System Security by Selective Multifactor Authentication / \u041e\u0431\u0435\u0441\u043f\u0435\u0447\u0435\u043d\u0438\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u0432\u044b\u0431\u043e\u0440\u043e\u0447\u043d\u043e\u0439 \u043c\u043d\u043e\u0433\u043e\u0444\u0430\u043a\u0442\u043e\u0440\u043d\u043e\u0439 \u0430\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438",
+"publication_year": 2023,
+"relevance_score": 0.84135044
+},
+{
+"id": "https://openalex.org/W4411488263",
+"doi": "https://doi.org/10.55041/ijsrem50831",
+"title": "Multi-Factor Authentication: A Comprehensive Review",
+"publication_year": 2025,
+"relevance_score": 0.8412738837850264
+},
+{
+"id": "https://openalex.org/W3084000047",
+"doi": null,
+"title": "A Study on the Necessity of Applying Multi-factor Authentication for User Authentication",
+"publication_year": 2020,
+"relevance_score": 0.840873
+},
+{
+"id": "https://openalex.org/W4401542478",
+"doi": "https://doi.org/10.55041/ijsrem37063",
+"title": "Strengthening Security: Implementation of Multi-Factor Authentication (MFA) in Data Center Environment",
+"publication_year": 2024,
+"relevance_score": 0.83904356
+},
+{
+"id": "https://openalex.org/W2970680997",
+"doi": null,
+"title": "Evaluating User Perception of Multi-Factor Authentication: A Systematic Review",
+"publication_year": 2019,
+"relevance_score": 0.83639455
+},
+{
+"id": "https://openalex.org/W2011318033",
+"doi": null,
+"title": "Adventures and Ethics in MF Authentication",
+"publication_year": 2014,
+"relevance_score": 0.83637434
+},
+{
+"id": "https://openalex.org/W2586837167",
+"doi": null,
+"title": "Multi-Factor Authentication",
+"publication_year": 2016,
+"relevance_score": 0.83500105
+},
+{
+"id": "https://openalex.org/W4313213097",
+"doi": "https://doi.org/10.12968/s1353-4858(22)70070-0",
+"title": "How to deal with MFA bypass",
+"publication_year": 2022,
+"relevance_score": 0.8342168
+},
+{
+"id": "https://openalex.org/W4240622083",
+"doi": "https://doi.org/10.1145/3394788",
+"title": "Proceedings of the 2019 International Conference on Information System and System Management",
+"publication_year": 2019,
+"relevance_score": 0.83345
+},
+{
+"id": "https://openalex.org/W7134131633",
+"doi": "https://doi.org/10.1109/icccnt61001.2024.11422730",
+"title": "Retraction Notice: Evaluating the Effectiveness of Multi-Factor Authentication for Preventing Cyber Attacks",
+"publication_year": 2024,
+"relevance_score": 0.8326365
+}
+]

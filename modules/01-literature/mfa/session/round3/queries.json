@@ -1,0 +1,5 @@
+{
+ "S4+": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (recovery OR recover OR fallback OR \"fall-back\" OR reset OR lockout OR \"locked out\" OR \"backup code\" OR \"backup codes\")",
+ "S5+": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (recovery OR recover OR fallback OR \"fall-back\" OR reset OR lockout OR \"locked out\" OR \"backup code\" OR \"backup codes\")",
+ "S6+": "((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") OR (passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\")) AND (circumvent OR circumvention OR circumvented OR circumventing)"
+}

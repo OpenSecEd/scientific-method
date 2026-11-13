@@ -1803,9 +1803,260 @@
 }
 
 % ===================================================================
+% Sources added in the third round (2026-11-13, afternoon): three queries
+% on recovery, fallback and circumvention, added after the comparison
+% with Asta's report had shown a study that the search had missed.
+% Record: session/round3/.
+% ===================================================================
+
+% === provenance: Klivan2023Recovery ===
+% (first use, 2026-11-12, in the appendix on Asta's report)
+% CLAIM: Many websites let a user, or an attacker with access to the
+%   account's email address, switch off MFA through the recovery procedure.
+% FOUND-VIA: cited in Asta2026Report; at that time not returned by our own
+%   searches.  Retrieved as a known item:
+%   fetch_pdf.py --text https://arxiv.org/pdf/2306.09708 (open-access copy
+%   listed by OpenAlex for DOI 10.1145/3576915.3623180).
+% PICKED: the one study of deployed MFA among Asta's sources, and a source
+%   this review lacked.
+% QUOTE (Abstract): "We find that many websites deploy insecure Multi-Factor Authentication recovery procedures and allowed us to circumvent and disable Multi-Factor Authentication when having access to the accounts' associated email addresses."
+% QUOTE (Abstract): "we select a subset of 71 websites, create accounts, set up Multi-Factor Authentication, and perform an in-depth investigation of their recovery procedure security and user experience"
+% VERIFIED: abstract and introduction read in the arXiv version (v3, 19 Sep
+%   2023), the quoted passages confirmed there.
+%   The arXiv version names the first author Sabrina Amft; the published
+%   record (Crossref) names her Sabrina Klivan, as used here.
+% COUNTER: none run: the source was cited to say what Asta found.
+% DATE: 2026-11-12
+%
+% === provenance: Klivan2023Recovery ===
+% (second use, 2026-11-13, in the results on threat R8)
+% CLAIM: On 71 websites with MFA switched on, researchers who said they had
+%   lost the second factor got back into 37 accounts without it and without
+%   the recovery means they had set up; for 26 of the 37, access to the
+%   account's email address was enough (cases A1 mostly; threat R8).
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (recovery OR recover OR fallback OR "fall-back" OR reset OR lockout OR "locked out" OR "backup code" OR "backup codes"))' -p wos -l 0 -n mfa-sufficient
+%   (query S4 of the third round; also returned for it by scopus, arxiv and
+%   the OpenAlex title-and-abstract search, and for query S6 by wos, scopus
+%   and arxiv).  The query was added because Asta's report cites this study
+%   and the first two rounds had not returned it; the terms come from the
+%   wording of threat R8, not from the paper.  Full text as above.
+% PICKED: the largest hands-on test of MFA recovery on deployed services
+%   among the records; Gerlitz2023Recovery tested 12, Buttner2025Inconsistencies 10.
+% QUOTE (sec. 3.2.2): "Overall, we created 71 accounts in August and September 2022. We regained access to 37 (52.11%), and lost access to 30 (42.25%)."
+% QUOTE (sec. 3.2.2): "The majority of accounts, to which we regained access, it was sufficient to have email access (26, 70.27%)"
+% QUOTE (sec. 5.2): "having access to the email address we used for account creation was sufficient for most of the accounts we regained access to. This effectively reduces the security of MFA to that of email security"
+% VERIFIED: full text read in the arXiv version (v3): sections 1, 3 (both
+%   parts), 4.2 and 5.2 through; related work, recommendations and the
+%   appendices not read.  Limits that bear on the claim: the researchers
+%   were the account holders, knew the password and kept the email inbox
+%   throughout; they did not use the backup codes they had stored; free
+%   accounts only; the sample is 28 top-ranked, 27 random and 16 hand-picked
+%   sites and "is not generalizable" (sec. 3.2.2); primary second factor was
+%   an app on 49 sites, SMS on 15, email on 6, a hardware token on 1.
+% EVIDENCE-GRADE: E2
+% COUNTER: scholar session mfa-sufficient, the C queries (formal
+%   verification, provable security, security proof, phishing-resistant)
+%   and, in the same study, the 30 accounts that were NOT recovered; 10
+%   sites "had strict policies regarding recovery and would not allow
+%   access without the configured MFA or recovery procedure" (sec. 3.2.2).
+%   Buttner2025Inconsistencies found that a password reset alone did not
+%   get past the second factor on ten services.  The claim is therefore
+%   "about half of the services tested", not "MFA recovery is insecure".
+% DATE: 2026-11-13
+@inproceedings{Klivan2023Recovery,
+  author = {Klivan, Sabrina and H{\"o}ltervennhoff, Sandra and Huaman, Nicolas and Krause, Alexander and Simko, Lucy and Acar, Yasemin and Fahl, Sascha},
+  title = {\mkbibquote{We've Disabled {MFA} for You}: An Evaluation of the Security and Usability of Multi-Factor Authentication Recovery Deployments},
+  booktitle = {Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security},
+  pages = {3138--3152},
+  year = {2023},
+  doi = {10.1145/3576915.3623180},
+  eprint = {2306.09708},
+  eprinttype = {arxiv},
+}
+
+% === provenance: Singh2025ScholarQA ===
+% CLAIM: The system behind reports of the kind Asta gave us retrieves with
+%   a keyword search over abstracts and a search over passages of full
+%   texts that matches by embedding as well as by keyword, after a language
+%   model has reworded the user's question for each.
+% FOUND-VIA: WebSearch 'Asta "Scholar QA" "generate a report" OR "summarize literature" Ai2 Asta formerly Scholar QA allenai.org' (2026-11-13), which returned the arXiv record; full text by
+%   fetch_pdf.py --text https://arxiv.org/pdf/2504.10861
+% PICKED: the makers' own description of the pipeline (primary source),
+%   not a third party's summary.
+% QUOTE (sec. 2.1): "We use the Semantic Scholar API (Kinney et al., 2023) for retrieval, specifically its endpoint for keyword search over paper abstracts, and our new endpoint for querying snippets from open-access papers. A query decomposer re-formulates the user query for each endpoint and retrieves up to 256 snippets and 20 abstracts."
+% QUOTE (sec. 2.1): "Passage text is embedded with mxbai-embed-large-v1 (Lee et al., 2024) with binary quantization, and placed into a dense (approximate nearest neighbor) index, as well as a traditional sparse keyword index. We first retrieve a union of embedding and keyword-based matches, applying any specified filters. The filtered results are ranked with a weighted sum of embedding similarity and bm25 scores."
+% QUOTE (sec. 2.3): "In case no quote is assigned to a section, it is generated completely from the LLM weights."
+% VERIFIED: sections 1 and 2 read in the arXiv version (v2, 28 Jul 2025);
+%   evaluation sections not read; venue and pages as in the arXiv record's
+%   journal reference.  The paper describes Ai2 Scholar QA
+%   (qa.allen.ai).  That Asta's report came from this pipeline is OUR
+%   inference from the report's form (sections with quoted evidence, labels
+%   "Model-Generated" and "LLM Memory" on unsourced statements); the report
+%   itself states no method, and the pipeline may have changed since.
+% COUNTER: not applicable: the entry documents how a tool is described by
+%   its makers; no claim about its quality rests on it.
+% DATE: 2026-11-13
+@inproceedings{Singh2025ScholarQA,
+  author = {Singh, Amanpreet and Chang, Joseph Chee and Anastasiades, Chloe and Haddad, Dany and Naik, Aakanksha and Tanaka, Amber and Zamarron, Angele and Nguyen, Cecile and Hwang, Jena D. and Dunkleberger, Jason and Latzke, Matt and Rao, Smita and Lochner, Jaron and Evans, Rob and Kinney, Rodney and Weld, Daniel S. and Downey, Doug and Feldman, Sergey},
+  title = {{Ai2} {Scholar} {QA}: Organized Literature Synthesis with Attribution},
+  booktitle = {ACL 2025 System Demonstrations},
+  address = {Vienna, Austria},
+  pages = {513--523},
+  year = {2025},
+  eprint = {2504.10861},
+  eprinttype = {arxiv},
+}
+
+% === provenance: SemanticScholar2026Tutorial ===
+% CLAIM: Semantic Scholar's own paper search is a keyword search over
+%   titles and abstracts with a trained ranking, not a search by meaning.
+% FOUND-VIA: WebSearch 'Semantic Scholar API paper relevance search how ranking works keyword title abstract "snippet search" full text embeddings' (2026-11-13); page fetched with curl from
+%   https://www.semanticscholar.org/product/api/tutorial the same day.
+% PICKED: the provider's own documentation.
+% QUOTE (Step 1): "Two Academic Graph API endpoints use Semantic Scholar's custom-trained ranker to perform keyword searches: the paper relevance search endpoint and the paper bulk search endpoint."
+% QUOTE (Additional examples using search query parameters): "All keywords in the search query are matched against words in the paper's title and abstract."
+% VERIFIED: both sentences found in the page as served on 2026-11-13 (the
+%   page uses typographic apostrophes).  The second sentence stands in the
+%   part on the bulk search; the page does not say which fields the
+%   relevance search matches.  The page does not mention the snippet search.
+% COUNTER: not applicable (documentation).
+% DATE: 2026-11-13
+@online{SemanticScholar2026Tutorial,
+  author = {{Semantic Scholar}},
+  title = {Semantic Scholar Academic Graph {API}: Tutorial},
+  url = {https://www.semanticscholar.org/product/api/tutorial},
+  urldate = {2026-11-13},
+}
+
+% === provenance: OpenAlex2026Semantic ===
+% CLAIM: OpenAlex offers a search by meaning: it compares an embedding of
+%   the query with embeddings of each work's title, abstract and venue
+%   name, and returns at most 50 works.
+% FOUND-VIA: WebSearch 'OpenAlex API semantic search works endpoint embeddings "search.semantic" OR "semantic search" documentation' (2026-11-13); page fetched with curl from
+%   https://help.openalex.org/api/semantic-search/ the same day.
+% PICKED: the provider's own documentation.  (The summary shown by the web
+%   search named another embedding model; the page itself, last updated
+%   2026-11-03, names the one quoted here.)
+% QUOTE (opening): "Semantic search returns works whose meaning is closest to your query, even when the wording differs."
+% QUOTE (How it works): "OpenAlex embeds the title, abstract and venue name of every work with Qwen3-Embedding-0.6B, an open-source multilingual embedding model from Alibaba's Qwen team, into a 1,024-dimensional vector. At query time we embed your query with the same model and return the works closest in meaning."
+% QUOTE (How it works): "Among close matches, works with more citations get a small boost."
+% VERIFIED: the page read as served on 2026-11-13; limits table: "Max
+%   results 50 per query".  Used for the two test searches kept in
+%   session/round3/semantic/.
+% COUNTER: not applicable (documentation).
+% DATE: 2026-11-13
+@online{OpenAlex2026Semantic,
+  author = {{OpenAlex}},
+  title = {Semantic Search},
+  url = {https://help.openalex.org/api/semantic-search/},
+  date = {2026-11-03},
+  urldate = {2026-11-13},
+}
+
+% === provenance: Gilsenan2023TOTPApps ===
+% CLAIM: The backup functions of popular authenticator apps put the codes'
+%   secrets behind passwords, SMS or email again; of 19 apps that upload
+%   backups to the cloud, 4 identify the user at recovery by an SMS code
+%   alone (case A1 with an app; threats R8 and R5).
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (recovery OR recover OR fallback OR "fall-back" OR reset OR lockout OR "locked out" OR "backup code" OR "backup codes"))' -p wos -l 0 -n mfa-sufficient
+%   (query S4 of the third round; also returned by scopus).  Full text:
+%   fetch_pdf.py --text https://www.usenix.org/system/files/usenixsecurity23-gilsenan.pdf
+% PICKED: the only record that tests recovery on the side of the
+%   authenticator and not of the service; a new kind of evidence for R8.
+% QUOTE (Abstract): "Our findings show that most backup strategies end up placing trust in the same technologies that TOTP 2FA is meant to supersede: passwords, SMS, and email."
+% QUOTE (sec. 5.6): "Of the 19 apps that supported automatically uploading TOTP backups to the cloud (via cloud sync features and/or AAB), 15 required the user to authenticate to the cloud service storing the backup, while 4 relied solely on SMS OTP to authenticate users during recovery"
+% VERIFIED: full-text PDF read: abstract, section 1, sections 5.6 and 6.4
+%   through; the cryptanalysis (sec. 5.3-5.5) skimmed.  Applies to 22
+%   Android apps with at least 100,000 installs and a backup function,
+%   tested by the authors on their own accounts; iOS not tested; for two
+%   apps the cryptography is reported from documentation only (sec. 6.4).
+%   No account of a third party was attacked: the study shows what an
+%   attacker who took over the phone number or the cloud account could
+%   obtain, not that it has happened.
+% EVIDENCE-GRADE: E3
+% COUNTER: scholar session mfa-sufficient, C queries; within the study, 15
+%   of the 19 apps require a login to the cloud service, and three of the
+%   four that rely on SMS encrypt the backup under a password.
+% DATE: 2026-11-13
+@inproceedings{Gilsenan2023TOTPApps,
+  author = {Gilsenan, Conor and Shakir, Fuzail and Alomar, Noura and Egelman, Serge},
+  title = {Security and Privacy Failures in Popular {2FA} Apps},
+  booktitle = {32nd USENIX Security Symposium (USENIX Security 23)},
+  pages = {2079--2096},
+  year = {2023},
+  url = {https://www.usenix.org/conference/usenixsecurity23/presentation/gilsenan},
+}
+
+% === provenance: Bhardwaj2025PhoneTheft ===
+% CLAIM: Twenty victims of smartphone theft, interviewed, did not know
+%   whether anyone had got into their accounts; the study is mostly about
+%   thefts for the device, and leaves the frequency of misuse of a
+%   phone's contents to later studies (threat L1, observed in use).
+% FOUND-VIA: scholar search 'TS=(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (recovery OR recover OR fallback OR "fall-back" OR reset OR lockout OR "locked out" OR "backup code" OR "backup codes"))' -p wos -l 0 -n mfa-sufficient
+%   (query S4 of the third round; also returned by scopus).  The model had
+%   filed it as evidence on another question; reclassified by reading.
+%   Full text: fetch_pdf.py --text https://www.usenix.org/system/files/usenixsecurity25-bhardwaj.pdf
+% PICKED: the only record with accounts of device theft in use; the
+%   report's future work asks for exactly such a study.
+% QUOTE (sec. 4.3.2): "While participants were uncertain about whether they had experienced any privacy harm, they expressed concerns about potential risks and hoped that their protective measures could prevent attackers from accessing their stolen phones."
+% QUOTE (sec. 5.3): "While our study primarily focused on the first threat model, recent reports have highlighted the second as an emerging concern"
+% QUOTE (Abstract): "Recovery is often complicated by challenges such as SMS-based two-factor authentication (2FA)."
+% VERIFIED: full-text PDF read: abstract, sections 3.5, 4.3.2, 4.3.3 and
+%   5.3 through, the rest skimmed.  Twenty self-selected interviewees
+%   recruited largely through Reddit; the authors name survivorship bias:
+%   "individuals who experienced more severe consequences of phone theft
+%   may have opted out" (sec. 3.5).  It cannot show how often a stolen
+%   phone leads to a compromised account, and says so.
+% EVIDENCE-GRADE: E2
+% COUNTER: the reports the study itself cites for thefts in which the
+%   thief first watches the PIN (its refs. 57, 68, 69; news reports, not
+%   retrieved); NCSC2026CredentialsPaper rates most methods as exposed
+%   when the device is stolen and the PIN is weak.
+% DATE: 2026-11-13
+@inproceedings{Bhardwaj2025PhoneTheft,
+  author = {Bhardwaj, Divyanshu and Hashmi, Sumair Ijaz and Krombholz, Katharina and Golla, Maximilian},
+  title = {Understanding How Users Prepare for and React to Smartphone Theft},
+  booktitle = {34th USENIX Security Symposium (USENIX Security 25)},
+  pages = {5987--6005},
+  year = {2025},
+  url = {https://www.usenix.org/conference/usenixsecurity25/presentation/bhardwaj},
+}
+
+% === provenance: Frymann2020ARKG ===
+% ABSTRACT ONLY
+% CLAIM: A proposal for recovering from the loss of a security key, with a
+%   second key registered in advance, has been proven to meet its security
+%   goals in a formal model (cases A3/B/C; threat R8; a proposal, not a
+%   deployment).
+% FOUND-VIA: scholar search 'TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (recovery OR recover OR fallback OR "fall-back" OR reset OR lockout OR "locked out" OR "backup code" OR "backup codes"))' -p scopus -l 0 -n mfa-sufficient
+%   (query S5 of the third round).
+% PICKED: the one new record that speaks against "recovery is the weak
+%   way in": cited so that the other side is not left out.
+% QUOTE (Abstract): "We prove that Yubico's proposal achieves our ARKG security properties under the discrete logarithm and PRF-ODH assumptions in the random oracle model."
+% VERIFIED: abstract only (as returned by the database).  The publisher
+%   (ACM) answers automated retrieval with a check for robots; the copy at
+%   eprint.iacr.org/2020/1004 answered HTTP 403 on 2026-11-13.  Neither was
+%   worked around.  Authors, title and pages from Crossref.
+% EVIDENCE-GRADE: E4
+% COUNTER: Kunke2021Recovery (recovery methods for FIDO2 "have many
+%   drawbacks"); the proof covers the cryptographic core of a proposal, not
+%   what services deploy.
+% DATE: 2026-11-13
+@inproceedings{Frymann2020ARKG,
+  author = {Frymann, Nick and Gardham, Daniel and Kiefer, Franziskus and Lundberg, Emil and Manulis, Mark and Nilsson, Dain},
+  title = {Asynchronous Remote Key Generation: An Analysis of {Yubico's} Proposal for {W3C} {WebAuthn}},
+  booktitle = {Proceedings of the 2020 ACM SIGSAC Conference on Computer and Communications Security},
+  pages = {939--954},
+  year = {2020},
+  doi = {10.1145/3372297.3417292},
+}
+
+% ===================================================================
 % Sources cited only in the appendix that compares this review with a
-% report by Asta.  They are not among the 64 sources of the review, and
-% nothing in the review's results rests on them.
+% report by Asta.  They are not among the sources of the review, and
+% nothing in the review's results rests on them.  (The study by Klivan et
+% al. was here until the third round; our own search then returned it,
+% and its entry is now with the sources of that round, above.)
 % ===================================================================
 
 % === provenance: Asta2026Report ===
@@ -1829,35 +2080,6 @@
   howpublished = {Report generated by the research assistant Asta of the Allen Institute for AI from the first instruction of this review; the file is kept with the source of this report},
   date = {2026-11-12},
   url = {https://asta.allen.ai},
-}
-
-% === provenance: Klivan2023Recovery ===
-% CLAIM: Many websites let a user, or an attacker with access to the
-%   account's email address, switch off MFA through the recovery procedure.
-% FOUND-VIA: cited in Asta2026Report; not returned by any of this review's
-%   searches (no record in search/).  Retrieved as a known item:
-%   fetch_pdf.py --text https://arxiv.org/pdf/2306.09708 (open-access copy
-%   listed by OpenAlex for DOI 10.1145/3576915.3623180).
-% PICKED: the one study of deployed MFA among Asta's sources, and a source
-%   this review lacks.
-% QUOTE (Abstract): "We find that many websites deploy insecure Multi-Factor Authentication recovery procedures and allowed us to circumvent and disable Multi-Factor Authentication when having access to the accounts' associated email addresses."
-% QUOTE (Abstract): "we select a subset of 71 websites, create accounts, set up Multi-Factor Authentication, and perform an in-depth investigation of their recovery procedure security and user experience"
-% VERIFIED: abstract and introduction read in the arXiv version (v3, 19 Sep
-%   2023), the quoted passages confirmed there; the rest not read through.
-%   The arXiv version names the first author Sabrina Amft; the published
-%   record (Crossref) names her Sabrina Klivan, as used here.
-% COUNTER: none run: the source is cited to say what Asta found, not to
-%   back a claim of this review.
-% DATE: 2026-11-12
-@inproceedings{Klivan2023Recovery,
-  author = {Klivan, Sabrina and H{\"o}ltervennhoff, Sandra and Huaman, Nicolas and Krause, Alexander and Simko, Lucy and Acar, Yasemin and Fahl, Sascha},
-  title = {\mkbibquote{We've Disabled {MFA} for You}: An Evaluation of the Security and Usability of Multi-Factor Authentication Recovery Deployments},
-  booktitle = {Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security},
-  pages = {3138--3152},
-  year = {2023},
-  doi = {10.1145/3576915.3623180},
-  eprint = {2306.09708},
-  eprinttype = {arxiv},
 }
 
 % === provenance: Ngandu2025PasswordManagement ===

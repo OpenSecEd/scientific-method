@@ -4,7 +4,8 @@ The review in this directory was made in a session on 2026-11-12, extended
 on 2026-11-13, by a language model (Claude Fable 5.2 in Claude Code)
 directed by the author. It started five further runs of a model (Claude
 Sonnet 5.5) for parts of the work on the first day and four on the
-second. This directory keeps what those runs were told and what they
+second. A third round, on the afternoon of the second day, was made
+by the lead alone. This directory keeps what those runs were told and what they
 reported, so that the work can be checked. The report's last appendix
 ("How the review was made") describes the session.
 
@@ -76,3 +77,43 @@ records were screened.
   what was done, not as tools: they contain paths of the scratch
   directory.
 
+
+## Third round (2026-11-13, afternoon): `round3/`
+
+The comparison with Asta's report had shown a study of account recovery
+(Klivan et al. 2023, `Klivan2023Recovery`) that two rounds of search had
+not returned. The author asked why, then asked for queries that find it
+and for the story to be told. The report's appendix "A study that the
+search missed" is that story; this is its record.
+
+| File | What it is |
+|---|---|
+| `round3/queries.json`, `round3/worklist.json` | The three added queries, and each as sent to each database |
+| `round3/scripts/go.sh` | Ran them: `add.py` (Web of Science, Scopus, IEEE Xplore, arXiv, into the session `mfa-sufficient`), `oa_ta.py` (OpenAlex, title or abstract, into the session), `run.py openalex` (OpenAlex full text, to a file only) |
+| `round3/logs/` | What those runs logged: one line per search, with counts |
+| `round3/scripts/fill_abstracts.py` | Added abstracts from OpenAlex to the new records that had none (the tool's own command goes through the whole session) |
+| `round3/scripts/classify.sh`, `pending.py` | Classified the 409 new records, a hundred at a time |
+| `round3/scripts/oa_abstracts.py`, `round3/oa-abstracts.json` | Compared, for 48 records, the length of the abstract in Web of Science with that in OpenAlex |
+| `round3/scripts/oa_semantic.py`, `round3/semantic/` | Asked OpenAlex's search by meaning two questions; the 50 works returned for each, in order, with how our screening had classified them (`*.txt` as after the third round; the report's table gives the state before it) |
+| `round3/scripts/s2probe.py`, `round3/s2/` | The same two questions to Semantic Scholar's public search without a key: every attempt was answered "too many requests" |
+
+- Where the study was, before the round: in no session; in the files of
+  OpenAlex full-text matches of the second round for 13 of 20 queries
+  (scratch files, not kept: the lists belong to the database). The check
+  against Web of Science was `scholar search '"Multi-Factor
+  Authentication Recovery Deployments"' -p wos -f json`.
+- The lead read the records the model filed as bearing or was unsure of,
+  and changed eight decisions and two labels with `round2/scripts/retag.py`;
+  the report's section "Deviations from the protocol" gives the counts.
+  `round2/scripts/export.sh` gained the theme `device-loss`.
+- A search with alphaXiv's `discover_papers` (question: "an attacker uses
+  account recovery or a weaker fallback login to get around multi-factor
+  authentication") was tried three times and did not answer. It counts as
+  failed.
+- The 39 works that the search by meaning returned and our records lack
+  (`semantic/*.txt`, "not in our records") were not screened.
+- Four papers were read for this round: Klivan et al. 2023 (arXiv
+  version), Gilsenan et al. 2023, Bhardwaj et al. 2025, and the paper on
+  Scholar QA (Singh et al. 2025); the provenance blocks in `../mfa.bib`
+  say which sections. Frymann et al. 2020 could be read only as an
+  abstract.

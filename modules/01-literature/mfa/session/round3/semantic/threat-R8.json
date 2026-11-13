@@ -1,0 +1,352 @@
+[
+{
+"id": "https://openalex.org/W2975048949",
+"doi": "https://doi.org/10.1016/j.cose.2019.101619",
+"title": "Understanding security failures of multi-factor authentication schemes for multi-server environments",
+"publication_year": 2019,
+"relevance_score": 0.9480357059550608
+},
+{
+"id": "https://openalex.org/W417364168",
+"doi": "https://doi.org/10.1007/978-3-662-45472-5_24",
+"title": "On the (In)Security of Mobile Two-Factor Authentication",
+"publication_year": 2014,
+"relevance_score": 0.9282012502397626
+},
+{
+"id": "https://openalex.org/W2110695853",
+"doi": "https://doi.org/10.1145/1518701.1519003",
+"title": "It's not what you know, but who you know: a social approach to last-resort authentication",
+"publication_year": 2009,
+"relevance_score": 0.9218665988373361
+},
+{
+"id": "https://openalex.org/W4388858451",
+"doi": "https://doi.org/10.1145/3576915.3623180",
+"title": "\"We've Disabled MFA for You\": An Evaluation of the Security and Usability of Multi-Factor Authentication Recovery Deployments",
+"publication_year": 2023,
+"relevance_score": 0.9057577616880668
+},
+{
+"id": "https://openalex.org/W2973606055",
+"doi": "https://doi.org/10.1016/s1353-4858(19)30107-2",
+"title": "The many ways to hack 2FA",
+"publication_year": 2019,
+"relevance_score": 0.8839775255756688
+},
+{
+"id": "https://openalex.org/W2070396449",
+"doi": "https://doi.org/10.1109/icdcsw.2014.30",
+"title": "Secure Fallback Authentication and the Trusted Friend Attack",
+"publication_year": 2014,
+"relevance_score": 0.8697998540252461
+},
+{
+"id": "https://openalex.org/W4246987011",
+"doi": "https://doi.org/10.1002/9781119672357.ch13",
+"title": "Downgrade/Recovery Attacks",
+"publication_year": 2020,
+"relevance_score": 0.8697046
+},
+{
+"id": "https://openalex.org/W4392397426",
+"doi": "https://doi.org/10.5220/0012319000003648",
+"title": "Evaluating the Influence of Multi-Factor Authentication and Recovery Settings on the Security and Accessibility of User Accounts",
+"publication_year": 2024,
+"relevance_score": 0.8681400257052632
+},
+{
+"id": "https://openalex.org/W4293024046",
+"doi": "https://doi.org/10.1145/3538969.3538987",
+"title": "Multi-Account Dashboard for Authentication Dependency Analysis",
+"publication_year": 2022,
+"relevance_score": 0.8651439302150172
+},
+{
+"id": "https://openalex.org/W2784458746",
+"doi": null,
+"title": "Security Analysis of Mobile Two-Factor Authentication Schemes",
+"publication_year": 2014,
+"relevance_score": 0.8625745245902638
+},
+{
+"id": "https://openalex.org/W3215714510",
+"doi": "https://doi.org/10.1007/978-981-16-4244-9_23",
+"title": "A Survey on Trends of Two-Factor Authentication",
+"publication_year": 2021,
+"relevance_score": 0.857562733691465
+},
+{
+"id": "https://openalex.org/W2893018678",
+"doi": null,
+"title": "Implementing Resiliency of Adaptive Multi-Factor Authentication Systems",
+"publication_year": 2018,
+"relevance_score": 0.854559894861037
+},
+{
+"id": "https://openalex.org/W2074279819",
+"doi": "https://doi.org/10.1145/2785830.2785839",
+"title": "Locked Your Phone? Buy a New One? From Tales of Fallback Authentication on Smartphones to Actual Concepts",
+"publication_year": 2015,
+"relevance_score": 0.8497917669571089
+},
+{
+"id": "https://openalex.org/W7168109122",
+"doi": null,
+"title": "Multi-Factor Authentication Bypass - Attack Techniques and :Protection Mechanisms",
+"publication_year": 2026,
+"relevance_score": 0.84711206
+},
+{
+"id": "https://openalex.org/W2397704588",
+"doi": "https://doi.org/10.5282/edoc.19315",
+"title": "Exploiting autobiographical memory for fallback authentication on smartphones",
+"publication_year": 2016,
+"relevance_score": 0.8452543040054372
+},
+{
+"id": "https://openalex.org/W4243977610",
+"doi": "https://doi.org/10.1002/9781119672357.ch20",
+"title": "Miscellaneous MFA Hacks",
+"publication_year": 2020,
+"relevance_score": 0.8414535
+},
+{
+"id": "https://openalex.org/W4396832380",
+"doi": "https://doi.org/10.1145/3613904.3642889",
+"title": "A Comparative Long-Term Study of Fallback Authentication Schemes",
+"publication_year": 2024,
+"relevance_score": 0.8407084312088738
+},
+{
+"id": "https://openalex.org/W3111143293",
+"doi": "https://doi.org/10.1007/978-1-4842-6570-3_6",
+"title": "Multi-factor Authentication",
+"publication_year": 2020,
+"relevance_score": 0.8406746381091518
+},
+{
+"id": "https://openalex.org/W4311685872",
+"doi": "https://doi.org/10.55621/idpro.92",
+"title": "Multi-factor Authentication",
+"publication_year": 2022,
+"relevance_score": 0.8406241850780614
+},
+{
+"id": "https://openalex.org/W2616394704",
+"doi": "https://doi.org/10.1016/b978-0-12-803843-7.00050-8",
+"title": "Context-Aware Multifactor Authentication Survey",
+"publication_year": 2017,
+"relevance_score": 0.839203855563004
+},
+{
+"id": "https://openalex.org/W4251619932",
+"doi": "https://doi.org/10.14722/usec.2019.23030",
+"title": "Work in Progress: A Comparative Long-Term Study of Fallback Authentication",
+"publication_year": 2019,
+"relevance_score": 0.837442652248181
+},
+{
+"id": "https://openalex.org/W3043483293",
+"doi": "https://doi.org/10.25777/3dhq-pj49",
+"title": "Account Recovery Methods for Two-Factor Authentication (2FA): An Exploratory Study",
+"publication_year": 2020,
+"relevance_score": 0.8370052071181322
+},
+{
+"id": "https://openalex.org/W3202196563",
+"doi": "https://doi.org/10.1016/j.cose.2021.102487",
+"title": "Evaluating fallback authentication research: A systematic literature review",
+"publication_year": 2021,
+"relevance_score": 0.8364171400756757
+},
+{
+"id": "https://openalex.org/W3188902280",
+"doi": "https://doi.org/10.1002/9781119672357.ch14",
+"title": "Brute\u2010Force Attacks",
+"publication_year": 2020,
+"relevance_score": 0.8361540705567235
+},
+{
+"id": "https://openalex.org/W2188319988",
+"doi": null,
+"title": "Fallback Authentication Manager-A step forward towards Optimization and Optimum Efficiency",
+"publication_year": 2011,
+"relevance_score": 0.8337399
+},
+{
+"id": "https://openalex.org/W3205827550",
+"doi": null,
+"title": "Vulnerabilities of Multi-factor Authentication in Modern Computer Networks",
+"publication_year": 2021,
+"relevance_score": 0.833734643942119
+},
+{
+"id": "https://openalex.org/W3177361167",
+"doi": "https://doi.org/10.1007/978-3-030-79997-7_28",
+"title": "Exploring Understanding and Usage of Two-Factor Authentication Account Recovery",
+"publication_year": 2021,
+"relevance_score": 0.8324014466757391
+},
+{
+"id": "https://openalex.org/W4321482334",
+"doi": "https://doi.org/10.1093/combul/bwad023",
+"title": "Bypassing Multi-Factor Authentication",
+"publication_year": 2023,
+"relevance_score": 0.8308070270705695
+},
+{
+"id": "https://openalex.org/W2908884359",
+"doi": null,
+"title": "Systems and models for secure fallback authentication",
+"publication_year": 2018,
+"relevance_score": 0.8301775661587263
+},
+{
+"id": "https://openalex.org/W7201915090",
+"doi": null,
+"title": "Multi-factor authentication bypass techniques and mitigation strategies",
+"publication_year": 2026,
+"relevance_score": 0.8291664
+},
+{
+"id": "https://openalex.org/W4248860792",
+"doi": "https://doi.org/10.1007/978-1-4842-6200-9_15",
+"title": "Multifactor Authentication",
+"publication_year": 2020,
+"relevance_score": 0.8285563025650461
+},
+{
+"id": "https://openalex.org/W3209548259",
+"doi": null,
+"title": "An Adaptive Approach Towards The Selection of Authentication Factors in Multi-factor Authentication (MFA) System",
+"publication_year": 2016,
+"relevance_score": 0.8280343
+},
+{
+"id": "https://openalex.org/W4251965576",
+"doi": "https://doi.org/10.1002/9781119672357.ch9",
+"title": "One\u2010Time Password Attacks",
+"publication_year": 2020,
+"relevance_score": 0.824409664460159
+},
+{
+"id": "https://openalex.org/W2998977286",
+"doi": "https://doi.org/10.31274/cc-20240624-1000",
+"title": "MFAProxy: A reverse proxy for multi-factor authentication",
+"publication_year": 2019,
+"relevance_score": 0.8228616023518139
+},
+{
+"id": "https://openalex.org/W2999047529",
+"doi": "https://doi.org/10.1007/978-3-030-43754-1_6",
+"title": "Social Engineering Resistant 2FA",
+"publication_year": 2020,
+"relevance_score": 0.8226512955925349
+},
+{
+"id": "https://openalex.org/W4391158424",
+"doi": "https://doi.org/10.48550/arxiv.2401.11599",
+"title": "Reducing Usefulness of Stolen Credentials in SSO Contexts",
+"publication_year": 2024,
+"relevance_score": 0.8209705810677871
+},
+{
+"id": "https://openalex.org/W3155245804",
+"doi": "https://doi.org/10.1109/mc.2021.3055684",
+"title": "Who Is Authenticating My E-Commerce Logins?",
+"publication_year": 2021,
+"relevance_score": 0.8209494722966187
+},
+{
+"id": "https://openalex.org/W4242500077",
+"doi": "https://doi.org/10.1002/9781119672357.ch1",
+"title": "Logon Problems",
+"publication_year": 2020,
+"relevance_score": 0.8178486
+},
+{
+"id": "https://openalex.org/W7116952954",
+"doi": "https://doi.org/10.1109/tdsc.2025.3646469",
+"title": "Understanding Ephemeral Secret Leakage Attacks in Password-Based Multi-Factor Authentication for Mobile Devices",
+"publication_year": 2025,
+"relevance_score": 0.8168145021555696
+},
+{
+"id": "https://openalex.org/W4402015026",
+"doi": "https://doi.org/10.33365/jti.v18i2.4035",
+"title": "PROTECTION SECOND LAYER MENGGUNAKAN MULTI FACTOR AUTHENTICATOR UNTUK MEMVERFIKASI KEABSAHAN ACCOUNT EMAIL DI DALAM ACTIVE DIRECTORY",
+"publication_year": 2024,
+"relevance_score": 0.816167240851172
+},
+{
+"id": "https://openalex.org/W4402064206",
+"doi": "https://doi.org/10.1016/b978-0-443-13223-0.00051-5",
+"title": "Context-Aware Multifactor Authentication Survey",
+"publication_year": 2017,
+"relevance_score": 0.8152098230446748
+},
+{
+"id": "https://openalex.org/W4249036000",
+"doi": "https://doi.org/10.1002/9781119672357.ch8",
+"title": "SMS Attacks",
+"publication_year": 2020,
+"relevance_score": 0.8139509241854623
+},
+{
+"id": "https://openalex.org/W2515793314",
+"doi": null,
+"title": "Performance Analysis of Multi-Factor Authentication",
+"publication_year": 2014,
+"relevance_score": 0.8136628
+},
+{
+"id": "https://openalex.org/W3000070852",
+"doi": null,
+"title": "Impact Assessment of Password Reset PRMitM Attack with Two-Factor Authentication",
+"publication_year": 2019,
+"relevance_score": 0.8133716580497589
+},
+{
+"id": "https://openalex.org/W3217464138",
+"doi": "https://doi.org/10.28925/2663-4023.2020.12.163171",
+"title": "DEVELOPMENT OF RECOMMENDATIONS FOR MINIMIZING THE RISKS OF ACCOUNT HACKING ON THE BASIS OF ANALYSIS OF THE MOST COMMON HACKING METHODS",
+"publication_year": 2020,
+"relevance_score": 0.81286347
+},
+{
+"id": "https://openalex.org/W3105044890",
+"doi": "https://doi.org/10.64628/aa.jsepyun55",
+"title": "Can I still be hacked with 2FA enabled?",
+"publication_year": 2020,
+"relevance_score": 0.8126128787892338
+},
+{
+"id": "https://openalex.org/W4396860213",
+"doi": "https://doi.org/10.1007/978-3-031-51163-9_25",
+"title": "Credential Manager Using Cloud Computing",
+"publication_year": 2024,
+"relevance_score": 0.81091416
+},
+{
+"id": "https://openalex.org/W3208816507",
+"doi": null,
+"title": "Two-Way Authentication System",
+"publication_year": 2021,
+"relevance_score": 0.8086502
+},
+{
+"id": "https://openalex.org/W4313213097",
+"doi": "https://doi.org/10.12968/s1353-4858(22)70070-0",
+"title": "How to deal with MFA bypass",
+"publication_year": 2022,
+"relevance_score": 0.8086101
+},
+{
+"id": "https://openalex.org/W7214310563",
+"doi": "https://doi.org/10.65161/recjkuihdchfaisyr",
+"title": "Enhancing Account Recovery for Low-Income Users: A Comparative Analysis of MFA with Shamir\u2019s Secret Sharing and Secure Multi-Party Computation with Garbled Circuit",
+"publication_year": 2026,
+"relevance_score": 0.80853766
+}
+]

@@ -1,0 +1,50 @@
+ 1 adjacent           2018 Multi-Factor Authentication: A Survey
+ 2 adjacent           2017 Multi-Factor Authentication
+ 3 not in our records 2020 A survey on multi-factor authentication for online banking in the wild
+ 4 adjacent           2019 Multi-Factor Authentication in Cyber Physical System: A State of Art Survey
+ 5 adjacent           2019 Evaluating User Perception of Multi-Factor Authentication: A Systematic Review
+ 6 not in our records 2023 Current Multi-factor of Authentication: Approaches, Requirements, Attacks and Challenges
+ 7 not in our records 2012 A Comprehensive Study on Multifactor Authentication Schemes
+ 8 adjacent           2021 The Role of Multi-factor Authentication for Modern Day Security
+ 9 adjacent           2022 The Necessity of Multi Factor Authentication
+10 bearing            2023 "We've Disabled MFA for You": An Evaluation of the Security and Usability of Multi-Factor Authe
+11 adjacent           2021 Practical Threshold Multi-Factor Authentication
+12 adjacent           2019 MFA is a Waste of Time! Understanding Negative Connotation Towards MFA Applications via User Ge
+13 adjacent           2019 Security of Multifactor Authentication Model to Improve Authentication Systems
+14 not in our records 2019 On Data Protection Using Multi-Factor Authentication
+15 adjacent           2022 Multi-Factor Authentication
+16 adjacent           2017 Context-Aware Multifactor Authentication Survey
+17 adjacent           2023 Choosing the right MFA method for online systems: A comparative analysis
+18 adjacent           2011 Design, implementation and analysis of multi layer, Multi Factor Authentication (MFA) setup for
+19 adjacent           2023 THE NECESSITY AND BENEFIT OF MULTI FACTOR AUTHENTICATION
+20 adjacent           2020 Multifactor Authentication
+21 adjacent           2020 Multi-factor Authentication
+22 not in our records 2016 An Adaptive Approach Towards The Selection of Authentication Factors in Multi-factor Authentica
+23 adjacent           2022 Multi-factor Authentication
+24 adjacent           2025 Multi-Factor Authentication (Securing the Digital Age)
+25 not in our records 2020 MuFASA: A Tool for High-level Specification and Analysis of Multi-factor Authentication Protoco
+26 adjacent           2017 Context-Aware Multifactor Authentication Survey
+27 adjacent           2020 Security Analysis of Multi-Factor Authentication Security Protocols
+28 not in our records 2020 Review on Multi-Factor Authentication (MFA) Sources and Operation Challenges
+29 adjacent           2024 PROTECTION SECOND LAYER MENGGUNAKAN MULTI FACTOR AUTHENTICATOR UNTUK MEMVERFIKASI KEABSAHAN ACC
+30 not in our records 2021 AuthGuide: Analyzing Security, Privacy and Usability Trade-Offs in Multi-factor Authentication
+31 not in our records 2011 Influences on the Adoption of Multifactor Authentication
+32 not in our records 2024 A Comprehensive Analysis on using Multifactor Authentication System for Three Level Security
+33 adjacent           2019 MFAProxy: A reverse proxy for multi-factor authentication
+34 not in our records 2023 Cyber trends underline need for mature MFA
+35 not in our records 2017 Multi-factor Authentication and their Approaches
+36 adjacent           2022 Comparison of information security methods of information-communication infrastructure: Multi-F
+37 adjacent           2019 Multi-Factor Authentication
+38 not in our records 2014 What is Multi-Factor Authentication?
+39 adjacent           2025 Multi-Factor Authentication Fatigue: A Growing Concern in User Experience and Security
+40 not in our records 2020 Designing MFA for Humans
+41 not in our records 2023 Ensuring Information System Security by Selective Multifactor Authentication / Обеспечение безо
+42 adjacent           2025 Multi-Factor Authentication: A Comprehensive Review
+43 not in our records 2020 A Study on the Necessity of Applying Multi-factor Authentication for User Authentication
+44 adjacent           2024 Strengthening Security: Implementation of Multi-Factor Authentication (MFA) in Data Center Envi
+45 adjacent           2019 Evaluating User Perception of Multi-Factor Authentication: A Systematic Review
+46 not in our records 2014 Adventures and Ethics in MF Authentication
+47 adjacent           2016 Multi-Factor Authentication
+48 not in our records 2022 How to deal with MFA bypass
+49 not in our records 2019 Proceedings of the 2019 International Conference on Information System and System Management
+50 not in our records 2024 Retraction Notice: Evaluating the Effectiveness of Multi-Factor Authentication for Preventing C

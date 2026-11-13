@@ -1,0 +1,50 @@
+ 1 not in our records 2019 Understanding security failures of multi-factor authentication schemes for multi-server environ
+ 2 bearing            2014 On the (In)Security of Mobile Two-Factor Authentication
+ 3 not in our records 2009 It's not what you know, but who you know: a social approach to last-resort authentication
+ 4 bearing            2023 "We've Disabled MFA for You": An Evaluation of the Security and Usability of Multi-Factor Authe
+ 5 adjacent           2019 The many ways to hack 2FA
+ 6 not in our records 2014 Secure Fallback Authentication and the Trusted Friend Attack
+ 7 bearing            2020 Downgrade/Recovery Attacks
+ 8 bearing            2024 Evaluating the Influence of Multi-Factor Authentication and Recovery Settings on the Security a
+ 9 not in our records 2022 Multi-Account Dashboard for Authentication Dependency Analysis
+10 bearing            2014 Security Analysis of Mobile Two-Factor Authentication Schemes
+11 adjacent           2021 A Survey on Trends of Two-Factor Authentication
+12 not in our records 2018 Implementing Resiliency of Adaptive Multi-Factor Authentication Systems
+13 not in our records 2015 Locked Your Phone? Buy a New One? From Tales of Fallback Authentication on Smartphones to Actua
+14 bearing            2026 Multi-Factor Authentication Bypass - Attack Techniques and :Protection Mechanisms
+15 not in our records 2016 Exploiting autobiographical memory for fallback authentication on smartphones
+16 adjacent           2020 Miscellaneous MFA Hacks
+17 not in our records 2024 A Comparative Long-Term Study of Fallback Authentication Schemes
+18 adjacent           2020 Multi-factor Authentication
+19 adjacent           2022 Multi-factor Authentication
+20 adjacent           2017 Context-Aware Multifactor Authentication Survey
+21 not in our records 2019 Work in Progress: A Comparative Long-Term Study of Fallback Authentication
+22 bearing            2020 Account Recovery Methods for Two-Factor Authentication (2FA): An Exploratory Study
+23 not in our records 2021 Evaluating fallback authentication research: A systematic literature review
+24 adjacent           2020 Brute‐Force Attacks
+25 not in our records 2011 Fallback Authentication Manager-A step forward towards Optimization and Optimum Efficiency
+26 not in our records 2021 Vulnerabilities of Multi-factor Authentication in Modern Computer Networks
+27 adjacent           2021 Exploring Understanding and Usage of Two-Factor Authentication Account Recovery
+28 adjacent           2023 Bypassing Multi-Factor Authentication
+29 not in our records 2018 Systems and models for secure fallback authentication
+30 adjacent           2026 Multi-factor authentication bypass techniques and mitigation strategies
+31 adjacent           2020 Multifactor Authentication
+32 not in our records 2016 An Adaptive Approach Towards The Selection of Authentication Factors in Multi-factor Authentica
+33 adjacent           2020 One‐Time Password Attacks
+34 adjacent           2019 MFAProxy: A reverse proxy for multi-factor authentication
+35 adjacent           2020 Social Engineering Resistant 2FA
+36 adjacent           2024 Reducing Usefulness of Stolen Credentials in SSO Contexts
+37 not in our records 2021 Who Is Authenticating My E-Commerce Logins?
+38 not in our records 2020 Logon Problems
+39 not in our records 2025 Understanding Ephemeral Secret Leakage Attacks in Password-Based Multi-Factor Authentication fo
+40 adjacent           2024 PROTECTION SECOND LAYER MENGGUNAKAN MULTI FACTOR AUTHENTICATOR UNTUK MEMVERFIKASI KEABSAHAN ACC
+41 adjacent           2017 Context-Aware Multifactor Authentication Survey
+42 adjacent           2020 SMS Attacks
+43 not in our records 2014 Performance Analysis of Multi-Factor Authentication
+44 bearing            2019 Impact Assessment of Password Reset PRMitM Attack with Two-Factor Authentication
+45 adjacent           2020 DEVELOPMENT OF RECOMMENDATIONS FOR MINIMIZING THE RISKS OF ACCOUNT HACKING ON THE BASIS OF ANAL
+46 bearing            2020 Can I still be hacked with 2FA enabled?
+47 adjacent           2024 Credential Manager Using Cloud Computing
+48 adjacent           2021 Two-Way Authentication System
+49 not in our records 2022 How to deal with MFA bypass
+50 adjacent           2026 Enhancing Account Recovery for Low-Income Users: A Comparative Analysis of MFA with Shamir’s Se

@@ -121,3 +121,17 @@ one measurement on another subject).
   "man-in-the-middle".
 - The labels "(Model-Generated)" (4) and "(LLM Memory)" (1) occur five
   times, all but one in the closing section.
+
+## After the third round (2026-11-13, afternoon)
+
+The table above is as after the second round, which is the state that the
+report's comparison describes. The third round was made because of this
+comparison, so it is not part of it. For the record, it changed two rows:
+
+- Klivan et al. 2023: returned by our added queries, read, and now cited in
+  the review (`Klivan2023Recovery`).
+- Ngandu et al. 2025: returned, and excluded as evidence on another
+  question.
+
+Of Asta's 41 sources our records then hold 20 (3 cited, 17 not cited) and
+lack 21.
