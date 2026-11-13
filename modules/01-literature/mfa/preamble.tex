@@ -7,6 +7,10 @@
 \usepackage[british]{babel}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{array}
+% Text columns in tables are set ragged right: justified text in a narrow
+% column gives rivers of white.
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{pdfpages}
 \usepackage{subcaption}
 

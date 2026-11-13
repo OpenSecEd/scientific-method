@@ -1,0 +1,17 @@
+Second round of a literature review: screen the newly retrieved records for ONE research question and report what, if anything, they change. Your complete instructions are in
+  /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/BRIEF.md
+Read that file first and follow it step by step. Do not edit the git repository.
+
+Your strand:
+- scholar session and slug: `mfa-necessary` (1758 records pending out of 2282; start the abstracts and the classification early and run them in the background with long timeouts)
+- Output directory (create it): /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/mfa-necessary
+- Question (RQ4): "Is multi-factor authentication necessary: can comparable security be reached with a single factor, or by other means?"
+- Hypothesis in the report: not necessary against the remote threats; a single cryptographic key (case C) resists them as well as the multi-factor cases do. The report found this neither refuted nor established: what protects remotely is a key bound to the service, which the standards allow as a single factor, but no source tests a key alone, and the strongest evidence is for a key with user verification, which the standards count as multi-factor. Risk-based authentication and strong passwords were found not to be substitutes.
+- supports-claim = bears on the question and shows comparable security reached without several factors (a single cryptographic key, risk-based authentication, a random unique password, other means).
+- qualifies-claim = bears on it and shows single-factor or alternative schemes falling short, or multi-factor authentication being required and why, or narrows the claim.
+- Report sections to know: "How the standards classify the cases", "Cases against threats" and "Necessity" in the Results; yesterday's run report is `session/reports/necessary.md`. One of today's queries (multi-factor terms with "necessary OR mandatory OR mandate OR required") is very broad and will return many records that merely say MFA is required or recommended somewhere: a bare statement of that kind is x4-no-evidence unless it is a standard, a regulation or an authority's guidance.
+- What would matter most here: ANY test, measurement or analysis of a cryptographic key used alone, without PIN or biometric (case C), against any threat, or compared with a multi-factor case; measured comparisons of a random unique password or of risk-based authentication with multi-factor authentication; standards and regulations that require several factors and the reasons they give (primary texts, not reports about them); evidence on a lost or stolen device for single-factor schemes; anything that contradicts the report's statement that no source tests a key alone.
+- Themes used yesterday for cited records: `RBA`, `FIDO`, `REC`, `STD`, `ATT`.
+- Table command: `scholar sessions export mfa-necessary -f table --bearing-only --lang en --label hits-necessary --track "Is multi-factor authentication necessary" --theme RBA="Risk-based authentication" --theme FIDO="Cryptographic keys and passkeys" --theme REC="Account recovery and fallback" --theme STD="Standards and requirements" --theme ATT="Attacks on and measurements of MFA" -o <OUT>/mfa-necessary-full` (add `--theme` for any theme you add).
+
+Reply as the brief says: one paragraph and the paths of your files.

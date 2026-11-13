@@ -1,9 +1,10 @@
 # Record of the session behind the review
 
-The review in this directory was made in one session on 2026-11-12 by a
-language model (Claude Fable 5.2 in Claude Code) directed by the author.
-It started five further runs of a model (Claude Sonnet 5.5) for parts of
-the work. This directory keeps what those runs were told and what they
+The review in this directory was made in a session on 2026-11-12, extended
+on 2026-11-13, by a language model (Claude Fable 5.2 in Claude Code)
+directed by the author. It started five further runs of a model (Claude
+Sonnet 5.5) for parts of the work on the first day and four on the
+second. This directory keeps what those runs were told and what they
 reported, so that the work can be checked. The report's last appendix
 ("How the review was made") describes the session.
 
@@ -38,3 +39,40 @@ Things to know when reading them:
   `verify_quotes.py`, extract your own copies to text
   (`pdftotext paper.pdf`) into one directory and run
   `python3 scripts/verify_quotes.py ../mfa.bib <that directory>`.
+
+## Second round (2026-11-13): `round2/`
+
+The author read draft 5 and ruled that a search is never limited. Every
+search that had returned the 40 records allowed, and the four that IEEE
+Xplore had not answered, were run again without a limit, and the new
+records were screened.
+
+| File | What it is |
+|---|---|
+| `round2/brief.md` | The instructions common to the four screening runs |
+| `round2/instructions/*.txt` | What each run was told in addition, verbatim (started 07:37), and the message that restarted the sufficiency run at 09:02 |
+| `round2/reports/*.md` | The full report each run wrote, unedited |
+| `round2/worklist.json`, `round2/counts.json` | The searches that were repeated, and the number of records each returned without a limit |
+| `round2/scripts/run.py`, `add.py` | Ran the repeated searches and added their records to the sessions |
+| `round2/scripts/oa_ta.py` | Added the OpenAlex records that match a query in title or abstract (the tool itself matches full text): the provider's own code with one function replaced |
+| `round2/scripts/relabel.py` | Gave every record discarded as adjacent the label of an exclusion criterion (by a model, from title and abstract) |
+| `round2/scripts/retag.py` | Changes a record's category, which the tool's own command cannot |
+| `round2/scripts/cited_only.py`, `strip_themes.py` | Keep the tags that mark cited sources only on records that are in the bibliography |
+| `round2/scripts/export.sh`, `strip_abstracts.py` | Regenerate the hit lists and the exports in `../search/` |
+| `round2/scripts/count.py` | Counted the new records per question before the author decided what to screen |
+
+- The decisions on what to screen and what to read were the author's,
+  taken when the counts were known; the report's section "Deviations from
+  the protocol" states them.
+- The lead checked the runs' quoted passages against the texts, corrected
+  tags in the sessions (a cited record that a run had left discarded, a
+  wrong theme), and added one source itself (`Woods2023MetaReview`).
+  It did not follow one proposal: the sufficiency run wanted a cell of the
+  table of local threats changed on the strength of `Roche2021Titan`; the
+  note above that entry in `../mfa.bib` says why not. It also corrected two
+  statements in the runs' reports (a NIST report called a draft; a paper
+  listed as not cited that the report already cites).
+- The scripts were written for this session and are kept as a record of
+  what was done, not as tools: they contain paths of the scratch
+  directory.
+

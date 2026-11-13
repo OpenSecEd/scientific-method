@@ -1624,6 +1624,184 @@
   urldate = {2026-11-12},
 }
 
+% === provenance: scholarcli ===
+% CLAIM: The searches were run with the tool scholar.
+% FOUND-VIA: known item: the tool's record at the Python Package Index,
+%   https://pypi.org/pypi/scholarcli/json, read 2026-11-13; the installed
+%   version is the one named (pipx list: scholarcli 1.29).
+% PICKED: the tool itself; cited so that a reader can obtain it.
+% QUOTE (PyPI summary): "A tool for structured literature searches across bibliographic databases"
+% VERIFIED: name, version, authors, summary and release date (2026-10-23)
+%   copied from the PyPI record, not from memory.
+% COUNTER: not applicable.
+% DATE: 2026-11-13
+@software{scholarcli,
+  author = {Bosk, Daniel and Glassey, Ric},
+  title = {scholarcli: A tool for structured literature searches across bibliographic databases},
+  version = {1.29},
+  date = {2026-10-23},
+  url = {https://pypi.org/project/scholarcli/},
+}
+
+% ===================================================================
+% Sources added in the second round (2026-11-13), when the searches were
+% repeated without a limit.  Blocks written by the run that screened the
+% session; quotations checked again by the lead.
+% ===================================================================
+
+% === provenance: Wang2019CaseTwoFactor ===
+% CLAIM: A systematic review of studies on two-factor authentication (2019) found no strong evidence that it performs better than single-factor authentication; this narrows the claim that a second factor reduces compromise (the review's evidence base is academic studies from two business databases and predates the large provider measurements).
+% FOUND-VIA: scholar search (session mfa-effect, 2026-11-13): query C1 on Scopus, TITLE-ABS-KEY(("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND ((ineffective OR "no effect" OR "does not prevent" OR "false sense of security" OR limitations))) --limit 0; the Scopus record had no abstract; the abstract was read on the publisher's landing page https://aisel.aisnet.org/pacis2019/179 (OpenAlex W3017945716).
+% PICKED: the only systematic review found that asks directly whether 2FA has been shown to outperform password-only authentication; it is the one new record that contradicts the sentence "all seven point the same way" in spirit (it is about the state of the evidence, not a measurement). The classifier had tagged it supports-claim; reading the abstract showed it qualifies the claim.
+% QUOTE (abstract; abstract only): "We found no strong evidence to support the assumption that two-factor authentication has superior performance."
+% VERIFIED: ABSTRACT ONLY. Abstract read on the publisher's landing page (HTTP 200). The PDF (https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1178&context=pacis2019) answered 403 Forbidden to scholar's downloader and was not worked around; the review's included studies (38, from ABS/Inform and EBSCOhost) and its definition of "superior performance" are therefore unchecked. No DOI exists; the proceedings are in the AIS eLibrary.
+% COUNTER: the support-side of the same question is the E2 measurements already cited (Meyer, Doerfler, Kamar); this source is itself the counter-evidence. Its limits: the review pre-dates Meyer et al. 2023 and covers only two business databases, so it may simply not have reached the security-venue measurements.
+% DATE: 2026-11-13
+@inproceedings{Wang2019CaseTwoFactor,
+  author    = {Wang, Pengcheng and Baskerville, Richard},
+  title     = {The Case for Two-Factor Authentication -- Evidence from a Systematic Literature Review},
+  booktitle = {PACIS 2019 Proceedings},
+  year      = {2019},
+  publisher = {Association for Information Systems},
+  url       = {https://aisel.aisnet.org/pacis2019/179},
+  urldate   = {2026-11-13},
+}
+
+% === provenance: Wasser2026Resilience ===
+% CLAIM: Against real-time phishing (R4) a password plus a code from an app (case A1) is defeated in every trial, while a hardware key with user verification (case B) resists every trial in the same bench; the second factor adds nothing against R4, the key does the work.
+% FOUND-VIA: scholar search -n mfa-attribution (query S1 variant, uncapped, round 2): TITLE-ABS-KEY((passwordless OR passkey OR FIDO2 OR WebAuthn OR "security key" OR "single-factor") AND password AND (replace OR comparison OR "security analysis" OR evaluation)) on Scopus/OpenAlex; also returned by the same session under the OpenAlex title-and-abstract query; classified supports-claim (conf 0.9).
+% PICKED: the only source found in which a password+TOTP arm and a key-with-user-verification arm (YubiKey 5, UP+UV forced) face the same Evilginx3 relay bench, 100 trials each, 10 domain mutations. Optional corroboration, not a replacement for Kikuchi2025Evilginx or Cuellar2026AiTM: it is a single-author, non-refereed Zenodo monograph (Polish text, English abstract), with a victim assumed fully compliant, so it tests only the machine-side checks.
+% QUOTE (abstract, English version of the record): "the password + TOTP scheme exhibited an Attack Success Rate of ASR = 100.0%, whereas hardware-bound FIDO2 demonstrated absolute resilience (ASR = 0.0%)"
+% QUOTE (sec. 7.2, Polish): "W przypadku FIDO2 z tokenem YubiKey 5 NFC (USB-A i USB-C) wskaźnik sukcesu ataku wyniósł 0,0% (0/100 prób)." [translation: with FIDO2 on the YubiKey 5 NFC the attack success rate was 0.0% (0/100 trials)]
+% QUOTE (sec. 6.1, Polish): "firmware 5.4.3 z wymuszeniem UP i UV (kod PIN)" [translation: firmware 5.4.3 with user presence and user verification (PIN) enforced]
+% VERIFIED: full text of the Polish PDF read (Zenodo 10.5281/zenodo.23956049, cached); sections 6 (method), 7.1-7.2 (results) and 10.3 (recovery) read. The English abstract quoted above is that of the record and agrees with the Polish abstract and Table 1 (100/100 versus 0/100). The password plays no separate role in the key arm (no password beside the key was tested), so the source does not test case A3 or C; the model is worst-case with a fully compliant victim ("pełną uległość ofiary"), so it measures the protocol checks, not users. Not refereed.
+% COUNTER: round-2 counter-searches in this session (C1, C2, S2, uncapped, all providers) returned no source in which a key with user verification fell to a relayed login; the one demonstrated attack on keys (Catalano2025BitM) is already in the report and needs code running in the user's browser.
+% DATE: 2026-11-13
+@misc{Wasser2026Resilience,
+  author = {Wasser, Bartosz},
+  title = {Resilience of the {FIDO2}/{WebAuthn} Protocol and Hardware Security Keys ({YubiKey}) Against Adversary-in-the-Middle ({AitM}) Phishing Attacks Compared to {RFC} 6238 {TOTP}: An Empirical Study and Architectural Framework},
+  year = {2026},
+  howpublished = {Zenodo monograph (text in Polish, abstract in English)},
+  doi = {10.5281/zenodo.23956049},
+  url = {https://zenodo.org/doi/10.5281/zenodo.23956049},
+}
+
+% === provenance: Gavazzi2023Availability ===
+% CLAIM: Risk-based authentication is not, in practice, a dependable substitute for multi-factor authentication: on popular services it is rare, and few sites act on an obvious account-hijacking attempt.
+% FOUND-VIA: scholar search (session mfa-necessary, round 2) -p scopus: TITLE-ABS-KEY("risk-based authentication" AND (evaluation OR effectiveness OR security)) --limit 0, record "A Study of Multi-Factor and Risk-Based Authentication Availability" (Scopus, no abstract; abstract supplied by the PDF); full text fetched from https://www.usenix.org/system/files/usenixsecurity23-gavazzi.pdf
+% PICKED: the only measurement found of how many real services both offer MFA and act on a suspicious login (RBA), 208 sites of the Tranco top 5K; complements Wiefling2022PumpUp (one service, replayed attacks) and Makowski2023RBA. Measures what services do, not the compromise of accounts: E2 for services, E3 for the hijack attempt.
+% QUOTE (abstract, p. 2043): "We find that only 42.31% of sites support any form of MFA, and only 22.12% of sites block an obvious account hijacking attempt."
+% VERIFIED: full text read (13,481 words); the sentence is also in the conclusion; section 5 gives 38 of the 88 MFA-supporting sites blocking the suspicious login. Scope: sites with account creation, stolen password assumed, one test login from another country and machine.
+% COUNTER: the same paper finds that logging in through an SSO provider that offers RBA raises the share of sites that stop the attempt to 72.60 per cent, so the 22.12 per cent is a floor for what a user can obtain, not a bound on RBA as such.
+% DATE: 2026-11-13
+@inproceedings{Gavazzi2023Availability,
+  author    = {Gavazzi, Anthony and Williams, Ryan and Kirda, Engin and Lu, Long and King, Andre and Davis, Andy and Leek, Tim},
+  title     = {A Study of Multi-Factor and Risk-Based Authentication Availability},
+  booktitle = {32nd USENIX Security Symposium (USENIX Security 23)},
+  year      = {2023},
+  pages     = {2043--2060},
+  address   = {Anaheim, CA},
+  publisher = {USENIX Association},
+}
+
+% === provenance: Fisher2025CJISMFA ===
+% CLAIM: An authority requires multi-factor authentication where a single factor was enough before, and gives its reason: a stolen password then is not enough.
+% FOUND-VIA: scholar search (session mfa-necessary, round 2) -p ieee/scopus/wos: ("multi-factor authentication" OR ... ) AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise) --limit 0; record "Multi-Factor Authentication for Criminal Justice Information Systems" (10.6028/nist.ir.8523); full text fetched with fetch_pdf.py --text 10.6028/nist.ir.8523
+% PICKED: primary text of an authority's guidance (E5) on a regulation (the FBI CJIS Security Policy) that now requires MFA; gives the reason in plain words and says that phishing resistance is optional at AAL2. The copy read (dated September 2025, DOI as below) leaves the date of approval by the editorial board as a placeholder, so it may precede the final text.
+% QUOTE (sec. 2.1): "Traditional single-factor authentication relies solely on passwords, whereas MFA requires more than one distinct type of authentication factor for successful authentication. So, if an attacker obtains a user's password, they still need access to the additional factor to successfully authenticate."
+% QUOTE (sec. 2.5): "All MFA has security benefits compared to using a single factor, but not all forms of MFA are created equal, even if they are at the same AAL."
+% VERIFIED: full text read; the reasoning concerns a stolen password, not a key; it does not consider a key without user verification. It confirms the report's reading that the stated reason is credential theft and phishing.
+% COUNTER: searched for guidance that accepts a single factor at a high level (title/abstract 'single-factor' with FIDO or passkey, new records): none beyond the standards already cited (NIST SP 800-63B AAL1 and phishing-resistant single-factor cryptographic authenticators).
+% DATE: 2026-11-13
+@techreport{Fisher2025CJISMFA,
+  author      = {Fisher, William and Ajmo, Jason and Umarji, Sudhi and Dog, Spike E. and Russell, Mark and Scarfone, Karen},
+  title       = {Multi-Factor Authentication for Criminal Justice Information Systems: Implementation Considerations for Protecting Criminal Justice Information},
+  institution = {National Institute of Standards and Technology},
+  type        = {NIST Internal Report},
+  number      = {8523},
+  year        = {2025},
+  doi         = {10.6028/NIST.IR.8523},
+}
+
+% === provenance: Woods2023MetaReview ===
+% CLAIM: A meta-review of empirical studies of security controls finds
+%   multi-factor authentication effective for individual accounts, less so
+%   across an organisation where it is implemented unevenly, and argues
+%   that mandating specific controls is unlikely to reduce risk.
+% FOUND-VIA: scholar session mfa-necessary, second round (2026-11-13):
+%   title_and_abstract.search of query C1 ((M) AND (necessary OR mandatory
+%   OR mandate OR required) AND (security OR compromise)) on openalex, no
+%   limit; classified qualifies-claim.  Not returned by the first round's
+%   capped searches.
+% PICKED: the only review of empirical studies among the new records that
+%   speaks both to the effect of MFA and to requirements; a journal article
+%   with a stated method (a meta-review).
+% QUOTE (Abstract): "Multi-factor authentication was effective in protecting individual accounts, although inconsistent MFA-implementation undermines efficacy when rolled out across an organisation."
+% QUOTE (Abstract): "Thus, policy measures that mandate specific controls are unlikely to result in risk reduction."
+% VERIFIED: ABSTRACT ONLY (abstract from the OpenAlex record in the
+%   session, and both quotes found word for word in the abstract on the
+%   authors' university repository page, research.ed.ac.uk, HTTP 200;
+%   metadata from Crossref).  The article is open access (CC BY),
+%   but the publisher and the authors' university repository both answered
+%   403 to automated retrieval on 2026-11-13, also through the KTH network;
+%   not worked around.  Which studies it reviews on MFA is unchecked; they
+%   may include the measurements this review already cites.
+% COUNTER: the second quote is itself counter-evidence to reading a
+%   requirement as evidence of benefit; the first agrees with the null
+%   result for optional use in Kamar2026TwoFactorBanks.
+% DATE: 2026-11-13
+@article{Woods2023MetaReview,
+  author = {Woods, Daniel W. and Seymour, Sezaneh},
+  title = {Evidence-based cybersecurity policy? A meta-review of security control effectiveness},
+  journal = {Journal of Cyber Policy},
+  volume = {8},
+  number = {3},
+  pages = {365--383},
+  year = {2023},
+  doi = {10.1080/23738871.2024.2335461},
+}
+
+% === provenance: Roche2021Titan ===
+% CLAIM: The secret of a hardware security key (Google Titan, FIDO U2F) can be read out and the key cloned by an attacker who has the password and holds the key for some hours; the key is then not something that cannot be copied (L1, case A3).
+%   (Lead, second check: the run proposed to mark L1 for A3 as failed.  Not
+%   followed: the scenario of sec. 1 needs the stolen password as well, and
+%   an attacker with password and key can log in without cloning; what the
+%   paper adds is that the key can be returned and access kept.  The key
+%   has no user verification, so case B is not tested.)
+% FOUND-VIA: scholar search -n mfa-sufficient, round 2 (uncapped): (passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR "security key") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle" OR "account recovery" OR "session hijacking" OR malware) --limit 0, on OpenAlex (title-and-abstract) and Scopus/WoS/IEEE; classified supports-claim; full text fetched with fetch_pdf.py from https://www.usenix.org/system/files/sec21-roche.pdf (record in the session: hash:3c382570ddeda346 and hash:9e7492edf66e7c32, the same paper).
+% PICKED: primary source, a peer-reviewed USENIX Security paper, the only one found that recovers the private key of a deployed security key and clones it; the chapter version in a Wiley book (10.1002/9781394351930.ch12) is a later reprint and is not cited.
+% QUOTE (sec. 1, abstract): "This allows, given physical access to a Google Titan Security Key during about 10 hours, to retrieve a user-specific secret key (there is one key for each remote account) and therefore to clone the security key."
+% VERIFIED: full-text PDF read. The attack scenario in sec. 2.3 starts with a stolen login and password, takes the key for about 10 hours, returns it, and then signs in without the key; the paper notes that a counter can detect the clone later. Laboratory demonstration against one product, patched in later hardware; it is a physical attack, not a remote one.
+% COUNTER: the same session, search for "formal verification" and "security analysis" of FIDO2 (C2), outcome: formal results model the protocol and assume the key is not extractable, so they neither refute nor qualify the attack; no source found that shows the clone failing against a current key.
+% DATE: 2026-11-13
+@inproceedings{Roche2021Titan,
+  author    = {Roche, Thomas and Lomn{\'e}, Victor and Mutschler, Camille and Imbert, Laurent},
+  title     = {A Side Journey to Titan},
+  booktitle = {30th USENIX Security Symposium (USENIX Security 21)},
+  year      = {2021},
+  pages     = {231--248},
+  publisher = {USENIX Association},
+  url       = {https://www.usenix.org/conference/usenixsecurity21/presentation/roche},
+}
+
+% === provenance: ScottRailton2015London ===
+% CLAIM: Real-time phishing of a code-based second factor (relay of the password and of the code sent by text message) was used in real attacks on real targets.
+% FOUND-VIA: scholar search -n mfa-sufficient, round 2 (uncapped): ("multi-factor authentication" OR "multifactor authentication" OR "two-factor authentication" OR "2FA" OR "two-step verification") AND (bypass OR phishing OR "man-in-the-middle" OR "adversary-in-the-middle") --limit 0, OpenAlex title-and-abstract; record hash:0bdfd6bcbaab731c, classified supports-claim; full text from the University of Toronto repository copy https://utoronto.scholaris.ca/bitstreams/01b1abe7-83b9-4dcc-b4f8-e8434d5635a0/download
+% PICKED: primary incident report by an independent research group (Citizen Lab) that examined the attacks on the targets; earliest case found of real-time relay of codes in real use; an authority-grade E5-E4 case report, not a controlled study.
+% QUOTE (Summary): "The ongoing attacks attempt to circumvent the extra protections conferred by two-factor authentication in Gmail, and rely heavily on phone-call based phishing and “real time” login attempts by the attackers."
+% VERIFIED: full-text PDF read; part 2 describes the three real-time attacks step by step (fake security SMS, phishing page, a second page that asks for the code, the attacker logs in at once so that Google sends a genuine code, which the target types into the fake page). The number of victims is small and the targets were selected; the authors state that further cases cannot be confirmed.
+% COUNTER: same session, search on formal verification and phishing-resistant (C1): no source shows these relays failing in use; Cloudflare and Google provider reports already cited show that keys stopped phishing of the same kind, which narrows the claim to code-based factors.
+% DATE: 2026-11-13
+@techreport{ScottRailton2015London,
+  author      = {Scott-Railton, John and Kleemola, Katie},
+  title       = {London Calling: Two-Factor Authentication Phishing from {Iran}},
+  institution = {Citizen Lab, Munk School of Global Affairs, University of Toronto},
+  number      = {61},
+  year        = {2015},
+  month       = aug,
+  url         = {https://citizenlab.ca/2015/08/iran_two_factor_phishing/},
+}
+
 % ===================================================================
 % Sources cited only in the appendix that compares this review with a
 % report by Asta.  They are not among the 64 sources of the review, and

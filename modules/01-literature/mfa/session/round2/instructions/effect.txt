@@ -1,0 +1,17 @@
+Second round of a literature review: screen the newly retrieved records for ONE research question and report what, if anything, they change. Your complete instructions are in
+  /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/BRIEF.md
+Read that file first and follow it step by step. Do not edit the git repository.
+
+Your strand:
+- scholar session and slug: `mfa-effect` (757 records pending out of 1162)
+- Output directory (create it): /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/mfa-effect
+- Question (RQ1): "Does multi-factor authentication reduce account compromise, by how much, and for which kinds of second factor?"
+- Hypothesis in the report: it reduces compromise, and the size differs widely between kinds of second factor. The report found the direction supported and the size not well established.
+- supports-claim = bears on the question and shows that a second factor reduces compromise (a measurement, an incident analysis, a provider report with a figure).
+- qualifies-claim = bears on it and contradicts or narrows that: no effect, a small effect, confounding or self-selection, differences between kinds of factor, a second factor bypassed in use.
+- Report sections to know: "Effect" in the Results, with its table of reported effects; yesterday's run report is `session/reports/effect.md` in the report's directory.
+- What would matter most here: any further measurement of compromise on real accounts with and without a second factor (especially independent of the provider, randomised, or with a comparison group); null or negative results; measurements that separate kinds of second factor, above all cryptographic keys or passkeys against codes; studies of self-selection among users of a second factor.
+- Themes used yesterday for cited records: `measured-effect`, `bypass-attack`.
+- Table command: `scholar sessions export mfa-effect -f table --bearing-only --lang en --label hits-effect --track "Effect of multi-factor authentication" --theme measured-effect="Measurement of effect" --theme bypass-attack="Bypass or attack on MFA" -o <OUT>/mfa-effect-full` (add `--theme` for any theme you add).
+
+Reply as the brief says: one paragraph and the paths of your files.

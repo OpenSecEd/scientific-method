@@ -1,0 +1,17 @@
+Second round of a literature review: screen the newly retrieved records for ONE research question and report what, if anything, they change. Your complete instructions are in
+  /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/BRIEF.md
+Read that file first and follow it step by step. Do not edit the git repository.
+
+Your strand:
+- scholar session and slug: `mfa-attribution` (289 records pending out of 588)
+- Output directory (create it): /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/mfa-attribution
+- Question (RQ2): "Is the effect of multi-factor authentication due to combining factors or to the strength of one of them? What does the password contribute once a cryptographic key is present, and what does a second factor contribute beside a strong, unique password?"
+- Hypothesis in the report: against remote threats the effect comes from the strongest factor (beside a service-bound key the password adds nothing); against local threats a second, locally verified factor adds protection. The report found the first half supported by analysis, assessment and provider reports but not by measurement, and corrected the second half: a second factor helps locally only if it is not kept on the same device, and a remembered password is such a factor.
+- supports-claim = bears on the question and supports that one strong factor does the work, or that the password adds nothing beside a key.
+- qualifies-claim = bears on it and shows that the combination or the second factor matters (factor independence, a password or PIN stopping an attack beside a key, key extraction or cloning, device theft, malware, synced passkeys, downgrade), or narrows the claim.
+- Report sections to know: "How the standards classify the cases", "Cases against threats" (both tables and the paragraphs per threat) and "Attribution" in the Results; yesterday's run report is `session/reports/attribution.md`.
+- What would matter most here: ANY measurement or experiment that isolates one factor's contribution (password plus key against key alone or key with PIN; strong unique password against the same with a second factor); any test of a cryptographic key used alone (case C); evidence on a lost or stolen device with and without user verification; evidence for or against the independence of factors; anything on threats R2 (stolen server credentials) and L2 (shared device, observation), for which the report has no evidence at all.
+- Themes used yesterday for cited records: `local-malware`, `key-resists-remote`, `fallback-recovery`, `synced-passkeys`, `second-factor-weakness`, `formal-analysis`.
+- Table command: `scholar sessions export mfa-attribution -f table --bearing-only --lang en --label hits-attribution --track "What each factor contributes" --theme local-malware="Local attacks and malware" --theme key-resists-remote="A key resists remote attacks" --theme fallback-recovery="Fallback and recovery" --theme synced-passkeys="Synced passkeys" --theme second-factor-weakness="Weak second factors" --theme formal-analysis="Formal analysis" -o <OUT>/mfa-attribution-full` (add `--theme` for any theme you add).
+
+Reply as the brief says: one paragraph and the paths of your files.

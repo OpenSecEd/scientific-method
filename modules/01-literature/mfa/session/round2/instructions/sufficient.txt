@@ -1,0 +1,17 @@
+Second round of a literature review: screen the newly retrieved records for ONE research question and report what, if anything, they change. Your complete instructions are in
+  /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/BRIEF.md
+Read that file first and follow it step by step. Do not edit the git repository.
+
+Your strand:
+- scholar session and slug: `mfa-sufficient` (3489 records pending out of 4005: the largest strand, so start the abstracts and the classification early and run them in the background with long timeouts; classification of this many records may take 30 to 45 minutes)
+- Output directory (create it): /tmp/claude-1000/-home-dbosk-devel-edu-scientific-method-modules-01-literature/d4416f34-4f69-4915-99d4-89e8a316f9e1/scratchpad/round2/mfa-sufficient
+- Question (RQ3): "Is multi-factor authentication sufficient: are accounts protected by it secure against the threats of the threat model?"
+- Hypothesis in the report: not sufficient; for each of the cases A1, A2, A3 and B at least one threat succeeds. The report found this supported: strongly for codes and push approvals (defeated in real use), and on demonstrated possibility for keys (no source shows a key defeated from a distance or a key-protected account taken over in real use; the attacks go around the key: fallback, recovery, session theft, malware).
+- supports-claim = bears on the question and shows an account or scheme protected by multi-factor authentication being bypassed (demonstrated or observed).
+- qualifies-claim = bears on it and shows a multi-factor scheme resisting the threats (formal verification of a deployed protocol, measurements showing no compromise), or narrows the claim.
+- Report sections to know: "Cases against threats" (both tables and the paragraphs per threat) and "Sufficiency" in the Results; yesterday's run report is `session/reports/sufficient.md`. Many records will be proposals of new schemes with their own proofs: those are x1-new-scheme.
+- What would matter most here: any report of an account protected by a cryptographic key (password plus key, or passkey) being taken over in REAL use, or of the key itself defeated from a distance; incident reviews by authorities; measurements of how often the documented attacks (relay, SIM swap, push fatigue, session theft, recovery) occur; attacks or tests for cells of the tables that are empty; formal results that cover a whole account (recovery, session, malware) and not only the protocol; anything that contradicts a cell. With several hundred bearing records likely, most will be further demonstrations of attacks already in the tables: count those by case and threat, do not read them all.
+- Themes used yesterday for cited records: `aitm`, `recovery`, `fidoatk`, `analysis`.
+- Table command: `scholar sessions export mfa-sufficient -f table --bearing-only --lang en --label hits-sufficient --track "Is multi-factor authentication sufficient" --theme aitm="Phishing proxies and session theft" --theme recovery="Recovery and fallback" --theme fidoatk="Attacks on FIDO2 and passkeys" --theme analysis="Formal and analytical security analyses" -o <OUT>/mfa-sufficient-full` (add `--theme` for any theme you add).
+
+Reply as the brief says: one paragraph and the paths of your files.

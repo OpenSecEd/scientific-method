@@ -1,0 +1,200 @@
+{
+ "mfa-effect|S1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((\"account compromise\" OR \"account takeover\" OR hijacking) AND (effectiveness OR empirical OR measurement))",
+  "oa_fulltext": 3406,
+  "oa_title_abstract": 31,
+  "wos": 9,
+  "scopus": 13,
+  "ieee": 5,
+  "arxiv": 2
+ },
+ "mfa-effect|S2": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment) AND (\"risk reduction\" OR \"compromise rate\" OR incident))",
+  "oa_fulltext": 9998,
+  "oa_title_abstract": 94,
+  "wos": 9,
+  "scopus": 16,
+  "ieee": 8,
+  "arxiv": 1
+ },
+ "mfa-effect|C1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations))",
+  "oa_fulltext": 9988,
+  "oa_title_abstract": 475,
+  "wos": 119,
+  "scopus": 242,
+  "ieee": 93,
+  "arxiv": 62
+ },
+ "mfa-effect|S3*": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((\"compromised accounts\" OR \"account compromise\" OR \"account takeover\" OR hijacking OR hijacked) AND (reduces OR reduction OR \"real-world\" OR \"large-scale\" OR prevented OR blocks))",
+  "oa_fulltext": 4908,
+  "oa_title_abstract": 100,
+  "wos": 25,
+  "scopus": 29,
+  "ieee": 18,
+  "arxiv": 3
+ },
+ "mfa-effect|S4*": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment OR enabled) AND (compromised OR breach OR hijacked OR \"account takeover\") AND (users OR accounts OR customers))",
+  "oa_fulltext": 9995,
+  "oa_title_abstract": 338,
+  "wos": 39,
+  "scopus": 61,
+  "ieee": 78,
+  "arxiv": 10
+ },
+ "mfa-attribution|S1": {
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (replace OR comparison OR \"security analysis\" OR evaluation)",
+  "oa_fulltext": 7752,
+  "oa_title_abstract": 226,
+  "wos": 53,
+  "scopus": 86,
+  "ieee": 66,
+  "arxiv": 15
+ },
+ "mfa-attribution|S2": {
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND (\"user verification\" OR PIN OR biometric) AND (stolen OR theft OR \"local attack\")",
+  "oa_fulltext": 2734,
+  "oa_title_abstract": 74,
+  "wos": 6,
+  "scopus": 23,
+  "ieee": 26,
+  "arxiv": 1
+ },
+ "mfa-attribution|C1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"defence in depth\" OR \"defense in depth\" OR \"independent factors\" OR \"factor independence\" OR \"combination of factors\")",
+  "oa_fulltext": 1930,
+  "oa_title_abstract": 51,
+  "wos": 12,
+  "scopus": 21,
+  "ieee": 8,
+  "arxiv": 1
+ },
+ "mfa-attribution|C2": {
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (\"still needed\" OR fallback OR weakness OR vulnerability)",
+  "oa_fulltext": 6013,
+  "oa_title_abstract": 227,
+  "wos": 39,
+  "scopus": 78,
+  "ieee": 53,
+  "arxiv": 10
+ },
+ "mfa-sufficient|S1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (bypass OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\")",
+  "oa_fulltext": 9986,
+  "oa_title_abstract": 1236,
+  "wos": 205,
+  "scopus": 470,
+  "ieee": 316,
+  "arxiv": 18
+ },
+ "mfa-sufficient|S2": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"SIM swap\" OR \"push fatigue\" OR \"prompt bombing\" OR \"session hijacking\" OR \"account recovery\")",
+  "oa_fulltext": 1954,
+  "oa_title_abstract": 118,
+  "wos": 21,
+  "scopus": 37,
+  "ieee": 19,
+  "arxiv": 3
+ },
+ "mfa-sufficient|S3*": {
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware)",
+  "oa_fulltext": 9493,
+  "oa_title_abstract": 885,
+  "wos": 266,
+  "scopus": 589,
+  "ieee": 897,
+  "arxiv": 312
+ },
+ "mfa-sufficient|C2*": {
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\")",
+  "oa_fulltext": 3107,
+  "oa_title_abstract": 162,
+  "wos": 62,
+  "scopus": 115,
+  "ieee": 251,
+  "arxiv": 115
+ },
+ "mfa-sufficient|C1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"formal verification\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\")",
+  "oa_fulltext": 2196,
+  "oa_title_abstract": 132,
+  "wos": 77,
+  "scopus": 106,
+  "ieee": 64,
+  "arxiv": 2
+ },
+ "mfa-necessary|S1": {
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\" OR \"risk-based authentication\" OR \"password manager\") AND (alternative OR \"instead of\" OR without) AND (\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\")",
+  "oa_fulltext": 4038,
+  "oa_title_abstract": 96,
+  "wos": 30,
+  "scopus": 28,
+  "ieee": 27,
+  "arxiv": 2
+ },
+ "mfa-necessary|S2": {
+  "query": "\"risk-based authentication\" AND (evaluation OR effectiveness OR security)",
+  "oa_fulltext": 895,
+  "oa_title_abstract": 147,
+  "wos": 47,
+  "scopus": 85,
+  "ieee": 46,
+  "arxiv": 12
+ },
+ "mfa-necessary|C1": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)",
+  "oa_fulltext": 9992,
+  "oa_title_abstract": 1495,
+  "wos": 395,
+  "scopus": 338,
+  "ieee": 316,
+  "arxiv": 43
+ },
+ "mfa-necessary|C2": {
+  "query": "(\"password-only\" OR \"single-factor authentication\") AND (insufficient OR inadequate OR compromise)",
+  "oa_fulltext": 1906,
+  "oa_title_abstract": 81,
+  "wos": 27,
+  "scopus": 36,
+  "ieee": 14,
+  "arxiv": 1
+ },
+ "mfa-necessary|S3*": {
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND (phishing OR \"account takeover\" OR \"credential stuffing\") AND (evaluation OR measurement OR \"security analysis\" OR \"formal analysis\")",
+  "oa_fulltext": 2508,
+  "oa_title_abstract": 78,
+  "wos": 12,
+  "scopus": 20,
+  "ieee": 30,
+  "arxiv": 8
+ },
+ "mfa-necessary|C3*": {
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"assurance level\" OR \"phishing-resistant\" OR \"NIST SP 800-63B\" OR \"strong customer authentication\")",
+  "oa_fulltext": 936,
+  "oa_title_abstract": 56,
+  "wos": 13,
+  "scopus": 21,
+  "ieee": 9,
+  "arxiv": 1
+ },
+ "mfa-method|S1": {
+  "query": "\"rapid review\" AND \"scoping review\" AND \"systematic review\" AND (typology OR \"review types\" OR definitions OR methodologies)",
+  "oa_fulltext": 9983,
+  "oa_title_abstract": 103,
+  "wos": 19,
+  "scopus": 61,
+  "ieee": 1,
+  "arxiv": 0
+ },
+ "mfa-method|C1": {
+  "query": "\"rapid review\" AND (\"single reviewer\" OR \"single screening\" OR shortcuts OR \"streamlined\") AND (bias OR accuracy OR \"missed studies\" OR limitations)",
+  "oa_fulltext": 3846,
+  "oa_title_abstract": 77,
+  "wos": 35,
+  "scopus": 50,
+  "ieee": 1,
+  "arxiv": 0
+ }
+}

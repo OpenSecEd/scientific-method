@@ -1,0 +1,408 @@
+[
+ {
+  "session": "mfa-effect",
+  "q": 0,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment OR enabled) AND (compromised OR breach OR hijacked OR \"account takeover\") AND (users OR accounts OR customers))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 0,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment OR enabled) AND (compromised OR breach OR hijacked OR \"account takeover\") AND (users OR accounts OR customers)))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 0,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment OR enabled) AND (compromised OR breach OR hijacked OR \"account takeover\") AND (users OR accounts OR customers))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 1,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((\"compromised accounts\" OR \"account compromise\" OR \"account takeover\" OR hijacking OR hijacked) AND (reduces OR reduction OR \"real-world\" OR \"large-scale\" OR prevented OR blocks))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 2,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 2,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations)))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 2,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations)))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 2,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 2,
+  "provider": "arxiv",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((ineffective OR \"no effect\" OR \"does not prevent\" OR \"false sense of security\" OR limitations))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 3,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((adoption OR deployment) AND (\"risk reduction\" OR \"compromise rate\" OR incident))"
+ },
+ {
+  "session": "mfa-effect",
+  "q": 4,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND ((\"account compromise\" OR \"account takeover\" OR hijacking) AND (effectiveness OR empirical OR measurement))"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 0,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (\"still needed\" OR fallback OR weakness OR vulnerability)"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 0,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (\"still needed\" OR fallback OR weakness OR vulnerability))"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 0,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (\"still needed\" OR fallback OR weakness OR vulnerability)"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 1,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"defence in depth\" OR \"defense in depth\" OR \"independent factors\" OR \"factor independence\" OR \"combination of factors\")"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 2,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND (\"user verification\" OR PIN OR biometric) AND (stolen OR theft OR \"local attack\")"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 3,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (replace OR comparison OR \"security analysis\" OR evaluation)"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 3,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (replace OR comparison OR \"security analysis\" OR evaluation))"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 3,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (replace OR comparison OR \"security analysis\" OR evaluation))"
+ },
+ {
+  "session": "mfa-attribution",
+  "q": 3,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND password AND (replace OR comparison OR \"security analysis\" OR evaluation)"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 0,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 0,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 0,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 0,
+  "provider": "ieee",
+  "status": "not run",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 0,
+  "provider": "arxiv",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (\"formal verification\" OR \"formal analysis\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\" OR \"security analysis\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 1,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware)"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 1,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 1,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 1,
+  "provider": "ieee",
+  "status": "not run",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware)"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 1,
+  "provider": "arxiv",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR passkeys OR FIDO2 OR WebAuthn OR \"security key\") AND (attack OR bypass OR downgrade OR vulnerability OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\" OR \"account recovery\" OR \"session hijacking\" OR malware)"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 2,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"formal verification\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 2,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"formal verification\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 2,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"formal verification\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 2,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"formal verification\" OR \"provable security\" OR \"security proof\" OR \"phishing-resistant\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 3,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"SIM swap\" OR \"push fatigue\" OR \"prompt bombing\" OR \"session hijacking\" OR \"account recovery\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 4,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (bypass OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\")"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 4,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (bypass OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 4,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (bypass OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\"))"
+ },
+ {
+  "session": "mfa-sufficient",
+  "q": 4,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (bypass OR phishing OR \"man-in-the-middle\" OR \"adversary-in-the-middle\")"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 0,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"assurance level\" OR \"phishing-resistant\" OR \"NIST SP 800-63B\" OR \"strong customer authentication\")"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 0,
+  "provider": "ieee",
+  "status": "not run",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (\"assurance level\" OR \"phishing-resistant\" OR \"NIST SP 800-63B\" OR \"strong customer authentication\")"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 1,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND (phishing OR \"account takeover\" OR \"credential stuffing\") AND (evaluation OR measurement OR \"security analysis\" OR \"formal analysis\")"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 1,
+  "provider": "ieee",
+  "status": "not run",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\") AND (phishing OR \"account takeover\" OR \"credential stuffing\") AND (evaluation OR measurement OR \"security analysis\" OR \"formal analysis\")"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 2,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "\"risk-based authentication\" AND (evaluation OR effectiveness OR security)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 2,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=(\"risk-based authentication\" AND (evaluation OR effectiveness OR security))"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 2,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY(\"risk-based authentication\" AND (evaluation OR effectiveness OR security))"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 2,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "\"risk-based authentication\" AND (evaluation OR effectiveness OR security)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 3,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"password-only\" OR \"single-factor authentication\") AND (insufficient OR inadequate OR compromise)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 4,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 4,
+  "provider": "wos",
+  "status": "capped",
+  "query": "TS=((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise))"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 4,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY((\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise))"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 4,
+  "provider": "ieee",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 4,
+  "provider": "arxiv",
+  "status": "capped",
+  "query": "(\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\") AND (necessary OR mandatory OR mandate OR required) AND (security OR compromise)"
+ },
+ {
+  "session": "mfa-necessary",
+  "q": 5,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "(passwordless OR passkey OR FIDO2 OR WebAuthn OR \"security key\" OR \"single-factor\" OR \"risk-based authentication\" OR \"password manager\") AND (alternative OR \"instead of\" OR without) AND (\"multi-factor authentication\" OR \"multifactor authentication\" OR \"two-factor authentication\" OR \"2FA\" OR \"two-step verification\")"
+ },
+ {
+  "session": "mfa-method",
+  "q": 0,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "\"rapid review\" AND (\"single reviewer\" OR \"single screening\" OR shortcuts OR \"streamlined\") AND (bias OR accuracy OR \"missed studies\" OR limitations)"
+ },
+ {
+  "session": "mfa-method",
+  "q": 0,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY(\"rapid review\" AND (\"single reviewer\" OR \"single screening\" OR shortcuts OR \"streamlined\") AND (bias OR accuracy OR \"missed studies\" OR limitations))"
+ },
+ {
+  "session": "mfa-method",
+  "q": 1,
+  "provider": "openalex",
+  "status": "capped",
+  "query": "\"rapid review\" AND \"scoping review\" AND \"systematic review\" AND (typology OR \"review types\" OR definitions OR methodologies)"
+ },
+ {
+  "session": "mfa-method",
+  "q": 1,
+  "provider": "scopus",
+  "status": "capped",
+  "query": "TITLE-ABS-KEY(\"rapid review\" AND \"scoping review\" AND \"systematic review\" AND (typology OR \"review types\" OR definitions OR methodologies))"
+ }
+]

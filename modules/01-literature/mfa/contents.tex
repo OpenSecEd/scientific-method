@@ -103,7 +103,7 @@ gets in.
     The threat model: what the attacker is assumed able to do.
     R is remote, L is local.
   }[tab:threats]
-    \begin{tabular}{@{}lp{0.72\linewidth}@{}}
+    \begin{tabular}{@{}lL{0.72\linewidth}@{}}
       \toprule
       Threat & Capability \\
       \midrule
@@ -283,12 +283,16 @@ significantly contributes to methodical rigor; it provides transparency,
 clarity, and replicability.}
 
 It is not a systematic review.
-Three shortcuts separate it from one, and each limits what may be
+Four shortcuts separate it from one, and each limits what may be
 concluded.
 \begin{description}
-  \item[Capped search] At most 40 records are taken per database and
-    query, so the search samples the most relevant records and does not
-    exhaust the literature.
+  \item[Full-text matches not screened] Every query is run without a
+    limit on the number of records.
+    Four of the databases match a query against titles, abstracts and
+    keywords, and all their records are screened.
+    OpenAlex matches the full text as well and returns from ten to a
+    hundred times as many records; of these, the ones that match in
+    title or abstract are screened, and the rest are kept and counted.
     Shortcuts in the search lose information: when 2512 systematic
     reviews of clinical trials were repeated with rapid methods, the
     statistical significance of the result changed in 6.5 to 38.6 per
@@ -302,6 +306,12 @@ concluded.
     median of 5 per cent and at worst 58 per cent in the evaluations
     reviewed by \textcite{Waffenschmidt2019SingleScreening}.
     We know of no corresponding figure for the language model used here.
+  \item[Read in part] Of the records that bear on a question, those
+    that could change a result are read in full: a measurement on real
+    accounts, a result against a hypothesis, evidence for a cell of the
+    tables of \cref{sec:res-table} that is empty or against what a cell
+    says, a test of a key used alone.
+    The others are counted as corroboration from their abstracts.
   \item[Graded, not appraised] Each included study is graded by its
     design (\cref{sec:grading}); no instrument for appraising the quality
     of individual studies is applied.
@@ -318,8 +328,8 @@ next step for the questions this review finds to be open
 
 \subsection{Databases and tool}\label{sec:sources}
 
-The searches are run with the tool \texttt{scholar}, which sends one
-query to several databases and records the query, the date and the
+The searches are run with the tool \texttt{scholar}\autocite{scholarcli},
+which sends one query to several databases and records the query, the date and the
 number of records returned by each.
 The databases are OpenAlex, Web of Science, Scopus, IEEE Xplore and
 arXiv.
@@ -327,7 +337,7 @@ Two further databases the tool can reach, Semantic Scholar and DBLP, did
 not answer on the day of the search and are therefore not searched.
 Every query is run on every one of the five databases, translated into
 the field syntax of the databases that need it but with the same
-keywords.
+keywords, and without a limit on the number of records.
 
 Standards, guidance from public authorities and measurement reports from
 service providers are often not indexed in these databases.
@@ -370,7 +380,7 @@ together with the query it replaced.
     \cref{sec:hitlists}.
   }[tab:planned]
     \footnotesize
-    \begin{tabular}{@{}llp{0.68\linewidth}@{}}
+    \begin{tabular}{@{}llL{0.68\linewidth}@{}}
       \toprule
       Question & Query & Keywords \\
       \midrule
@@ -438,19 +448,25 @@ few conclusions \autocite[\abso]{NussbaumerStreit2020NonEnglish}; we
 know of no such test for security research.
 
 A record is excluded if it
-\begin{itemize}
-  \item proposes a new authentication scheme and offers only its own
-    security argument for that scheme, without bearing on the general
-    question;
-  \item concerns authentication between machines or devices, with no
-    human user;
-  \item studies only the usability or adoption of multi-factor
-    authentication and reports nothing about security;
-  \item gives an opinion or a recommendation without evidence or a
-    stated method.
-\end{itemize}
-Records excluded under the first three points are counted as adjacent
-work and not as evidence on either side.
+\begin{enumerate}[label=X\arabic*,ref=X\arabic*]
+  \item\label{x:scheme} proposes a new authentication scheme and offers
+    only its own security argument for that scheme, without bearing on
+    the general question;
+  \item\label{x:machine} concerns authentication between machines or
+    devices, with no human user;
+  \item\label{x:usability} studies only the usability or adoption of
+    multi-factor authentication and reports nothing about security;
+  \item\label{x:opinion} gives an opinion, an overview or a
+    recommendation without evidence of its own or a stated method;
+  \item\label{x:other} concerns the authentication of users and reports
+    evidence, but does not bear on the question for which it was found;
+  \item\label{x:english} is not written in English.
+\end{enumerate}
+The labels are also the reasons recorded with each discarded record in
+the sessions of the search tool.
+Records excluded under these criteria are counted as adjacent work and
+not as evidence on either side; a record on another subject altogether,
+returned only because of a shared word, is counted as another topic.
 
 \subsection{Screening and reading}\label{sec:screening}
 
@@ -469,8 +485,9 @@ The steps were as follows.
   \item Every record classified as contradicting or narrowing, and every
     record classified with low confidence, is read again and reclassified
     where the first classification was wrong.
-  \item The records that bear on the question are read in full text
-    where it can be obtained.
+  \item Of the records that bear on the question, those that could
+    change a result are read in full text where it can be obtained; the
+    others are counted from their abstracts.
     For each source cited, a passage that states the finding is
     recorded verbatim with its location.
     A source that could be read only as an abstract is marked as such
@@ -502,7 +519,7 @@ effect arises, which is what \cref{rq:attribution} asks.
     The last column says what a source of that kind can establish.
   }[tab:grades]
     \footnotesize
-    \begin{tabular}{@{}llp{0.42\linewidth}@{}}
+    \begin{tabular}{@{}llL{0.42\linewidth}@{}}
       \toprule
       Grade & Kind of evidence & Can establish \\
       \midrule
@@ -540,15 +557,17 @@ fails for a set of threats if a single-factor row resists all of them.
 \subsection{Deviations from the protocol}\label{sec:deviations}
 
 Everything above this subsection was written before the search, with
-three exceptions, all of them added sources.
+the exceptions told here: three added sources, and the changes of the
+second round (below).
 The two sources for the premise in the first paragraph of the
 introduction were found by the search.
 The sources on types of review in \cref{sec:reviewtype} and the remark
 on the language restriction in \cref{sec:criteria} come from a fifth,
 small search on review methods that the protocol had not planned
 (\cref{sec:hits-method}).
-The search itself departed from the protocol as follows; \cref{sec:session}
-tells how the session went.
+The search departed from the protocol in two rounds;
+\cref{sec:session} tells how the session went.
+In the first round, on 12 November, it departed as follows.
 \begin{description}
   \item[Queries added] Six queries were added, for three of the
     questions, because the planned ones returned few records on the cases
@@ -558,7 +577,8 @@ tells how the session went.
   \item[Searches that failed] IEEE Xplore allows a fixed number of
     requests a day.
     The planned queries were all answered, but four of the added ones
-    were not, and are reported as failed.
+    were not on the first day.
+    They were answered on the second.
   \item[Screening model] The search tool's default language model was
     not available.
     Claude Sonnet 5.5 classified the records for three questions and for
@@ -580,7 +600,8 @@ tells how the session went.
     text, or against the abstract for sources read only as abstracts.
     The check found one misquoted hyphen and led to two sources being
     dropped (\cref{sec:dropped}).
-  \item[Sources read only as abstracts] Of the 64 sources cited, 16 could
+  \item[Sources read only as abstracts] Of the 64 sources cited after
+    the first round, 16 could
     be read only at the level of the abstract, mostly because the
     publishers' sites answer automated retrieval with a check for robots,
     also from the university's network, which we did not try to get
@@ -595,19 +616,93 @@ tells how the session went.
     the grade that fits its method (an evaluation by analysis, E4).
 \end{description}
 
+The second round, on 13 November, followed the author's reading of the
+fifth draft.
+The protocol had limited every search to 40 records for each query and
+database, and \cref{sec:reviewtype} had named that as a shortcut.
+The author's rule is that a search is never limited, and that what is
+screened and what is read is decided when the numbers are known.
+The text above was changed accordingly: the shortcuts in
+\cref{sec:reviewtype}, the sentence on limits in \cref{sec:sources},
+the labels of the criteria in \cref{sec:criteria}, and the fourth step
+in \cref{sec:screening}.
+The version history shows the wording before and after.
+\begin{description}
+  \item[Searches repeated without a limit] Of the 110 searches, one for
+    each query and database, 54 had returned the 40 records allowed.
+    These and the four that had failed were run again without a limit.
+    \Cref{sec:hitlists} gives the counts.
+  \item[Full-text matches kept, not screened] OpenAlex matches a query
+    against the full text of a work and returned between 895 and about
+    ten thousand records for a query; ten thousand is the most it
+    delivers, and six queries reached it.
+    The other databases match titles, abstracts and keywords.
+    The author decided that every record from those databases is
+    screened, together with the OpenAlex records that match in title or
+    abstract, and that the full-text matches are kept in the tool's
+    store, counted, and not screened.
+    The 40 full-text matches per query that the first round had
+    screened stay in the sessions.
+    The search tool cannot restrict OpenAlex to title and abstract; I
+    replaced the one function that builds its query, and the script is
+    kept with the record of the session.
+  \item[What is read in full] The author decided that every record
+    that could change a result is read in full, and that the other
+    records bearing on a question are counted from their abstracts.
+    The first round had tried to read every source it cited.
+  \item[Labels for exclusion] The criteria of \cref{sec:criteria} were
+    given labels, and two that had been applied without being stated
+    were written out (\ref{x:other} and \ref{x:english}).
+    Every discarded record now carries one.
+    The records discarded in the first round were labelled afterwards
+    by the model from title and abstract, and those labels were not
+    checked by reading.
+  \item[Screening model] Claude Sonnet 5.5 classified the new records.
+    The runs that read its results reclassified 8, 4, 57 and 63
+    records for the four questions.
+    For \cref{rq:necessary} the model had filed every attack on a
+    scheme as narrowing the hypothesis, although such a record bears on
+    sufficiency.
+    It also put labels of its own making on records; those were
+    removed.
+    Of the records that the model discarded in this round, the runs
+    read those it was unsure of, and for \cref{rq:sufficient} none, so
+    a record that bears on a question may be among the discarded.
+  \item[Records without an abstract] One database gives no abstracts,
+    and adding them from the others did not reach every record.
+    Of the records screened, 147, 86, 744 and 284 for the four
+    questions were classified from their titles alone.
+  \item[Sources added] The round added seven sources, cited in
+    \cref{sec:results}; two of them could be read only as abstracts.
+    One is the report dropped in the first round
+    (\cref{sec:dropped}).
+    One run proposed to change a cell of \cref{tab:local} on the
+    strength of a new source; I did not follow it, for the reason given
+    where the source is cited.
+    Of the 71 sources now cited, 18 are read only as abstracts.
+\end{description}
+
 
 \section{Results}\label{sec:results}
 
 \subsection{What the search returned}\label{sec:flow}
 
-\Cref{tab:flow} gives the number of records at each step.
+\Cref{tab:flow} gives the number of records at each step, after the
+second round.
 Most records returned by a query that names multi-factor authentication
 are proposals of new schemes, which the criteria of \cref{sec:criteria}
-count as adjacent.
-Between 28 and 45 records per question bear on it.
+count as adjacent; \cref{tab:excluded} gives the numbers for each
+criterion.
+Between 37 and 112 records per question bear on it.
+The first round, with its limit, had screened between 289 and 508
+distinct records per question and found between 28 and 45 that bear on
+it.
 \begin{table}
   \begin{sidecaption}{%
-    Records at each step, per question.
+    Records at each step, per question, after the second round.
+    The first row counts, query by query, the records that OpenAlex
+    matches in their full text; they are kept but not screened, apart
+    from the 40 per query that the first round screened.
     \enquote{Supporting} and \enquote{contradicting} are relative to the
     hypothesis of the question.
     Distinct records are counted after merging versions of the same
@@ -622,18 +717,45 @@ Between 28 and 45 records per question bear on it.
       \cmidrule(l){2-5}
       Step & 1 & 2 & 3 & 4 \\
       \midrule
-      Records returned by the databases & 627 & 522 & 780 & 772 \\
-      Distinct records & 387 & 289 & 508 & 497 \\
-      \quad classified as adjacent & 290 & 208 & 342 & 406 \\
-      \quad classified as another topic & 69 & 48 & 123 & 46 \\
-      \quad bearing on the question & 28 & 33 & 43 & 45 \\
-      \qquad cited & 9 & 15 & 19 & 18 \\
-      \qquad supporting, not cited & 0 & 7 & 16 & 9 \\
-      \qquad contradicting or narrowing, not cited & 17 & 10 & 7 & 18 \\
-      \qquad excluded after reading & 2 & 1 & 1 & 0 \\
+      Full-text matches in OpenAlex, kept & 38\,295 & 18\,429 & 26\,736 & 20\,275 \\
+      Records collected for screening & 2\,080 & 1\,236 & 6\,678 & 3\,754 \\
+      Distinct records & 1\,121 & 561 & 3\,847 & 2\,128 \\
+      \quad classified as adjacent & 888 & 443 & 1\,773 & 1\,641 \\
+      \quad classified as another topic & 186 & 81 & 1\,962 & 428 \\
+      \quad bearing on the question & 47 & 37 & 112 & 59 \\
+      \qquad cited & 10 & 17 & 31 & 21 \\
+      \qquad supporting, not cited & 3 & 9 & 66 & 11 \\
+      \qquad contradicting or narrowing, not cited & 32 & 11 & 15 & 27 \\
+      \qquad excluded after reading & 2 & 0 & 0 & 0 \\
       \midrule
-      Sources cited, with those outside the databases & 11 & 19 & 25 & 24 \\
-      \quad of which read only as abstract & 4 & 8 & 4 & 3 \\
+      Sources cited, with those outside the databases & 13 & 20 & 28 & 27 \\
+      \quad of which read only as abstract & 6 & 8 & 4 & 4 \\
+      \bottomrule
+    \end{tabular}
+  \end{sidecaption}
+\end{table}
+\begin{table}
+  \begin{sidecaption}{%
+    Records excluded as adjacent, by the criterion of
+    \cref{sec:criteria} recorded with each.
+    Most are proposals of new schemes.
+    The counts are of records before versions of the same work are
+    merged, so their sums exceed the adjacent records of
+    \cref{tab:flow}.
+  }[tab:excluded]
+    \footnotesize
+    \begin{tabular}{@{}llrrrr@{}}
+      \toprule
+      & & \multicolumn{4}{c}{Question} \\
+      \cmidrule(l){3-6}
+      \multicolumn{2}{@{}l}{Criterion} & 1 & 2 & 3 & 4 \\
+      \midrule
+      \ref{x:scheme} & New scheme with only its own argument & 475 & 273 & 950 & 993 \\
+      \ref{x:machine} & Between machines & 35 & 7 & 181 & 92 \\
+      \ref{x:usability} & Usability or adoption only & 65 & 38 & 102 & 117 \\
+      \ref{x:opinion} & No evidence or method of its own & 254 & 104 & 471 & 418 \\
+      \ref{x:other} & Evidence on another question & 88 & 35 & 107 & 119 \\
+      \ref{x:english} & Not in English & 3 & 7 & 33 & 19 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -653,15 +775,15 @@ All seven point the same way: less compromise with a second factor.
     The figures measure different things and cannot be pooled.
   }[tab:effects]
     \footnotesize
-    \begin{tabular}{@{}p{0.19\linewidth}p{0.25\linewidth}p{0.30\linewidth}l@{}}
+    \begin{tabular}{@{}L{0.19\linewidth}L{0.25\linewidth}L{0.30\linewidth}l@{}}
       \toprule
       Source & Setting & Reported effect & Grade \\
       \midrule
       Meyer et al.\ 2023
         & Microsoft business accounts under review for suspicious
           activity
-        & 99.22\% lower risk of compromise; 98.56\% when the password
-          had leaked
+        & 99.22\% lower risk of compromise; 98.56\% of attacks stopped
+          where the password had leaked
         & E2 \\
       Doerfler et al.\ 2019
         & Google accounts, 350\,000 hijacking attempts
@@ -703,6 +825,16 @@ cases of leaked credentials}.
 The sample is accounts that were reviewed because of suspicious
 activity, and whether an account had a second factor was decided by its
 organisation, not assigned at random.
+The second figure is of another kind, and says something about what the
+password itself contributes.
+It comes from accounts whose passwords had leaked:
+\textcquote[sec.~5]{Meyer2023MFAEffect}{we found 7,861 accounts that had
+MFA and for which we could confirm that attackers used the passwords to
+try to obtain access to protected resources. For those accounts, we
+found that MFA prevented 98.6\% of the attacks.}
+In these accounts the password protected nothing, so what remained, all
+but 1.44 per cent, is the work of the second factor alone.
+We return to this in \cref{sec:res-attribution}.
 \Textcite{Doerfler2019LoginChallenges} study challenges that Google
 shows when a login looks risky, which is not the same as a second factor
 required at every login:
@@ -753,16 +885,31 @@ service sells stolen user profiles with which buyers
 multi-factor authentication mechanisms}.
 These show that a bypass is possible, not how often it happens.
 
-The search worded to find the opposite, a study in which multi-factor
-authentication made no difference or made things worse, returned none
-apart from the optional case above.
-That is the outcome of a capped search and not proof that no such study
-exists.
+The search worded to find the opposite returned no measurement of real
+accounts in which multi-factor authentication made no difference or made
+things worse, apart from the optional case above.
+It did return two reviews.
+A systematic review of 38 studies from 2019 reports:
+\textcquote[abstract; \abso]{Wang2019CaseTwoFactor}{We found no strong
+evidence to support the assumption that two-factor authentication has
+superior performance.}
+It drew on two databases of business research and predates the
+measurements above, so it speaks of what the academic literature held
+then and is not itself a measurement.
+A later meta-review of studies of security controls agrees with the
+measurements and with the null result for optional use:
+\textcquote[abstract; \abso]{Woods2023MetaReview}{Multi-factor
+authentication was effective in protecting individual accounts, although
+inconsistent MFA-implementation undermines efficacy when rolled out
+across an organisation.}
+That a search of titles and abstracts finds no study of the opposite is
+not proof that none exists.
 
 In sum, \cref{h:effect} holds in its direction.
 Its second half, that the size differs widely between kinds of second
 factor, holds only in part: within one provider the kinds differ by a
-few percentage points of the attempts, while the spread between studies,
+few percentage points of the attempts from phishing and by up to
+fourteen for targeted attacks, while the spread between studies,
 from 43 to over 99 per cent, mixes the kind of factor with the setting,
 the outcome measured and who did the measuring.
 No study found measures compromise for a cryptographic key without a
@@ -868,9 +1015,9 @@ attacker entered with passwords leaked from other services
 A random password unique to the service does not, and neither does any
 case with a second factor or a key, in the assessment of
 \textcite{NCSC2026CredentialsPaper}.
-The measurements agree for the second factor: the effect at Microsoft
-was 98.56 per cent for accounts whose password had already leaked
-\autocite{Meyer2023MFAEffect}.
+The measurements agree for the second factor: at Microsoft it stopped
+98.56 per cent of the attacks on accounts whose password had already
+leaked \autocite{Meyer2023MFAEffect}.
 
 \paragraph{Phishing (\threat{R3}, \threat{R4})}
 A password alone, however strong, can be phished.
@@ -879,20 +1026,30 @@ not a login relayed as it happens: the cyber security centre calls all
 such second factors
 \textcquote[summary]{NCSC2026CredentialsPaper}{inherently phishable}, and
 the guideline states that
-\textcquote[sec.~3.1.3]{NIST2025SP80063B}{Out-of-band authentication is
-not phishing-resistant}.
+\textcquote[sec.~3.1.3]{NIST2025SP80063B}{\textins*{o}ut-of-band
+authentication is not phishing-resistant}.
 A laboratory relay captured the session through codes by text message,
 call, email and app and through push approvals, and its author judges
 \textcquote[abstract]{Kikuchi2025Evilginx}{that 80\% of major web
 services are vulnerable}; a small controlled campaign found the same for
 simulated logins \autocite{Cuellar2026AiTM}.
+A third laboratory test, not refereed, captured the session in all 100
+trials against a password with a code from an app and in none of 100
+against a key unlocked by a PIN \autocite[sec.~7.2]{Wasser2026Resilience}.
+Such relays are not only laboratory work.
+An investigation of a campaign against people in Iran's diaspora found,
+already in 2015, attackers who took the password and the code sent by
+text message and entered both at once; the attacks
+\textcquote[summary]{ScottRailton2015London}{rely heavily on phone-call
+based phishing and \enquote{real time} login attempts by the
+attackers}.
 A cryptographic key bound to the service resists both threats in every
 source that examines it: a formal analysis that assumes the password
 already lost \autocite{Jacomme2021FormalMFA}, a proof of the web
 protocol's authentication property \autocite{Barbosa2021ProvableFIDO2},
 and an analysis of attacks concluding that
-\textcquote[abstract]{Berladskyy2026AttackVectors}{The claim that
-passkeys are phishing-resistant largely holds true}.
+\textcquote[abstract]{Berladskyy2026AttackVectors}{\textins*{t}he claim
+that passkeys are phishing-resistant largely holds true}.
 Two providers report the same from use, without a method: at one,
 attackers who had employees' passwords
 \textcquote{Cloudflare2022Phishing}{could not get past the hard key
@@ -984,6 +1141,19 @@ the protocol for the PIN was found to have flaws
 tested
 \textcquote[abstract; \abso]{Lee2025WindowsHello}{only systems with
 Enhanced Sign-in Security (ESS) prevented our attacks}.
+A separate hardware key is not beyond copying either.
+With the password already stolen, and with equipment for about 12\,000
+US dollars, the secret for an account was read out of one widely sold
+key through a side channel, which
+\textcquote[abstract]{Roche2021Titan}{allows, given physical access to
+a Google Titan Security Key during about 10 hours, to retrieve a
+user-specific secret key \textelp{} and therefore to clone the security
+key}.
+The attacker can then give the key back and keep the access.
+This narrows the centre's rating of a hardware token as not exposed.
+It does not change the cell for case \case{A3}, because a thief who
+has the password and the key can log in without copying anything; and
+that key has no user verification, so case \case{B} is not tested.
 
 \paragraph{Malware on the device (\threat{L3})}
 Every case fails against malware in at least one source.
@@ -1036,9 +1206,13 @@ device that holds the password.
 What a second factor adds thus depends on which factor it is, and for
 the remote threats a weak one adds little to a strong password.
 The large measured effects of \cref{sec:res-effect} do not contradict
-this: they compare with passwords as users choose them, and the one
-figure for passwords already known to the attacker, 98.56 per cent, is
-the work of the second factor alone.
+this: they compare with passwords as users choose them.
+The one figure for passwords already known to the attacker, 98.56 per
+cent of attacks stopped, is the work of the second factor alone, and it
+is close to the whole effect.
+What an unbroken password adds beside the second factor is not measured:
+the study gives no rate of successful attacks for accounts with a second
+factor whose password the attacker did not have.
 
 \paragraph{A password beside a key}
 Compare the rows \case{A3}, \case{B} and \case{C}.
@@ -1083,7 +1257,8 @@ sufficient for a case if any cell in its row is a successful attack.
 Every multi-factor row of \cref{tab:remote,tab:local} has one.
 
 For a code or a push beside a password (cases \case{A1} and \case{A2})
-the attacks are documented in use.
+the attacks are documented in use: takeover of the phone number and
+relayed logins against real targets (\cref{sec:res-table}).
 The review board cited above concludes from real intrusions that
 \textcquote[p.~5]{CSRB2023Lapsus}{the multi-factor authentication (MFA)
 implementations used broadly in the digital ecosystem today are not
@@ -1097,6 +1272,8 @@ over in use.
 The attacks that succeed go around the key: through a weaker method
 left enrolled, through recovery, through the session after login, or
 through malware on the user's device.
+The one attack found on a key itself needs the key in the attacker's
+hands for hours \autocite{Roche2021Titan}.
 All are demonstrations in a laboratory or by a vendor, several of them
 not yet peer reviewed, and two of their authors state that they found
 no sign of use.
@@ -1155,18 +1332,27 @@ single factor authentication}, and one analysis judges that
 authentication is less secure than FIDO SF authentication}.
 But the search found no source that tests a key alone against a
 multi-factor case, for any threat.
+That held when the searches were repeated without a limit: among some
+1\,750 further records for this question, none tests a key without
+user verification, and none compares a random unique password with
+multi-factor authentication by measurement.
 The comparisons that exist, above all the cyber security centre's, are
 for a key with user verification, which is multi-factor.
 
 \paragraph{Risk-based authentication}
 Here the service judges each login from its context and asks for more
 only when the login looks unusual.
-Replaying attacks on a record of 31.3 million login attempts at a real
-service, the largest study concludes:
+Replaying attacks on a record of 31.3 million login attempts at one real
+service, the largest study concludes for that service:
 \textcquote[p.~6:28]{Wiefling2022PumpUp}{we consider RBA an effective
 measure to protect users from the majority of attacks involving stolen
 passwords}.
 It has limits.
+What one service can do is not what services do: of 208 popular sites,
+\textcquote[p.~2043]{Gavazzi2023Availability}{only 22.12\% of sites
+block an obvious account hijacking attempt}, a login with the right
+password from another country and machine, and fifteen use such checks
+without offering a second factor at all.
 At large services
 \textcquote[abstract]{Makowski2023RBA}{several test cases rarely trigger
 the RBA system}, the criminal service of \cref{sec:res-effect} defeats
@@ -1197,9 +1383,9 @@ multi-factor authentication returned no study.
 \paragraph{What is required}
 The authorities require more than one factor at their upper levels.
 At the guideline's second level
-\textcquote[sec.~2.2]{NIST2025SP80063B}{Proof of possession and control
-of two distinct authentication factors through the use of secure
-authentication protocols is required}; the United States government
+\textcquote[sec.~2.2]{NIST2025SP80063B}{\textins*{p}roof of possession
+and control of two distinct authentication factors through the use of
+secure authentication protocols is required}; the United States government
 tells its agencies that for staff
 \textcquote[p.~5]{OMB2022ZeroTrust}{phishing-resistant MFA is required}
 and gives as reason
@@ -1209,9 +1395,14 @@ An earlier white paper explains the same government's requirement that
 privileged users log in with a smart card, a key unlocked by a PIN or
 biometric, in place of a password.
 Its reason for two factors is that
-\textcquote[p.~2]{NIST2016PIVPrivileged}{An attacker would have to
-compromise two factors---not just one---to gain access}; it does not
+\textcquote[p.~2]{NIST2016PIVPrivileged}{\textins*{a}n attacker would
+have to compromise two factors---not just one---to gain access}; it does not
 consider the key without the PIN.
+Guidance for the regulation of criminal-justice systems gives the same
+reason for its requirement:
+\textcquote[sec.~2.1]{Fisher2025CJISMFA}{if an attacker obtains a user's
+password, they still need access to the additional factor to
+successfully authenticate}.
 The United Kingdom's centre now recommends
 \textcquote{NCSC2026PasskeysBlog}{passkeys wherever a service supports
 them, and two-step verification (2SV) where it does not}, and advises
@@ -1219,6 +1410,11 @@ services against asking for a second factor at every login
 \autocite{NCSC2026Methods}.
 A requirement shows what experts agree on (E5), not that fewer factors
 would fail.
+The meta-review cited in \cref{sec:res-effect} goes further and
+concludes that
+\textcquote[abstract; \abso]{Woods2023MetaReview}{policy measures that
+mandate specific controls are unlikely to result in risk reduction},
+because how a control is implemented matters more than whether it is.
 The reason these texts give is phishing, and the property they ask for
 is one that the same guideline grants a single-factor key.
 
@@ -1270,11 +1466,15 @@ following limits apply.
     No source tests a key alone.
     Nothing was found on stolen server credentials (\threat{R2}) or
     shared devices (\threat{L2}), for which the queries had no terms.
-    Absence from a capped search is weak evidence of absence.
-  \item[The search] At most 40 records were taken per query and
-    database, and many queries reached that limit.
-    Two databases, Semantic Scholar and DBLP, could not be searched, and
-    IEEE Xplore answered only the planned queries.
+    Repeating the searches without a limit did not change any of this.
+    Absence from a search of titles and abstracts is weak evidence of
+    absence.
+  \item[The search] Of the records that OpenAlex returns for a match in
+    the full text, only those that also match in title or abstract were
+    screened, and for six queries the tool fetched no more than its
+    ceiling of about 10\,000 records.
+    Two databases, Semantic Scholar and DBLP, could not be searched on
+    either day.
     One database returns no abstracts, so some records were classified
     on their titles.
   \item[Reading] A quarter of the sources cited were read only as
@@ -1314,6 +1514,8 @@ above 94 per cent, one provider's own statement is 50 per cent,
 independent studies report between 10 and 43 per cent, and optional use
 showed no effect at two banks.
 Codes by text message do worse than apps and prompts, and keys best.
+One review of the academic literature, from 2019 and before these
+measurements, found no strong evidence that two factors do better.
 \Cref{h:effect} holds in direction, and in part as to size.
 
 \rqattribution*
@@ -1359,14 +1561,17 @@ not hold.
 
 Some of what this review left undone can be completed without new
 research.
-The 16 sources read only as abstracts should be read in full, first the
+The 18 sources read only as abstracts should be read in full, first the
 study of mandatory and optional use at banks
-\autocite{Kamar2026TwoFactorBanks} and the experiments on push
-approvals and overlays
+\autocite{Kamar2026TwoFactorBanks}, the two reviews
+\autocite{Wang2019CaseTwoFactor,Woods2023MetaReview} and the
+experiments on push approvals and overlays
 \autocite{Jubur2021PushBypass,Mahdad2024FIDOLA}.
 Three documents could not be retrieved at all (\cref{sec:dropped}).
-The four failed searches in IEEE Xplore should be repeated, and all
-queries run on Semantic Scholar and DBLP.
+All queries should be run on Semantic Scholar and DBLP.
+The records that match only in their full text in OpenAlex were kept
+and not screened; a sample of them should be screened, to learn what a
+search of titles and abstracts misses.
 A second, human screener should classify a sample of the records, to
 measure what the model missed.
 
@@ -1407,14 +1612,22 @@ for the systematic review that \cref{sec:reviewtype} set aside.
 For each question this appendix gives the queries with the number of
 records each database returned, and the list of the records that bear
 on the question.
-All searches were run on 12 November 2026 with the tool
-\texttt{scholar}.
+The searches were run on 12 November 2026 with the tool
+\texttt{scholar}, at first with at most 40 records per query and
+database.
+On 13 November every search that had reached that limit, and the four
+that IEEE Xplore had not answered, were repeated without a limit; the
+tables give the numbers of that second run.
 $M$ and $K$ are the term blocks of \cref{sec:queries}; $K'$ is $K$
 without \q{single-factor} and with \kw{passkeys} added.
 Web of Science received each query as \texttt{TS=(\dots)} and Scopus as
 \texttt{TITLE-ABS-KEY(\dots)}, the other databases as written.
-At most 40 records were taken per query and database, so 40 means
-\enquote{at least 40}.
+OpenAlex has two columns: OA-f is the number of records that match the
+query in their full text, which were retrieved and counted but not
+screened, and OA-t the number among them that match in title or
+abstract, which were screened.
+A value of OA-f near 10\,000 is the most that the tool fetches from
+OpenAlex for one query.
 In the lists, a record marked \emph{cited} was read and is cited in the
 report; the others carry the model's classification and its confidence.
 
@@ -1439,7 +1652,8 @@ report; the others carry the model's classification and its confidence.
 %   hit-list tables  : scholar sessions export <session> -f table
 %                      --bearing-only --lang en --label hits-<name>
 %                      --track "<title>" --theme TAG="name" ...
-%                      (themes: effect measured-effect, bypass-attack;
+%                      (themes: effect measured-effect, bypass-attack,
+%                      effect-review (second round);
 %                      attribution local-malware, key-resists-remote,
 %                      fallback-recovery, synced-passkeys,
 %                      second-factor-weakness, formal-analysis; sufficient
@@ -1447,36 +1661,58 @@ report; the others carry the model's classification and its confidence.
 %                      FIDO, REC, STD, ATT; method review-types,
 %                      shortcut-cost)
 %   provenance       : mfa.bib, one block per use of a source
+%
+% Second round, 2026-11-13 (record: session/round2/):
+%   searches         : every cell that had returned 40 records, and the
+%                      four failed IEEE cells, again with `-l 0`
+%                      (scripts/run.py, add.py; counts.json).  OpenAlex:
+%                      full-text matches fetched into scholar's cache and
+%                      counted (at most ~10000 a query); the records
+%                      matching in title or abstract added to the sessions
+%                      under the query `title_and_abstract.search:<query>`
+%                      by scripts/oa_ta.py, which calls the provider's own
+%                      code with its query builder replaced by
+%                      pyalex.Works().filter(title_and_abstract={"search": q})
+%   classification   : as above plus -t x1-new-scheme -t x2-machine
+%                      -t x3-usability-only -t x4-no-evidence
+%                      -t x5-other-question -t x6-not-english, model
+%                      anthropic/claude-sonnet-5-5, in batches; discards of
+%                      the first round labelled by scripts/relabel.py;
+%                      category changes by scripts/retag.py; theme tags
+%                      kept only on cited records by scripts/cited_only.py
+%   exports          : scripts/export.sh, scripts/strip_abstracts.py
+%   instructions and reports of the four runs: session/round2/instructions,
+%                      session/round2/reports
 
 \subsection{Effect}
 
 \begin{table}[h]
   \begin{sidecaption}{%
     Queries for \cref{rq:effect} and records returned by OpenAlex (OA;
-    not open access), Web of Science (WoS), Scopus, IEEE Xplore (IEEE)
-    and arXiv.
+    not open access; OA-f full text, OA-t title or abstract), Web of
+    Science (WoS), Scopus, IEEE Xplore (IEEE) and arXiv.
     S: worded to find support for the hypothesis, C: against it; an
     asterisk marks a query added after the first run.
   }[tab:q-effect]
     \footnotesize
-    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+    \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
       \toprule
-      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      & Keywords & OA-f & OA-t & WoS & Scopus & IEEE & arXiv \\
       \midrule
-      S1 & as in \cref{tab:planned} & 40 & 9 & 13 & 5 & 2 \\
-      S2 & as in \cref{tab:planned} & 40 & 9 & 16 & 8 & 1 \\
-      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 40 \\
+      S1 & as in \cref{tab:planned} & 3406 & 31 & 9 & 13 & 5 & 2 \\
+      S2 & as in \cref{tab:planned} & 9998 & 94 & 9 & 16 & 8 & 1 \\
+      C1 & as in \cref{tab:planned} & 9988 & 475 & 119 & 242 & 93 & 62 \\
       S3* & $M$ \kw{AND} (\q{compromised accounts} \kw{OR} \q{account
         compromise} \kw{OR} \q{account takeover} \kw{OR} \kw{hijacking}
         \kw{OR} \kw{hijacked}) \kw{AND} (\kw{reduces} \kw{OR}
         \kw{reduction} \kw{OR} \q{real-world} \kw{OR} \q{large-scale}
         \kw{OR} \kw{prevented} \kw{OR} \kw{blocks})
-        & 40 & 25 & 29 & 18 & 3 \\
+        & 4908 & 100 & 25 & 29 & 18 & 3 \\
       S4* & $M$ \kw{AND} (\kw{adoption} \kw{OR} \kw{deployment} \kw{OR}
         \kw{enabled}) \kw{AND} (\kw{compromised} \kw{OR} \kw{breach}
         \kw{OR} \kw{hijacked} \kw{OR} \q{account takeover}) \kw{AND}
         (\kw{users} \kw{OR} \kw{accounts} \kw{OR} \kw{customers})
-        & 40 & 39 & 40 & 40 & 10 \\
+        & 9995 & 338 & 39 & 61 & 78 & 10 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1497,14 +1733,14 @@ of Canadian banks, and found no study of self-selection.
     marks as in \cref{tab:q-effect}.
   }[tab:q-attribution]
     \footnotesize
-    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+    \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
       \toprule
-      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      & Keywords & OA-f & OA-t & WoS & Scopus & IEEE & arXiv \\
       \midrule
-      S1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 15 \\
-      S2 & as in \cref{tab:planned} & 40 & 6 & 23 & 26 & 1 \\
-      C1 & as in \cref{tab:planned} & 40 & 12 & 21 & 8 & 1 \\
-      C2 & as in \cref{tab:planned} & 40 & 39 & 40 & 40 & 10 \\
+      S1 & as in \cref{tab:planned} & 7752 & 226 & 53 & 86 & 66 & 15 \\
+      S2 & as in \cref{tab:planned} & 2734 & 74 & 6 & 23 & 26 & 1 \\
+      C1 & as in \cref{tab:planned} & 1930 & 51 & 12 & 21 & 8 & 1 \\
+      C2 & as in \cref{tab:planned} & 6013 & 227 & 39 & 78 & 53 & 10 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1525,28 +1761,26 @@ One standard, ISO/IEC 29115, is sold and was not obtained.
     Queries for \cref{rq:sufficient} and records returned; columns and
     marks as in \cref{tab:q-effect}.
     Here S is worded to find attacks and C to find evidence of security.
-    \enquote{--} means that the search failed: the daily quota of IEEE
-    Xplore was used up.
   }[tab:q-sufficient]
     \footnotesize
-    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+    \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
       \toprule
-      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      & Keywords & OA-f & OA-t & WoS & Scopus & IEEE & arXiv \\
       \midrule
-      S1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 18 \\
-      S2 & as in \cref{tab:planned} & 40 & 21 & 37 & 19 & 3 \\
-      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 2 \\
+      S1 & as in \cref{tab:planned} & 9986 & 1236 & 205 & 470 & 316 & 18 \\
+      S2 & as in \cref{tab:planned} & 1954 & 118 & 21 & 37 & 19 & 3 \\
+      C1 & as in \cref{tab:planned} & 2196 & 132 & 77 & 106 & 64 & 2 \\
       S3* & ($K'$) \kw{AND} (\kw{attack} \kw{OR} \kw{bypass} \kw{OR}
         \kw{downgrade} \kw{OR} \kw{vulnerability} \kw{OR} \kw{phishing}
         \kw{OR} \q{man-in-the-middle} \kw{OR}
         \q{adversary-in-the-middle} \kw{OR} \q{account recovery} \kw{OR}
         \q{session hijacking} \kw{OR} \kw{malware})
-        & 40 & 40 & 40 & -- & 40 \\
+        & 9493 & 885 & 266 & 589 & 897 & 312 \\
       C2* & ($K'$) \kw{AND} (\q{formal verification} \kw{OR} \q{formal
         analysis} \kw{OR} \q{provable security} \kw{OR} \q{security
         proof} \kw{OR} \q{phishing-resistant} \kw{OR} \q{security
         analysis})
-        & 40 & 40 & 40 & -- & 40 \\
+        & 3107 & 162 & 62 & 115 & 251 & 115 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1565,28 +1799,28 @@ News articles were not used.
 \begin{table}[h]
   \begin{sidecaption}{%
     Queries for \cref{rq:necessary} and records returned; columns and
-    marks as in \cref{tab:q-effect,tab:q-sufficient}.
+    marks as in \cref{tab:q-effect}.
     Here S is worded to find alternatives to several factors and C to
     find evidence that several are needed.
   }[tab:q-necessary]
     \footnotesize
-    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+    \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
       \toprule
-      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      & Keywords & OA-f & OA-t & WoS & Scopus & IEEE & arXiv \\
       \midrule
-      S1 & as in \cref{tab:planned} & 40 & 30 & 28 & 27 & 2 \\
-      S2 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 12 \\
-      C1 & as in \cref{tab:planned} & 40 & 40 & 40 & 40 & 40 \\
-      C2 & as in \cref{tab:planned} & 40 & 27 & 36 & 14 & 1 \\
+      S1 & as in \cref{tab:planned} & 4038 & 96 & 30 & 28 & 27 & 2 \\
+      S2 & as in \cref{tab:planned} & 895 & 147 & 47 & 85 & 46 & 12 \\
+      C1 & as in \cref{tab:planned} & 9992 & 1495 & 395 & 338 & 316 & 43 \\
+      C2 & as in \cref{tab:planned} & 1906 & 81 & 27 & 36 & 14 & 1 \\
       S3* & ($K$) \kw{AND} (\kw{phishing} \kw{OR} \q{account takeover}
         \kw{OR} \q{credential stuffing}) \kw{AND} (\kw{evaluation}
         \kw{OR} \kw{measurement} \kw{OR} \q{security analysis} \kw{OR}
         \q{formal analysis})
-        & 40 & 12 & 20 & -- & 8 \\
+        & 2508 & 78 & 12 & 20 & 30 & 8 \\
       C3* & $M$ \kw{AND} (\q{assurance level} \kw{OR}
         \q{phishing-resistant} \kw{OR} \q{NIST SP 800-63B} \kw{OR}
         \q{strong customer authentication})
-        & 40 & 13 & 21 & -- & 1 \\
+        & 936 & 56 & 13 & 21 & 9 & 1 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1615,19 +1849,19 @@ is not among the records.
     shortcuts cost or do not cost.
   }[tab:q-method]
     \footnotesize
-    \begin{tabular}{@{}lp{0.42\linewidth}rrrrr@{}}
+    \begin{tabular}{@{}lL{0.33\linewidth}rrrrrr@{}}
       \toprule
-      & Keywords & OA & WoS & Scopus & IEEE & arXiv \\
+      & Keywords & OA-f & OA-t & WoS & Scopus & IEEE & arXiv \\
       \midrule
       S1 & \q{rapid review} \kw{AND} \q{scoping review} \kw{AND}
         \q{systematic review} \kw{AND} (\kw{typology} \kw{OR} \q{review
         types} \kw{OR} \kw{definitions} \kw{OR} \kw{methodologies})
-        & 40 & 19 & 40 & 1 & 0 \\
+        & 9983 & 103 & 19 & 61 & 1 & 0 \\
       C1 & \q{rapid review} \kw{AND} (\q{single reviewer} \kw{OR}
         \q{single screening} \kw{OR} \kw{shortcuts} \kw{OR}
         \q{streamlined}) \kw{AND} (\kw{bias} \kw{OR} \kw{accuracy}
         \kw{OR} \q{missed studies} \kw{OR} \kw{limitations})
-        & 40 & 35 & 40 & 1 & 0 \\
+        & 3846 & 77 & 35 & 50 & 1 & 0 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1638,14 +1872,16 @@ is not among the records.
 
 \section{Sources dropped and documents not obtained}\label{sec:dropped}
 
-Two sources that a search run had cited were dropped in the second
-check, and two records that a run had classified as supporting were
-excluded.
+In the first round, two sources that a search run had cited were dropped
+in the second check, and two records that a run had classified as
+supporting were excluded.
 \begin{itemize}
   \item A report of laboratory trials of keys against relayed logins,
     published by its single author in a repository without review, of
     which only the abstract could be read (DOI 10.5281/zenodo.23955576).
-    The claims it supported are carried by other sources.
+    The second round read a later version of it in full, in Polish, and
+    it is now cited, as not refereed
+    \autocite{Wasser2026Resilience}.
   \item A trade-press article of 2006 about guidance from United States
     banking regulators, known only from a garbled abstract.
     It reports the guidance at second hand; the guidance itself could
@@ -1655,6 +1891,43 @@ excluded.
     effect (DOIs \url{10.56201/ijcsmt.vol.12.no1.2026.pg144.154} and
     \url{10.37602/ijssmr.2025.8106}).
 \end{itemize}
+In the second round, three records that looked as if they could change
+a result were read and are not cited.
+\begin{itemize}
+  \item A randomised phishing simulation with 100 participants
+    (DOI \url{10.65752/hstxa249}).
+    Its ordering of the kinds of second factor agrees with
+    \cref{tab:effects}, but its table gives percentages that groups of
+    about seventeen people cannot produce, its text contradicts its
+    table, and it reports no ethical review although people were
+    phished.
+  \item A survey of 149 people that reports no significant association
+    between the use of security technology and incidents
+    (DOI \url{10.5281/zenodo.20353467}).
+    It is the only new record that states a null result.
+    The test pools three technologies, only about 25 respondents did
+    not use multi-factor authentication, and the survey's own table
+    implies more incidents among them than among those who did.
+  \item An account of one breach at a university, compiled by one
+    author from public reports, in which push approvals were defeated by
+    telephone and relay (DOI \url{10.5281/zenodo.19344101}).
+    It adds a case to cells already marked as failing.
+\end{itemize}
+Records that could narrow a claim and could not be obtained are listed
+in the runs' reports, kept with the record of the session.
+Those that would add most are a test of approvals by notification
+(DOI \url{10.1145/3570361.3613273}), a study of the configuration of
+keys at real services (DOI \url{10.1145/3576915.3623063}), and two
+measurements of relayed logins in use, one of them without a DOI
+(DOI \url{10.1145/3460120.3484765}).
+They are on the author's list.
+
+The run for \cref{rq:necessary} also read again, for that question, the
+analysis of attacks on the interface between a key and the computer
+that \cref{sec:res-sufficient} cites \autocite{Casagrande2025CTRAPS}.
+It concerns keys used with and without user verification, but it does
+not test a key alone against the takeover of an account, so it does not
+fill the gap named in \cref{sec:res-necessary}.
 Three documents that the questions call for could not be retrieved,
 because the issuing site refused automated retrieval or the text is
 sold.
@@ -1680,8 +1953,8 @@ It is written for readers who will use such models in their own
 research, and it is organised around one question: what in this work can
 someone else check?
 
-The review was made in one working session on 12 November 2026, in
-Claude Code.
+The review was made in a working session on 12 November 2026 and
+extended the next morning, in Claude Code.
 That is a program in which a language model, here Claude Fable~5.2,
 works in a directory of files: it reads and writes the files, runs
 commands such as the search tool and the typesetting, and can start
@@ -1702,13 +1975,15 @@ new member of the laboratory.
 \subsection{The course of the session}
 
 \Cref{tab:session} gives the steps in order.
-Three things in it were decided by the author and not by me: that the
+These things in it were decided by the author and not by me: that the
 report should serve as an example, that the password may contribute
-nothing beside a key, which became \cref{rq:attribution}, and each of
-the corrections after the first draft.
+nothing beside a key, which became \cref{rq:attribution}, each of
+the corrections after the first draft, and on the second day that no
+search is to be limited, which of the new records to screen and which
+to read in full.
 \begin{table}
   \begin{sidecaption}{%
-    The session, 12 November 2026.
+    The session, 12 and 13 November 2026.
     Times are those of the version history, of the uploads and of the
     record of the session.
     A \enquote{run} is a separate instance of a language model (Claude
@@ -1716,7 +1991,7 @@ the corrections after the first draft.
     reported back in writing.
   }[tab:session]
     \footnotesize
-    \begin{tabular}{@{}lp{0.80\linewidth}@{}}
+    \begin{tabular}{@{}lL{0.80\linewidth}@{}}
       \toprule
       Time & Step \\
       \midrule
@@ -1749,6 +2024,34 @@ the corrections after the first draft.
         four papers in full and their sentences are corrected. \\
       later & Draft~4 adds the table of contents, this appendix and the
         record of the runs. \\
+      16:09 & Draft~5 adds the comparison with Asta's report. \\
+      \midrule
+      \multicolumn{2}{@{}l}{13 November} \\
+      07:06 & The author has read draft~5 on the tablet and written on
+        it by hand, and asks for the failed searches to be tried again
+        and the limited ones repeated without a limit.
+        I read the notes from the tablet and apply them; two of them
+        are rules for the future (never limit a search; label the
+        criteria for exclusion and record the label with each discard),
+        and I write those into the skills. \\
+      07:10 & The 54 limited searches and the four that had failed run
+        again without a limit.
+        The counts are in \cref{sec:hitlists}. \\
+      07:17 & With the counts in hand I put two questions to the author:
+        which of the new records to screen, and which to read in full.
+        The author's answers are the two rules of
+        \cref{sec:deviations}. \\
+      07:37 & Four runs start, one per question, to screen the new
+        records and to read what could change a result.
+        I screen the search on review methods. \\
+      08:43 & The author asks that such labels be short words that tell
+        what they mean; that goes into the skill too. \\
+      09:02 & Three runs have reported.
+        The fourth turns out to have stopped an hour earlier, when a
+        download of abstracts ran out of time, without saying so.
+        I restart it. \\
+      later & I read the runs' reports, check their quoted passages,
+        correct the labels in the sessions, and write draft~6. \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -1767,7 +2070,7 @@ The files it names lie beside the source of this report.
     What a reader may doubt, and the record that settles it.
   }[tab:audit]
     \footnotesize
-    \begin{tabular}{@{}p{0.34\linewidth}p{0.58\linewidth}@{}}
+    \begin{tabular}{@{}L{0.34\linewidth}L{0.58\linewidth}@{}}
       \toprule
       Doubt & Record \\
       \midrule
@@ -1856,7 +2159,7 @@ approved by the author.
     The names are those of the author's files.
   }[tab:skills]
     \footnotesize
-    \begin{tabular}{@{}p{0.20\linewidth}p{0.40\linewidth}p{0.32\linewidth}@{}}
+    \begin{tabular}{@{}L{0.20\linewidth}L{0.40\linewidth}L{0.32\linewidth}@{}}
       \toprule
       Skill & What it asks for & Where it shows \\
       \midrule
@@ -1887,8 +2190,16 @@ approved by the author.
         & Upload each draft under a new version name and overwrite
           nothing.
           Hand over what only the author can do as items to do.
-        & The drafts side by side on the tablet; nineteen open items
+        & The drafts side by side on the tablet; twenty-five open items
           for the papers and documents not yet obtained \\
+      The same skills, amended on the second day
+        & Never limit a search; ask what to screen and what to read
+          once the counts are known.
+          Label the criteria for exclusion and record the label with
+          every discard.
+          Change a letter of a quotation visibly.
+        & The counts of \cref{sec:hitlists}; \cref{tab:excluded}; the
+          bracketed letters in four quotations \\
       The author's standing instructions
         & Judge work critically, also that of the runs I start.
           Choose the model for each run on purpose.
@@ -1922,8 +2233,8 @@ approved by the author.
     \enquote{Phishing sites can copy the fingerprints} became nine of
     fourteen services in one test, and the figure from an
     \enquote{analysed breach} turned out to be the company's own.
-    The sixteen sources still marked \enquote{\abso} should be read
-    with that in mind.
+    The sources still marked \enquote{\abso}, eighteen after the
+    second round, should be read with that in mind.
   \item[A screening model with a blind spot] For \cref{rq:effect} the
     model that classified the records filed every study that measured
     an effect as narrowing the hypothesis.
@@ -1936,6 +2247,29 @@ approved by the author.
     appendix, the instructions to the runs and their reports lay in a
     temporary directory, outside the version history.
     They are now kept with the report.
+  \item[A limit that I chose] The limit of 40 records for each query
+    and database was mine.
+    The plan named it among the limits to expect of a first draft, and
+    I did not ask whether it was wanted.
+    It hid more than I had assumed: one query returned 589 records from
+    a database from which I had taken 40.
+    Repeating the searches without it overturned no result, but it
+    brought the one review that speaks against the first hypothesis,
+    and it turned \enquote{a limited search found none} into
+    \enquote{the search found none}.
+    The author's rule is now in the skill: search without a limit, and
+    when the counts are known, ask what to screen and what to read.
+  \item[Labels that the model made up] On the second day the model that
+    classified the records put a label of its own on 731 of 757
+    records for one question, and copied the labels that mark cited
+    sources onto records that are not cited.
+    The runs and I removed them; a script now keeps those labels only
+    on records that are in the bibliography.
+  \item[A run that stopped without saying so] See the table: for an
+    hour I took a run to be working that was waiting to be told to go
+    on.
+    Nothing was lost but the hour.
+    A run's silence says nothing about what it is doing.
 \end{description}
 
 This account is not an experiment.
@@ -1961,6 +2295,8 @@ lacks.
 Nothing in the review was changed on account of Asta's report; a study
 that Asta found and we did not is named here only, and the sources
 cited in this appendix are listed at its end, apart from the review's.
+The second round of the search (\cref{sec:deviations}) was not steered
+by Asta's sources either; the numbers below are those after it.
 
 Four cautions apply.
 Asta was given one instruction, while this review was directed further
@@ -1988,7 +2324,7 @@ They differ on necessity.
     Numbers of sources by kind are in \cref{tab:asta-kinds}.
   }[tab:asta]
     \footnotesize
-    \begin{tabular}{@{}p{0.19\linewidth}p{0.37\linewidth}p{0.36\linewidth}@{}}
+    \begin{tabular}{@{}L{0.19\linewidth}L{0.37\linewidth}L{0.36\linewidth}@{}}
       \toprule
       & This review & Asta's report \\
       \midrule
@@ -2015,7 +2351,7 @@ They differ on necessity.
         & Read directly
         & At second hand, through two articles \\
       Sources
-        & 64, of which 57 on the questions
+        & 71, of which 64 on the questions
         & 41 \\
       Record of the search
         & Queries, databases, date, counts, every record classified
@@ -2025,10 +2361,10 @@ They differ on necessity.
           the full text was read
         & The passage, and a link to the source \\
       Marked as unverified
-        & Sources read only as abstracts (16)
+        & Sources read only as abstracts (18)
         & Statements not taken from a source (5) \\
       Length
-        & 22 pages and appendices
+        & 25 pages and appendices
         & 12 pages \\
       \bottomrule
     \end{tabular}
@@ -2040,10 +2376,15 @@ They differ on necessity.
 The two sets of sources hardly overlap.
 Of Asta's 41 sources, two are among ours, the analyses of proofs and of
 protocols cited in \cref{sec:res-sufficient}.
-Five more were returned by our searches and not cited: four were
-classified as adjacent and one as narrowing.
-The other 34 were not returned by our searches at all.
-Of our 57 sources on the questions, Asta's report has the same two.
+Sixteen more were returned by our searches and not cited.
+Fifteen were excluded as adjacent, eight for giving no evidence or
+method of their own and seven as proposals of a new scheme, and one was
+classified as narrowing the first hypothesis.
+The other 23 were not returned by our searches at all.
+The limit of the first round hid part of this: with it, only five of
+the sixteen had been returned, and 34 of Asta's sources seemed to lie
+outside our searches.
+Of our 64 sources on the questions, Asta's report has the same two.
 
 \Cref{tab:asta-kinds} shows why.
 Asta drew mostly on reviews and on papers that propose a scheme or
@@ -2056,24 +2397,25 @@ asked for studies, attacks, analyses and standards.
     Sources by kind.
     The classification is ours for both sets; for Asta's sources it was
     made without reading them.
-    For this review the seven sources on review methods are left out.
+    For this review the seven sources on review methods are left out,
+    and the seven sources of the second round are included.
   }[tab:asta-kinds]
     \footnotesize
-    \begin{tabular}{@{}p{0.60\linewidth}rr@{}}
+    \begin{tabular}{@{}L{0.60\linewidth}rr@{}}
       \toprule
       Kind of source & This review & Asta \\
       \midrule
       Study of deployed authentication, real accounts or incidents
-        & 15 & 1 \\
-      Attack shown in a test & 14 & 0 \\
+        & 17 & 1 \\
+      Attack shown in a test & 16 & 0 \\
       Analysis of schemes or protocols & 12 & 3 \\
-      Standard or guidance from an authority & 9 & 0 \\
+      Standard or guidance from an authority & 10 & 0 \\
       Provider's report & 5 & 0 \\
-      Review or overview & 1 & 22 \\
+      Review or overview & 3 & 22 \\
       Proposal of a new scheme or system & 0 & 11 \\
       Other & 1 & 4 \\
       \midrule
-      All & 57 & 41 \\
+      All & 64 & 41 \\
       \bottomrule
     \end{tabular}
   \end{sidecaption}
@@ -2091,10 +2433,15 @@ asked for studies, attacks, analyses and standards.
     us to circumvent and disable Multi-Factor Authentication when having
     access to the accounts' associated email addresses}.
     It bears directly on threat \threat{R8}.
-    None of our searches returned it.
+    It is not among the records we screened, in either round.
     Our query asked for the phrase \q{account recovery}, and the paper
     speaks of recovery procedures; and Semantic Scholar, to which all of
     Asta's sources are linked, was the database we could not search.
+    The second round shows where it was: among the records that OpenAlex
+    matches in their full text, for 13 of our 20 queries on the questions, which we kept
+    and did not screen (\cref{sec:deviations}).
+    That is what the decision not to screen them cost in this one
+    case.
   \item[What else is needed] Asta's report has a section on controls
     beside multi-factor authentication: protected transport, careful
     handling of tokens and sessions, and checks that adapt to the risk
@@ -2216,7 +2563,7 @@ The passages and labels also show two weaknesses.
     authentication nor attacks by a man in the middle
     \autocite{Husak2016HTTPS}.
 \end{description}
-This review has its own form of the second weakness, in the sixteen
+This review has its own form of the second weakness, in the eighteen
 sources read only as abstracts, and \cref{sec:wrong} shows what that
 cost.
 
