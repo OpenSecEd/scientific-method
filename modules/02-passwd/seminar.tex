@@ -3,8 +3,8 @@
   Passwords
 }
 \author{Daniel Bosk\thanks{%
-    This material is available under the Creative Commons 
-    Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA) 4.0 international 
+    This material is available under the Creative Commons
+    Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA) 4.0 international
     license.
     The material was written with some aid from GitHub Copilot.
 }}
@@ -24,7 +24,7 @@
 
 \clearpage
 
-\section{Some interesting questions}
+\section{The papers}
 
 \begin{frame}
   \begin{question}
@@ -32,138 +32,470 @@
   \end{question}
 \end{frame}
 
-\section{The papers}
-
 \begin{frame}
   \begin{itemize}
     \item \fullcite{OfPasswordsAndPeople}
     \item \fullcite{CanLongPasswordsBeSecureAndUsable}
-    \item \fullcite{WhyPhishingWorks}
   \end{itemize}
   \begin{onlyenv}<2>
     \begin{remark}
       Focus on the \emph{methods}, not the results!
+      We return to \citetitle{WhyPhishingWorks} in the seminar on
+      quantitative and qualitative methods.
     \end{remark}
   \end{onlyenv}
 \end{frame}
 
-\section{Related to TAMOS}
+\mode<article>{%
+  In the vetcyb26h round, \citetitle{WhyPhishingWorks} was due with the
+  quantitative and qualitative methods module.
+  Some reflections included it, most did not, and two said that it was
+  unclear which papers the reflection should cover.
+  So this seminar focuses on the two password papers.
+}
+
+\section{From your reflections}
 
 \begin{frame}
-  \begin{exercise}
-    \begin{itemize}
-      \item Try to relate the three papers
+  \begin{block}{What most of you saw}
+    \mode<presentation>{%
       \begin{itemize}
-        \item \citetitle{OfPasswordsAndPeople}
-        \item \citetitle{CanLongPasswordsBeSecureAndUsable}
-        \item \citetitle{WhyPhishingWorks}
+        \item Random assignment to policies: the policy is the intervention
+        \item Entropy is a questionable operationalisation of strength;
+          cracking is closer to an attacker
+        \item MTurk, a hypothetical e-mail account, no stakes: weak external
+          validity
+        \item The cracker depends on its training data
+        \item Several rules change at once (not full factorial)
+        \item More drop-outs under the strictest policy
       \end{itemize}
-      \item to the TAMOS lectures
-        \begin{itemize}
-          \item Scientific inferences,
-          \item Observation and measurements,
-          \item Experiments
-        \end{itemize}
+    }
+    \mode<article>{%
+      Nearly all reflections identified the random assignment to policies
+      as the intervention, questioned entropy as a measure of password
+      strength and doubted the external validity of passwords created by
+      MTurk workers for a hypothetical e-mail account.
+      Several also noted that the cracker depends on its training data, that
+      the conditions change several rules at once, and that drop-out was
+      higher under the strictest policies.
+      These points are worth only a brief confirmation; the seminar time is
+      better spent on where the reflections disagree.
+    }
+  \end{block}
+
+  \begin{onlyenv}<2>
+    \begin{remark}
+      The strongest reflections did not only list these problems.
+      They used them to say \emph{what kind of answer} the papers can give.
+    \end{remark}
+  \end{onlyenv}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Your open questions}
+    \begin{itemize}
+      \item Is it even an experiment? Where is the control group? Blinding?
+      \item Is changing several rules at once bad science?
+      \item Was there a hypothesis or not?
+      \item Is internal validity an inductive or a deductive inference?
+      \item Entropy and cracking disagree: which one do we trust?
+      \item What does a difference of 10 bits mean in guesses?
+      \item Would another cracker rank the policies differently?
+      \item How do we balance control and realism?
     \end{itemize}
-  \end{exercise}
+  \end{block}
+
+  \mode<article>{%
+    These questions are paraphrased from the reflections.
+    The frames that follow take them one at a time.
+  }
+\end{frame}
+
+\section{Experiments}
+
+\begin{frame}
+  \begin{question}
+    Some of you wrote that these studies are not experiments: there is no
+    control group, no hypothesis and no (double) blinding.
+    Others called them controlled, even single-blind, experiments.
+    Who is right?
+  \end{question}
+
+  \begin{onlyenv}<2>
+    \begin{question}
+      \begin{itemize}
+        \item What is the intervention, and who decides it?
+        \item What do we compare against, if not a control group?
+        \item What \emph{can} be blinded when the treatment is a rule the
+          participant must follow?
+      \end{itemize}
+    \end{question}
+  \end{onlyenv}
+\end{frame}
+
+\begin{frame}
+  \begin{example}[Komanduri et al.]
+    \begin{itemize}
+      \item Each participant was assigned
+        \textcquote{OfPasswordsAndPeople}{randomly to one of five
+        conditions}.
+      \item No significant difference in age, gender or technical
+        experience between the conditions.
+      \item The consent form said the study was about
+        \textcquote{OfPasswordsAndPeople}{behavior visiting secure
+        websites}.
+      \item basic8survey and basic8: same policy, different scenarios.
+    \end{itemize}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \begin{example}[Shay et al.]
+    The paper says \textcquote{CanLongPasswordsBeSecureAndUsable}{We
+    assigned participants to one of eight conditions}, but not how.
+  \end{example}
+
+  \begin{onlyenv}<2>
+    \begin{question}
+      Does it matter how?
+    \end{question}
+  \end{onlyenv}
+
+  \mode<article>{%
+    Two reflections looked for the randomisation in Shay et al.\ and did
+    not find it; they were right, the paper does not state it.
+    Neither paper has an untreated group: the conditions are compared
+    pairwise with each other, with the familiar policy (basic8, and comp8
+    in Shay et al.) as the one to compare against.
+    Each participant was given one condition's scenario and policy, so
+    they could not be blind to their own treatment; the consent form
+    described the study as being about behaviour on secure websites.
+    The pair basic8survey and basic8 varies only the scenario and keeps the
+    policy fixed, which is how the authors examine the framing.
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    comprehensive8 adds several requirements to basic8 at once: upper and
+    lower case, a symbol, a digit and a dictionary check.
+    Shay et al.\ write that they \textcquote{CanLongPasswordsBeSecureAndUsable}{did not employ a
+    full-factorial study}.
+    \begin{itemize}
+      \item What can we conclude from such a condition, and what not?
+      \item Is it bad science?
+      \item How many conditions would a full-factorial design need?
+    \end{itemize}
+  \end{question}
+
+  \mode<article>{%
+    Shay et al.\ state the consequence themselves: \textcquote{CanLongPasswordsBeSecureAndUsable}{we
+    are unable to evaluate the effect of changing each individual
+    variable}, and they
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{might have missed interaction effects}.
+    The conditions remain valid comparisons of \emph{policies} as
+    deployed packages, which is what an administrator chooses between.
+    One of you asked whether this is bad science.
+    It answers a different question: which of these policies, not which
+    rule.
+    A full-factorial design multiplies the number of conditions by the
+    number of levels of each factor, and both papers used about a
+    thousand participants per condition.
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    25\,\% dropped out under comprehensive8, compared to less than 19\,\%
+    in the other conditions\autocite{OfPasswordsAndPeople}.
+    Does random assignment still protect the comparison?
+  \end{question}
+
+  \mode<article>{%
+    The drop-out happens after the assignment.
+    Shay et al.\ name the risk: participants who drop out
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{might behave differently than those who do
+    not, potentially biasing our results}.
+    Komanduri et al.\ acknowledge \textcquote{OfPasswordsAndPeople}{a potential for selection bias}
+    and argue that it is unlikely to change the relative entropy
+    differences.
+    In Shay et al., 83.0\,\% finished part one under comp8, against up to
+    94.5\,\% in the other
+    conditions\autocite{CanLongPasswordsBeSecureAndUsable}.
+  }
+\end{frame}
+
+\section{Inferences}
+
+\begin{frame}
+  \begin{question}
+    NIST predicted these entropies.
+    What did Komanduri et al.\ find, and what kind of inference is that?
+  \end{question}
+
+  \begin{table}
+    \begin{tabular}{lrr}
+      \toprule
+      Condition & NIST predicts & Measured\only<2->{ (underestimate)} \\
+      \midrule
+      basic8 & 18 bits & \only<2->{29.43 bits} \\
+      dictionary8 & 24 bits & \only<2->{28.99 bits} \\
+      basic16 & 30 bits & \only<2->{44.67 bits} \\
+      comprehensive8 & 30 bits & \only<2->{34.30 bits} \\
+      \bottomrule
+    \end{tabular}
+    \caption{%
+      NIST's predicted entropy per policy and the entropy that Komanduri
+      et al.\ estimated from 1000 passwords per
+      condition\autocite[Table~1]{OfPasswordsAndPeople}.
+    }
+  \end{table}
 \end{frame}
 
 \begin{frame}
   \begin{question}
     \begin{itemize}
-      \item What type of scientific inferences were they doing?
+      \item The authors say their estimates are \textcquote{OfPasswordsAndPeople}{significant
+        underestimates of the true entropy}.
+        Then what was refuted: NIST's prediction or the estimator?
+      \item Does the answer differ for basic16 vs comprehensive8 and for
+        dictionary8 vs basic8?
+      \item And Shay et al.: which hypothesis did they test?
     \end{itemize}
   \end{question}
 
-  \begin{question}
-    \begin{itemize}
-      \item What type of observation and measurement?
-        \begin{itemize}
-          \item Direct or indirect? Instruments?
-          \item Needed theory?
-        \end{itemize}
-    \end{itemize}
-  \end{question}
+  \mode<article>{%
+    The reflections split here.
+    Some read Komanduri et al.\ as hypothetico-deductive: NIST predicts that
+    basic16 and comprehensive8 give the same entropy, the measurement
+    disagrees, so by modus tollens the prediction fails.
+    Others saw no hypothesis at all.
+    The paper supports the first reading: the dictionary8 and basic8
+    conditions \textcquote{OfPasswordsAndPeople}{were designed to verify that hypothesis}, namely
+    NIST's claim that a dictionary check adds entropy, and the authors
+    state what they \textcquote{OfPasswordsAndPeople}{expected, a priori}.
 
-  \begin{question}
-    \begin{itemize}
-      \item Operationalization?
-        \begin{itemize}
-          \item What did they measure and how?
-          \item Measurement errors?
-        \end{itemize}
-    \end{itemize}
-  \end{question}
+    The estimator is an auxiliary hypothesis, as several of you noted.
+    The authors argue that their estimates are underestimates at 1000
+    samples, so they compare them only between conditions, with one
+    exception: \textcquote{OfPasswordsAndPeople}{when we find our underestimates to
+    be significantly higher than previously reported estimates}.
+    So basic16 at 44.67 bits against NIST's 30 bits survives the auxiliary
+    hypothesis: an underestimate that exceeds the prediction.
+    The dictionary8 result is different: it is a comparison of two
+    underestimates, and it rests on both being underestimated alike.
+
+    Shay et al.\ state no hypothesis in advance; they grouped rules
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{in ways we hypothesized might balance
+    usability and security}, which makes the study exploratory, as several of you
+    wrote.
+  }
 \end{frame}
 
 \begin{frame}
   \begin{question}
-    \begin{itemize}
-      \item Did they do hypothesis testing?
-    \end{itemize}
-  \end{question}
-
-  \begin{question}
-    \begin{itemize}
-      \item How was their experimental setup? Or was it observational?
-        \begin{itemize}
-          \item Randomize intervention and control?
-          \item Background factors?
-          \item Blinding?
-          \item Natural experiment?
-        \end{itemize}
-    \end{itemize}
-  \end{question}
-
-  \begin{question}
-    \begin{itemize}
-      \item Error handling?
-        \begin{itemize}
-          \item Observer effect?
-        \end{itemize}
-    \end{itemize}
+    One of you asked: random assignment makes the groups equal
+    \enquote{only by chance}.
+    Is the inference from \enquote{the groups differ} to \enquote{the
+    policy caused it} then deductive or inductive?
   \end{question}
 \end{frame}
 
-\section{More general}
+\section{Measurements}
 
 \begin{frame}
   \begin{question}
-    \begin{itemize}
-      \item We had \citetitle{OfPasswordsAndPeople}, why do we need 
-        \citetitle{CanLongPasswordsBeSecureAndUsable}?
-    \end{itemize}
+    Entropy and cracking were measured on the same passwords.
+    Do they agree?
   \end{question}
 
-  \begin{question}
-    \begin{itemize}
-      \item What can we say about the validity of these results?
-    \end{itemize}
-  \end{question}
-
-  \begin{question}
-    \begin{itemize}
-      \item How well representative are the results?
-    \end{itemize}
-  \end{question}
+  \begin{table}
+    \begin{tabular}{lrr}
+      \toprule
+      Condition & Entropy & Cracked by John the Ripper \\
+      \midrule
+      basic8 & 29.43 bits & \only<2->{188 of 972} \\
+      dictionary8 & 28.99 bits & \only<2->{31 of 963} \\
+      basic16 & 44.67 bits & \only<2->{9 of 971} \\
+      comprehensive8 & 34.30 bits & \only<2->{0 of 997} \\
+      \bottomrule
+    \end{tabular}
+    \caption{%
+      Estimated entropy and passwords cracked in heuristic mode, per
+      condition\autocite[Tables~1 and~2]{OfPasswordsAndPeople}.
+    }
+  \end{table}
 \end{frame}
 
 \begin{frame}
+  \begin{question}
+    Some of you saw a failed convergent-validity check: two
+    operationalisations of strength that disagree.
+    Others suggested that they measure different things.
+    Which is it?
+  \end{question}
+
+  \begin{onlyenv}<2>
+    \begin{remark}
+      Entropy describes the whole distribution.
+      A distribution with high entropy can still contain a small set of
+      easily guessed passwords\autocite{OfPasswordsAndPeople}.
+    \end{remark}
+  \end{onlyenv}
+
+  \mode<article>{%
+    Komanduri et al.\ make this point themselves: \textcquote{OfPasswordsAndPeople}{it is
+    possible even within a password distribution of high entropy to have a
+    small set of passwords that are \enquote{easily} guessable}.
+    Bonneau proves the general version: for any margin, there are
+    distributions whose resistance to an attacker who needs to guess only
+    a fraction of the passwords is lower than the Shannon entropy by more
+    than that margin\autocite[Theorem~3.3.1]{GuessingHumanChosenSecrets2012}.
+    So the disagreement need not mean that either instrument failed; they
+    operationalise different properties, the predictability of the whole
+    distribution and the weakness of its most guessable part.
+    The comparison basic16 vs comprehensive8 has a further problem: John
+    the Ripper \textcquote{OfPasswordsAndPeople}{is optimized for short passwords}, so the authors
+    \textcquote{OfPasswordsAndPeople}{cannot say confidently how the two
+    conditions compare for cracking protection}.
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    basic16 has about 10 bits more entropy than comprehensive8.
+    Is it then about $2^{10} \approx 1000$ times harder to guess?
+  \end{question}
+
+  \mode<article>{%
+    One reflection asked this and noticed that it holds only if all
+    passwords are equally likely.
+    Bonneau shows that for an attacker who must guess values one at a
+    time, \textcquote[§3.1.1]{GuessingHumanChosenSecrets2012}{Shannon
+    entropy has no direct correlation to guessing difficulty}.
+    The cracking results point the same way: John the Ripper cracked 9
+    basic16 passwords and none under
+    comprehensive8\autocite[Table~2]{OfPasswordsAndPeople}, though the
+    authors warn that the tool favours short passwords.
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{question}
+    Shay et al.\ used a cracker adapted to long passwords.
+    Which policy is stronger: basic16 or comp8?
+  \end{question}
+
+  \begin{onlyenv}<2>
+    \begin{example}
+      \begin{description}
+        \item[After $10^6$ guesses] the three basic conditions have
+          significantly more passwords cracked than comp8.
+        \item[After about $1.16\times 10^{12}$ guesses] comp8 is among the
+          three weakest conditions.
+      \end{description}
+    \end{example}
+  \end{onlyenv}
+
+  \begin{onlyenv}<3>
+    \begin{question}
+      \begin{itemize}
+        \item So what is \enquote{how easily can we guess}?
+        \item Would another cracker, or other training data, rank the
+          policies differently?
+      \end{itemize}
+    \end{question}
+  \end{onlyenv}
+
+  \mode<article>{%
+    The two orderings are from the security results of
+    \textcite{CanLongPasswordsBeSecureAndUsable}.
+    Strength is a curve over the attacker's guessing budget, not one
+    number.
+    The authors also note that they \textcquote{CanLongPasswordsBeSecureAndUsable}{had more data for
+    some conditions than others}, so that a novel policy may look strong partly
+    because the attacker lacks training data for it, an advantage that
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{might be temporary}.
+    The cracker is an instrument whose readings depend on a theory of the
+    attacker: the observation is theory-dependent.
+  }
+\end{frame}
+
+\section{The research questions}
+
+\begin{frame}
+  \begin{itemize}
+    \item How do different password policies affect the password
+      distribution?
+    \item How easily can we guess the passwords under different password
+      policies?
+  \end{itemize}
+
+  \begin{question}
+    \begin{itemize}
+      \item What is \enquote{the password distribution}? Can we observe it?
+      \item Are the papers' answers absolute or relative?
+    \end{itemize}
+  \end{question}
+
+  \mode<article>{%
+    The reflections read \enquote{distribution} as the character
+    distribution, as collisions between passwords, or as common patterns.
+    None of the papers observes the distribution itself, only a sample of
+    about a thousand passwords per condition, summarised by entropy, by
+    composition statistics and by cracking curves.
+    The strongest reflections concluded that the answers are
+    \emph{comparative} (one policy against another), \emph{conditional}
+    (on this attacker and this training data) and tied to \emph{one
+    population} (MTurk workers creating a password for a study).
+    Komanduri et al.\ make the same argument for their ecological validity:
+    since the hypothetical scenario was the same in the four conditions,
+    they are \textcquote{OfPasswordsAndPeople}{confident that our comparisons among
+    conditions are valid}.
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{activity}[Design]
+    Design a study that answers \emph{exactly} the two research questions.
+    \begin{itemize}
+      \item What would you need to observe?
+      \item Real passwords from a deployed system, leaked password sets, or
+        an experiment: what does each give you, and what does it cost?
+    \end{itemize}
+  \end{activity}
+
+  \mode<article>{%
+    Komanduri et al.\ describe the ideal and why they did not reach it:
+    data from real users of a deployed system, which is hard because of
+    the sensitivity of password data and the difficulty of partitioning
+    real users into experimental conditions.
+    One reflection proposed comparing study passwords with leaked
+    passwords created under the same policy.
+  }
+\end{frame}
+
+\section{Further}
+
+\begin{frame}
+  \begin{question}
+    We had \citetitle{OfPasswordsAndPeople}, why do we need
+    \citetitle{CanLongPasswordsBeSecureAndUsable}?
+  \end{question}
+
   \begin{question}
     \begin{itemize}
       \item What factors affect how users choose passwords?
         \begin{itemize}
           \item Is it just the password policy?
           \item Can we know from these studies?
-          %\item We'd need more studies focusing on other factors, then a 
-            %meta-analysis to see what factors are most important and how they 
+          %\item We'd need more studies focusing on other factors, then a
+            %meta-analysis to see what factors are most important and how they
             %interact.
         \end{itemize}
     \end{itemize}
   \end{question}
 \end{frame}
-
-\section{Preoceeding to Models}
 
 \begin{frame}
   \begin{question}
@@ -173,18 +505,12 @@
 
 \begin{frame}
   \begin{example}
-    \begin{itemize}
-      \item Entropy as a model for password strength (guessability).
-        \begin{itemize}
-          \item However, later works show that it's not that good a model.
-        \end{itemize}
-    \end{itemize}
+    Entropy as a model for password strength (guessability).
+    We saw above that it does not capture the weakest passwords.
   \end{example}
 
   \begin{remark}
-    \begin{itemize}
-      \item This is the topic of the next section of the course.
-    \end{itemize}
+    This is the topic of the next section of the course.
   \end{remark}
 \end{frame}
 
