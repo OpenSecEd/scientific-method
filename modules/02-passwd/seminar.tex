@@ -123,6 +123,7 @@
 
   \begin{onlyenv}<2>
     \begin{question}
+      Look at the design itself.
       \begin{itemize}
         \item What is the intervention, and who decides it?
         \item What do we compare against, if not a control group?
@@ -135,6 +136,7 @@
 
 \begin{frame}
   \begin{example}[Komanduri et al.]
+    From the methodology:
     \begin{itemize}
       \item Each participant was assigned
         \textcquote{OfPasswordsAndPeople}{randomly to one of five
@@ -230,7 +232,8 @@
 \begin{frame}
   \begin{question}
     NIST predicted these entropies.
-    What did Komanduri et al.\ find, and what kind of inference is that?
+    What did Komanduri et al.\autocite[Table~1]{OfPasswordsAndPeople}
+    find, and what kind of inference is that?
   \end{question}
 
   \begin{table}
@@ -247,17 +250,18 @@
     \caption{%
       NIST's predicted entropy per policy and the entropy that Komanduri
       et al.\ estimated from 1000 passwords per
-      condition\autocite[Table~1]{OfPasswordsAndPeople}.
+      condition.
     }
   \end{table}
 \end{frame}
 
 \begin{frame}
   \begin{question}
+    The authors say their estimates are
+    \textcquote{OfPasswordsAndPeople}{significant underestimates of the true
+    entropy}.
     \begin{itemize}
-      \item The authors say their estimates are \textcquote{OfPasswordsAndPeople}{significant
-        underestimates of the true entropy}.
-        Then what was refuted: NIST's prediction or the estimator?
+      \item Then what was refuted: NIST's prediction or the estimator?
       \item Does the answer differ for basic16 vs comprehensive8 and for
         dictionary8 vs basic8?
       \item And Shay et al.: which hypothesis did they test?
@@ -305,7 +309,8 @@
 
 \begin{frame}
   \begin{question}
-    Entropy and cracking were measured on the same passwords.
+    Entropy and cracking were measured on the same
+    passwords\autocite[Tables~1 and~2]{OfPasswordsAndPeople}.
     Do they agree?
   \end{question}
 
@@ -322,7 +327,7 @@
     \end{tabular}
     \caption{%
       Estimated entropy and passwords cracked in heuristic mode, per
-      condition\autocite[Tables~1 and~2]{OfPasswordsAndPeople}.
+      condition.
     }
   \end{table}
 \end{frame}
@@ -388,6 +393,7 @@
 
   \begin{onlyenv}<2>
     \begin{example}
+      The share of passwords cracked depends on the guessing budget.
       \begin{description}
         \item[After $10^6$ guesses] the three basic conditions have
           significantly more passwords cracked than comp8.
@@ -399,6 +405,7 @@
 
   \begin{onlyenv}<3>
     \begin{question}
+      Back to the research question.
       \begin{itemize}
         \item So what is \enquote{how easily can we guess}?
         \item Would another cracker, or other training data, rank the
@@ -432,6 +439,7 @@
   \end{itemize}
 
   \begin{question}
+    Read the research questions closely.
     \begin{itemize}
       \item What is \enquote{the password distribution}? Can we observe it?
       \item Are the papers' answers absolute or relative?
@@ -484,15 +492,13 @@
   \end{question}
 
   \begin{question}
+    What factors affect how users choose passwords?
     \begin{itemize}
-      \item What factors affect how users choose passwords?
-        \begin{itemize}
-          \item Is it just the password policy?
-          \item Can we know from these studies?
-          %\item We'd need more studies focusing on other factors, then a
-            %meta-analysis to see what factors are most important and how they
-            %interact.
-        \end{itemize}
+      \item Is it just the password policy?
+      \item Can we know from these studies?
+      %\item We'd need more studies focusing on other factors, then a
+        %meta-analysis to see what factors are most important and how they
+        %interact.
     \end{itemize}
   \end{question}
 \end{frame}

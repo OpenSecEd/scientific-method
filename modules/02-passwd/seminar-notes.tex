@@ -1,0 +1,16 @@
+\documentclass[a4paper,10pt,article,oneside]{memoir}
+\extrafloats{300}
+\let\subsubsection\subsection
+\let\subsection\section
+\let\section\chapter
+
+\input{preamble.tex}
+
+\usepackage[noamsthm,notheorems]{beamerarticle}
+\setjobnamebeamerversion{seminar-slides}
+
+\begin{document}
+\input{seminar.tex}
+
+\printbibliography
+\end{document}
