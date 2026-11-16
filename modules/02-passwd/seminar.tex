@@ -237,21 +237,21 @@
   \end{question}
 
   \begin{table}
-    \begin{tabular}{lrr}
-      \toprule
-      Condition & NIST predicts & Measured\only<2->{ (underestimate)} \\
-      \midrule
-      basic8 & 18 bits & \only<2->{29.43 bits} \\
-      dictionary8 & 24 bits & \only<2->{28.99 bits} \\
-      basic16 & 30 bits & \only<2->{44.67 bits} \\
-      comprehensive8 & 30 bits & \only<2->{34.30 bits} \\
-      \bottomrule
-    \end{tabular}
-    \caption{%
+    \begin{sidecaption}{%
       NIST's predicted entropy per policy and the entropy that Komanduri
-      et al.\ estimated from 1000 passwords per
-      condition.
-    }
+      et al.\ estimated from 1000 passwords per condition.
+    }[tab:nist-entropy]
+      \begin{tabular}{lrr}
+        \toprule
+        Condition & NIST predicts & Measured\only<2->{ (underestimate)} \\
+        \midrule
+        basic8 & 18 bits & \only<2->{29.43 bits} \\
+        dictionary8 & 24 bits & \only<2->{28.99 bits} \\
+        basic16 & 30 bits & \only<2->{44.67 bits} \\
+        comprehensive8 & 30 bits & \only<2->{34.30 bits} \\
+        \bottomrule
+      \end{tabular}
+    \end{sidecaption}
   \end{table}
 \end{frame}
 
@@ -315,20 +315,21 @@
   \end{question}
 
   \begin{table}
-    \begin{tabular}{lrr}
-      \toprule
-      Condition & Entropy & Cracked by John the Ripper \\
-      \midrule
-      basic8 & 29.43 bits & \only<2->{188 of 972} \\
-      dictionary8 & 28.99 bits & \only<2->{31 of 963} \\
-      basic16 & 44.67 bits & \only<2->{9 of 971} \\
-      comprehensive8 & 34.30 bits & \only<2->{0 of 997} \\
-      \bottomrule
-    \end{tabular}
-    \caption{%
-      Estimated entropy and passwords cracked in heuristic mode, per
-      condition.
-    }
+    \begin{sidecaption}{%
+      Estimated entropy and passwords cracked by John the Ripper in
+      heuristic mode, per condition.
+    }[tab:entropy-cracking]
+      \begin{tabular}{lrr}
+        \toprule
+        Condition & Entropy & Cracked \\
+        \midrule
+        basic8 & 29.43 bits & \only<2->{188 of 972} \\
+        dictionary8 & 28.99 bits & \only<2->{31 of 963} \\
+        basic16 & 44.67 bits & \only<2->{9 of 971} \\
+        comprehensive8 & 34.30 bits & \only<2->{0 of 997} \\
+        \bottomrule
+      \end{tabular}
+    \end{sidecaption}
   \end{table}
 \end{frame}
 
