@@ -30,9 +30,25 @@
   \begin{question}
     What part of security is not a science?
   \end{question}
+
+  \mode<article>{%
+    My take: one candidate is the rules we impose on users' passwords.
+    When Komanduri et al.\ started, \textcquote{OfPasswordsAndPeople}{\textins*{e}ven
+    the best current guidelines for designing password-composition
+    policies \textelp{} are based on theoretical estimates \textelp{} or
+    small-scale laboratory studies}.
+    NIST computed what a rule \emph{allows}, not what users \emph{choose}
+    under it.
+    That makes the question a good opening: it is not that password
+    policy cannot be a science, but that for a long time nobody had
+    observed the thing the guidelines made claims about.
+    The two papers are attempts to change that, and the seminar asks how
+    well they succeed.
+  }
 \end{frame}
 
 \begin{frame}
+  Two attempts to put password policies on an empirical footing:
   \begin{itemize}
     \item \fullcite{OfPasswordsAndPeople}
     \item \fullcite{CanLongPasswordsBeSecureAndUsable}
@@ -164,6 +180,18 @@
   \end{onlyenv}
 
   \mode<article>{%
+    My take: yes, both are experiments.
+    The intervention is the composition policy, and the researchers, not
+    the participants, decide who gets which; that is what separates them
+    from an observational study of leaked passwords, where each site's
+    users chose their site.
+    The missing pieces the reflections list (control group, hypothesis,
+    blinding) are features some experiments have, not what makes one.
+    Does it matter how Shay et al.\ assigned?
+    Yes: if the assignment was not random, for example by time of sign-up,
+    the conditions could differ in who signed up when, and the comparison
+    would carry that difference.
+
     Two reflections looked for the randomisation in Shay et al.\ and did
     not find it; they were right, the paper does not state it.
     Neither paper has an untreated group: the conditions are compared
@@ -197,12 +225,47 @@
     \textcquote{CanLongPasswordsBeSecureAndUsable}{might have missed interaction effects}.
     The conditions remain valid comparisons of \emph{policies} as
     deployed packages, which is what an administrator chooses between.
-    One of you asked whether this is bad science.
-    It answers a different question: which of these policies, not which
-    rule.
-    A full-factorial design multiplies the number of conditions by the
-    number of levels of each factor, and both papers used about a
-    thousand participants per condition.
+
+    \emph{What can we conclude?}
+    That comprehensive8 as a whole gives passwords with more entropy than
+    basic8; not which of its five requirements did it, nor whether two of
+    them together do more than each alone.
+    Note, though, that the designs are not without one-factor contrasts.
+    In Komanduri et al., dictionary8 differs from basic8 only by the
+    dictionary check, and basic8survey from basic8 only by the scenario.
+    In Shay et al., basic12, basic16 and basic20 differ only in length:
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{This set of conditions
+    varies only in length, so we can measure its impact on security and
+    usability}.
+    The same holds for 3class12 against 3class16 and 2word12 against
+    2word16.
+    The last pair even shows an interaction:
+    \textcquote{CanLongPasswordsBeSecureAndUsable}{The 2word approach seems
+    to be more effective at increasing password strength when combined
+    with a length-16 requirement than with a length-12 requirement}.
+    So the design isolates length, but not the class or word requirements.
+
+    \emph{How many conditions would a full factorial need?}
+    A full factorial crosses every level of every factor.
+    My count of the factors in Shay et al.: minimum length (8, 12, 16, 20:
+    four levels), character classes (none, three of four, all four: three
+    levels), the two-word requirement (two levels) and the dictionary check
+    (two levels).
+    That is $4 \times 3 \times 2 \times 2 = 48$ conditions instead of 8.
+    At the roughly thousand participants per condition that both papers
+    used, that is about \num{48000} participants completing the study,
+    against the \num{8143} who did; and Shay et al.\ needed \num{15108}
+    starts to get those.
+
+    \emph{Is it bad science?}
+    My take: no, it is a choice of research question.
+    One of you asked this, and the answer is that the study asks which of
+    these policies, not which rule.
+    It becomes bad science only if the conclusions claim more, say that
+    length rather than the class requirement is what makes 3class16
+    strong.
+    The papers mostly avoid that; the useful exercise for the students is
+    to find the sentences where a rule, not a policy, is credited.
   }
 \end{frame}
 
@@ -303,6 +366,36 @@
     Is the inference from \enquote{the groups differ} to \enquote{the
     policy caused it} then deductive or inductive?
   \end{question}
+
+  \mode<article>{%
+    My take: inductive.
+    The conclusion can be false while the premises are true: a chance
+    imbalance between the groups, or a difference that arises after the
+    assignment (the drop-out above), would give the same observation
+    without the policy causing it.
+    Random assignment does not remove that possibility; it makes it
+    possible to say how improbable it is.
+    That is what Komanduri et al.'s permutation tests do for the entropy
+    differences: they ask how often a difference at least as large would
+    turn up if the condition labels were shuffled at random, that is, if
+    the policy made no difference.
+    A small number says that chance is an unlikely explanation, not an
+    impossible one.
+
+    One could also make it deductive by adding premises: if the groups
+    differ only in the policy, and the measurements are the same in all
+    groups, then a difference in the outcome comes from the policy.
+    But then the uncertainty has only moved into those premises, which
+    are auxiliary hypotheses again, as in the previous question.
+
+    The student who asked suggested that internal validity is the
+    inductive step about chance and external validity a further, larger
+    inductive step to the population.
+    I agree: both are inductive, and they generalise over different
+    things, the first from this assignment to the causal claim for these
+    participants, the second from these participants and this setting to
+    others.
+  }
 \end{frame}
 
 \section{Measurements}
@@ -481,6 +574,28 @@
     real users into experimental conditions.
     One reflection proposed comparing study passwords with leaked
     passwords created under the same policy.
+
+    My take, and it is also the answer to \enquote{how do we balance
+    control and realism?}: no single source answers both research
+    questions, so combine them.
+    \begin{description}
+      \item[The experiment] gives the causal comparison between policies,
+        because the researchers assign them, but its passwords protect
+        nothing.
+      \item[Leaked sets] give real passwords protecting real accounts, but
+        each site's policy comes with its own users, so a difference
+        between sites is not a difference between policies.
+      \item[A check between them] tells us how far the experiment can be
+        trusted: Shay et al.\ cite two studies that compared study
+        passwords with real ones; \textcquote{CanLongPasswordsBeSecureAndUsable}{Both
+        studies concluded that passwords created during studies can
+        resemble real, high-value passwords, yet are not a perfect
+        proxy}.
+    \end{description}
+    For the second research question the design must also fix the
+    attacker: online or offline, how many guesses, what training data.
+    Without that, \enquote{how easily} has no answer, as Shay et al.'s
+    reversed ranking showed.
   }
 \end{frame}
 
@@ -492,6 +607,25 @@
     \citetitle{CanLongPasswordsBeSecureAndUsable}?
   \end{question}
 
+  \mode<article>{%
+    My take: because the first paper's instrument could not answer the
+    question it raised.
+    Komanduri et al.\ found basic16 to have the most entropy but
+    \textcquote{OfPasswordsAndPeople}{cannot say confidently how the two
+    conditions compare for cracking protection}, since John the Ripper
+    favours short passwords.
+    Shay et al.\ name what the entropy figure hid: under the length-16
+    policy \textcquote{CanLongPasswordsBeSecureAndUsable}{there were also
+    very simple passwords, like passwordpassword, that could be guessed
+    easily}.
+    So the second paper brings a better instrument (a cracker adapted to
+    long passwords, read over guessing budgets), new conditions aimed at
+    removing that weak tail, and a second sample in which the basic16 and
+    comp8 comparison is made again.
+    The last point is replication, which several of you mentioned: one
+    study's ranking is not yet a result.
+  }
+
   \begin{question}
     What factors affect how users choose passwords?
     \begin{itemize}
@@ -502,12 +636,60 @@
         %interact.
     \end{itemize}
   \end{question}
+
+  \mode<article>{%
+    My take: not just the policy, and the papers can tell us about some
+    of the other factors with very different confidence.
+    \begin{description}
+      \item[The scenario] was randomised in Komanduri et al., so here we
+        can make a causal claim: the four e-mail conditions gave
+        significantly more entropy than basic8survey, which the authors
+        read as \textcquote{OfPasswordsAndPeople}{consistent with users
+        picking better passwords to protect a hypothetical email account
+        than to protect a real survey account}.
+      \item[Writing the password down] went with an extra 1.9 bits of
+        entropy\autocite{OfPasswordsAndPeople}.
+        But participants chose whether to write it down, so this is a
+        correlation: it may be that people who make long passwords also
+        write them down, not that writing down causes long passwords.
+      \item[Reusing an existing password] was reported more often under
+        the less demanding policies\autocite{OfPasswordsAndPeople}.
+        Here the policy is randomised, so the policy affects reuse; but
+        what reuse then does to the password is again only observed.
+    \end{description}
+    So the general answer: we can know the effect of what was assigned
+    (policy, scenario), and only associations for what participants
+    chose themselves.
+    That is the same distinction as between the experiment and the leaked
+    sets in the design activity.
+  }
 \end{frame}
 
 \begin{frame}
   \begin{question}
     Did they make use of any models?
   \end{question}
+
+  \mode<article>{%
+    My take: several, and each one is something the conclusions rest on.
+    \begin{description}
+      \item[NIST's estimates] are a model of what a policy yields,
+        computed from what the rules allow; the experiment tests it.
+      \item[The entropy estimate] is a model of the password
+        distribution: Komanduri et al.\ estimate it by
+        \textcquote{OfPasswordsAndPeople}{summing the entropy values
+        derived from each element of a password}, which assumes that the
+        elements contribute separately.
+      \item[The cracker] is a model of the attacker; Shay et al.'s
+        algorithm \textcquote{CanLongPasswordsBeSecureAndUsable}{uses a
+        corpus of training data to generate guesses in order of
+        likelihood, up to some cutoff}, so it is only as good as that
+        corpus.
+      \item[The participants] stand in for real users, and the e-mail
+        scenario for a real account: a model in the sense that one thing
+        is studied in place of another.
+    \end{description}
+  }
 \end{frame}
 
 \begin{frame}
